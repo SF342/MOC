@@ -5,7 +5,7 @@ import { View, Text, StyleSheet } from 'react-native'
 const Footer = () => {
     return (
         <NativeBaseProvider>
-            <Box>Hello world</Box>
+            <Box>Hello world Bitch</Box>
         </NativeBaseProvider>
     )
 }
