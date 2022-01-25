@@ -38,4 +38,4 @@ export default function App() {
 
   if (confirm) return <VerifyCode onSubmit={confirmVerificationCode} />;
 
-  return <PhoneNumber onSubmit={signIn} />;
+  return <PhoneNumber onSubmit={signIn} />};
