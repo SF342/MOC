@@ -10,10 +10,18 @@ import React from 'react';
 
 import Providers from './navigation'
 import { LogBox } from 'react-native';
+
+//redux stuff
+import { Provider } from 'react-redux';
+import  Store  from "./src/redux/store"
+
+
 LogBox.ignoreAllLogs();
 const App = () => {
   return (
-    <Providers/>
+    <Provider store={Store}>
+      <Providers />
+    </Provider>
   );
 }
 
