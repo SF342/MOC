@@ -1,24 +1,20 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import MainContainer from './navigation/MainContainer';
-import Footer from './screens/Footer';
-import Header from './screens/Header';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
 
+import React from 'react';
+
+import Providers from './navigation'
+import { LogBox } from 'react-native';
+LogBox.ignoreAllLogs();
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Header name="MOC"/>
-      <Footer />
-      {/* <MainContainer /> */}
-    </View>
+    <Providers/>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-})
+}
 
 export default App;
-
