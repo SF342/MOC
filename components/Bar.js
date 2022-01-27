@@ -1,0 +1,37 @@
+import * as React from 'react';
+import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Home from '../screens/Home';
+import ShowPricePage from '../screens/ShowPricePage';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+const Tab = createBottomTabNavigator();
+
+function Bar() {
+  return (
+    <Tab.Navigator initialRouteName="Main"
+      screenOptions={{
+      headerShown: false}}>
+      <Tab.Screen name="Home" component={Home} 
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <Entypo name="home" color={color} size={size} />
+          ),
+        }}/>
+      <Tab.Screen name="ShowPricePage" component={ShowPricePage} 
+        options={{
+            tabBarLabel: 'ShowPricePage',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialIcons name="attach-money" color={color} size={size} />
+            ),
+          }}/>
+    </Tab.Navigator>
+  );
+}
+
+export default Bar;

@@ -1,17 +1,22 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-
-import TaskPage from '../screens/TaskPage'; 
+import Bar from '../components/Bar';
+import Home from '../screens/Home'; 
 
 const Stack = createStackNavigator();
 
 function AppStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Bar">
       <Stack.Screen
-        name="Task"
-        component={TaskPage}
-        options={{header: () => null}}
+        name="Bar"
+        component={Bar}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
