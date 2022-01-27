@@ -14,20 +14,33 @@ const Tab = createBottomTabNavigator();
 function Bar() {
   return (
     <Tab.Navigator initialRouteName="Main"
+      tabBarOptions={{
+        activeTintColor: '#ffffff',
+        activeBackgroundColor: '#0E4383',
+        inactiveBackgroundColor: '#0E4383',
+        inactiveTintColor: '#778899',
+        labelStyle: {
+          fontSize: 0,
+          paddingBottom: 0,
+          
+          fontWeight: 'bold',
+        }
+      }}
+      initialRouteName="Main"
       screenOptions={{
       headerShown: false}}>
       <Tab.Screen name="Home" component={Home} 
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
-            <Entypo name="home" color={color} size={size} />
+            <Entypo name="home" color={color} size={30} />
           ),
         }}/>
       <Tab.Screen name="ShowPricePage" component={ShowPricePage} 
         options={{
             tabBarLabel: 'ShowPricePage',
             tabBarIcon: ({ color, size }) => (
-              <MaterialIcons name="attach-money" color={color} size={size} />
+              <MaterialIcons name="attach-money" color={color} size={30} />
             ),
           }}/>
     </Tab.Navigator>
