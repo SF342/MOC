@@ -16,6 +16,7 @@ import { AuthContext } from '../navigation/AuthProviders';
 //redux stuff
 import { getData } from "../src/redux/actions/dataActions"
 import { useSelector, useDispatch } from 'react-redux'
+import Header from '../components/Header'
 
 export default Home = () => {
   const { user, logout } = useContext(AuthContext);
@@ -29,23 +30,25 @@ export default Home = () => {
 
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView >
-        <>{products.map((products) => <Text key={products.product_id}>{products.product_name}</Text>)}</>
+    <SafeAreaView>
+      <Header/>
+      <View style={styles.container}>
+        <ScrollView >
+          <>{products.map((products) => <Text key={products.product_id}>{products.product_name}</Text>)}</>
 
-        <TouchableOpacity style={styles.logoutButton} onPress={() => logout()}>
-          <Text style={styles.loginButtonText}>
-            Logout
-          </Text>
-        </TouchableOpacity>
-      </ScrollView>
+          <TouchableOpacity style={styles.logoutButton} onPress={() => logout()}>
+            <Text style={styles.loginButtonText}>
+              Logout
+            </Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#393E46',
     alignItems: 'center',
     paddingHorizontal: 20,

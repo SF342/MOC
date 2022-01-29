@@ -1,36 +1,49 @@
+import { Center } from 'native-base'
 import React from 'react'
 import { View, Text, StyleSheet,Image } from 'react-native'
-
+import Moc_logo from '../assets/moc_logo.png'
+import SrirachaRegular from '../assets/fonts/Sriracha-Regular.ttf'
 const Header = (props) => {
     return (
         <View style={styles.header}>
             <Image 
                 style={styles.img}
-                source={require('../assets/moc_logo.png')}
+                source={Moc_logo}
             />
+            <View>
             <Text style={styles.text}>
-                {props.name}
+                กระทรวงพาณิชย์
             </Text>
+            <Text style={styles.title}>
+                Ministry of Commerce
+            </Text>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     header: {
+        flexDirection: 'row',
         height: 90,
-        paddingTop: 10,
-        backgroundColor: '#0a214a'
+        backgroundColor: '#0A214A',        
+        alignItems: 'center',
+
     },
     text: {
-        color: '#fff',
-        fontSize: 24,
-        textAlign: 'center'
+        color: '#FFFFFF',
+        fontSize: 20,     
+          
     },
-    img : {
-       
-        weight:70,
-        height:70,
-        resizeMode: "contain",
+    title: {
+        color: '#059FE1',
+        fontSize: 15, 
+    },
+    img : {              
+        width: 60,
+        height: 60,
+        resizeMode: 'contain',
+        paddingRight: 100,   
     }
 })
 

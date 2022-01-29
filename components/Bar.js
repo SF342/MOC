@@ -16,8 +16,8 @@ function Bar() {
     <Tab.Navigator initialRouteName="Main"
       tabBarOptions={{
         activeTintColor: '#ffffff',
-        activeBackgroundColor: '#0E4383',
-        inactiveBackgroundColor: '#0E4383',
+        activeBackgroundColor: '#0A214A',
+        inactiveBackgroundColor: '#0A214A',
         inactiveTintColor: '#778899',
         labelStyle: {
           fontSize: 0,
