@@ -14,7 +14,6 @@ class ShowPricePage extends Component {
       data: [],
       error: null,
     };
-
     this.arrayholder = [];
   }
 
@@ -23,14 +22,18 @@ class ShowPricePage extends Component {
   }
 
   makeRemoteRequest = () => {
+    const detail = [];
     const url = `https://dataapi.moc.go.th/gis-products`;
     this.setState({ loading: true });
 
     fetch(url)
       .then(res => res.json())
       .then(res => {
+        for (let i = 1; i < res.length; i++) {
+          detail.push(res[i]);
+        };
         this.setState({
-          data: res,
+          data: detail,
           error: res.error || null,
           loading: false,
         });
@@ -117,7 +120,7 @@ class ShowPricePage extends Component {
               <Avatar  source={Moc_logo} rounded />
               <ListItem.Content>
                 <ListItem.Title style={{ fontSize:22,color: '#FFC511', fontWeight: '700' }}>{`${item.product_name}`}</ListItem.Title>
-                <ListItem.Subtitle>{item.product_id}</ListItem.Subtitle>
+                <ListItem.Subtitle style={{color: '#CED0CE'}}>{item.product_id}</ListItem.Subtitle>
               </ListItem.Content> 
             </ListItem>
           )}
