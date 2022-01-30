@@ -8,7 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import Price from '../screens/Price'
 const Tab = createBottomTabNavigator();
 
 function Bar() {
@@ -36,9 +36,9 @@ function Bar() {
             <Entypo name="home" color={color} size={30} />
           ),
         }}/>
-      <Tab.Screen name="ShowPricePage" component={ShowPricePage} 
+      <Tab.Screen name="Price" component={Price} 
         options={{
-            tabBarLabel: 'ShowPricePage',
+            tabBarLabel: 'Price',
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons name="attach-money" color={color} size={30} />
             ),
