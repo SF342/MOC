@@ -37,7 +37,7 @@ class ShowPricePage extends Component {
           error: res.error || null,
           loading: false,
         });
-        this.arrayholder = res;
+        this.arrayholder = detail;
       })
       .catch(error => {
         this.setState({ error, loading: false });
