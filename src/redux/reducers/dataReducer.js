@@ -1,7 +1,8 @@
-import { PRODUCTS_DATA } from '../types'
+import { PRODUCTS_DATA, PRICE_PRODUCT } from '../types'
 
 const initialState = {
     data: [],
+    productprice: [],
 };
 
 export default function (state = initialState, action) {
@@ -9,6 +10,11 @@ export default function (state = initialState, action) {
         case PRODUCTS_DATA:
             return {
                 data: action.payload,
+            }
+        case PRICE_PRODUCT:
+            return{
+                ...state,
+                productprice: [...productprice, action.payload]
             }
         
 

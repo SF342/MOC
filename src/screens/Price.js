@@ -5,7 +5,6 @@ import Header from '../components/Header'
 
 const Price = () => (
   <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-      <Header/>
     <ShowPricePage />
   </SafeAreaView>
 );

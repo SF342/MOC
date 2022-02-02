@@ -1,7 +1,7 @@
 import { Center } from 'native-base'
 import React from 'react'
 import { View, Text, StyleSheet,Image } from 'react-native'
-import Moc_logo from '../assets/moc_logo.png'
+import Moc_logo from '../../assets/moc_logo.png'
 
 const Header = (props) => {
     return (

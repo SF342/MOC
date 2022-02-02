@@ -8,7 +8,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import Price from '../screens/Price'
+import Suggestion from '../screens/Suggestion';
+
 const Tab = createBottomTabNavigator();
 
 function Bar() {
@@ -22,27 +25,35 @@ function Bar() {
         labelStyle: {
           fontSize: 0,
           paddingBottom: 0,
-          
+
           fontWeight: 'bold',
         }
       }}
       initialRouteName="Main"
       screenOptions={{
-      headerShown: false}}>
-      <Tab.Screen name="Home" component={Home} 
+        headerShown: false
+      }}>
+      <Tab.Screen name="Home" component={Home}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
             <Entypo name="home" color={color} size={30} />
           ),
-        }}/>
-      <Tab.Screen name="Price" component={Price} 
+        }} />
+      <Tab.Screen name="Price" component={Price}
         options={{
-            tabBarLabel: 'Price',
-            tabBarIcon: ({ color, size }) => (
-              <MaterialIcons name="attach-money" color={color} size={30} />
-            ),
-          }}/>
+          tabBarLabel: 'Price',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="attach-money" color={color} size={30} />
+          ),
+        }} />
+      <Tab.Screen name="Suggestion" component={Suggestion}
+        options={{
+          tabBarLabel: 'Suggestion',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="attach-money" color={color} size={30} />
+          ),
+        }} />
     </Tab.Navigator>
   );
 }
