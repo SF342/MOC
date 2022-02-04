@@ -1,8 +1,8 @@
 import { Center } from 'native-base'
 import React from 'react'
 import { View, Text, StyleSheet,Image } from 'react-native'
-import Moc_logo from '../assets/moc_logo.png'
-import SrirachaRegular from '../assets/fonts/Sriracha-Regular.ttf'
+import Moc_logo from '../../assets/moc_logo.png'
+
 const Header = (props) => {
     return (
         <View style={styles.header}>
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     text: {
         color: '#FFFFFF',
         fontSize: 20,     
+        fontFamily:"Mitr-Light",
           
     },
     title: {

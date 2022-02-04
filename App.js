@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import Providers from './navigation'
+import Providers from './src/navigation'
 import { LogBox } from 'react-native';
 
 //redux stuff
