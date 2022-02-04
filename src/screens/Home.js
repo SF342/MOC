@@ -14,30 +14,34 @@ import {
 import { AuthContext } from '../navigation/AuthProviders';
 
 //redux stuff
-import { getData } from "../redux/actions/dataActions"
+import { getData, getPrice } from "../redux/actions/dataActions"
 import { useSelector, useDispatch } from 'react-redux'
 
 export default Home = () => {
   const { user, logout } = useContext(AuthContext);
 
   const dispatch = useDispatch();
-  const products = useSelector(state => state.data.data)
+  const products = useSelector(state => state.data.productprice)
 
   useEffect(() => {
     dispatch(getData());
+    dispatch(getPrice('P11001'));
   }, [])
 
-
+  console.log(products)
   return (
     <SafeAreaView>
       <View style={styles.container}>
         <ScrollView >
+          
           <TouchableOpacity style={styles.logoutButton} onPress={() => logout()}>
             <Text style={styles.loginButtonText}>
               Logout
             </Text>
           </TouchableOpacity>
+
         </ScrollView>
+
       </View>
     </SafeAreaView>
   );
@@ -68,5 +72,11 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5
   },
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> bdc2d866cb2ee109d4049b57020c5c82902335c8
 
 });
