@@ -72,11 +72,8 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5
   },
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> bdc2d866cb2ee109d4049b57020c5c82902335c8
 
 });

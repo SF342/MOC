@@ -6,11 +6,7 @@ export const getData = () => async (dispatch) => {
     await fetch(url).then((res) => res.json())
         .then(result => {
             dispatch({ type: PRODUCTS_DATA, payload: result });
-<<<<<<< HEAD
-        }).catch((console.error))
-=======
         }).catch(console.error())
->>>>>>> bdc2d866cb2ee109d4049b57020c5c82902335c8
 }
 
 export const getPrice = (PID) => async (dispatch) => {
