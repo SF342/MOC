@@ -1,11 +1,10 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
-import ShowPricePage from '../screens/ShowPricePage';
-import Header from '../components/Header'
+import SearchPage from '../screens/SearchPage';
 
 const Price = () => (
   <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-    <ShowPricePage />
+    <SearchPage />
   </SafeAreaView>
 );
 

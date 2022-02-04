@@ -1,16 +1,13 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
-import ShowPricePage from '../screens/ShowPricePage';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
 import Price from '../screens/Price'
 import Suggestion from '../screens/Suggestion';
+import ShowPricePage from '../screens/ShowPricePage';
+
+
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +30,7 @@ function Bar() {
       screenOptions={{
         headerShown: false
       }}>
-      <Tab.Screen name="Home" component={Home}
+      <Tab.Screen name="Home" component={ShowPricePage}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (

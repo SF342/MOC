@@ -1,8 +1,4 @@
 import { PRODUCTS_DATA, PRICE_PRODUCT } from '../types';
-import { firestore, storage } from '../../config'
-
-
-
 
 export const getData = () => async (dispatch) => {
 
@@ -10,7 +6,7 @@ export const getData = () => async (dispatch) => {
     await fetch(url).then((res) => res.json())
         .then(result => {
             dispatch({ type: PRODUCTS_DATA, payload: result });
-        })
+        }).catch((console.error))
 }
 
 export const getPrice = (PID) => async (dispatch) => {
