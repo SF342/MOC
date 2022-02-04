@@ -9,12 +9,13 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case PRODUCTS_DATA:
             return {
+                ...state,
                 data: action.payload,
             }
         case PRICE_PRODUCT:
             return{
                 ...state,
-                productprice: [...productprice, action.payload]
+                productprice: [...state.productprice, action.payload]
             }
         
 
