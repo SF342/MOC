@@ -30,7 +30,7 @@ function Bar() {
       screenOptions={{
         headerShown: false
       }}>
-      <Tab.Screen name="Home" component={ShowPricePage}
+      <Tab.Screen name="Home" component={Home}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (

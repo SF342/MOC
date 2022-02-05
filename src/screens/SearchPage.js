@@ -100,6 +100,7 @@ class SearchPage extends Component {
     }
     return (
       <View style={{ flex: 1 }}>
+        {/*
         <FlatList
           data={this.state.data}
           renderItem={({ item }) => (
@@ -132,6 +133,8 @@ class SearchPage extends Component {
           ItemSeparatorComponent={this.renderSeparator}
           ListHeaderComponent={this.renderHeader}
         />
+              */}
+        
       </View>
     );
   }
