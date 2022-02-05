@@ -9,12 +9,11 @@ import {
   ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Header from '../components/Header';
 import {useState, useEffect} from 'react';
 import {Colors, Picker} from 'react-native-ui-lib';
 
 const mapURL =
-  'https://covid19.ddc.moph.go.th/api/Cases/today-cases-by-provinces';
+  'https://dataapi.moc.go.th/gis-products';
 
 const Price = () => {
   const [isLoading, setLoading] = useState(true);
@@ -37,17 +36,11 @@ const Price = () => {
 
   const [selectedCountry, setSelectedCountry] = useState('');
   const [newCase, setNewCase] = useState([]);
-  const [totalDeath, setTotalDeath] = useState([]);
-  const [totalCase, setTotalCase] = useState([]);
-  const [newDeath, setNewDeath] = useState([]);
 
   const onClickSearch = test => {
     for (let i = 0; i < data.length - 1; i++) {
-      if (selectedCountry.value == data[i].province) {
-        setNewCase(data[i].new_case);
-        setTotalCase(data[i].total_case);
-        setNewDeath(data[i].new_death);
-        setTotalDeath(data[i].total_death);
+      if (selectedCountry.value == data[i].product_id) {
+        setNewCase(data[i].product_name);
       }
     }
   };
@@ -59,7 +52,6 @@ const Price = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header/>
 
       <View style={styles.pickerContainer} flexDirection="row">
         <Picker
