@@ -1,11 +1,14 @@
+import { StyleSheet, Text, View ,SafeAreaView} from 'react-native';
 import React from 'react';
-import { SafeAreaView } from 'react-native';
-import SearchPage from '../screens/SearchPage';
 
-const Price = () => (
-  <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-    <SearchPage />
-  </SafeAreaView>
-);
+const Price = () => {
+  return (
+    <SafeAreaView>
+      <Text>Hello from the other side</Text>
+    </SafeAreaView>
+  );
+};
 
 export default Price;
+
+const styles = StyleSheet.create({});
