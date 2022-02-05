@@ -1,11 +1,8 @@
 import React from 'react';
-import { useContext, useEffect, useState } from 'react'
+import {  useEffect, useState } from 'react'
 import { ListItem, SearchBar, Avatar } from 'react-native-elements';
 import {
-  SafeAreaView,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
   FlatList,
 } from 'react-native';
@@ -33,8 +30,6 @@ export default Home = ({ navigation }) => {
     setData(products);
 
   }, [])
-
-
 
   const renderSeparator = () => {
     return (
@@ -65,8 +60,6 @@ export default Home = ({ navigation }) => {
     setData(newData)
 
   };
-
-
 
   return (
     <View style={{ flex: 1 }}>
@@ -140,8 +133,4 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5
   },
-
-
-
-
 });
