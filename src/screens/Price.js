@@ -16,7 +16,8 @@ import Moc_logo from '../../assets/moc_logo.png';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-
+const settingsIcon = require('../../assets/settings.png');
+const titanIcon = require('../../assets/titan.png');
 const mapURL =
   'https://dataapi.moc.go.th/gis-products';
 
@@ -92,16 +93,25 @@ const Price = () => {
             onPress={onClickSearch}
             color="#068ECD"
           /> */}
-           <Button
+          <Button
+              style={{marginBottom: 20}}
+              size={Button.sizes.small}
+              backgroundColor='#3297F4'
+              iconSource={titanIcon}
+              iconStyle={{tintColor: 'white'}}
+              onPress={onClickSearch}
+              label="Search"
+            />
+           {/* <Button
               size={'small'}
               style={{marginBottom: 20 / 4, marginLeft: 20}}
               backgroundColor='#52CF92'
-              iconSource={Moc_logo}
+              iconSource={settingsIcon}
               onPress={onClickSearch}
               iconOnRight
               animateLayout
               animateTo={'left'}
-            />
+            /> */}
         </View>
       </View>
       {isPriceLoading ? (
