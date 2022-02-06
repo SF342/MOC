@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator();
 
 function Bar() {
   return (
-    <Tab.Navigator initialRouteName="Main"
+    <Tab.Navigator initialRouteName="Bar"
       tabBarOptions={{
         activeTintColor: '#ffffff',
         activeBackgroundColor: '#0A214A',
@@ -22,7 +22,6 @@ function Bar() {
         labelStyle: {
           fontSize: 0,
           paddingBottom: 0,
-
           fontWeight: 'bold',
         }
       }}

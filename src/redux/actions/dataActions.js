@@ -25,7 +25,7 @@ export const getPrice = (PID) => async (dispatch) => {
     }
     const weekAgo = getWeekAgo();
 
-    const url = "https://dataapi.moc.go.th/gis-product-prices?product_id=" + PID + "&from_date=" + weekAgo + "&to_date=" + today;
+    const url = "https://dataapi.moc.go.th/gis-product-prices?product_id=" + PID + "&from_date=" + "2018-01-01" + "&to_date=" + "2018-01-28";
 
     await fetch(url).then((res) => res.json())
         .then(result => {

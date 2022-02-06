@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 
 function AppStack() {
   return (
-    <Stack.Navigator initialRouteName="Bar">
+    <Stack.Navigator  initialRouteName="Bar">
       <Stack.Screen
         name="Bar"
         component={Bar}
