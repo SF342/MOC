@@ -3,14 +3,19 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
+  // Button,
   TextInput,
   Image,
   ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useState, useEffect} from 'react';
-import {Colors, Picker} from 'react-native-ui-lib';
+import {Colors, Picker,Button,} from 'react-native-ui-lib';
+import {ActivityIndicator} from 'react-native';
+import Moc_logo from '../../assets/moc_logo.png';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+
 
 const mapURL =
   'https://dataapi.moc.go.th/gis-products';
@@ -18,6 +23,8 @@ const mapURL =
 const Price = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+
+  const [price, setPrice] = useState([]);
 
   const fetchData = () => {
     const detail = [];
@@ -37,21 +44,26 @@ const Price = () => {
     fetchData()
   }, []);
 
-
-  const [selectedCountry, setSelectedCountry] = useState('');
-  const [newCase, setNewCase] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState('');
+  const [isPriceLoading, setPriceLoading] = useState(true);
 
   const onClickSearch = test => {
-    for (let i = 1; i < data.length ; i++) {
-      if (selectedCountry.value == data[i].product_id) {
-        setNewCase(data[i].product_name);
-      }
-    }
+
+    const priceURL = `https://dataapi.moc.go.th/gis-product-prices?product_id=${selectedProduct.value}&from_date=2018-01-01&to_date=2018-01-07`;
+    setPriceLoading(true);
+    fetch(priceURL)
+      .then(res => res.json())
+      .then(resjson => {
+        setPrice(resjson);
+        setPriceLoading(false);
+        console.log(resjson);
+      })
+    console.log(selectedProduct.value)   
+    console.log(price)
   };
 
-  const onCountryChange = dummyData => {
-    setSelectedCountry(dummyData);
-    
+  const onProductChange = dummyData => {
+    setSelectedProduct(dummyData);
   };
 
   return (
@@ -59,9 +71,9 @@ const Price = () => {
 
       <View style={styles.pickerContainer} flexDirection="row">
         <Picker
-          value={selectedCountry}
-          placeholder="Search by country"
-          onChange={onCountryChange}
+          value={selectedProduct}
+          placeholder="Search Product . . ."
+          onChange={onProductChange}
           showSearch
           placeholderTextColor="#fff"
           containerStyle={styles.pickerStyle}
@@ -75,19 +87,33 @@ const Price = () => {
           ))}
         </Picker>
         <View style={styles.ButtonContainer}>
-          <Button
+          {/* <Button
             title="Search"
             onPress={onClickSearch}
-            color="#fff"
-          />
+            color="#068ECD"
+          /> */}
+           <Button
+              size={'small'}
+              style={{marginBottom: 20 / 4, marginLeft: 20}}
+              backgroundColor='#52CF92'
+              iconSource={Moc_logo}
+              onPress={onClickSearch}
+              iconOnRight
+              animateLayout
+              animateTo={'left'}
+            />
         </View>
       </View>
-
+      {isPriceLoading ? (
+        <ActivityIndicator />
+      ) : (     
       <View style={styles.headerContainer}>
-        <Text style={styles.Header}>Name : {selectedCountry.label}</Text>
-        <Text style={styles.Header}>Id : {selectedCountry.value}</Text>
+        <Text style={styles.t1}>Name : {price.product_name}</Text>
+        <Text style={styles.t1}>Id : {price.product_id}</Text>
+        <Text style={styles.t1}>Price max avg : {price.price_max_avg}  {price.unit}</Text>
+        <Text style={styles.t1}>Price min avg : {price.price_min_avg}  {price.unit}</Text>
       </View>
-
+      )}
     </SafeAreaView>
   );
 };
@@ -108,14 +134,25 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     paddingBottom:10,
   },
+  t1: {
+    fontSize: 20,
+    color: 'white',
+    alignSelf: 'center',
+    fontWeight: '300',
+    padding: 5,
+    
+  },
   headerContainer: {
-    height: 60,
+    height: 200,
     width: 370,
     borderRadius: 30,
     padding: 10,
     marginLeft: 20,
     backgroundColor: 'rgba(180, 180, 180,0.09)',
     marginBottom: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+   
   },
   text: {
     color: 'white',
@@ -137,7 +174,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   pickerContainer: {
-    paddingTop: 0,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   ScrollView: {
     marginTop: 1,
