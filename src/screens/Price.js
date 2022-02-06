@@ -20,10 +20,14 @@ const Price = () => {
   const [data, setData] = useState([]);
 
   const fetchData = () => {
+    const detail = [];
     fetch(mapURL)
       .then(response => response.json())
       .then(json => {
-        setData(json);
+        for (let i = 1; i < json.length; i++) {
+          detail.push(json[i]);
+        };
+      setData(detail);
       })
       .catch(error => alert(error))
       .finally(() => setLoading(false));
@@ -38,7 +42,7 @@ const Price = () => {
   const [newCase, setNewCase] = useState([]);
 
   const onClickSearch = test => {
-    for (let i = 0; i < data.length - 1; i++) {
+    for (let i = 1; i < data.length ; i++) {
       if (selectedCountry.value == data[i].product_id) {
         setNewCase(data[i].product_name);
       }
@@ -65,8 +69,8 @@ const Price = () => {
           {data.map((option, index) => (
             <Picker.Item
               key={index}
-              value={option.province}
-              label={option.province}
+              value={option.product_id}
+              label={option.product_name}
             />
           ))}
         </Picker>
@@ -80,7 +84,8 @@ const Price = () => {
       </View>
 
       <View style={styles.headerContainer}>
-        <Text style={styles.Header}>Country : {selectedCountry.value}</Text>
+        <Text style={styles.Header}>Name : {selectedCountry.label}</Text>
+        <Text style={styles.Header}>Id : {selectedCountry.value}</Text>
       </View>
 
     </SafeAreaView>
