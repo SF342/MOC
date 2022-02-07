@@ -1,45 +1,52 @@
 import React from 'react';
-import { useEffect, useState} from 'react'
+import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Text, View, FlatList, TouchableOpacity, Image } from 'react-native';
+import { Text, View } from 'react-native';
 import { getPrice } from "../redux/actions/dataActions"
-import { ListItem, SearchBar, Avatar } from 'react-native-elements';
-import TouchableScale from 'react-native-touchable-scale';
-import LinearGradient from 'react-native-linear-gradient';
+import { ListItem, Avatar } from 'react-native-elements';
 import Moc_logo from '../../assets/moc_logo.png';
 
 const ShowPricePage = ({ navigation, route }) => {
 
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.productprice)
-  const [data, setData] = useState()
+  const PID = route.params.id;
+  const [product, setProduct] = useState(null);
+  const [Loading, setLoading] = useState(true);
 
-  console.log(route.params.id)
-  console.log("Test",data)
+
   
-  useEffect(() => {
-    dispatch(getPrice(route.params.id));
-    setData();
-    setData(products);
-  }, [])
+  const checkPD = () => {
+    var id = products.findIndex((PD) => PD.product_id === PID)
+    console.log(id);
+    if (id === -1) {
+      dispatch(getPrice(PID));
+    } else {
+      setProduct(products[id])
+    }
+  }
+
+
+  if (Loading) {
+    checkPD();
+    if (product !== null) {
+      setLoading(false);
+    }
+  }
 
   return (
     <View style={{ flex: 1 }}>
       <Text>Show Page Price</Text>
-      <FlatList
-        data={products}
-        renderItem={({ item }) => (
-          <ListItem
-          >
-            <Avatar source={Moc_logo} rounded />
-            <ListItem.Content>
-              <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700' }}>{`${item.product_name}`}</ListItem.Title>
-              <ListItem.Subtitle style={{ color: '#CED0CE' }}>{item.price_max_avg}</ListItem.Subtitle>
-              <ListItem.Subtitle style={{ color: '#CED0CE' }}>{item.price_min_avg}</ListItem.Subtitle>
-            </ListItem.Content>
-          </ListItem>
-        )}
-      />
+      {product === null || Loading ? <Text>Loading...</Text> :
+        <ListItem>
+          <Avatar source={Moc_logo} rounded />
+          <ListItem.Content>
+            <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700' }}>{`${product.product_name}`}</ListItem.Title>
+            <ListItem.Subtitle style={{ color: '#CED0CE' }}>{product.price_max_avg}</ListItem.Subtitle>
+            <ListItem.Subtitle style={{ color: '#CED0CE' }}>{product.price_min_avg}</ListItem.Subtitle>
+          </ListItem.Content>
+        </ListItem>
+      }
     </View>
   );
 }

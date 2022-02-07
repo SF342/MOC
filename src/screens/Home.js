@@ -25,14 +25,15 @@ export default Home = ({ navigation }) => {
   const [arrayholder, setArrayholder] = useState()
 
 
-  useEffect(() => {
+  if (isLoading) {
     dispatch(getData());
-    setArrayholder(products);
-    setData(products);
-    setLoading(false)
-  }, [])
-  
-  
+    if (products.length <= 0) {
+      setArrayholder(products);
+      setLoading(false)
+    }
+  }
+
+
   const updateInput = text => {
     setValue(text)
     searchFilterFunction(text)
@@ -62,42 +63,43 @@ export default Home = ({ navigation }) => {
         autoCorrect={false}
       />
 
-      {isLoading ? <Text>Loading...</Text> :
-        (<View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}>
-          <Text style={{ fontSize: 18, color: 'green', textAlign: 'center' }}>{data.title}</Text>
-          <FlatList
-            data={data}
-            renderItem={({ item }) => (
-              <ListItem
-                Component={TouchableScale}
-                friction={0} //
-                tension={200} // These props are passed to the parent component (here TouchableScale)
-                activeScale={0.95} //
-                linearGradientProps={{
-                  colors: ['#1544E2', '#1544E2'],
-                  start: { x: 1, y: 0 },
-                  end: { x: 0.2, y: 0 },
-                }}
-                ViewComponent={LinearGradient}
-                containerStyle={{
-                  marginHorizontal: 16,
-                  marginVertical: 8,
-                  borderRadius: 8,
-                }}
-                onPress={() =>
-                  navigation.navigate('ShowPricePage', {id: item.product_id})
-                }
-              >
-                <Avatar source={Moc_logo} rounded />
-                <ListItem.Content>
-                  <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700' }}>{`${item.product_name}`}</ListItem.Title>
-                  <ListItem.Subtitle style={{ color: '#CED0CE' }}>{item.product_id}</ListItem.Subtitle>
-                </ListItem.Content>
-              </ListItem>
-            )}
-            keyExtractor={item => item.product_id}
-          />
-        </View>
+      {isLoading ? <Text>Loading..........\n.............................\n</Text> :
+        (
+          <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}>
+            <FlatList
+              data={products}
+              renderItem={({ item }) => (
+                <ListItem
+                  Component={TouchableScale}
+                  key={item.product_id}
+                  friction={0} //
+                  tension={200} // These props are passed to the parent component (here TouchableScale)
+                  activeScale={0.95} //
+                  linearGradientProps={{
+                    colors: ['#1544E2', '#1544E2'],
+                    start: { x: 1, y: 0 },
+                    end: { x: 0.2, y: 0 },
+                  }}
+                  ViewComponent={LinearGradient}
+                  containerStyle={{
+                    marginHorizontal: 16,
+                    marginVertical: 8,
+                    borderRadius: 8,
+                  }}
+                  onPress={() =>
+                    navigation.navigate('ShowPricePage', { id: item.product_id })
+                  }
+                >
+                  <Avatar source={Moc_logo} rounded />
+                  <ListItem.Content>
+                    <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700' }}>{`${item.product_name}`}</ListItem.Title>
+                    <ListItem.Subtitle style={{ color: '#CED0CE' }}>{item.product_id}</ListItem.Subtitle>
+                  </ListItem.Content>
+                </ListItem>
+              )}
+              keyExtractor={item => item.product_id}
+            />
+          </View>
         )}
 
     </View>
