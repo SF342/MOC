@@ -15,9 +15,12 @@ import {ActivityIndicator} from 'react-native';
 import Moc_logo from '../../assets/moc_logo.png';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import moment from 'moment';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const settingsIcon = require('../../assets/settings.png');
 const titanIcon = require('../../assets/titan.png');
+
 const mapURL =
   'https://dataapi.moc.go.th/gis-products';
 
@@ -26,6 +29,30 @@ const Price = () => {
   const [data, setData] = useState([]);
 
   const [price, setPrice] = useState([]);
+
+  const [date, setDate] = useState(new Date());
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+  const [textDate, setText] = useState(moment(new Date()).format("YYYY-MM-DD"));
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+
+    let tempDate = new Date(currentDate);
+    let fDate = moment(tempDate).format("YYYY-MM-DD");
+    setText(fDate)
+  };
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
 
   const fetchData = () => {
     const detail = [];
@@ -50,7 +77,7 @@ const Price = () => {
 
   const onClickSearch = test => {
 
-    const priceURL = `https://dataapi.moc.go.th/gis-product-prices?product_id=${selectedProduct.value}&from_date=2018-01-01&to_date=2018-01-07`;
+    const priceURL = `https://dataapi.moc.go.th/gis-product-prices?product_id=${selectedProduct.value}&from_date=${textDate}&to_date=${textDate}`;
     setPriceLoading(true);
     fetch(priceURL)
       .then(res => res.json())
@@ -120,9 +147,26 @@ const Price = () => {
       <View style={styles.headerContainer}>
         <Text style={styles.t1}>Name : {price.product_name}</Text>
         <Text style={styles.t1}>Id : {price.product_id}</Text>
-        <Text style={styles.t1}>Price max avg : {price.price_max_avg}  {price.unit}</Text>
-        <Text style={styles.t1}>Price min avg : {price.price_min_avg}  {price.unit}</Text>
+        <Text style={styles.t1}>Price max : {price.price_max_avg}  {price.unit}</Text>
+        <Text style={styles.t1}>Price min : {price.price_min_avg}  {price.unit}</Text>
       </View>
+      )}
+      <View>
+        <Text style={styles.t1}>Date Select : {textDate}</Text>
+      </View>
+      <View style={{ alignItems: 'center', paddingBottom: 10 , margin:20}}>
+        <Button onPress={showDatepicker} label="Show date" />
+      </View>
+      {show && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode={mode}
+          maximumDate={Date.parse(new Date())}
+          is24Hour={true}
+          display="default"
+          onChange={onChange}
+        />
       )}
     </SafeAreaView>
   );

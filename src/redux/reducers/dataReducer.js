@@ -12,7 +12,7 @@ export default function (state = initialState, action) {
         case PRODUCTS_DATA:
             return {
                 ...state,
-                data: action.payload,
+                data: [...action.payload.slice(1)],
             }
         case PRICE_PRODUCT:
             return {
