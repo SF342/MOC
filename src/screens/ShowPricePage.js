@@ -15,6 +15,7 @@ const ShowPricePage = ({ navigation, route }) => {
   const [product, setProduct] = useState(null);
   const [Loading, setLoading] = useState(true);
 
+  console.log(product)
   
   const checkPD = () => {
     var id = products.findIndex((PD) => PD.product_id === PID)
@@ -36,7 +37,6 @@ const ShowPricePage = ({ navigation, route }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Text>Show Page Price</Text>
       {product === null || Loading ? <ActivityIndicator /> :
         <ListItem>
           <Avatar source={Moc_logo} rounded />

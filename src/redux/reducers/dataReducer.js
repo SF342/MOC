@@ -1,10 +1,8 @@
-import { act } from 'react-test-renderer';
-import { PRODUCTS_DATA, PRICE_PRODUCT, USER_STATE } from '../types'
+import { PRODUCTS_DATA, PRICE_PRODUCT } from '../types'
 
 const initialState = {
     data: [],
     productprice: [],
-    userState: []
 };
 
 export default function (state = initialState, action) {
@@ -15,16 +13,11 @@ export default function (state = initialState, action) {
                 data: [...action.payload.slice(1)],
             }
         case PRICE_PRODUCT:
-            return {
+            return{
                 ...state,
                 productprice: [...state.productprice, action.payload]
             }
-
-        case USER_STATE:
-            return {
-                ...state,
-                userState: [...state.userState, action.payload]
-            }
+        
 
         default:
             return state;
