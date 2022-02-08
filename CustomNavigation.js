@@ -5,11 +5,14 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Home from './src/screens/Home'
 import ShowPricePage from './src/screens/ShowPricePage';
 
-import ProfilePage from './src/screens/ProfilePage';
+import ChooseLoginRegister from './src/screens/ProfilePage';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 
 import UserLoginPage from './src/screens/LoggedInPage';
+import FavoriteList from './src/screens/FavoriteList';
+
+
 import auth from '@react-native-firebase/auth';
 import { useState, useEffect } from 'react';
 
@@ -38,8 +41,8 @@ const SecondScreen_Home = () => {
 
         <Stack.Navigator>
             <Stack.Screen
-                name="ProfilePage"
-                component={ProfilePage}
+                name="ChooseLoginRegister"
+                component={ChooseLoginRegister}
                 options={{ headerShown: false }}
             />
             <Stack.Screen
@@ -65,28 +68,33 @@ const LoggedInPage = () => {
                 component={UserLoginPage}
                 options={{ headerShown: false }}
             />
+            <Stack.Screen
+                name="FavoriteList"
+                component={FavoriteList}
+                options={{ headerShown: false }}
+            />
         </Stack.Navigator>
     )
 }
 
 const ProfileStatePage = () => {
 
-  // Set an initializing state whilst Firebase connects
-  const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
+    // Set an initializing state whilst Firebase connects
+    const [initializing, setInitializing] = useState(true);
+    const [user, setUser] = useState();
 
-  // Handle user state changes
-  function onAuthStateChanged(user) {
-    setUser(user);
-    if (initializing) setInitializing(false);
-  }
+    // Handle user state changes
+    function onAuthStateChanged(user) {
+        setUser(user);
+        if (initializing) setInitializing(false);
+    }
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
-  }, []);
+    useEffect(() => {
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber; // unsubscribe on unmount
+    }, []);
     return (
-          user ? <LoggedInPage /> : <SecondScreen_Home />
+        user ? <LoggedInPage /> : <SecondScreen_Home />
 
     )
 }

@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView } from 'react-na
 import auth from '@react-native-firebase/auth';
 
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
 
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
@@ -45,6 +45,14 @@ const RegisterScreen = () => {
       <Text style={styles.title}>Welcome login</Text>
       <Text style={styles.title2}>{user.email}</Text>
       <TouchableOpacity
+        onPress={()=>{logout;navigation.navigate('FavoriteList')}}
+        style={styles.favoriteList}
+      >
+        <Text style={styles.loginButtonText}>
+          Favorite List
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
         onPress={logout}
         style={styles.logoutButton}
       >
@@ -70,7 +78,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     width: 320,
-    marginBottom: 1,
+    marginBottom: 10,
+    marginTop: 10,
     fontWeight: 'bold',
   },
   input: {
@@ -103,13 +112,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     padding: 15
   },
-  loginButtonText: {
-    textAlign: 'center',
-    color: '#F0FFFF',
-    fontWeight: 'bold',
-    fontSize:20,
-    padding: 15
-  },
   container: {
     flex: 1,
     padding: 50,
@@ -122,5 +124,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
   },
+  favoriteList: {
+    marginVertical: 10,
+    backgroundColor: '#0A214A',
+    width: 320,
+    height: 60,
+    borderRadius: 10,
+    shadowColor: "#000000",
+    shadowOpacity: 5,
+    shadowRadius: 5,
+    elevation: 5
+  }
 });
 export default RegisterScreen;
