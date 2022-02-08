@@ -129,12 +129,12 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 18
   },
-  img : {              
+  img: {
     width: 150,
     height: 150,
     resizeMode: 'contain',
     marginBottom: 20,
-}
+  }
 });
 
 export default LoginScreen;

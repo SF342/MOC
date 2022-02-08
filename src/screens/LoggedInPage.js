@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect  } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 
@@ -39,27 +39,39 @@ const RegisterScreen = () => {
     );
   }
   return (
+    <SafeAreaView
+    style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     <View>
-      <Text>Welcome login เเล้วนะ : {user.email}</Text>
+      <Text style={styles.title}>Welcome login</Text>
+      <Text style={styles.title2}>{user.email}</Text>
       <TouchableOpacity
         onPress={logout}
+        style={styles.logoutButton}
       >
-        <Text>
+        <Text style={styles.loginButtonText}>
           Log out
         </Text>
       </TouchableOpacity>
     </View>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   title: {
-    color: '#00CABA',
+    color: 'black',
     textAlign: 'center',
     fontSize: 35,
     width: 320,
     marginBottom: 1,
     fontWeight: 'bold',
-
+  },
+  title2: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 20,
+    width: 320,
+    marginBottom: 1,
+    fontWeight: 'bold',
   },
   input: {
     marginVertical: 10,
@@ -73,9 +85,9 @@ const styles = StyleSheet.create({
     elevation: 5,
     backgroundColor: '#FFFFFF'
   },
-  loginButton: {
+  logoutButton: {
     marginVertical: 10,
-    backgroundColor: '#00CABA',
+    backgroundColor: '#b53531',
     width: 320,
     height: 60,
     borderRadius: 10,
@@ -84,7 +96,6 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5
   },
-
   loginButtonText: {
     textAlign: 'center',
     color: '#F0FFFF',
@@ -92,7 +103,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     padding: 15
   },
-
+  loginButtonText: {
+    textAlign: 'center',
+    color: '#F0FFFF',
+    fontWeight: 'bold',
+    fontSize:20,
+    padding: 15
+  },
   container: {
     flex: 1,
     padding: 50,
@@ -100,7 +117,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#E2FCFA',
   },
-
   text: {
     color: '#00CABA',
     fontSize: 18,
