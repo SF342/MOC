@@ -23,7 +23,7 @@ export default function (state = initialState, action) {
         case USER_STATE:
             return {
                 ...state,
-                userState: action.payload
+                userState: [...state.userState, action.payload]
             }
 
         default:

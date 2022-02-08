@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState} from 'react';
+import { useState } from 'react';
 import { Input } from '../components/Input';
 import {
   SafeAreaView,
@@ -7,17 +7,16 @@ import {
   Text,
   TouchableOpacity,
   Alert,
-  useEffect
+  Image
 } from 'react-native';
 import auth from "@react-native-firebase/auth"
+import Moc_logo from '../../assets/moc_logo.png'
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ navigation }) => {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-
-  
 
   const __doSingIn = async (email, password) => {
     try {
@@ -29,7 +28,7 @@ const LoginScreen = ({navigation}) => {
       console.error(e.message)
     }
     let user = auth().currentUser.uid;
-    
+
     if (user) {
       console.log(user);
       this.setState({ authenticated: true });
@@ -39,10 +38,13 @@ const LoginScreen = ({navigation}) => {
   }
 
 
-
   return (
     <SafeAreaView
-      style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Image
+        style={styles.img}
+        source={Moc_logo}
+      />
       <Input
         style={styles.input}
         labelValue={email}
@@ -59,79 +61,80 @@ const LoginScreen = ({navigation}) => {
         placeholderText="Password"
         secureTextEntry={true}
       />
-       <TouchableOpacity style={styles.loginButton} onPress={() => __doSingIn(email, password)}>
+      <TouchableOpacity style={styles.loginButton} onPress={() => __doSingIn(email, password)}>
         <Text style={styles.loginButtonText}>
           LOGIN
-        </Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity>
-        <Text style={styles.text} onPress={() => navigation.navigate('RegisterScreen')}>
-          don't have an account? Create one
         </Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
-    logo: {
-      width: 200,
-      height: 200,
-      resizeMode: 'stretch',
-      marginBottom: 15
-    },
-  
-    title: {
-      color: '#00CABA',
-      textAlign: 'left',
-      fontSize: 35,
-      width: 320,
-      marginBottom: 1,
-      fontWeight: 'bold',
-    },
-    input: {
-      marginVertical: 10,
-      width: 320,
-      height: 60,
-      fontSize: 18,
-      marginBottom: 5,
-      shadowColor: "#000000",
-      shadowOpacity: 5,
-      shadowRadius: 5,
-      elevation: 5,
-      backgroundColor: '#FFFFFF'
-      
-    },
-    loginButton: {
-      marginVertical: 10,
-      backgroundColor: 'black',
-      width: 320,
-      height: 60,
-      borderRadius: 10,
-      shadowColor: "#000000",
-      shadowOpacity: 5,
-      shadowRadius: 5,
-      elevation: 5
-    },
-    loginButtonText: {
-      textAlign: 'center',
-      color: '#F0FFFF',
-      fontWeight: 'bold',
-      fontSize:20,
-      padding: 15
-    },
-  
-    container: {
-      flex: 1,
-      backgroundColor: '#E2FCFA',
-      alignItems: 'center',
-      paddingHorizontal: 20,
-      paddingTop: 50,
-    },
-    text: {
-      color: 'black',
-      fontSize: 18
-    },
-  });
+  logo: {
+    width: 200,
+    height: 200,
+    resizeMode: 'stretch',
+    marginBottom: 15
+  },
+
+  title: {
+    color: '#00CABA',
+    textAlign: 'left',
+    fontSize: 35,
+    width: 320,
+    marginBottom: 1,
+    fontWeight: 'bold',
+  },
+  input: {
+    marginVertical: 10,
+    width: 320,
+    height: 60,
+    fontSize: 18,
+    marginBottom: 5,
+    shadowColor: "#000000",
+    shadowOpacity: 5,
+    shadowRadius: 5,
+    elevation: 5,
+    backgroundColor: '#FFFFFF'
+
+  },
+  loginButton: {
+    marginVertical: 10,
+    marginBottom: 30,
+    backgroundColor: '#0A214A',
+    width: 320,
+    height: 60,
+    borderRadius: 10,
+    shadowColor: "#000000",
+    shadowOpacity: 5,
+    shadowRadius: 5,
+    elevation: 5
+  },
+  loginButtonText: {
+    textAlign: 'center',
+    color: '#F0FFFF',
+    fontWeight: 'bold',
+    fontSize: 20,
+    padding: 15
+  },
+
+  container: {
+    flex: 1,
+    backgroundColor: '#E2FCFA',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 50,
+  },
+  text: {
+    color: 'black',
+    fontSize: 18
+  },
+  img : {              
+    width: 150,
+    height: 150,
+    resizeMode: 'contain',
+    marginBottom: 20,
+}
+});
 
 export default LoginScreen;

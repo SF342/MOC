@@ -1,4 +1,6 @@
 import { PRODUCTS_DATA, PRICE_PRODUCT, USER_STATE } from '../types';
+import { useState, useEffect  } from 'react';
+import auth from '@react-native-firebase/auth';
 
 export const getData = () => async (dispatch) => {
 
@@ -35,28 +37,14 @@ export const getPrice = (PID) => async (dispatch) => {
 
 
 export const getUserState = () => async (dispatch) => {
-    // Set an initializing state whilst Firebase connects
-    const [initializing, setInitializing] = useState(true);
-    const [user, setUser] = useState();
-
-    // Handle user state changes
-    function onAuthStateChanged(user) {
-        setUser(user);
-        if (initializing) setInitializing(false);
-    }
-
-    useEffect(() => {
-        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-        return subscriber; // unsubscribe on unmount
-    }, []);
-
-    if (initializing) return null;
-
-    if (!user) {
-        return (
-            console.log("Poom")
-        );
-    }
-    dispatch({ type: USER_STATE, payload: "poom" });
-
+    
+    await  firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log(user)
+        } else {
+            console.log("none")
+        }
+      }).then(result => {
+        dispatch({ type: USER_STATE, payload: result });
+      });
 }

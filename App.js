@@ -17,18 +17,18 @@ import Store from "./src/redux/store"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Price from './src/screens/Price'
-import Header from './src/components/Header'
+import Price from './src/screens/Price';
+import Header from './src/components/Header';
 
-
-import { FirstScreen_Home, SecondScreen_Home } from './CustomNavigation'
-
-
+import { FirstScreen_Home, SecondScreen_Home, ProfileStatePage } from './CustomNavigation'
 import { NavigationContainer } from '@react-navigation/native'
+
 
 LogBox.ignoreAllLogs();
 const App = () => {
   const Tab = createBottomTabNavigator();
+
+
 
   return (
     <Provider store={Store}>
@@ -81,7 +81,7 @@ const App = () => {
                 <MaterialIcons name="attach-money" color={color} size={30} />
               ),
             }} />
-          <Tab.Screen name="ProfilePage" component={SecondScreen_Home}
+          <Tab.Screen name="ProfilePage" component={ProfileStatePage}
             options={{
               tabBarLabel: 'ProfilePage',
               tabBarIcon: ({ color, size }) => (

@@ -13,7 +13,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import Moc_logo from '../../assets/moc_logo.png';
-import auth from "@react-native-firebase/auth"
 
 
 export default Home = ({ navigation }) => {
@@ -24,7 +23,6 @@ export default Home = ({ navigation }) => {
   const [data, setData] = useState()
   const [valueInput, setValue] = useState("")
   const [arrayholder, setArrayholder] = useState()
-
 
   if (isLoading) {
     dispatch(getData());

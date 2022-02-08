@@ -9,6 +9,9 @@ import ProfilePage from './src/screens/ProfilePage';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 
+import UserLoginPage from './src/screens/LoggedInPage';
+import auth from '@react-native-firebase/auth';
+import { useState, useEffect } from 'react';
 
 
 const Stack = createStackNavigator()
@@ -16,7 +19,7 @@ const Stack = createStackNavigator()
 const FirstScreen_Home = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen 
+            <Stack.Screen
                 name="HomeStack"
                 component={Home}
                 options={{ headerShown: false }}
@@ -32,6 +35,7 @@ const FirstScreen_Home = () => {
 
 const SecondScreen_Home = () => {
     return (
+
         <Stack.Navigator>
             <Stack.Screen
                 name="ProfilePage"
@@ -48,10 +52,43 @@ const SecondScreen_Home = () => {
                 component={RegisterScreen}
                 options={{ headerShown: false }}
             />
-
-
         </Stack.Navigator>
     )
 }
 
-export { FirstScreen_Home, SecondScreen_Home }
+const LoggedInPage = () => {
+
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name="UserLoginPage"
+                component={UserLoginPage}
+                options={{ headerShown: false }}
+            />
+        </Stack.Navigator>
+    )
+}
+
+const ProfileStatePage = () => {
+
+  // Set an initializing state whilst Firebase connects
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  // Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+    return (
+          user ? <LoggedInPage /> : <SecondScreen_Home />
+
+    )
+}
+
+export { FirstScreen_Home, SecondScreen_Home, LoggedInPage, ProfileStatePage }

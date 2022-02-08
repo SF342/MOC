@@ -1,109 +1,140 @@
 import * as React from 'react';
-import { useState, useContext, useEffect  } from 'react';
+import { useState, useContext } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import auth from '@react-native-firebase/auth';
-
-import { getUserState } from "../redux/actions/dataActions"
-import { useSelector, useDispatch } from 'react-redux'
+import { Input } from '../components/Input';
+import auth from "@react-native-firebase/auth"
+import { ScrollView } from 'react-native-gesture-handler';
 
 const RegisterScreen = () => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [name, setName] = useState();
 
-  // Set an initializing state whilst Firebase connects
-  const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
 
-  const dispatch = useDispatch();
-  const products = useSelector(state => state.data.userState)
-
-  // Handle user state changes
-  function onAuthStateChanged(user) {
-    setUser(user);
-    if (initializing) setInitializing(false);
+  const __doCreateUser = async (email, password) => {
+    try {
+      let response = await auth().createUserWithEmailAndPassword(email, password)
+      if (response) {
+        console.log(response)
+        Alert.alert("Success ✅", "Authenticated successfully")
+      }
+    } catch (e) {
+      console.error(e.message)
+    }
   }
 
-  function logout(){
-    auth()
-  .signOut()
-  .then(() => console.log('User signed out!'));
-  }
-
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    dispatch(getUserState());
-    console.log(products)
-    return subscriber; // unsubscribe on unmount
-  }, []);
-
-  if (initializing) return null;
-
-  if (!user) {
-    return (
-      <View>
-        <Text>Login</Text>
-      </View>
-    );
-  }
   return (
-    <View>
-      <Text>Welcome {user.email}</Text>
-      <TouchableOpacity
-        onPress={logout}
-      >
-        <Text>
-          Log out
-        </Text>
-      </TouchableOpacity>
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.title}>CREATE ACCOUNT</Text>
+        <View style={styles.bgInput}>
+          <Text style={styles.inputText}>USERNAME</Text>
+          <Input
+            style={styles.input}
+            labelValue={name}
+            onChangeText={userName => setName(userName)}
+            placeholder=""
+            autoCorrect={false}
+          />
+          <Text style={styles.inputText}>EMAIL</Text>
+          <Input
+            style={styles.input}
+            labelValue={email}
+            onChangeText={userEmail => setEmail(userEmail)}
+            placeholder=""
+            keyboardType={'email-address'}
+            autoCorrect={false}
+          />
+          <Text style={styles.inputText}>PASSWORD</Text>
+          <Input
+            style={styles.input}
+            labelValue={password}
+            onChangeText={userPassword => setPassword(userPassword)}
+            placeholderText=""
+            secureTextEntry={true}
+          />
+
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={() => {
+              __doCreateUser(email, password);
+            }}>
+            <Text style={styles.loginButtonText}>SIGN UP</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
-  title: {
-    color: '#00CABA',
-    textAlign: 'center',
-    fontSize: 35,
-    width: 320,
-    marginBottom: 1,
-    fontWeight: 'bold',
-
-  },
-  input: {
-    marginVertical: 10,
-    width: 320,
-    height: 60,
+  inputText: {
+    color: '#fff',
     fontSize: 18,
-    marginBottom: 5,
+    fontWeight: 'bold',
+    alignSelf: 'flex-start',
+    marginLeft: 27,
+  },
+  bgInput: {
+    backgroundColor: '#0A214A',
+    height: 360,
+    width: 310,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
     shadowColor: "#000000",
     shadowOpacity: 5,
     shadowRadius: 5,
     elevation: 5,
-    backgroundColor: '#FFFFFF'
   },
-  loginButton: {
-    marginVertical: 10,
-    backgroundColor: '#00CABA',
+  title: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 35,
     width: 320,
-    height: 60,
-    borderRadius: 10,
+    marginBottom: 30,
+    fontWeight: 'bold',
+
+  },
+  input: {
+    marginVertical: 7,
+    width: 260,
+    fontSize: 16,
+    padding: 5,
+    marginBottom: 7,
     shadowColor: "#000000",
     shadowOpacity: 5,
     shadowRadius: 5,
-    elevation: 5
+    elevation: 5,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    paddingLeft: 15,
+  },
+  loginButton: {
+    marginVertical: 20,
+    backgroundColor: '#fff',
+    width: 125,
+    height: 40,
+    borderRadius: 20,
+    shadowColor: "#000000",
+    shadowOpacity: 5,
+    shadowRadius: 5,
+    elevation: 5,
   },
 
   loginButtonText: {
     textAlign: 'center',
-    color: '#F0FFFF',
+    color: 'black',
     fontWeight: 'bold',
-    fontSize: 20,
-    padding: 15
+    fontSize: 18,
+    marginTop: 6,
   },
 
   container: {
     flex: 1,
-    padding: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#E2FCFA',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 50,
   },
 
   text: {
