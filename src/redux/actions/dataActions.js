@@ -1,4 +1,5 @@
 import { PRODUCTS_DATA, PRICE_PRODUCT } from '../types';
+import moment from 'moment';
 
 export const getData = () => async (dispatch) => {
 
@@ -12,7 +13,7 @@ export const getData = () => async (dispatch) => {
 export const getPrice = (PID) => async (dispatch) => {
 
     const date = new Date()
-    const today = date.getFullYear() + '-' + date.getMonth() + 1 + '-' + (date.getDay() -1);
+    const today = moment(date).format("YYYY-MM-DD");
 
     
     const getWeekAgo = () => {
@@ -23,9 +24,10 @@ export const getPrice = (PID) => async (dispatch) => {
             return (date.getFullYear() + '-' + date.getMonth() + 1 + '-' + (date.getDay() - 8))
         }
     }
-    const weekAgo = getWeekAgo();
+    const weekAgo = moment(date).subtract(7, 'days').format("YYYY-MM-DD");
 
-    const url = "https://dataapi.moc.go.th/gis-product-prices?product_id=" + PID + "&from_date=" + "2018-01-01" + "&to_date=" + "2018-01-28";
+    const url = "https://dataapi.moc.go.th/gis-product-prices?product_id=" + PID + "&from_date=" + weekAgo + "&to_date=" + today;
+    console.log(url)
 
     await fetch(url).then((res) => res.json())
         .then(result => {

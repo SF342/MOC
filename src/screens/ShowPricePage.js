@@ -15,7 +15,7 @@ const ShowPricePage = ({ navigation, route }) => {
   const [product, setProduct] = useState(null);
   const [Loading, setLoading] = useState(true);
 
-
+  console.log(product)
   
   const checkPD = () => {
     var id = products.findIndex((PD) => PD.product_id === PID)

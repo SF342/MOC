@@ -162,8 +162,9 @@ const Price = () => {
           testID="dateTimePicker"
           value={date}
           mode={mode}
+          maximumDate={Date.parse(new Date())}
           is24Hour={true}
-          display="spinner"
+          display="default"
           onChange={onChange}
         />
       )}
