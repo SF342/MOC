@@ -1,65 +1,59 @@
 import * as React from 'react';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect  } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Input } from '../components/Input';
-import { AuthContext } from '../navigation/AuthProviders';
-import firestore from '@react-native-firebase/firestore';
-import { ScrollView } from 'react-native-gesture-handler';
+import auth from '@react-native-firebase/auth';
+
+import { getUserState } from "../redux/actions/dataActions"
+import { useSelector, useDispatch } from 'react-redux'
+
 const RegisterScreen = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [name, setName] = useState();
 
+  // Set an initializing state whilst Firebase connects
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
 
-  const { register } = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.data.userState)
 
-  const usersCollectionRef = firestore().collection('users');
+  // Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
 
-  const addusers = () => {
-    usersCollectionRef.add({
-      Name: name,
-      Email: email,
-    });
-  };
-  return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.title}>REGISTER</Text>
-        <Input
-          style={styles.input}
-          labelValue={name}
-          onChangeText={userName => setName(userName)}
-          placeholder="Name"
-          autoCorrect={false}
-        />
+  function logout(){
+    auth()
+  .signOut()
+  .then(() => console.log('User signed out!'));
+  }
 
-        <Input
-          style={styles.input}
-          labelValue={email}
-          onChangeText={userEmail => setEmail(userEmail)}
-          placeholder="Email"
-          keyboardType={'email-address'}
-          autoCorrect={false}
-        />
-        <Input
-          style={styles.input}
-          labelValue={password}
-          onChangeText={userPassword => setPassword(userPassword)}
-          placeholderText="Password"
-          secureTextEntry={true}
-        />
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    dispatch(getUserState());
+    console.log(products)
+    return subscriber; // unsubscribe on unmount
+  }, []);
 
+  if (initializing) return null;
 
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => {
-            register(email, password, name);
-            addusers();
-          }}>
-          <Text style={styles.loginButtonText}>SIGN UP</Text>
-        </TouchableOpacity>
+  if (!user) {
+    return (
+      <View>
+        <Text>Login</Text>
       </View>
-    </ScrollView>
+    );
+  }
+  return (
+    <View>
+      <Text>Welcome {user.email}</Text>
+      <TouchableOpacity
+        onPress={logout}
+      >
+        <Text>
+          Log out
+        </Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 const styles = StyleSheet.create({

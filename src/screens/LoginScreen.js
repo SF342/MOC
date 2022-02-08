@@ -1,19 +1,45 @@
 import * as React from 'react';
-import {useContext, useState, useEffect} from 'react';
+import { useState} from 'react';
 import { Input } from '../components/Input';
-import {AuthContext} from '../navigation/AuthProviders';
 import {
   SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  Alert,
+  useEffect
 } from 'react-native';
+import auth from "@react-native-firebase/auth"
 
 const LoginScreen = ({navigation}) => {
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const {login} = useContext(AuthContext);
+
+
+  
+
+  const __doSingIn = async (email, password) => {
+    try {
+      let response = await auth().signInWithEmailAndPassword(email, password)
+      if (response && response.user) {
+        Alert.alert("Success ✅", "Authenticated successfully")
+      }
+    } catch (e) {
+      console.error(e.message)
+    }
+    let user = auth().currentUser.uid;
+    
+    if (user) {
+      console.log(user);
+      this.setState({ authenticated: true });
+    } else {
+      this.setState({ authenticated: false });
+    }
+  }
+
+
+
   return (
     <SafeAreaView
       style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -33,7 +59,7 @@ const LoginScreen = ({navigation}) => {
         placeholderText="Password"
         secureTextEntry={true}
       />
-       <TouchableOpacity style={styles.loginButton} onPress={() => login(email, password)}>
+       <TouchableOpacity style={styles.loginButton} onPress={() => __doSingIn(email, password)}>
         <Text style={styles.loginButtonText}>
           LOGIN
         </Text>
@@ -102,7 +128,6 @@ const styles = StyleSheet.create({
       paddingHorizontal: 20,
       paddingTop: 50,
     },
-  
     text: {
       color: 'black',
       fontSize: 18

@@ -3,9 +3,7 @@ import { useEffect, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Text, View, FlatList, TouchableOpacity, Image } from 'react-native';
 import { getPrice } from "../redux/actions/dataActions"
-import { ListItem, SearchBar, Avatar } from 'react-native-elements';
-import TouchableScale from 'react-native-touchable-scale';
-import LinearGradient from 'react-native-linear-gradient';
+import { ListItem, Avatar } from 'react-native-elements';
 import Moc_logo from '../../assets/moc_logo.png';
 
 const ShowPricePage = ({ navigation, route }) => {

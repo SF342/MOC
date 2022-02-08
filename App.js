@@ -18,11 +18,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Price from './src/screens/Price'
-import Suggestion from './src/screens/Suggestion';
 import Header from './src/components/Header'
 
 
-import { FirstScreen_Home } from './CustomNavigation'
+import { FirstScreen_Home, SecondScreen_Home } from './CustomNavigation'
 
 
 import { NavigationContainer } from '@react-navigation/native'
@@ -69,11 +68,11 @@ const App = () => {
                 <MaterialIcons name="attach-money" color={color} size={30} />
               ),
             }} />
-          <Tab.Screen name="Suggestion" component={Suggestion}
+          <Tab.Screen name="ProfilePage" component={SecondScreen_Home}
             options={{
-              tabBarLabel: 'Suggestion',
+              tabBarLabel: 'ProfilePage',
               tabBarIcon: ({ color, size }) => (
-                <MaterialIcons name="attach-money" color={color} size={30} />
+                <MaterialIcons name="person" color={color} size={30} />
               ),
             }} />
         </Tab.Navigator>

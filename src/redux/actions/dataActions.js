@@ -1,4 +1,4 @@
-import { PRODUCTS_DATA, PRICE_PRODUCT } from '../types';
+import { PRODUCTS_DATA, PRICE_PRODUCT, USER_STATE } from '../types';
 
 export const getData = () => async (dispatch) => {
 
@@ -12,9 +12,8 @@ export const getData = () => async (dispatch) => {
 export const getPrice = (PID) => async (dispatch) => {
 
     const date = new Date()
-    const today = date.getFullYear() + '-' + date.getMonth() + 1 + '-' + (date.getDay() -1);
+    const today = date.getFullYear() + '-' + date.getMonth() + 1 + '-' + (date.getDay() - 1);
 
-    
     const getWeekAgo = () => {
         const day = date.getDay() - 8;
         if (day <= 0) {
@@ -34,4 +33,29 @@ export const getPrice = (PID) => async (dispatch) => {
 }
 
 
+export const getUserState = () => async (dispatch) => {
+    // Set an initializing state whilst Firebase connects
+    const [initializing, setInitializing] = useState(true);
+    const [user, setUser] = useState();
 
+    // Handle user state changes
+    function onAuthStateChanged(user) {
+        setUser(user);
+        if (initializing) setInitializing(false);
+    }
+
+    useEffect(() => {
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber; // unsubscribe on unmount
+    }, []);
+
+    if (initializing) return null;
+
+    if (!user) {
+        return (
+            console.log("Poom")
+        );
+    }
+    dispatch({ type: USER_STATE, payload: "poom" });
+
+}

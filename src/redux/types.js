@@ -1,2 +1,3 @@
 export const PRODUCTS_DATA = "PRODUCTS_DATA";
 export const PRICE_PRODUCT = "PRICE_PRODUCT";
+export const USER_STATE = "USER_STATE";
