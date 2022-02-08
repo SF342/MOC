@@ -5,6 +5,7 @@ import { Text, View } from 'react-native';
 import { getPrice } from "../redux/actions/dataActions"
 import { ListItem, Avatar } from 'react-native-elements';
 import Moc_logo from '../../assets/moc_logo.png';
+import {ActivityIndicator} from 'react-native';
 
 const ShowPricePage = ({ navigation, route }) => {
 
@@ -37,7 +38,7 @@ const ShowPricePage = ({ navigation, route }) => {
   return (
     <View style={{ flex: 1 }}>
       <Text>Show Page Price</Text>
-      {product === null || Loading ? <Text>Loading...</Text> :
+      {product === null || Loading ? <ActivityIndicator /> :
         <ListItem>
           <Avatar source={Moc_logo} rounded />
           <ListItem.Content>
