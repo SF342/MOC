@@ -57,7 +57,7 @@ const FavoriteList = () => {
     toggleModalVisibility();
     usersCollectionRef.add({
       product_id: p_id,
-      value: value
+      product_name: value
     });
     setSelectedProduct('');
   }
@@ -95,7 +95,7 @@ const FavoriteList = () => {
           (
             <View style={styles.listFavorite}>
               <View style={styles.topicList}>
-                <Text style={styles.textTopicList}> {item.value}  </Text>
+                <Text style={styles.textTopicList}> {item.product_name}  </Text>
               </View>
               <View>
                 <TouchableOpacity

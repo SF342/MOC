@@ -13,7 +13,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import Moc_logo from '../../assets/moc_logo.png';
-
+import firestore from '@react-native-firebase/firestore';
+import auth from "@react-native-firebase/auth"
+import RecommendPage from './RecommendPage';
 
 export default Home = ({ navigation }) => {
 
@@ -23,31 +25,64 @@ export default Home = ({ navigation }) => {
   const [data, setData] = useState()
   const [valueInput, setValue] = useState("")
   const [arrayholder, setArrayholder] = useState()
+  const [checkUserType, setCheckUserType] = useState(true)
+
+  const [uid, setUid] = useState();
+  const [favoriteArray, setFavoriteArray] = useState();
 
 
-  useEffect(() => {
+  let usersCollectionRef = firestore()
+  .collection('users')
+  .doc(uid)
+  .collection('FavoriteList');
+
+
+  useEffect(() => 
+  {
     dispatch(getData());
     setArrayholder(products);
     setData(products);
-    setLoading(false)
+    setLoading(false);
+
+    auth().onAuthStateChanged((user) => {
+      if (user) {
+        setUid(user.uid)
+        const subscriber = usersCollectionRef.onSnapshot(querySnapshot => {
+          const dataTask = [];
+          querySnapshot.forEach(documentSnapshot => {
+            dataTask.push({
+              ...documentSnapshot.data(),
+              id: documentSnapshot.id,
+            });
+          })
+          setFavoriteArray(dataTask);
+        });
+        console.log(favoriteArray)
+      }
+    });
+
   }, [])
-  
-  
-  const updateInput = text => {
+
+
+  const updateInput = text => 
+  {
     setValue(text)
     searchFilterFunction(text)
-    console.log(valueInput)
+    if(text!=""){
+      setCheckUserType(false)
+    }else{
+      setCheckUserType(true)
+    }
   }
 
-  const searchFilterFunction = text => {
-
+  const searchFilterFunction = text => 
+  {
     const newData = arrayholder.filter(item => {
       const itemData = `${item.product_id.toUpperCase()} ${item.product_name} ${item.category_name}`;
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
     });
     setData(newData)
-
   };
 
   return (
@@ -61,7 +96,7 @@ export default Home = ({ navigation }) => {
         autoCorrect={false}
       />
 
-      {isLoading ? <Text>Loading...</Text> :
+      {checkUserType ? <RecommendPage navigation={navigation}/> :
         (<View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}>
           <Text style={{ fontSize: 18, color: 'green', textAlign: 'center' }}>{data.title}</Text>
           <FlatList
@@ -84,7 +119,7 @@ export default Home = ({ navigation }) => {
                   borderRadius: 8,
                 }}
                 onPress={() =>
-                  navigation.navigate('ShowPricePage', {id: item.product_id})
+                  navigation.navigate('ShowPricePage', { id: item.product_id })
                 }
               >
                 <Avatar source={Moc_logo} rounded />
