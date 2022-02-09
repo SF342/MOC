@@ -3,18 +3,11 @@ import {
   View,
   Text,
   StyleSheet,
-  // Button,
-  TextInput,
-  Image,
-  ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useState, useEffect} from 'react';
 import {Colors, Picker,Button,} from 'react-native-ui-lib';
 import {ActivityIndicator} from 'react-native';
-import Moc_logo from '../../assets/moc_logo.png';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
 import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
 

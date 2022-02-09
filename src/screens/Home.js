@@ -13,7 +13,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import Moc_logo from '../../assets/moc_logo.png';
-import auth from "@react-native-firebase/auth"
 
 
 export default Home = ({ navigation }) => {
@@ -74,7 +73,7 @@ export default Home = ({ navigation }) => {
                 tension={200} // These props are passed to the parent component (here TouchableScale)
                 activeScale={0.95} //
                 linearGradientProps={{
-                  colors: ['#1544E2', '#1544E2'],
+                  colors: ['#1544E2', '#0A214A'],
                   start: { x: 1, y: 0 },
                   end: { x: 0.2, y: 0 },
                 }}

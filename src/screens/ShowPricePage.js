@@ -27,7 +27,6 @@ const ShowPricePage = ({ navigation, route }) => {
     }
   }
 
-
   if (Loading) {
     checkPD();
     if (product !== null) {
@@ -40,7 +39,7 @@ const ShowPricePage = ({ navigation, route }) => {
       {product === null || Loading ? <ActivityIndicator /> :
         <ListItem>
           <Avatar source={Moc_logo} rounded />
-          <ListItem.Content>
+          <ListItem.Content >
             <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700' }}>{`${product.product_name}`}</ListItem.Title>
             <ListItem.Subtitle style={{ color: '#CED0CE' }}>{product.price_max_avg}</ListItem.Subtitle>
             <ListItem.Subtitle style={{ color: '#CED0CE' }}>{product.price_min_avg}</ListItem.Subtitle>
