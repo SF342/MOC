@@ -7,6 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Moc_logo from '../../assets/moc_logo.png';
 import firestore from '@react-native-firebase/firestore';
 import auth from "@react-native-firebase/auth"
+import { ActivityIndicator } from 'react-native';
 
 
 const RecommendPage = ({ navigation }) => {
@@ -14,6 +15,7 @@ const RecommendPage = ({ navigation }) => {
 
     const [uid, setUid] = useState();
     const [favoriteArray, setFavoriteArray] = useState();
+    const [Loading, setLoading] = useState(true);
 
     let usersCollectionRef = firestore()
         .collection('users')
@@ -25,7 +27,7 @@ const RecommendPage = ({ navigation }) => {
         auth().onAuthStateChanged((user) => {
             if (user) {
                 setUid(user.uid)
-                const subscriber = usersCollectionRef.onSnapshot(querySnapshot => {
+                usersCollectionRef.onSnapshot(querySnapshot => {
                     const dataTask = [];
                     querySnapshot.forEach(documentSnapshot => {
                         dataTask.push({
@@ -34,11 +36,11 @@ const RecommendPage = ({ navigation }) => {
                         });
                     })
                     setFavoriteArray(dataTask);
+                    setLoading(false)
                 });
             }
         });
-        console.log(favoriteArray)
-    }, [])
+    }, [favoriteArray])
 
 
     return (
@@ -46,14 +48,17 @@ const RecommendPage = ({ navigation }) => {
             <Text style={
                 {
                     color: 'black',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    textAlign: 'center',
                     fontSize: 35,
                     width: '100%',
                     marginBottom: 1,
                     fontWeight: 'bold',
+                    marginBottom: '3%',
+                    marginTop: '3%'
+
                 }}>Recommend</Text>
 
+            {Loading ? <ActivityIndicator /> : (
 
                 <FlatList
                     data={favoriteArray}
@@ -87,6 +92,7 @@ const RecommendPage = ({ navigation }) => {
                     )}
                     keyExtractor={item => item.product_id}
                 />
+                        )}
             </View>
     )
 }

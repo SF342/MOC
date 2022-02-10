@@ -42,7 +42,7 @@ const RegisterScreen = ({ navigation }) => {
     <SafeAreaView
     style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     <View>
-      <Text style={styles.title}>Welcome login</Text>
+      <Text style={styles.title}>Welcome</Text>
       <Text style={styles.title2}>{user.email}</Text>
       <TouchableOpacity
         onPress={()=>{logout;navigation.navigate('FavoriteList')}}

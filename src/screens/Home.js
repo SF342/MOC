@@ -13,7 +13,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import Moc_logo from '../../assets/moc_logo.png';
-import firestore from '@react-native-firebase/firestore';
 import auth from "@react-native-firebase/auth"
 import RecommendPage from './RecommendPage';
 
@@ -27,14 +26,7 @@ export default Home = ({ navigation }) => {
   const [arrayholder, setArrayholder] = useState()
   const [checkUserType, setCheckUserType] = useState(true)
 
-  const [uid, setUid] = useState();
-  const [favoriteArray, setFavoriteArray] = useState();
-
-
-  let usersCollectionRef = firestore()
-  .collection('users')
-  .doc(uid)
-  .collection('FavoriteList');
+  const [uid, setUid] = useState(null);
 
 
   useEffect(() => 
@@ -47,28 +39,18 @@ export default Home = ({ navigation }) => {
     auth().onAuthStateChanged((user) => {
       if (user) {
         setUid(user.uid)
-        const subscriber = usersCollectionRef.onSnapshot(querySnapshot => {
-          const dataTask = [];
-          querySnapshot.forEach(documentSnapshot => {
-            dataTask.push({
-              ...documentSnapshot.data(),
-              id: documentSnapshot.id,
-            });
-          })
-          setFavoriteArray(dataTask);
-        });
-        console.log(favoriteArray)
+        setCheckUserType(true)
+      }else{
+        setCheckUserType(false)
       }
     });
-
   }, [])
-
 
   const updateInput = text => 
   {
     setValue(text)
     searchFilterFunction(text)
-    if(text!=""){
+    if(text!="" || uid == null){
       setCheckUserType(false)
     }else{
       setCheckUserType(true)
@@ -87,6 +69,7 @@ export default Home = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
+
       <SearchBar
         placeholder="Type Here..."
         lightTheme

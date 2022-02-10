@@ -6,6 +6,7 @@ import { getData } from "../redux/actions/dataActions"
 import { useSelector, useDispatch } from 'react-redux'
 import auth from "@react-native-firebase/auth"
 import firestore from '@react-native-firebase/firestore';
+import { ActivityIndicator } from 'react-native';
 
 const FavoriteList = () => {
 
@@ -22,6 +23,9 @@ const FavoriteList = () => {
 
   const [favoriteArray, setFavoriteArray] = useState();
 
+  const [Loading, setLoading] = useState(true);
+
+
   let usersCollectionRef = firestore()
     .collection('users')
     .doc(uid)
@@ -33,20 +37,20 @@ const FavoriteList = () => {
     auth().onAuthStateChanged((user) => {
       if (user) {
         setUid(user.uid)
+        usersCollectionRef.onSnapshot(querySnapshot => {
+          const dataTask = [];
+          querySnapshot.forEach(documentSnapshot => {
+            dataTask.push({
+              ...documentSnapshot.data(),
+              id: documentSnapshot.id,
+            });
+          })
+          setFavoriteArray(dataTask);
+          setLoading(false)
+        });
       }
     });
-    const subscriber = usersCollectionRef.onSnapshot(querySnapshot => {
-      const dataTask = [];
-      querySnapshot.forEach(documentSnapshot => {
-        dataTask.push({
-          ...documentSnapshot.data(),
-          id: documentSnapshot.id,
-        });
-      })
-      setFavoriteArray(dataTask);
-    });
-
-  }, [])
+  }, [Loading])
 
   // Function call to open modal add 
   function toggleModalVisibility() {
@@ -86,74 +90,78 @@ const FavoriteList = () => {
       }}>
 
       <Text style={styles.title}>Favorite List Page</Text>
-      <ScrollView>
+      {Loading ? <ActivityIndicator /> :
+        (
+          <ScrollView>
 
-        <FlatList
-          data={favoriteArray}
-          style={styles.superListFav}
-          renderItem={({ item }) =>
-          (
-            <View style={styles.listFavorite}>
-              <View style={styles.topicList}>
-                <Text style={styles.textTopicList}> {item.product_name}  </Text>
+            <FlatList
+              data={favoriteArray}
+              style={styles.superListFav}
+              renderItem={({ item }) =>
+              (
+                <View style={styles.listFavorite}>
+                  <View style={styles.topicList}>
+                    <Text style={styles.textTopicList}> {item.product_name}  </Text>
+                  </View>
+                  <View>
+                    <TouchableOpacity
+                      onPress={() => { deleteTasklist(item.id) }}
+                      style={styles.delButton}
+                    >
+                      <Text style={styles.textDelButton}>x</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+
+              )} />
+
+            <Modal
+              animationType="slide"
+              transparent
+              visible={isModalVisible}
+              presentationStyle="overFullScreen"
+              onDismiss={toggleModalVisibility}
+              onRequestClose={() => { setModalVisible(false) }}
+            >
+              <View style={styles.bg_modal}>
+                <View style={styles.paper_madal}>
+                  <ScrollView>
+                    <TouchableOpacity
+                      onPress={() => { setModalVisible(false) }}>
+                      <Text>x</Text>
+                    </TouchableOpacity>
+                    <Text style={styles.title2}>Add Favorite</Text>
+                    <Picker
+                      value={selectedProduct}
+                      placeholder="Search Product . . ."
+                      onChange={onProductChange}
+                      showSearch
+                      placeholderTextColor="black"
+                      containerStyle={styles.pickerStyle}
+                      style={{ color: Colors.black }}>
+                      {data.map((option, index) => (
+                        <Picker.Item
+                          key={index}
+                          value={option.product_id}
+                          label={option.product_name}
+                        />
+                      ))}
+                    </Picker>
+                    <TouchableOpacity
+                      style={styles.logInButton}
+                      onPress={() => { confirmAdd() }}
+                    >
+                      <Text style={styles.loginButtonText}>
+                        Confirm
+                      </Text>
+                    </TouchableOpacity>
+                  </ScrollView>
+                </View>
               </View>
-              <View>
-                <TouchableOpacity
-                  onPress={() => { deleteTasklist(item.id) }}
-                  style={styles.delButton}
-                >
-                  <Text style={styles.textDelButton}>x</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-
-          )} />
-
-        <Modal
-          animationType="slide"
-          transparent
-          visible={isModalVisible}
-          presentationStyle="overFullScreen"
-          onDismiss={toggleModalVisibility}
-          onRequestClose={() => { setModalVisible(false) }}
-        >
-          <View style={styles.bg_modal}>
-            <View style={styles.paper_madal}>
-              <ScrollView>
-                <TouchableOpacity
-                  onPress={() => { setModalVisible(false) }}>
-                  <Text>x</Text>
-                </TouchableOpacity>
-                <Text style={styles.title2}>Add Favorite</Text>
-                <Picker
-                  value={selectedProduct}
-                  placeholder="Search Product . . ."
-                  onChange={onProductChange}
-                  showSearch
-                  placeholderTextColor="black"
-                  containerStyle={styles.pickerStyle}
-                  style={{ color: Colors.black }}>
-                  {data.map((option, index) => (
-                    <Picker.Item
-                      key={index}
-                      value={option.product_id}
-                      label={option.product_name}
-                    />
-                  ))}
-                </Picker>
-                <TouchableOpacity
-                  style={styles.logInButton}
-                  onPress={() => { confirmAdd() }}
-                >
-                  <Text style={styles.loginButtonText}>
-                    Confirm
-                  </Text>
-                </TouchableOpacity>
-              </ScrollView>
-            </View>
-          </View>
-        </Modal>
-      </ScrollView>
+            </Modal>
+          </ScrollView>
+        )
+      }
       <View style={styles.bottomContainer}>
         <TouchableOpacity
           style={styles.logInButton}
