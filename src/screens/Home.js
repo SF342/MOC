@@ -31,9 +31,7 @@ export default Home = ({ navigation }) => {
 
   useEffect(() => 
   {
-    dispatch(getData());
     setData(products);
-    setLoading(false);
 
     auth().onAuthStateChanged((user) => {
       if (user) {
@@ -66,6 +64,11 @@ export default Home = ({ navigation }) => {
     setData(newData)
   };
 
+  if (products.length === 0) {
+    dispatch(getData());
+    setLoading(false)
+  }
+
   return (
     <View style={{ flex: 1 }}>
 
@@ -78,7 +81,7 @@ export default Home = ({ navigation }) => {
         autoCorrect={false}
       />
 
-      {checkUserType ? <RecommendPage navigation={navigation}/> :
+      {checkUserType ? <RecommendPage navigation={navigation}/> : 
         (<View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}>
           <Text style={{ fontSize: 18, color: 'red', textAlign: 'center' }}>{data.title}</Text>
           <FlatList
