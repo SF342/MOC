@@ -14,10 +14,17 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 const settingsIcon = require('../../assets/settings.png');
 const titanIcon = require('../../assets/titan.png');
 
+//redux stuff
+import { getData } from "../redux/actions/dataActions"
+import { useSelector, useDispatch } from 'react-redux'
+
 const mapURL =
   'https://dataapi.moc.go.th/gis-products';
 
 const Price = () => {
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.data.data)
+
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -47,22 +54,23 @@ const Price = () => {
     showMode('date');
   };
 
-  const fetchData = () => {
-    const detail = [];
-    fetch(mapURL)
-      .then(response => response.json())
-      .then(json => {
-        for (let i = 1; i < json.length; i++) {
-          detail.push(json[i]);
-        };
-      setData(detail);
-      })
-      .catch(error => alert(error))
-      .finally(() => setLoading(false));
-  }
+  // const fetchData = () => {
+  //   const detail = [];
+  //   fetch(mapURL)
+  //     .then(response => response.json())
+  //     .then(json => {
+  //       for (let i = 1; i < json.length; i++) {
+  //         detail.push(json[i]);
+  //       };
+  //     setData(detail);
+  //     })
+  //     .catch(error => alert(error))
+  //     .finally(() => setLoading(false));
+  // }
 
   useEffect(() => {
-    fetchData()
+    // fetchData()
+    dispatch(getData());
   }, []);
 
   const [selectedProduct, setSelectedProduct] = useState('');
@@ -99,7 +107,7 @@ const Price = () => {
           placeholderTextColor="#fff"
           containerStyle={styles.pickerStyle}
           style={{color: Colors.white}}>
-          {data.map((option, index) => (
+          {products.map((option, index) => (
             <Picker.Item
               key={index}
               value={option.product_id}

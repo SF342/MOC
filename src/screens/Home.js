@@ -10,6 +10,7 @@ import {
 //redux stuff
 import { getData } from "../redux/actions/dataActions"
 import { useSelector, useDispatch } from 'react-redux'
+
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import Moc_logo from '../../assets/moc_logo.png';
@@ -23,7 +24,6 @@ export default Home = ({ navigation }) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState()
   const [valueInput, setValue] = useState("")
-  const [arrayholder, setArrayholder] = useState()
   const [checkUserType, setCheckUserType] = useState(true)
 
   const [uid, setUid] = useState(null);
@@ -32,7 +32,6 @@ export default Home = ({ navigation }) => {
   useEffect(() => 
   {
     dispatch(getData());
-    setArrayholder(products);
     setData(products);
     setLoading(false);
 
@@ -59,7 +58,7 @@ export default Home = ({ navigation }) => {
 
   const searchFilterFunction = text => 
   {
-    const newData = arrayholder.filter(item => {
+    const newData = products.filter(item => {
       const itemData = `${item.product_id.toUpperCase()} ${item.product_name} ${item.category_name}`;
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
@@ -81,7 +80,7 @@ export default Home = ({ navigation }) => {
 
       {checkUserType ? <RecommendPage navigation={navigation}/> :
         (<View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}>
-          <Text style={{ fontSize: 18, color: 'green', textAlign: 'center' }}>{data.title}</Text>
+          <Text style={{ fontSize: 18, color: 'red', textAlign: 'center' }}>{data.title}</Text>
           <FlatList
             data={data}
             renderItem={({ item }) => (
