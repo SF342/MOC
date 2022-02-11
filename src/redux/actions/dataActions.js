@@ -1,12 +1,16 @@
 import { PRODUCTS_DATA, PRICE_PRODUCT } from '../types';
+import db from '../../../db.json'
 
 export const getData = () => async (dispatch) => {
+    console.log("test get product data")
+    console.log(db);
+    dispatch({ type: PRODUCTS_DATA, payload: db });
 
-    const url = "https://dataapi.moc.go.th/gis-products"
-    await fetch(url).then((res) => res.json())
-        .then(result => {
-            dispatch({ type: PRODUCTS_DATA, payload: result });
-        }).catch(console.error())
+    // const url = "https://dataapi.moc.go.th/gis-products"
+    // await fetch(url).then((res) => res.json())
+    //     .then(result => {
+    //         dispatch({ type: PRODUCTS_DATA, payload: result });
+    //     }).catch(console.error())
 }
 
 export const getPrice = (PID) => async (dispatch) => {
