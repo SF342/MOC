@@ -39,6 +39,7 @@ export default Home = ({ navigation }) => {
         setCheckUserType(true)
       }else{
         setCheckUserType(false)
+        setUid(null)
       }
     });
   }, [])
@@ -47,10 +48,16 @@ export default Home = ({ navigation }) => {
   {
     setValue(text)
     searchFilterFunction(text)
-    if(text!="" || uid == null){
+    if(text!="" || uid == null)
+    {
       setCheckUserType(false)
-    }else{
-      setCheckUserType(true)
+    }else
+    {
+      if(uid)
+      {
+        setCheckUserType(true)
+        alert(uid)
+      }
     }
   }
 
