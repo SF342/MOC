@@ -106,19 +106,20 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5,
     backgroundColor: '#FFFFFF',
-    borderRadius: 20,
     paddingLeft: 15,
   },
   loginButton: {
-    marginVertical: 20,
-    backgroundColor: '#fff',
+    marginVertical: 10,
+    marginBottom: 30,
+    backgroundColor: 'white',
     width: 125,
     height: 40,
-    borderRadius: 20,
+    borderRadius: 10,
     shadowColor: "#000000",
     shadowOpacity: 5,
     shadowRadius: 5,
     elevation: 5,
+    marginTop: '7%'
   },
 
   loginButtonText: {
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: '#E2FCFA',
+    backgroundColor: '#e3eeff',
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingTop: 50,

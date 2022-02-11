@@ -56,7 +56,6 @@ export default Home = ({ navigation }) => {
       if(uid)
       {
         setCheckUserType(true)
-        alert(uid)
       }
     }
   }
@@ -77,7 +76,7 @@ export default Home = ({ navigation }) => {
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor:'#e3eeff' }}>
 
       <SearchBar
         placeholder="Type Here..."
@@ -86,6 +85,7 @@ export default Home = ({ navigation }) => {
         value={valueInput}
         onChangeText={text => updateInput(text)}
         autoCorrect={false}
+        containerStyle={{backgroundColor: '#e3eeff'}}
       />
 
       {checkUserType ? <RecommendPage navigation={navigation}/> : 

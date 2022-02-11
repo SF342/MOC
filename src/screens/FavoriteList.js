@@ -86,7 +86,8 @@ const FavoriteList = () => {
       style={{
         flex: 1,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor:'#e3eeff' 
       }}>
 
       <Text style={styles.title}>Favorite List Page</Text>
@@ -103,13 +104,13 @@ const FavoriteList = () => {
                   <View style={styles.topicList}>
                     <Text style={styles.textTopicList}> {item.product_name}  </Text>
                   </View>
-                  <View>
-                    <TouchableOpacity
+                  <TouchableOpacity
                       onPress={() => { deleteTasklist(item.id) }}
                       style={styles.delButton}
                     >
                       <Text style={styles.textDelButton}>x</Text>
                     </TouchableOpacity>
+                  <View>
                   </View>
                 </View>
 
@@ -191,7 +192,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#b53531',
     width: 50,
     height: 60,
-    borderRadius: 10,
     shadowColor: "#000000",
     shadowOpacity: 5,
     shadowRadius: 5,
@@ -204,12 +204,12 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   topicList: {
-    width: '85%',
+    width: '80%',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     height: 60,
     backgroundColor: '#0A214A',
-    borderRadius: 10,
     shadowColor: "#000000",
     shadowOpacity: 5,
     shadowRadius: 5,

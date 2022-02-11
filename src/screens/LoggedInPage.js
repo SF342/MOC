@@ -40,7 +40,7 @@ const RegisterScreen = ({ navigation }) => {
   }
   return (
     <SafeAreaView
-    style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'#e3eeff'  }}>
     <View>
       <Text style={styles.title}>Welcome</Text>
       <Text style={styles.title2}>{user.email}</Text>

@@ -7,7 +7,8 @@ import {
   Text,
   TouchableOpacity,
   Alert,
-  Image
+  Image,
+  View
 } from 'react-native';
 import auth from "@react-native-firebase/auth"
 import Moc_logo from '../../assets/moc_logo.png'
@@ -40,11 +41,13 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor: '#e3eeff' }}>
+      <View style={styles.bgInput}>
+
       <Image
         style={styles.img}
         source={Moc_logo}
-      />
+        />
       <Input
         style={styles.input}
         labelValue={email}
@@ -53,19 +56,20 @@ const LoginScreen = ({ navigation }) => {
         keyboardType={'email-address'}
         autoCapitalize="none"
         autoCorrect={false}
-      />
+        />
       <Input
         style={styles.input}
         labelValue={password}
         onChangeText={(userPassword) => setPassword(userPassword)}
         placeholderText="Password"
         secureTextEntry={true}
-      />
+        />
       <TouchableOpacity style={styles.loginButton} onPress={() => __doSingIn(email, password)}>
         <Text style={styles.loginButtonText}>
           LOGIN
         </Text>
       </TouchableOpacity>
+        </View>
     </SafeAreaView>
   );
 }
@@ -76,14 +80,24 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
     marginBottom: 15
   },
-
+  bgInput: {
+    backgroundColor: '#0A214A',
+    height: '80%',
+    width: '85%',
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: "#000000",
+    shadowOpacity: 5,
+    shadowRadius: 5,
+    elevation: 5,
+    marginBottom: '10%'
+  },
   title: {
-    color: '#00CABA',
-    textAlign: 'left',
+    color: 'white',
     fontSize: 35,
-    width: 320,
-    marginBottom: 1,
     fontWeight: 'bold',
+    marginBottom: '2%'
   },
   input: {
     marginVertical: 10,
@@ -101,18 +115,19 @@ const styles = StyleSheet.create({
   loginButton: {
     marginVertical: 10,
     marginBottom: 30,
-    backgroundColor: '#0A214A',
+    backgroundColor: 'white',
     width: 320,
     height: 60,
     borderRadius: 10,
     shadowColor: "#000000",
     shadowOpacity: 5,
     shadowRadius: 5,
-    elevation: 5
+    elevation: 5,
+    marginTop: '7%'
   },
   loginButtonText: {
     textAlign: 'center',
-    color: '#F0FFFF',
+    color: 'black',
     fontWeight: 'bold',
     fontSize: 20,
     padding: 15

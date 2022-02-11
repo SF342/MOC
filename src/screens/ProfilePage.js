@@ -4,37 +4,49 @@ import {
     Text,
     TouchableOpacity,
     StyleSheet,
-    View
+    View,
+    Image
 } from 'react-native';
-
+import ShopingCart from '../../assets/shopping-cart.png';
 
 const Suggestion = ({ navigation }) => (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.container} > 
 
-        <Text style={styles.title} >PROFILE</Text>
+        <Text style={styles.title} >Welcome</Text>
+
+        <Image style={styles.logo} source={ShopingCart} rounded />
+        <Text>Please sign in for use add product </Text>
+        <View style={styles.box2}>
 
         <TouchableOpacity style={styles.loginButton} 
         onPress={() => navigation.navigate('LoginScreen')}>
             <Text style={styles.loginButtonText}>
-                LOGIN
+            Sign In
             </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.loginButton} 
+        <TouchableOpacity style={styles.registerButton} 
         onPress={() => navigation.navigate('RegisterScreen')}>
             <Text style={styles.loginButtonText}>
-                Register
+            Register
             </Text>
         </TouchableOpacity>
+            </View>
             </View>
     </SafeAreaView>
 );
 
 const styles = StyleSheet.create({
+    box2 : {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: '1%'
+    },
     logo: {
-        width: 200,
-        height: 200,
+        width: 150,
+        height: 150,
         resizeMode: 'stretch',
         marginBottom: 15
     },
@@ -57,19 +69,30 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         elevation: 5,
         backgroundColor: '#FFFFFF'
-
     },
     loginButton: {
-        marginVertical: 10,
-        marginBottom: 30,
+        marginVertical: '2%',
+        marginBottom: '1%',
         backgroundColor: '#0A214A',
-        width: 320,
+        width: 120,
         height: 60,
         borderRadius: 10,
         shadowColor: "#000000",
         shadowOpacity: 5,
         shadowRadius: 5,
         elevation: 5
+    },
+    registerButton : {
+        marginVertical: '2%',
+        marginLeft: '5%',
+        backgroundColor: '#0A214A',
+        width: 120,
+        height: 60,
+        borderRadius: 10,
+        shadowColor: "#000000",
+        shadowOpacity: 5,
+        shadowRadius: 5,
+        elevation: 5,
     },
     loginButtonText: {
         textAlign: 'center',
@@ -81,7 +104,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: '#E2FCFA',
+        backgroundColor: '#e3eeff',
         alignItems: 'center',
         paddingHorizontal: 20,
         paddingTop: 50,
