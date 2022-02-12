@@ -52,9 +52,9 @@ const RecommendPage = ({ navigation }) => {
                     fontSize: 35,
                     width: '100%',
                     marginBottom: 1,
-                    fontWeight: 'bold',
                     marginBottom: '3%',
-                    marginTop: '3%'
+                    marginTop: '3%',
+                    fontFamily:"Mitr-Light" 
 
                 }}>Recommend</Text>
 
@@ -85,8 +85,8 @@ const RecommendPage = ({ navigation }) => {
                         >
                             <Avatar source={Moc_logo} rounded />
                             <ListItem.Content>
-                                <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700' }}>{`${item.product_name}`}</ListItem.Title>
-                                <ListItem.Subtitle style={{ color: '#CED0CE' }}>{item.product_id}</ListItem.Subtitle>
+                                <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '600',fontFamily:"Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
+                                <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily:"Mitr-Light" }}>{item.product_id}</ListItem.Subtitle>
                             </ListItem.Content>
                         </ListItem>
                     )}

@@ -90,7 +90,7 @@ export default Home = ({ navigation }) => {
 
       {checkUserType ? <RecommendPage navigation={navigation}/> : 
         (<View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}>
-          <Text style={{ fontSize: 18, color: 'red', textAlign: 'center' }}>{data.title}</Text>
+          <Text style={{ fontSize: 18, color: 'red', textAlign: 'center', fontFamily:"Mitr-Light" }}>{data.title}</Text>
           <FlatList
             data={data}
             renderItem={({ item }) => (
@@ -116,8 +116,8 @@ export default Home = ({ navigation }) => {
               >
                 <Avatar source={Moc_logo} rounded />
                 <ListItem.Content>
-                  <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700' }}>{`${item.product_name}`}</ListItem.Title>
-                  <ListItem.Subtitle style={{ color: '#CED0CE' }}>{item.product_id}</ListItem.Subtitle>
+                  <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700', fontFamily:"Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
+                  <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily:"Mitr-Light"  }}>{item.product_id}</ListItem.Subtitle>
                 </ListItem.Content>
               </ListItem>
             )}

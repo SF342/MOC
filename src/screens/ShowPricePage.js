@@ -18,7 +18,6 @@ const ShowPricePage = ({ navigation, route }) => {
 
   const checkPD = () => {
     var id = products.findIndex((PD) => PD.product_id === PID)
-    console.log(id);
     if (id === -1) {
       dispatch(getPrice(PID));
     } else {
@@ -28,6 +27,13 @@ const ShowPricePage = ({ navigation, route }) => {
 
   if (Loading) {
     checkPD();
+    for (var key in product) {
+      if (product.hasOwnProperty(key)) {
+        if(key=="price_max_avg" || key=="price_min_avg"){
+          product[key] = product[key].toString().substring(0, 3)
+        }
+      }
+    }
     if (product !== null) {
       setLoading(false);
     }
@@ -91,22 +97,29 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 25,
     fontWeight: 'bold',
+    fontFamily:"Mitr-Light" 
   },
   title1: {
     color: 'black',
     textAlign: 'center',
     fontSize: 25,
+    fontFamily:"Mitr-Light" 
+
   },
   title2: {
     color: 'black',
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
+    fontFamily:"Mitr-Light" 
+
   },
   title3: {
     color: 'black',
     textAlign: 'center',
     fontSize: 35,
+    fontFamily:"Mitr-Light" 
+
   },
   main: {
     flex: 1,
