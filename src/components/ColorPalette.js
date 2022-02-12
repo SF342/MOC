@@ -17,9 +17,10 @@ export class ColorPalette extends Component {
         const colorOptions = Object.keys(themeOptions);
 
         return (
-            <View>
-                <Text style={StyleSheet.themeTitle}>Choose your theme:</Text>
-                <View style={StyleSheet.containPalettes}>
+            <View style={styles.box1}>
+                <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                <Text style={styles.topic}>Theme : </Text>
+
                     {
                         colorOptions.map(this.renderPalette)
                     }
@@ -28,6 +29,20 @@ export class ColorPalette extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    topic: {
+        alignSelf: 'center', 
+        fontSize: 20,
+        color: 'black',
+        fontWeight: 'bold'
+    },
+    box1 :{
+        alignItems: 'center',
+
+    }
+  });
+
 
 const mapStateToProps = (state) => {
     

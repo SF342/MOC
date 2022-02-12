@@ -4,12 +4,12 @@ import {CHANGE_THEME} from '../types';
 
 export const themeOptions = {
   '#2fbe74': {
-    pri50: '#e4f6eb',
-    pri500: '#00b25c',
-    pri700: '#009145',
+    pri50: '#6bd8ff',
+    pri500: '#fff',
+    pri700: '#0A214A',
     pri800: '#007f39',
-    sec700: '#be2f79',
-    sec900: '#802764',
+    sec700: '#e3eeff',
+    sec900: 'black',
   },
   '#8b50da': {
     pri50: '#f0e7fa',

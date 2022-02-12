@@ -21,12 +21,13 @@ export default Home = ({ navigation }) => {
 
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.data)
-  const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState()
   const [valueInput, setValue] = useState("")
   const [checkUserType, setCheckUserType] = useState(true)
 
   const [uid, setUid] = useState(null);
+  const theme = useSelector(state => state.theme.theme);
+  const [isLoading, setLoading] = useState(true);
 
 
   useEffect(() => {

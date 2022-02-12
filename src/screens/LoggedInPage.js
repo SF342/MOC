@@ -4,6 +4,7 @@ import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView } from 'react-na
 import auth from '@react-native-firebase/auth';
 import { useSelector, useDispatch } from 'react-redux';
 import ColorPalette from '../components/ColorPalette';
+import LinearGradient from 'react-native-linear-gradient';
 
 
 const RegisterScreen = ({ navigation }) => {
@@ -43,7 +44,7 @@ const RegisterScreen = ({ navigation }) => {
 
   const styles = StyleSheet.create({
     title: {
-      color: theme.pri800,
+      color: theme.sec900,
       textAlign: 'center',
       fontSize: 35,
       width: 320,
@@ -111,15 +112,24 @@ const RegisterScreen = ({ navigation }) => {
       shadowOpacity: 5,
       shadowRadius: 5,
       elevation: 5
-    }
+    },
+    container1: {
+      width: '100%',
+      height: '100%',
+  }
   });
 
   return (
+    <LinearGradient
+    colors={[theme.pri500, theme.pri50]}
+    start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+    style={styles.container1}>
     <SafeAreaView
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#e3eeff' }}>
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <View>
         <Text style={styles.title}>Welcome</Text>
-        <Text style={styles.title2}>{user.email}</Text>
+        <Text style={styles.title2}>Email : {user.email}</Text>
+        <ColorPalette />
         <TouchableOpacity
           onPress={() => { logout; navigation.navigate('FavoriteList') }}
           style={styles.favoriteList}
@@ -136,9 +146,9 @@ const RegisterScreen = ({ navigation }) => {
             Log out
           </Text>
         </TouchableOpacity>
-        <ColorPalette />
       </View>
     </SafeAreaView>
+    </LinearGradient>
   );
 };
 

@@ -1,14 +1,18 @@
 import * as React from 'react';
 import { useState, useContext } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, } from 'react-native';
 import { Input } from '../components/Input';
 import auth from "@react-native-firebase/auth"
 import { ScrollView } from 'react-native-gesture-handler';
+import LinearGradient from 'react-native-linear-gradient';
+import { useSelector } from 'react-redux';
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [name, setName] = useState();
+
+  const theme = useSelector(state => state.theme.theme);
 
 
   const __doCreateUser = async (email, password) => {
@@ -24,35 +28,44 @@ const RegisterScreen = () => {
   }
 
   return (
+    <LinearGradient
+                colors={[theme.pri700, theme.pri50
+                ]}
+                start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+                style={styles.container1}
+                >
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.title}>CREATE ACCOUNT</Text>
         <View style={styles.bgInput}>
+          
+          <Text style={styles.title}>Register</Text>
+          <View style={styles.box1}>
           <Text style={styles.inputText}>USERNAME</Text>
           <Input
             style={styles.input}
             labelValue={name}
             onChangeText={userName => setName(userName)}
-            placeholder=""
+            placeholder="Enter username"
             autoCorrect={false}
-          />
+            />
           <Text style={styles.inputText}>EMAIL</Text>
           <Input
             style={styles.input}
             labelValue={email}
             onChangeText={userEmail => setEmail(userEmail)}
-            placeholder=""
+            placeholder="Enter email"
             keyboardType={'email-address'}
             autoCorrect={false}
-          />
+            />
           <Text style={styles.inputText}>PASSWORD</Text>
           <Input
             style={styles.input}
             labelValue={password}
             onChangeText={userPassword => setPassword(userPassword)}
-            placeholderText=""
+            placeholderText="Enter password"
             secureTextEntry={true}
-          />
+            />
+            </View>
 
           <TouchableOpacity
             style={styles.loginButton}
@@ -64,6 +77,7 @@ const RegisterScreen = () => {
         </View>
       </View>
     </ScrollView>
+    </LinearGradient>
   );
 };
 const styles = StyleSheet.create({
@@ -72,48 +86,48 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     alignSelf: 'flex-start',
-    marginLeft: 27,
   },
+  box1 :{
+  },  
   bgInput: {
-    backgroundColor: '#0A214A',
-    height: 360,
-    width: 310,
-    borderRadius: 20,
+    height: '100%',
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: "#000000",
     shadowOpacity: 5,
     shadowRadius: 5,
     elevation: 5,
+    marginBottom: '10%'
   },
   title: {
-    color: 'black',
+    color: 'white',
     textAlign: 'center',
     fontSize: 35,
     width: 320,
-    marginBottom: 30,
     fontWeight: 'bold',
+    marginTop: 10,
+    marginBottom: '5%'
 
   },
   input: {
-    marginVertical: 7,
-    width: 260,
-    fontSize: 16,
-    padding: 5,
-    marginBottom: 7,
+    marginVertical: 10,
+    width: 320,
+    height: 60,
+    fontSize: 18,
+    marginBottom: 5,
     shadowColor: "#000000",
     shadowOpacity: 5,
     shadowRadius: 5,
     elevation: 5,
-    backgroundColor: '#FFFFFF',
-    paddingLeft: 15,
+    backgroundColor: '#FFFFFF'
   },
   loginButton: {
     marginVertical: 10,
     marginBottom: 30,
     backgroundColor: 'white',
-    width: 125,
-    height: 40,
+    width: 320,
+    height: 60,
     borderRadius: 10,
     shadowColor: "#000000",
     shadowOpacity: 5,
@@ -126,16 +140,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'black',
     fontWeight: 'bold',
-    fontSize: 18,
-    marginTop: 6,
+    fontSize: 20,
+    padding: 15
   },
 
   container: {
     flex: 1,
-    backgroundColor: '#e3eeff',
     alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 50,
   },
 
   text: {
@@ -143,5 +154,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
   },
+  container1: {
+    width: '100%',
+    height: '100%',
+  }
 });
 export default RegisterScreen;

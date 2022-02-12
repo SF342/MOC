@@ -12,11 +12,14 @@ import {
 } from 'react-native';
 import auth from "@react-native-firebase/auth"
 import Moc_logo from '../../assets/moc_logo.png'
+import LinearGradient from 'react-native-linear-gradient';
+import { useSelector } from 'react-redux';
 
 const LoginScreen = ({ navigation }) => {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const theme = useSelector(state => state.theme.theme);
 
 
   const __doSingIn = async (email, password) => {
@@ -40,8 +43,13 @@ const LoginScreen = ({ navigation }) => {
 
 
   return (
+    <LinearGradient
+    colors={[theme.pri700, theme.pri50]}
+    start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+    style={styles.container1}
+    >
     <SafeAreaView
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor: '#e3eeff' }}>
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
       <View style={styles.bgInput}>
 
       <Image
@@ -71,6 +79,8 @@ const LoginScreen = ({ navigation }) => {
       </TouchableOpacity>
         </View>
     </SafeAreaView>
+    </LinearGradient>
+
   );
 }
 const styles = StyleSheet.create({
@@ -80,17 +90,20 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
     marginBottom: 15
   },
+  container1: {
+    width: '100%',
+    height: '100%',
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
   bgInput: {
-    backgroundColor: '#0A214A',
     height: '80%',
     width: '85%',
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
     marginBottom: '10%'
   },
   title: {
@@ -109,8 +122,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 5,
     shadowRadius: 5,
     elevation: 5,
-    backgroundColor: '#FFFFFF'
-
   },
   loginButton: {
     marginVertical: 10,

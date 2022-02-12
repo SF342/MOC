@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Modal, FlatList } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Modal, FlatList, Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Colors, Picker, } from 'react-native-ui-lib';
 import { getData } from "../redux/actions/dataActions"
@@ -7,23 +7,22 @@ import { useSelector, useDispatch } from 'react-redux'
 import auth from "@react-native-firebase/auth"
 import firestore from '@react-native-firebase/firestore';
 import { ActivityIndicator } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import add_logo from '../../assets/Abstract_Add_1.png'
 
 const FavoriteList = () => {
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
-
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.data)
   const [data, setData] = useState([]);
   const [value, setValue] = useState();
   const [p_id, setProductId] = useState();
-
   const [uid, setUid] = useState();
-
   const [favoriteArray, setFavoriteArray] = useState();
-
   const [Loading, setLoading] = useState(true);
+  const theme = useSelector(state => state.theme.theme);
 
 
   let usersCollectionRef = firestore()
@@ -82,98 +81,101 @@ const FavoriteList = () => {
 
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor:'#e3eeff' 
-      }}>
+    <LinearGradient
+      colors={[theme.pri500, theme.pri50]}
+      start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+      style={styles.container1}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
 
-      <Text style={styles.title}>Favorite List Page</Text>
-      {Loading ? <ActivityIndicator /> :
-        (
-          <ScrollView>
+        <Text style={styles.title}>Favorite List Page</Text>
+        {Loading ? <ActivityIndicator /> :
+          (
+            <ScrollView>
 
-            <FlatList
-              data={favoriteArray}
-              style={styles.superListFav}
-              renderItem={({ item }) =>
-              (
-                <View style={styles.listFavorite}>
-                  <View style={styles.topicList}>
-                    <Text style={styles.textTopicList}> {item.product_name}  </Text>
-                  </View>
-                  <TouchableOpacity
+              <FlatList
+                data={favoriteArray}
+                style={styles.superListFav}
+                renderItem={({ item }) =>
+                (
+                  <View style={styles.listFavorite}>
+                    <View style={styles.topicList}>
+                      <Text style={styles.textTopicList}> {item.product_name}  </Text>
+                    </View>
+                    <TouchableOpacity
                       onPress={() => { deleteTasklist(item.id) }}
                       style={styles.delButton}
                     >
                       <Text style={styles.textDelButton}>x</Text>
+
                     </TouchableOpacity>
-                  <View>
+                    <View>
+                    </View>
+                  </View>
+
+                )} />
+
+              <Modal
+                animationType="slide"
+                transparent
+                visible={isModalVisible}
+                presentationStyle="overFullScreen"
+                onDismiss={toggleModalVisibility}
+                onRequestClose={() => { setModalVisible(false) }}
+              >
+                <View style={styles.bg_modal}>
+                  <View style={styles.paper_madal}>
+                    <ScrollView>
+                      <TouchableOpacity
+                        onPress={() => { setModalVisible(false) }}>
+                        <Text>x</Text>
+                      </TouchableOpacity>
+                      <Text style={styles.title2}>Add Favorite</Text>
+                      <Picker
+                        value={selectedProduct}
+                        placeholder="Search Product . . ."
+                        onChange={onProductChange}
+                        showSearch
+                        placeholderTextColor="black"
+                        containerStyle={styles.pickerStyle}
+                        style={{ color: Colors.black }}>
+                        {data.map((option, index) => (
+                          <Picker.Item
+                            key={index}
+                            value={option.product_id}
+                            label={option.product_name}
+                          />
+                        ))}
+                      </Picker>
+                      <TouchableOpacity
+                        style={styles.logInButton}
+                        onPress={() => { confirmAdd() }}
+                      >
+                        <Text style={styles.loginButtonText}>
+                          Confirm
+                        </Text>
+                      </TouchableOpacity>
+                    </ScrollView>
                   </View>
                 </View>
-
-              )} />
-
-            <Modal
-              animationType="slide"
-              transparent
-              visible={isModalVisible}
-              presentationStyle="overFullScreen"
-              onDismiss={toggleModalVisibility}
-              onRequestClose={() => { setModalVisible(false) }}
-            >
-              <View style={styles.bg_modal}>
-                <View style={styles.paper_madal}>
-                  <ScrollView>
-                    <TouchableOpacity
-                      onPress={() => { setModalVisible(false) }}>
-                      <Text>x</Text>
-                    </TouchableOpacity>
-                    <Text style={styles.title2}>Add Favorite</Text>
-                    <Picker
-                      value={selectedProduct}
-                      placeholder="Search Product . . ."
-                      onChange={onProductChange}
-                      showSearch
-                      placeholderTextColor="black"
-                      containerStyle={styles.pickerStyle}
-                      style={{ color: Colors.black }}>
-                      {data.map((option, index) => (
-                        <Picker.Item
-                          key={index}
-                          value={option.product_id}
-                          label={option.product_name}
-                        />
-                      ))}
-                    </Picker>
-                    <TouchableOpacity
-                      style={styles.logInButton}
-                      onPress={() => { confirmAdd() }}
-                    >
-                      <Text style={styles.loginButtonText}>
-                        Confirm
-                      </Text>
-                    </TouchableOpacity>
-                  </ScrollView>
-                </View>
-              </View>
-            </Modal>
-          </ScrollView>
-        )
-      }
-      <View style={styles.bottomContainer}>
-        <TouchableOpacity
-          style={styles.logInButton}
-          onPress={() => { toggleModalVisibility() }}
-        >
-          <Text style={styles.loginButtonText}>
-            +
-          </Text>
-        </TouchableOpacity>
+              </Modal>
+            </ScrollView>
+          )
+        }
+        <View style={styles.bottomContainer}>
+          <TouchableOpacity
+            style={styles.circleButton}
+            onPress={() => { toggleModalVisibility() }}
+          >
+            <Image source={add_logo} style={styles.circleText} />
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </LinearGradient>
   )
 }
 
@@ -186,6 +188,10 @@ const styles = StyleSheet.create({
   superListFav: {
     marginTop: '5%',
     marginBottom: '20%',
+  },
+  container1: {
+    width: '100%',
+    height: '100%',
   },
   delButton: {
     marginVertical: 10,
@@ -222,7 +228,9 @@ const styles = StyleSheet.create({
   bottomContainer: {
     flex: 1,
     justifyContent: 'flex-end',
+    alignSelf: 'flex-end',
     marginBottom: "17%",
+    marginRight: '5%'
   },
   title: {
     color: 'black',
@@ -240,6 +248,25 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 10,
     fontWeight: 'bold',
+  },
+  circleText: {
+    width: '115%',
+    height: '100%',
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  circleButton: {
+    borderRadius: 100,
+    marginVertical: 10,
+    backgroundColor: '#A4A3FE',
+    width: 70,
+    height: 70,
+    shadowColor: "#000000",
+    shadowOpacity: 5,
+    shadowRadius: 5,
+    elevation: 5,
   },
   logInButton: {
     marginVertical: 10,
