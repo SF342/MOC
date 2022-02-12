@@ -7,12 +7,14 @@ import LinearGradient from 'react-native-linear-gradient';
 import Moc_logo from '../../assets/moc_logo.png';
 import firestore from '@react-native-firebase/firestore';
 import auth from "@react-native-firebase/auth"
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator , StyleSheet} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 
 
+
 const RecommendPage = ({ navigation }) => {
+    const theme = useSelector(state => state.theme.theme)
 
 
     const [uid, setUid] = useState(null);
@@ -23,7 +25,7 @@ const RecommendPage = ({ navigation }) => {
         .doc(uid)
         .collection('FavoriteList');
     useEffect(() => {
-        if(uid === null){
+        if (uid === null) {
             auth().onAuthStateChanged((user) => {
                 if (user) {
                     setUid(user.uid)
@@ -41,24 +43,29 @@ const RecommendPage = ({ navigation }) => {
                 }
             });
         }
-        
+
     }, [favoriteArray])
+
+    const styles = StyleSheet.create({
+
+        text: {
+            color: theme.pri800,
+            textAlign: 'center',
+            fontSize: 35,
+            width: '100%',
+            marginBottom: 1,
+            marginBottom: '3%',
+            marginTop: '3%',
+            fontFamily: "Mitr-Light"
+
+        },
+    });
 
     return (
         <View>
-            
-            <Text style={
-                {
-                    color: 'black',
-                    textAlign: 'center',
-                    fontSize: 35,
-                    width: '100%',
-                    marginBottom: 1,
-                    marginBottom: '3%',
-                    marginTop: '3%',
-                    fontFamily:"Mitr-Light" 
 
-                }}>Recommend</Text>
+            <Text style={styles.text
+            }>Recommend</Text>
 
             {Loading ? <ActivityIndicator /> : (
 
@@ -87,15 +94,17 @@ const RecommendPage = ({ navigation }) => {
                         >
                             <Avatar source={Moc_logo} rounded />
                             <ListItem.Content>
-                                <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '600',fontFamily:"Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
-                                <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily:"Mitr-Light" }}>{item.product_id}</ListItem.Subtitle>
+                                <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '600', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
+                                <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.product_id}</ListItem.Subtitle>
                             </ListItem.Content>
                         </ListItem>
                     )}
                     keyExtractor={item => item.product_id}
                 />
-                        )}
-            </View>
+            )}
+        </View>
     )
 }
+
+
 export default (RecommendPage);
