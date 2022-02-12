@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
     SafeAreaView,
     Text,
@@ -9,7 +10,8 @@ import {
 } from 'react-native';
 import ShopingCart from '../../assets/shopping-cart.png';
 
-const Suggestion = ({ navigation }) => (
+const ChooseLoginRegister = ({ navigation }) => {
+    return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.container} > 
 
@@ -35,7 +37,8 @@ const Suggestion = ({ navigation }) => (
             </View>
             </View>
     </SafeAreaView>
-);
+    );
+}
 
 const styles = StyleSheet.create({
     box2 : {
@@ -115,4 +118,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Suggestion;
+export default ChooseLoginRegister;

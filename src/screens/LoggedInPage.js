@@ -2,14 +2,15 @@ import * as React from 'react';
 import { useState, useEffect  } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import auth from '@react-native-firebase/auth';
+import { useSelector, useDispatch } from 'react-redux';
+import ColorPalette from '../components/ColorPalette';
 
 
 const RegisterScreen = ({ navigation }) => {
-
+  //const theme = useSelector(state => state.theme.theme);
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
-
   
   
   // Handle user state changes
@@ -60,6 +61,7 @@ const RegisterScreen = ({ navigation }) => {
           Log out
         </Text>
       </TouchableOpacity>
+      <ColorPalette/>
     </View>
     </SafeAreaView>
   );

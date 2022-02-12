@@ -8,43 +8,45 @@ import Moc_logo from '../../assets/moc_logo.png';
 import firestore from '@react-native-firebase/firestore';
 import auth from "@react-native-firebase/auth"
 import { ActivityIndicator } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 
 const RecommendPage = ({ navigation }) => {
 
 
-    const [uid, setUid] = useState();
+    const [uid, setUid] = useState(null);
     const [favoriteArray, setFavoriteArray] = useState();
     const [Loading, setLoading] = useState(true);
-
     let usersCollectionRef = firestore()
         .collection('users')
         .doc(uid)
         .collection('FavoriteList');
-
     useEffect(() => {
-
-        auth().onAuthStateChanged((user) => {
-            if (user) {
-                setUid(user.uid)
-                usersCollectionRef.onSnapshot(querySnapshot => {
-                    const dataTask = [];
-                    querySnapshot.forEach(documentSnapshot => {
-                        dataTask.push({
-                            ...documentSnapshot.data(),
-                            id: documentSnapshot.id,
-                        });
-                    })
-                    setFavoriteArray(dataTask);
-                    setLoading(false)
-                });
-            }
-        });
+        if(uid === null){
+            auth().onAuthStateChanged((user) => {
+                if (user) {
+                    setUid(user.uid)
+                    usersCollectionRef.onSnapshot(querySnapshot => {
+                        const dataTask = [];
+                        querySnapshot.forEach(documentSnapshot => {
+                            dataTask.push({
+                                ...documentSnapshot.data(),
+                                id: documentSnapshot.id,
+                            });
+                        })
+                        setFavoriteArray(dataTask);
+                        setLoading(false)
+                    });
+                }
+            });
+        }
+        
     }, [favoriteArray])
-
 
     return (
         <View>
+            
             <Text style={
                 {
                     color: 'black',
