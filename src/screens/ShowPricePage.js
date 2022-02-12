@@ -6,6 +6,9 @@ import { getPrice } from "../redux/actions/dataActions"
 import { ListItem, Avatar } from 'react-native-elements';
 import Moc_logo from '../../assets/moc_logo.png';
 import { ActivityIndicator, StyleSheet, SafeAreaView, Image } from 'react-native';
+import { HStack, NativeBaseProvider, Center, Box, ZStack, VStack } from "native-base";
+
+
 
 const ShowPricePage = ({ navigation, route }) => {
 
@@ -14,8 +17,7 @@ const ShowPricePage = ({ navigation, route }) => {
   const PID = route.params.id;
   const [product, setProduct] = useState(null);
   const [Loading, setLoading] = useState(true);
-
-
+  const [date, setDate] = useState();
   const checkPD = () => {
     var id = products.findIndex((PD) => PD.product_id === PID)
     if (id === -1) {
@@ -29,9 +31,10 @@ const ShowPricePage = ({ navigation, route }) => {
     checkPD();
     for (var key in product) {
       if (product.hasOwnProperty(key)) {
-        if(key=="price_max_avg" || key=="price_min_avg"){
-          product[key] = product[key].toString().substring(0, 3)
+        if (key == "price_max_avg" || key == "price_min_avg") {
+          product[key] = Math.ceil(product[key])
         }
+        setDate(product['price_list'][0]['date'].substring(0, 10))
       }
     }
     if (product !== null) {
@@ -40,34 +43,51 @@ const ShowPricePage = ({ navigation, route }) => {
   }
 
   return (
-    <SafeAreaView
+    <NativeBaseProvider
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#e3eeff' }}>
       {product === null || Loading ? <ActivityIndicator /> :
-        <View >
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <View style={styles.boxImg}>
+        <Center h="95%" justifyContent='center' alignItems='center'>
+          <VStack space={4} alignItems="center" padding={2} >
+            <Center w="400" h="220" bg="#0e2857" rounded="md" shadow={3}>
+              <View style={styles.box1} >
+                <Text style={styles.topic}>รายละเอียดสินค้า</Text>
+                <View style={styles.TextContainer1}>
+                  <Text style={styles.title}>ชื่อสินค้า : </Text>
+                  <Text style={styles.title1}>{product.product_name}</Text>
+                </View>
+                <View style={styles.TextContainer1}>
+                  <Text style={styles.title}>ประเภท : </Text>
+                  <Text style={styles.title1}> {product.group_name}</Text>
+                </View>
+                <View style={styles.TextContainer1}>
+                  <Text style={styles.title}>การจำหน่าย :</Text>
+                  <Text style={styles.title1}> {product.category_name}</Text>
+                </View>
+                <View style={styles.TextContainer1}>
+                  <Text style={styles.title}>อัพเดทราคาเมื่อ : </Text>
+                  <Text style={styles.title1}> {date}</Text>
+                </View>
+              </View>
+            </Center>
+          </VStack>
+          <HStack space={1}>
+            <Center h="300" w="200" bg="#0e2857" rounded="md" shadow={3} padding='50'>
               <Image style={styles.logo} source={Moc_logo} rounded />
-            </View>
-            <View style={styles.TextContainer1}>
-              <Text style={styles.title}>ประเภท :</Text>
-              <Text style={styles.title1}> {product.group_name}</Text>
-            </View>
-            <View style={styles.TextContainer1}>
-              <Text style={styles.title}>ชื่อสินค้า : </Text>
-              <Text style={styles.title1}>{product.product_name}</Text>
-            </View>
-            <View style={styles.TextContainer2}>
-              <Text style={styles.title2}>ราคาสูงสุด : </Text>
-              <Text style={styles.title3}>{product.price_max_avg} บาท</Text>
-            </View>
-            <View style={styles.TextContainer2}>
-              <Text style={styles.title2}>ราคาต่ำสุด : </Text>
-              <Text style={styles.title3}>{product.price_min_avg} บาท</Text>
-            </View>
-          </View>
-        </View>
+            </Center>
+            <Center h="300" w="200" bg="#0e2857" rounded="md" shadow={3} >
+              <View>
+                <Text style={styles.title2}>ราคาต่ำสุด : </Text>
+                <Text style={styles.title3}>{product.price_min_avg} บาท</Text>
+              </View>
+              <View>
+                <Text style={styles.title2}>ราคาสูงสุด : </Text>
+                <Text style={styles.title3}>{product.price_max_avg} บาท</Text>
+              </View>
+            </Center>
+          </HStack>
+        </Center>
       }
-    </SafeAreaView>
+    </NativeBaseProvider>
 
   );
 }
@@ -75,51 +95,60 @@ const ShowPricePage = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   boxImg: {
-    justifyContent: 'center',
-    alignItems: 'center',
     width: '80%',
     height: '40%',
     marginBottom: '1%'
   },
+  box2Img: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   TextContainer1: {
     flexDirection: 'row',
+    marginBottom: '1%',
   },
   TextContainer2: {
     marginTop: '5%'
   },
   logo: {
-    width: '60%',
-    height: '60%',
-    resizeMode: 'stretch',
+    width: 200,
+    height: 200,
+  },
+  topic: {
+    color: '#FFC511',
+    textAlign: 'center',
+    fontSize: 40,
+    fontWeight: 'bold',
+    fontFamily: "Mitr-Light",
+    marginBottom: '3%'
   },
   title: {
-    color: 'black',
+    color: '#FFC511',
     textAlign: 'center',
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: 'bold',
-    fontFamily:"Mitr-Light" 
+    fontFamily: "Mitr-Light",
   },
   title1: {
-    color: 'black',
+    color: 'white',
     textAlign: 'center',
-    fontSize: 25,
-    fontFamily:"Mitr-Light" 
-
+    fontSize: 20,
+    fontFamily: "Mitr-Light",
+    fontWeight: 'bold',
   },
   title2: {
-    color: 'black',
+    color: 'white',
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    fontFamily:"Mitr-Light" 
-
+    fontFamily: "Mitr-Light"
   },
   title3: {
-    color: 'black',
     textAlign: 'center',
-    fontSize: 35,
-    fontFamily:"Mitr-Light" 
-
+    fontSize: 40,
+    fontFamily: "Mitr-Light",
+    color: '#FFC511',
+    fontWeight: '700'
   },
   main: {
     flex: 1,
