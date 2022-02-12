@@ -29,39 +29,33 @@ export default Home = ({ navigation }) => {
   const [uid, setUid] = useState(null);
 
 
-  useEffect(() => 
-  {
+  useEffect(() => {
     setData(products);
 
     auth().onAuthStateChanged((user) => {
       if (user) {
         setUid(user.uid)
         setCheckUserType(true)
-      }else{
+      } else {
         setCheckUserType(false)
         setUid(null)
       }
     });
   }, [])
 
-  const updateInput = text => 
-  {
+  const updateInput = text => {
     setValue(text)
     searchFilterFunction(text)
-    if(text!="" || uid == null)
-    {
+    if (text != "" || uid == null) {
       setCheckUserType(false)
-    }else
-    {
-      if(uid)
-      {
+    } else {
+      if (uid) {
         setCheckUserType(true)
       }
     }
   }
 
-  const searchFilterFunction = text => 
-  {
+  const searchFilterFunction = text => {
     const newData = products.filter(item => {
       const itemData = `${item.product_id.toUpperCase()} ${item.product_name} ${item.category_name}`;
       const textData = text.toUpperCase();
@@ -76,7 +70,7 @@ export default Home = ({ navigation }) => {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor:'#e3eeff' }}>
+    <View style={{ flex: 1, backgroundColor: '#e3eeff' }}>
 
       <SearchBar
         placeholder="Type Here..."
@@ -85,12 +79,12 @@ export default Home = ({ navigation }) => {
         value={valueInput}
         onChangeText={text => updateInput(text)}
         autoCorrect={false}
-        containerStyle={{backgroundColor: '#e3eeff'}}
+        containerStyle={{ backgroundColor: '#e3eeff' }}
       />
 
-      {checkUserType ? <RecommendPage navigation={navigation}/> : 
+      {checkUserType ? <RecommendPage navigation={navigation} /> :
         (<View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}>
-          <Text style={{ fontSize: 18, color: 'red', textAlign: 'center', fontFamily:"Mitr-Light" }}>{data.title}</Text>
+          <Text style={{ fontSize: 18, color: 'red', textAlign: 'center', fontFamily: "Mitr-Light" }}>{data.title}</Text>
           <FlatList
             data={data}
             renderItem={({ item }) => (
@@ -106,8 +100,8 @@ export default Home = ({ navigation }) => {
                 }}
                 ViewComponent={LinearGradient}
                 containerStyle={{
-                  marginHorizontal: 16,
-                  marginVertical: 8,
+                  marginHorizontal: 4,
+                  marginVertical: 4,
                   borderRadius: 8,
                 }}
                 onPress={() =>
@@ -116,8 +110,12 @@ export default Home = ({ navigation }) => {
               >
                 <Avatar source={Moc_logo} rounded />
                 <ListItem.Content>
-                  <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700', fontFamily:"Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
-                  <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily:"Mitr-Light"  }}>{item.categoty_name}</ListItem.Subtitle>
+                  <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
+                  <View style={styles.TextContainer1}>
+                    <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.group_name} </ListItem.Subtitle>
+                    <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.categoty_name} </ListItem.Subtitle>
+                    <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>รหัสสินค้า : {item.product_id}</ListItem.Subtitle>
+                  </View>
                 </ListItem.Content>
               </ListItem>
             )}
@@ -135,7 +133,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#393E46',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingTop: 100,
+    paddingTop: 10,
+  },
+  TextContainer1: {
+    flexDirection: 'row',
+    marginBottom: '1%',
   },
   loginButtonText: {
     textAlign: 'center',
