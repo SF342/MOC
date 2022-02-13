@@ -39,22 +39,24 @@ export const getFavorite = (uid) => async (dispatch) => {
                         id: documentSnapshot.id,
                     });
                 })
-                dispatch({ type: SET_TASK_FAVORITE, payload: dataTask })
+                if (dataTask.length !== 0) {
+                    dispatch({ type: SET_TASK_FAVORITE, payload: dataTask })
+                }
             });
         }
     });
 }
 
-export const addTask = (uid, task) => (dispatch) => {
+export const addTask = (uid, data) => (dispatch) => {
 
     let usersCollectionRef = firestore()
         .collection('users')
         .doc(uid)
         .collection('FavoriteList');
 
-    usersCollectionRef.doc(task.id).set(task);
+    usersCollectionRef.doc(data.id).set(data);
 
-    // dispatch({ type: ADD_TASK_FAVORITE, payload: task })
+    dispatch({ type: ADD_TASK_FAVORITE, payload: data })
 
 }
 
