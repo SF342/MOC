@@ -12,24 +12,15 @@ import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const settingsIcon = require('../../assets/settings.png');
-<<<<<<< HEAD
-=======
 const titanIcon = require('../../assets/titan.png');
 
 //redux stuff
 import { getData } from "../redux/actions/dataActions"
 import { useSelector, useDispatch } from 'react-redux'
 
->>>>>>> cb5eb81e7ca8e636e7c653aeb6d2a65f4254a40b
-const mapURL =
-  'https://dataapi.moc.go.th/gis-products';
-
 const Price = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.data)
-
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
 
   const [price, setPrice] = useState([]);
 
@@ -77,6 +68,7 @@ const Price = () => {
   }, []);
 
   const [selectedProduct, setSelectedProduct] = useState('');
+  const [selectedProduct1, setSelectedProduct1] = useState('');
   const [isPriceLoading, setPriceLoading] = useState(true);
 
   const onClickSearch = test => {
@@ -97,47 +89,63 @@ const Price = () => {
   const onProductChange = dummyData => {
     setSelectedProduct(dummyData);
   };
+  const onProductChange1 = dummyData1 => {
+    setSelectedProduct1(dummyData1);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={{marginTop: 20 , marginLeft:50}}>
+        <Text style={styles.t2}>COMPARE</Text>
+      </View>
 
-      <View style={styles.pickerContainer} flexDirection="row">
-        <Picker
-          value={selectedProduct}
-          placeholder="Search Product . . ."
-          onChange={onProductChange}
-          showSearch
-          placeholderTextColor="#fff"
-          containerStyle={styles.pickerStyle}
-          style={{color: Colors.white}}>
-          {products.map((option, index) => (
-            <Picker.Item
-              key={index}
-              value={option.product_id}
-              label={option.product_name}
-            />
-          ))}
-        </Picker>
-        <View style={styles.ButtonContainer}>
+      <View style={styles.pickerContainer} >
+        <View style={styles.pickerbox}>
+          <Picker
+            value={selectedProduct}
+            placeholder="Search Product . . ."
+            onChange={onProductChange}
+            showSearch
+            placeholderTextColor="#000000"
+            containerStyle={styles.pickerStyle}
+            style={{color: Colors.black}}>
+            {products.map((option, index) => (
+              <Picker.Item
+                key={index}
+                value={option.product_id}
+                label={option.product_name}
+              />
+            ))}
+          </Picker>
+        </View>
+        <View style={styles.pickerbox}>
+          <Picker
+            value={selectedProduct1}
+            placeholder="Search Product . . ."
+            onChange={onProductChange1}
+            showSearch
+            placeholderTextColor="#000000"
+            containerStyle={styles.pickerStyle}
+            style={{color: Colors.black}}>
+            {products.map((option, index) => (
+              <Picker.Item
+                key={index}
+                value={option.product_id}
+                label={option.product_name}
+              />
+            ))}
+          </Picker>
+        </View>
+        <View style={{ alignItems: 'center', paddingBottom: 10 , margin:20}}>
+          <Button onPress={showDatepicker} label="Compare" borderRadius={10} backgroundColor='#0A214A'/>
+        </View>
+        {/* <View style={styles.ButtonContainer}> */}
           {/* <Button
             title="Search"
             onPress={onClickSearch}
             color="#068ECD"
           /> */}
-<<<<<<< HEAD
-            
-            <Button
-                round
-                backgroundColor="#ff369b"
-                style={{width: 15, height: 15}}
-                iconOnRight
-                iconSource={settingsIcon}
-                iconStyle={{tintColor: Colors.white}}
-                size={Button.sizes.xSmall}
-                onPress={onClickSearch}
-              />
-=======
-          <Button
+          {/* <Button
               style={{marginBottom: 20}}
               size={Button.sizes.small}
               backgroundColor='#3297F4'
@@ -145,7 +153,7 @@ const Price = () => {
               iconStyle={{tintColor: 'white'}}
               onPress={onClickSearch}
               label="Search"
-            />
+            /> */}
            {/* <Button
               size={'small'}
               style={{marginBottom: 20 / 4, marginLeft: 20}}
@@ -156,10 +164,9 @@ const Price = () => {
               animateLayout
               animateTo={'left'}
             /> */}
->>>>>>> cb5eb81e7ca8e636e7c653aeb6d2a65f4254a40b
-        </View>
+        {/* </View> */}
       </View>
-      {isPriceLoading ? (
+      {/* {isPriceLoading ? (
         <ActivityIndicator />
       ) : (     
       <View style={styles.headerContainer}>
@@ -185,7 +192,7 @@ const Price = () => {
           display="default"
           onChange={onChange}
         />
-      )}
+      )} */}
     </SafeAreaView>
   );
 };
@@ -193,7 +200,7 @@ const Price = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#02001b',
+    backgroundColor: '#E3EEFF',
   },
   Header: {
     fontSize: 20,
@@ -211,6 +218,13 @@ const styles = StyleSheet.create({
     color: 'white',
     alignSelf: 'center',
     fontWeight: '300',
+    padding: 5,
+    
+  },
+  t2: {
+    fontSize: 20,
+    color: 'black',
+    fontWeight: '500',
     padding: 5,
     
   },
@@ -239,14 +253,21 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: 'space-between',
     borderWidth: 1,
-    borderColor: 'white',
+    borderColor: 'black',
     padding: 15,
     width: 300,
     alignSelf: 'center',
     marginLeft: 10,
   },
+  pickerbox: {
+    alignItems: 'center', 
+    paddingBottom: 10 , 
+    margin:20
+  },
+
   pickerContainer: {
     paddingTop: 10,
+    alignItems: 'center',
     paddingBottom: 10,
   },
   ScrollView: {
