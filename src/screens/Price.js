@@ -3,45 +3,77 @@ import {
   View,
   Text,
   StyleSheet,
-  // Button,
-  TextInput,
-  Image,
-  ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useState, useEffect} from 'react';
 import {Colors, Picker,Button,} from 'react-native-ui-lib';
 import {ActivityIndicator} from 'react-native';
-import Moc_logo from '../../assets/moc_logo.png';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
+import moment from 'moment';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const settingsIcon = require('../../assets/settings.png');
+<<<<<<< HEAD
+=======
+const titanIcon = require('../../assets/titan.png');
+
+//redux stuff
+import { getData } from "../redux/actions/dataActions"
+import { useSelector, useDispatch } from 'react-redux'
+
+>>>>>>> cb5eb81e7ca8e636e7c653aeb6d2a65f4254a40b
 const mapURL =
   'https://dataapi.moc.go.th/gis-products';
 
 const Price = () => {
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.data.data)
+
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   const [price, setPrice] = useState([]);
 
-  const fetchData = () => {
-    const detail = [];
-    fetch(mapURL)
-      .then(response => response.json())
-      .then(json => {
-        for (let i = 1; i < json.length; i++) {
-          detail.push(json[i]);
-        };
-      setData(detail);
-      })
-      .catch(error => alert(error))
-      .finally(() => setLoading(false));
-  }
+  const [date, setDate] = useState(new Date());
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+  const [textDate, setText] = useState(moment(new Date()).format("YYYY-MM-DD"));
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+
+    let tempDate = new Date(currentDate);
+    let fDate = moment(tempDate).format("YYYY-MM-DD");
+    setText(fDate)
+  };
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+  // const fetchData = () => {
+  //   const detail = [];
+  //   fetch(mapURL)
+  //     .then(response => response.json())
+  //     .then(json => {
+  //       for (let i = 1; i < json.length; i++) {
+  //         detail.push(json[i]);
+  //       };
+  //     setData(detail);
+  //     })
+  //     .catch(error => alert(error))
+  //     .finally(() => setLoading(false));
+  // }
 
   useEffect(() => {
-    fetchData()
+    // fetchData()
+    dispatch(getData());
   }, []);
 
   const [selectedProduct, setSelectedProduct] = useState('');
@@ -49,7 +81,7 @@ const Price = () => {
 
   const onClickSearch = test => {
 
-    const priceURL = `https://dataapi.moc.go.th/gis-product-prices?product_id=${selectedProduct.value}&from_date=2018-01-01&to_date=2018-01-07`;
+    const priceURL = `https://dataapi.moc.go.th/gis-product-prices?product_id=${selectedProduct.value}&from_date=${textDate}&to_date=${textDate}`;
     setPriceLoading(true);
     fetch(priceURL)
       .then(res => res.json())
@@ -78,7 +110,7 @@ const Price = () => {
           placeholderTextColor="#fff"
           containerStyle={styles.pickerStyle}
           style={{color: Colors.white}}>
-          {data.map((option, index) => (
+          {products.map((option, index) => (
             <Picker.Item
               key={index}
               value={option.product_id}
@@ -92,6 +124,7 @@ const Price = () => {
             onPress={onClickSearch}
             color="#068ECD"
           /> */}
+<<<<<<< HEAD
             
             <Button
                 round
@@ -103,6 +136,27 @@ const Price = () => {
                 size={Button.sizes.xSmall}
                 onPress={onClickSearch}
               />
+=======
+          <Button
+              style={{marginBottom: 20}}
+              size={Button.sizes.small}
+              backgroundColor='#3297F4'
+              iconSource={titanIcon}
+              iconStyle={{tintColor: 'white'}}
+              onPress={onClickSearch}
+              label="Search"
+            />
+           {/* <Button
+              size={'small'}
+              style={{marginBottom: 20 / 4, marginLeft: 20}}
+              backgroundColor='#52CF92'
+              iconSource={settingsIcon}
+              onPress={onClickSearch}
+              iconOnRight
+              animateLayout
+              animateTo={'left'}
+            /> */}
+>>>>>>> cb5eb81e7ca8e636e7c653aeb6d2a65f4254a40b
         </View>
       </View>
       {isPriceLoading ? (
@@ -111,9 +165,26 @@ const Price = () => {
       <View style={styles.headerContainer}>
         <Text style={styles.t1}>Name : {price.product_name}</Text>
         <Text style={styles.t1}>Id : {price.product_id}</Text>
-        <Text style={styles.t1}>Price max avg : {price.price_max_avg}  {price.unit}</Text>
-        <Text style={styles.t1}>Price min avg : {price.price_min_avg}  {price.unit}</Text>
+        <Text style={styles.t1}>Price max : {price.price_max_avg}  {price.unit}</Text>
+        <Text style={styles.t1}>Price min : {price.price_min_avg}  {price.unit}</Text>
       </View>
+      )}
+      <View>
+        <Text style={styles.t1}>Date Select : {textDate}</Text>
+      </View>
+      <View style={{ alignItems: 'center', paddingBottom: 10 , margin:20}}>
+        <Button onPress={showDatepicker} label="Show date" />
+      </View>
+      {show && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode={mode}
+          maximumDate={Date.parse(new Date())}
+          is24Hour={true}
+          display="default"
+          onChange={onChange}
+        />
       )}
     </SafeAreaView>
   );

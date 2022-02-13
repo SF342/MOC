@@ -10,49 +10,81 @@ import {
 //redux stuff
 import { getData } from "../redux/actions/dataActions"
 import { useSelector, useDispatch } from 'react-redux'
+
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import Moc_logo from '../../assets/moc_logo.png';
-
+import auth from "@react-native-firebase/auth"
+import RecommendPage from './RecommendPage';
 
 export default Home = ({ navigation }) => {
 
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.data)
-  const [isLoading, setLoading] = useState(true);
+  const image = useSelector(state => state.data.urlimage)
+  const theme = useSelector(state => state.theme.theme);
+
+
   const [data, setData] = useState()
   const [valueInput, setValue] = useState("")
-  const [arrayholder, setArrayholder] = useState()
+  const [checkUserType, setCheckUserType] = useState(true)
 
+  const [uid, setUid] = useState(null);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getData());
-    setArrayholder(products);
     setData(products);
-    setLoading(false)
+
+    auth().onAuthStateChanged((user) => {
+      if (user) {
+        setUid(user.uid)
+        setCheckUserType(true)
+      } else {
+        setCheckUserType(false)
+        setUid(null)
+      }
+    });
   }, [])
-  
-  
+
   const updateInput = text => {
     setValue(text)
     searchFilterFunction(text)
-    console.log(valueInput)
+    if (text != "" || uid == null) {
+      setCheckUserType(false)
+    } else {
+      if (uid) {
+        setCheckUserType(true)
+      }
+    }
   }
 
+  const filterImageUrl = (val) => {
+    let nameImg = image.filter(element => val.search(element.name) !== -1);
+
+    if (nameImg.length !== 0){
+      return {uri:nameImg[0].url}
+    }else{
+      return Moc_logo
+    }
+  }
 
   const searchFilterFunction = text => {
-
-    const newData = arrayholder.filter(item => {
+    const newData = products.filter(item => {
       const itemData = `${item.product_id.toUpperCase()} ${item.product_name} ${item.category_name}`;
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
     });
     setData(newData)
-
   };
 
+  if (products.length === 0) {
+    dispatch(getData());
+    setLoading(false)
+  }
+
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: '#e3eeff' }}>
+
       <SearchBar
         placeholder="Type Here..."
         lightTheme
@@ -60,11 +92,12 @@ export default Home = ({ navigation }) => {
         value={valueInput}
         onChangeText={text => updateInput(text)}
         autoCorrect={false}
+        containerStyle={{ backgroundColor: '#e3eeff' }}
       />
 
-      {isLoading ? <Text>Loading...</Text> :
+      {checkUserType === true ? <RecommendPage navigation={navigation} /> :
         (<View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}>
-          <Text style={{ fontSize: 18, color: 'green', textAlign: 'center' }}>{data.title}</Text>
+          <Text style={{ fontSize: 18, color: 'red', textAlign: 'center', fontFamily: "Mitr-Light" }}>{data.title}</Text>
           <FlatList
             data={data}
             renderItem={({ item }) => (
@@ -74,24 +107,28 @@ export default Home = ({ navigation }) => {
                 tension={200} // These props are passed to the parent component (here TouchableScale)
                 activeScale={0.95} //
                 linearGradientProps={{
-                  colors: ['#1544E2', '#1544E2'],
+                  colors: ['#1544E2', '#0A214A'],
                   start: { x: 1, y: 0 },
                   end: { x: 0.2, y: 0 },
                 }}
                 ViewComponent={LinearGradient}
                 containerStyle={{
-                  marginHorizontal: 16,
-                  marginVertical: 8,
+                  marginHorizontal: 4,
+                  marginVertical: 4,
                   borderRadius: 8,
                 }}
                 onPress={() =>
-                  navigation.navigate('ShowPricePage', {id: item.product_id})
+                  navigation.navigate('ShowPricePage', { id: item.product_id })
                 }
               >
-                <Avatar source={Moc_logo} rounded />
+                <Avatar source={filterImageUrl(item.product_name) } rounded />
                 <ListItem.Content>
-                  <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700' }}>{`${item.product_name}`}</ListItem.Title>
-                  <ListItem.Subtitle style={{ color: '#CED0CE' }}>{item.product_id}</ListItem.Subtitle>
+                  <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
+                  <View style={styles.TextContainer1}>
+                    <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.group_name} </ListItem.Subtitle>
+                    <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.categoty_name} </ListItem.Subtitle>
+                    <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>รหัสสินค้า : {item.product_id}</ListItem.Subtitle>
+                  </View>
                 </ListItem.Content>
               </ListItem>
             )}
@@ -109,7 +146,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#393E46',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingTop: 100,
+    paddingTop: 10,
+  },
+  TextContainer1: {
+    flexDirection: 'row',
+    marginBottom: '1%',
   },
   loginButtonText: {
     textAlign: 'center',

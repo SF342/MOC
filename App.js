@@ -17,19 +17,18 @@ import Store from "./src/redux/store"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Price from './src/screens/Price'
-import Suggestion from './src/screens/Suggestion';
-import Header from './src/components/Header'
+import Price from './src/screens/Price';
+import Header from './src/components/Header';
 
-
-import { FirstScreen_Home } from './CustomNavigation'
-
-
+import { FirstScreen_Home, SecondScreen_Home, ProfileStatePage } from './CustomNavigation'
 import { NavigationContainer } from '@react-navigation/native'
+
 
 LogBox.ignoreAllLogs();
 const App = () => {
   const Tab = createBottomTabNavigator();
+
+
 
   return (
     <Provider store={Store}>
@@ -41,20 +40,33 @@ const App = () => {
         <Tab.Navigator initialRouteName="Main"
           tabBarOptions={{
             activeTintColor: '#ffffff',
-            activeBackgroundColor: '#0A214A',
-            inactiveBackgroundColor: '#0A214A',
+            // activeBackgroundColor: '#0A214A',
+            // inactiveBackgroundColor: '#0A214A',
             inactiveTintColor: '#778899',
             labelStyle: {
               fontSize: 0,
               paddingBottom: 0,
 
               fontWeight: 'bold',
-            }
+            },
           }}
           initialRouteName="Main"
           screenOptions={{
-            headerShown: false
-          }}>
+            headerShown:false,
+            tabBarStyle:{
+              headerShown:false,
+              backgroundColor:'#0A214A',
+              position: 'absolute',
+              left:15,
+              right:15,
+              bottom:10,
+              borderRadius: 15,
+              height:60,
+              elevation:0,
+              shadowColor:10,
+              paddingBottom:1,
+              borderTopWidth: 0
+          }}}>
           <Tab.Screen name="Home" component={FirstScreen_Home}
             options={{
               tabBarLabel: 'Home',
@@ -69,11 +81,11 @@ const App = () => {
                 <MaterialIcons name="attach-money" color={color} size={30} />
               ),
             }} />
-          <Tab.Screen name="Suggestion" component={Suggestion}
+          <Tab.Screen name="ProfilePage" component={ProfileStatePage}
             options={{
-              tabBarLabel: 'Suggestion',
+              tabBarLabel: 'ProfilePage',
               tabBarIcon: ({ color, size }) => (
-                <MaterialIcons name="attach-money" color={color} size={30} />
+                <MaterialIcons name="person" color={color} size={30} />
               ),
             }} />
         </Tab.Navigator>
