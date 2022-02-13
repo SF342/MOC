@@ -12,15 +12,13 @@ import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const settingsIcon = require('../../assets/settings.png');
-<<<<<<< HEAD
-=======
+
 const titanIcon = require('../../assets/titan.png');
 
 //redux stuff
 import { getData } from "../redux/actions/dataActions"
 import { useSelector, useDispatch } from 'react-redux'
 
->>>>>>> cb5eb81e7ca8e636e7c653aeb6d2a65f4254a40b
 const mapURL =
   'https://dataapi.moc.go.th/gis-products';
 
@@ -88,10 +86,7 @@ const Price = () => {
       .then(resjson => {
         setPrice(resjson);
         setPriceLoading(false);
-        console.log(resjson);
       })
-    console.log(selectedProduct.value)   
-    console.log(price)
   };
 
   const onProductChange = dummyData => {
@@ -124,19 +119,6 @@ const Price = () => {
             onPress={onClickSearch}
             color="#068ECD"
           /> */}
-<<<<<<< HEAD
-            
-            <Button
-                round
-                backgroundColor="#ff369b"
-                style={{width: 15, height: 15}}
-                iconOnRight
-                iconSource={settingsIcon}
-                iconStyle={{tintColor: Colors.white}}
-                size={Button.sizes.xSmall}
-                onPress={onClickSearch}
-              />
-=======
           <Button
               style={{marginBottom: 20}}
               size={Button.sizes.small}
@@ -156,7 +138,6 @@ const Price = () => {
               animateLayout
               animateTo={'left'}
             /> */}
->>>>>>> cb5eb81e7ca8e636e7c653aeb6d2a65f4254a40b
         </View>
       </View>
       {isPriceLoading ? (
