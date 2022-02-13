@@ -98,7 +98,6 @@ const FavoriteList = () => {
             colors={[theme.pri500, theme.pri50]}
             start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
             style={styles.boxTopicGra}>
-
             <Image source={favorite_logo} style={styles.favLogo} />
             <Text style={styles.title}> Favorite List</Text>
           </LinearGradient>
@@ -309,13 +308,13 @@ const styles = StyleSheet.create({
   circleButton: {
     borderRadius: 100,
     marginVertical: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#FFC511',
     width: 70,
     height: 70,
     shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
+    shadowOpacity: 15,
+    shadowRadius: 15,
+    elevation: 15,
   },
   logInButton: {
     marginVertical: 10,

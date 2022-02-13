@@ -26,7 +26,7 @@ const ChooseLoginRegister = ({ navigation }) => {
             height: '100%',
         },
         logo: {
-            width: 230,
+            width: 200,
             height: 170,
             resizeMode: 'stretch',
             marginBottom: 15
