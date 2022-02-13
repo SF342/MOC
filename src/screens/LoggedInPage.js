@@ -2,19 +2,24 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ColorPalette from '../components/ColorPalette';
 import LinearGradient from 'react-native-linear-gradient';
 import user_icon from '../../assets/kindpng_746008.png'
+import { __doSingOut } from '../redux/actions/userActions';
 
 
 const RegisterScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
   const theme = useSelector(state => state.theme.theme);
   
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
-
+  
+  function logout() {
+    dispatch(__doSingOut())
+  }
 
   // Handle user state changes
   function onAuthStateChanged(user) {
@@ -22,11 +27,7 @@ const RegisterScreen = ({ navigation }) => {
     if (initializing) setInitializing(false);
   }
 
-  function logout() {
-    auth()
-      .signOut()
-      .then(() => console.log('User signed out!'));
-  }
+ 
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);

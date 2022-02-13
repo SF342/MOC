@@ -4,8 +4,8 @@ import storage from "@react-native-firebase/storage"
 import db from '../../../db.json'
 
 export const getData = () => async (dispatch) => {
-    console.log("test get product data")
-    console.log(db);
+    // console.log("test get product data")
+    // console.log(db);
     dispatch({ type: PRODUCTS_DATA, payload: db });
 
     // const url = "https://dataapi.moc.go.th/gis-products"

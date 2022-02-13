@@ -9,16 +9,18 @@ import firestore from '@react-native-firebase/firestore';
 import auth from "@react-native-firebase/auth"
 import { ActivityIndicator, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
-
+import { getFavorite, setSignIn } from '../redux/actions/userActions';
+import { useDispatch } from 'react-redux'
 
 const RecommendPage = ({ navigation }) => {
-
+    const dispatch = useDispatch();
+    const theme = useSelector(state => state.theme.theme);
+    const userdata = useSelector(state => state.user)
+    const image = useSelector(state => state.data.urlimage)
 
     const [uid, setUid] = useState();
     const [favoriteArray, setFavoriteArray] = useState();
-    const [Loading, setLoading] = useState(true);
-    const theme = useSelector(state => state.theme.theme);
-    const image = useSelector(state => state.data.urlimage)
+    const [Loading, setLoading] = useState(false);
 
 
     let usersCollectionRef = firestore()
@@ -30,21 +32,30 @@ const RecommendPage = ({ navigation }) => {
 
         auth().onAuthStateChanged((user) => {
             if (user) {
-                setUid(user.uid)
-                usersCollectionRef.onSnapshot(querySnapshot => {
-                    const dataTask = [];
-                    querySnapshot.forEach(documentSnapshot => {
-                        dataTask.push({
-                            ...documentSnapshot.data(),
-                            id: documentSnapshot.id,
-                        });
-                    })
-                    setFavoriteArray(dataTask);
-                    setLoading(false)
-                });
+                setUid(user.uid);
+                dispatch(setSignIn(user))
+                if (userdata.favoritelist.length === 0 && userdata.authenticated) {
+                    dispatch(getFavorite(user.uid))
+                }
+            
+                // usersCollectionRef.onSnapshot(querySnapshot => {
+                //     const dataTask = [];
+                //     querySnapshot.forEach(documentSnapshot => {
+                //         dataTask.push({
+                //             ...documentSnapshot.data(),
+                //             id: documentSnapshot.id,
+                //         });
+                //     })
+                //     setFavoriteArray(dataTask);
+                //     setLoading(false)
+                // });
             }
         });
-    }, [favoriteArray])
+
+        
+    }, [])
+
+    
 
     const filterImageUrl = (val) => {
         let nameImg = image.filter(element => val.search(element.name) !== -1);
@@ -75,7 +86,7 @@ const RecommendPage = ({ navigation }) => {
                 {Loading ? <ActivityIndicator /> : (
 
                     <FlatList
-                        data={favoriteArray}
+                        data={userdata.favoritelist}
                         renderItem={({ item }) => (
                             <ListItem
                                 Component={TouchableScale}

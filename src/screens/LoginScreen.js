@@ -13,72 +13,79 @@ import {
 import auth from "@react-native-firebase/auth"
 import Moc_logo from '../../assets/moc_logo.png'
 import LinearGradient from 'react-native-linear-gradient';
-import { useSelector } from 'react-redux';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { __doSingIn } from '../redux/actions/userActions';
 
 const LoginScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const theme = useSelector(state => state.theme.theme);
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const theme = useSelector(state => state.theme.theme);
 
 
-  const __doSingIn = async (email, password) => {
-    try {
-      let response = await auth().signInWithEmailAndPassword(email, password)
-      if (response && response.user) {
-        Alert.alert("Success ✅", "Authenticated successfully")
-      }
-    } catch (e) {
-      console.error(e.message)
-    }
-    let user = auth().currentUser.uid;
-
-    if (user) {
-      console.log(user);
-      this.setState({ authenticated: true });
-    } else {
-      this.setState({ authenticated: false });
-    }
+  const SignIn = (email, password) => {
+    dispatch(__doSingIn(email, password))
   }
+
+  // const __doSingIn = async (email, password) => {
+  //   try {
+  //     let response = await auth().signInWithEmailAndPassword(email, password)
+  //     if (response && response.user) {
+  //       Alert.alert("Success ✅", "Authenticated successfully")
+  //     }
+  //   } catch (e) {
+  //     console.error(e.message)
+  //   }
+  //   let user = auth().currentUser.uid;
+
+  //   if (user) {
+  //     console.log(user);
+  //     this.setState({ authenticated: true });
+  //   } else {
+  //     this.setState({ authenticated: false });
+  //   }
+  // }
 
 
   return (
     <LinearGradient
-    colors={[theme.pri700, theme.pri50]}
-    start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-    style={styles.container1}
+      colors={[theme.pri700, theme.pri50]}
+      start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+      style={styles.container1}
     >
-    <SafeAreaView
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
-      <View style={styles.bgInput}>
+      <SafeAreaView
+        style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+        <View style={styles.bgInput}>
 
-      <Image
-        style={styles.img}
-        source={Moc_logo}
-        />
-      <Input
-        style={styles.input}
-        labelValue={email}
-        onChangeText={(userEmail) => setEmail(userEmail)}
-        placeholder="Email"
-        keyboardType={'email-address'}
-        autoCapitalize="none"
-        autoCorrect={false}
-        />
-      <Input
-        style={styles.input}
-        labelValue={password}
-        onChangeText={(userPassword) => setPassword(userPassword)}
-        placeholderText="Password"
-        secureTextEntry={true}
-        />
-      <TouchableOpacity style={styles.loginButton} onPress={() => __doSingIn(email, password)}>
-        <Text style={styles.loginButtonText}>
-          LOGIN
-        </Text>
-      </TouchableOpacity>
+          <Image
+            style={styles.img}
+            source={Moc_logo}
+          />
+          <Input
+            style={styles.input}
+            labelValue={email}
+            onChangeText={(userEmail) => setEmail(userEmail)}
+            placeholder="Email"
+            keyboardType={'email-address'}
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+          <Input
+            style={styles.input}
+            labelValue={password}
+            onChangeText={(userPassword) => setPassword(userPassword)}
+            placeholderText="Password"
+            secureTextEntry={true}
+          />
+          <TouchableOpacity style={styles.loginButton} onPress={() => SignIn(email, password)}>
+            <Text style={styles.loginButtonText}>
+              LOGIN
+            </Text>
+          </TouchableOpacity>
         </View>
-    </SafeAreaView>
+      </SafeAreaView>
     </LinearGradient>
 
   );
