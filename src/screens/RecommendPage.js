@@ -8,6 +8,7 @@ import Moc_logo from '../../assets/moc_logo.png';
 import firestore from '@react-native-firebase/firestore';
 import auth from "@react-native-firebase/auth"
 import { ActivityIndicator, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
 
 
 const RecommendPage = ({ navigation }) => {
@@ -16,6 +17,9 @@ const RecommendPage = ({ navigation }) => {
     const [uid, setUid] = useState();
     const [favoriteArray, setFavoriteArray] = useState();
     const [Loading, setLoading] = useState(true);
+    const theme = useSelector(state => state.theme.theme);
+    const image = useSelector(state => state.data.urlimage)
+
 
     let usersCollectionRef = firestore()
         .collection('users')
@@ -42,58 +46,74 @@ const RecommendPage = ({ navigation }) => {
         });
     }, [favoriteArray])
 
+    const filterImageUrl = (val) => {
+        let nameImg = image.filter(element => val.search(element.name) !== -1);
+
+        if (nameImg.length !== 0) {
+            return { uri: nameImg[0].url }
+        } else {
+            return Moc_logo
+        }
+    }
+
 
     return (
-        <View>
-            <View style={styles.box1}>
-            <Text style={
-                {
-                    color: '#FFC511',
-                    fontSize: 25,
-                    fontFamily: "Mitr-Light",  
-                }}>Recommend</Text>
+        <LinearGradient
+            colors={[theme.pri700, theme.pri50]}
+            start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+            style={styles.container1}>
+            <View>
+                <View style={styles.box1}>
+                    <Text style={
+                        {
+                            color: '#FFC511',
+                            fontSize: 25,
+                            fontFamily: "Mitr-Light",
+                        }}>Recommend</Text>
                 </View>
 
-            {Loading ? <ActivityIndicator /> : (
+                {Loading ? <ActivityIndicator /> : (
 
-                <FlatList
-                    data={favoriteArray}
-                    renderItem={({ item }) => (
-                        <ListItem
-                            Component={TouchableScale}
-                            friction={0} //
-                            tension={200} // These props are passed to the parent component (here TouchableScale)
-                            activeScale={0.95} //
-                            linearGradientProps={{
-                                colors: ['#1544E2', '#0A214A'],
-                                start: { x: 1, y: 0 },
-                                end: { x: 0.2, y: 0 },
-                            }}
-                            ViewComponent={LinearGradient}
-                            containerStyle={{
-                                marginHorizontal: 4,
-                                marginVertical: 4,
-                                borderRadius: 8,
-                            }}
-                            onPress={() =>
-                                navigation.navigate('ShowPricePage', { id: item.product_id })
-                            }
-                        >
-                            <Avatar source={Moc_logo} rounded />
-                            <ListItem.Content>
-                                <ListItem.Title style={{ fontSize: 20, color: '#FFC511', fontWeight: '700', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
-                                <View style={styles.TextContainer1}>
-                                    <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.group_name} </ListItem.Subtitle>
-                                    <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.categoty_name} </ListItem.Subtitle>
-                                    <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>รหัสสินค้า : {item.product_id}</ListItem.Subtitle>
-                                </View>
-                            </ListItem.Content>
-                        </ListItem>
-                    )}
-                    keyExtractor={item => item.product_id}
-                />
-            )}
-        </View>
+                    <FlatList
+                        data={favoriteArray}
+                        renderItem={({ item }) => (
+                            <ListItem
+                                Component={TouchableScale}
+                                friction={0} //
+                                tension={200} // These props are passed to the parent component (here TouchableScale)
+                                activeScale={0.95} //
+                                linearGradientProps={{
+                                    colors: ['#1544E2', '#0A214A'],
+                                    start: { x: 1, y: 0 },
+                                    end: { x: 0.2, y: 0 },
+                                }}
+                                ViewComponent={LinearGradient}
+                                containerStyle={{
+                                    marginHorizontal: 4,
+                                    marginVertical: 4,
+                                    borderRadius: 8,
+                                }}
+                                onPress={() =>
+                                    navigation.navigate('ShowPricePage', { id: item.product_id })
+                                }
+                            >
+                                <Avatar style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
+                                <ListItem.Content>
+                                    <ListItem.Title style={{ fontSize: 20, color: '#FFC511', fontWeight: '700', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
+                                    <View style={styles.TextContainer1}>
+                                        <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.group_name} </ListItem.Subtitle>
+                                        <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.categoty_name} </ListItem.Subtitle>
+                                        <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>รหัสสินค้า : {item.product_id}</ListItem.Subtitle>
+                                    </View>
+                                </ListItem.Content>
+                            </ListItem>
+                        )}
+                        keyExtractor={item => item.product_id}
+                    />
+                )}
+            </View>
+        </LinearGradient>
+
     )
 }
 
@@ -104,7 +124,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingTop: 10,
     },
-    box1:{
+    logo: {
+        width: 80,
+    },
+    container1: {
+        width: '100%',
+        height: '100%'
+    },
+    box1: {
         color: '#FFC511',
         textAlign: 'center',
         justifyContent: 'center',

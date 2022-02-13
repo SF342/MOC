@@ -61,9 +61,9 @@ export default Home = ({ navigation }) => {
   const filterImageUrl = (val) => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
 
-    if (nameImg.length !== 0){
-      return {uri:nameImg[0].url}
-    }else{
+    if (nameImg.length !== 0) {
+      return { uri: nameImg[0].url }
+    } else {
       return Moc_logo
     }
   }
@@ -83,61 +83,67 @@ export default Home = ({ navigation }) => {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#e3eeff' }}>
+    <LinearGradient
+      colors={[theme.pri700, theme.pri50]}
+      start={{ x: 1, y: 0 }} end={{ x: 0, y: 1 }}
+      style={styles.container1}>
+      <View style={{ flex: 1,  }}>
 
-      <SearchBar
-        placeholder="Type Here..."
-        lightTheme
-        round
-        value={valueInput}
-        onChangeText={text => updateInput(text)}
-        autoCorrect={false}
-        containerStyle={{ backgroundColor: '#e3eeff' }}
-      />
+        <SearchBar
+          placeholder="Type Here..."
+          lightTheme
+          round
+          value={valueInput}
+          onChangeText={text => updateInput(text)}
+          autoCorrect={false}
+          containerStyle={{ backgroundColor: '#0A214A' }}
+        />
 
-      {checkUserType === true ? <RecommendPage navigation={navigation} /> :
-        (<View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}>
-          <Text style={{ fontSize: 18, color: 'red', textAlign: 'center', fontFamily: "Mitr-Light" }}>{data.title}</Text>
-          <FlatList
-            data={data}
-            renderItem={({ item }) => (
-              <ListItem
-                Component={TouchableScale}
-                friction={0} //
-                tension={200} // These props are passed to the parent component (here TouchableScale)
-                activeScale={0.95} //
-                linearGradientProps={{
-                  colors: ['#1544E2', '#0A214A'],
-                  start: { x: 1, y: 0 },
-                  end: { x: 0.2, y: 0 },
-                }}
-                ViewComponent={LinearGradient}
-                containerStyle={{
-                  marginHorizontal: 4,
-                  marginVertical: 4,
-                  borderRadius: 8,
-                }}
-                onPress={() =>
-                  navigation.navigate('ShowPricePage', { id: item.product_id })
-                }
-              >
-                <Avatar source={filterImageUrl(item.product_name) } rounded />
-                <ListItem.Content>
-                  <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
-                  <View style={styles.TextContainer1}>
-                    <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.group_name} </ListItem.Subtitle>
-                    <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.categoty_name} </ListItem.Subtitle>
-                    <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>รหัสสินค้า : {item.product_id}</ListItem.Subtitle>
-                  </View>
-                </ListItem.Content>
-              </ListItem>
-            )}
-            keyExtractor={item => item.product_id}
-          />
-        </View>
-        )}
+        {checkUserType === true ? <RecommendPage navigation={navigation} /> :
+          (<View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}>
+            <Text style={{ fontSize: 18, color: 'red', textAlign: 'center', fontFamily: "Mitr-Light" }}>{data.title}</Text>
+            <FlatList
+              data={data}
+              renderItem={({ item }) => (
+                <ListItem
+                  Component={TouchableScale}
+                  friction={0} //
+                  tension={200} // These props are passed to the parent component (here TouchableScale)
+                  activeScale={0.95} //
+                  linearGradientProps={{
+                    colors: ['#1544E2', '#0A214A'],
+                    start: { x: 1, y: 0 },
+                    end: { x: 0.2, y: 0 },
+                  }}
+                  ViewComponent={LinearGradient}
+                  containerStyle={{
+                    marginHorizontal: 4,
+                    marginVertical: 4,
+                    borderRadius: 8,
+                  }}
+                  onPress={() =>
+                    navigation.navigate('ShowPricePage', { id: item.product_id })
+                  }
+                >
+                  <Avatar style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
+                  <ListItem.Content>
+                    <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
+                    <View style={styles.TextContainer1}>
+                      <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.group_name} </ListItem.Subtitle>
+                      <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.categoty_name} </ListItem.Subtitle>
+                      <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>รหัสสินค้า : {item.product_id}</ListItem.Subtitle>
+                    </View>
+                  </ListItem.Content>
+                </ListItem>
+              )}
+              keyExtractor={item => item.product_id}
+            />
+          </View>
+          )}
 
-    </View>
+      </View>
+    </LinearGradient>
+
   );
 };
 
@@ -147,6 +153,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingTop: 10,
+  },
+  logo : {
+    width: 80,
+  },
+  container1: {
+    width: '100%',
+    height: '100%',
   },
   TextContainer1: {
     flexDirection: 'row',

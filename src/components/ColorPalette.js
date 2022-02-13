@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     topic: {
         alignSelf: 'center', 
         fontSize: 20,
-        color: 'black',
+        color: 'white',
         fontWeight: 'bold'
     },
     box1 :{
