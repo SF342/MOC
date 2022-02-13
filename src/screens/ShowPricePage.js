@@ -15,6 +15,7 @@ const ShowPricePage = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.productprice)
   const image = useSelector(state => state.data.urlimage)
+  const theme = useSelector(state => state.theme.theme);
 
   const PID = route.params.id;
   const [product, setProduct] = useState(null);
@@ -56,17 +57,21 @@ const ShowPricePage = ({ navigation, route }) => {
   }
 
   return (
+    <LinearGradient
+    colors={[theme.pri700, theme.pri50]}
+    start={{ x: 1, y: 0 }} end={{ x: 0, y: 1 }}
+    style={styles.linearG}>
     <NativeBaseProvider
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#e3eeff' }}>
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       {product === null || Loading ? <ActivityIndicator /> :
         <ScrollView>
           <Center h="100%" justifyContent='center' alignItems='center'
-            backgroundColor='#e3eeff' >
+            >
             <VStack space={4} alignItems="center" padding={2} >
-              <Center w="400" h="220" bg="#0e2857" rounded="md" shadow={3} >
+              <Center w="400" h="220" rounded="md" shadow={3} >
                 <LinearGradient
-                  colors={['#012c7a', '#0A214A']}
-                  start={{ x: 1, y: 0.5 }} end={{ x: 1, y: 0.01 }}
+                  colors={['#154599', '#154599']}
+                  start={{ x: 1, y: 1 }} end={{ x: 1, y: 1 }}
                   style={styles.container1}
                 >
                   <View style={styles.box1} >
@@ -92,19 +97,19 @@ const ShowPricePage = ({ navigation, route }) => {
               </Center>
             </VStack>
             <HStack space={1}>
-              <Center h="300" w="200" bg="#0e2857" rounded="md" shadow={3} padding='50' >
+              <Center h="300" w="200"  rounded="md" shadow={3} padding='50' >
                 <LinearGradient
-                  colors={['#012c7a', '#0A214A']}
-                  start={{ x: 1, y: 0.5 }} end={{ x: 1, y: 0.01 }}
+                  colors={['#154599', '#154599']}
+                  start={{ x: 1, y: 1 }} end={{ x: 1, y: 1 }}
                   style={styles.container2}>
                   <Image style={styles.logo} source={filterImageUrl(product.product_name)}  rounded />
                 </LinearGradient>
 
               </Center>
-              <Center h="300" w="200" bg="#0e2857" rounded="md" shadow={3} >
+              <Center h="300" w="200"  rounded="md" shadow={3} >
                 <LinearGradient
-                  colors={['#012c7a', '#0A214A']}
-                  start={{ x: 1, y: 0.5 }} end={{ x: 1, y: 0.01 }}
+                  colors={['#154599', '#154599']}
+                  start={{ x: 1, y: 1 }} end={{ x: 1, y: 1 }}
                   style={styles.container2}>
                   <View>
                     <Text style={styles.title2}>ราคาต่ำสุด : </Text>
@@ -122,6 +127,7 @@ const ShowPricePage = ({ navigation, route }) => {
 
       }
     </NativeBaseProvider>
+    </LinearGradient>
 
   );
 }
@@ -133,16 +139,28 @@ const styles = StyleSheet.create({
     height: '40%',
     marginBottom: '1%'
   },
+  linearG: {
+    height: '100%',
+    width: '100%'
+  },
   container1: {
     width: '100%',
     height: '100%',
-    borderRadius: 10
+    borderRadius: 20,
+    shadowColor: "#000000",
+    shadowOpacity: 5,
+    shadowRadius: 5,
+    elevation: 5
   },
   container2: {
     width: 200,
     height: 300,
-    borderRadius: 10,
     justifyContent: 'center',
+    borderRadius: 20,
+    shadowColor: "#000000",
+    shadowOpacity: 5,
+    shadowRadius: 5,
+    elevation: 5
   },
   box1: {
     padding: '4%',
@@ -160,8 +178,9 @@ const styles = StyleSheet.create({
     marginTop: '5%'
   },
   logo: {
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
+    alignSelf:'center'
   },
   topic: {
     color: '#FFC511',

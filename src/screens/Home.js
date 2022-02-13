@@ -125,7 +125,7 @@ export default Home = ({ navigation }) => {
                     navigation.navigate('ShowPricePage', { id: item.product_id })
                   }
                 >
-                  <Avatar source={filterImageUrl(item.product_name)} rounded />
+                  <Avatar style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
                   <ListItem.Content>
                     <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
                     <View style={styles.TextContainer1}>
@@ -153,6 +153,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingTop: 10,
+  },
+  logo : {
+    width: 80,
   },
   container1: {
     width: '100%',
