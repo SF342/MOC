@@ -94,13 +94,12 @@ const FavoriteList = () => {
   };
 
 
-  const onProductChange = dummyData => {
+  const onProductChange = (dummyData) => {
     setSelectedProduct(dummyData);
     setValue(dummyData.label)
     setProductId(dummyData.value)
   };
 
-  console.log(user.favoritelist.length, 1232132100000);
   return (
     <LinearGradient
       colors={[theme.pri700, theme.pri50]}

@@ -7,7 +7,8 @@ export const CHANGE_THEME = "CHANGE_THEME";
 
 // USER /////
 export const SET_SIGN_IN = "SET_SIGN_IN";
-export const ADD_TASK_FAVORITE = "SET_TASK_FAVORITE";
+export const SET_SIGN_OUT = "SET_SIGN_OUT";
+export const ADD_TASK_FAVORITE = "ADD_TASK_FAVORITE";
 export const DELETE_TASK_FAVORITE = "DELETE_TASK_FAVORITE";
 export const SET_TASK_FAVORITE = "SET_TASK_FAVORITE";
 

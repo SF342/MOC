@@ -15,11 +15,12 @@ export default function (state = initialState, action) {
                 email: action.payload.email,
                 uid: action.payload.uid
             };
-        case SET_SIGN_OUT: {
+        case SET_SIGN_OUT:
             return {
-                initialState
-            }
-        }
+                authenticated: false,
+                email: '',
+                favoritelist: []
+            };
         case SET_TASK_FAVORITE:
 
             if (state.favoritelist.length === 0) {
@@ -36,9 +37,10 @@ export default function (state = initialState, action) {
         case ADD_TASK_FAVORITE:
             let taskTemp = state.favoritelist.findIndex((val) => val.product_id === action.payload.product_id)
             if (taskTemp === -1) {
+
                 return {
                     ...state,
-                    favoritelist: [taskTemp, action.payload]
+                    favoritelist: [...state.favoritelist, action.payload],
                 }
             } else {
                 return {

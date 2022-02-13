@@ -35,7 +35,7 @@ const RecommendPage = ({ navigation }) => {
                 setUid(user.uid);
                 dispatch(setSignIn(user))
                 if (userdata.favoritelist.length === 0 && userdata.authenticated) {
-                    dispatch(getFavorite(user.uid))
+                    dispatch(getFavorite(userdata.uid))
                 }
             
                 // usersCollectionRef.onSnapshot(querySnapshot => {
@@ -51,7 +51,7 @@ const RecommendPage = ({ navigation }) => {
                 // });
             }
         });
-
+        
         
     }, [])
 
