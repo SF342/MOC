@@ -7,7 +7,7 @@ export const themeOptions = {
     pri50: '#6bd8ff',
     pri500: '#fff',
     pri700: '#0A214A',
-    pri800: '#007f39',
+    pri800: '#e66900',
     sec700: '#e3eeff',
     sec900: 'black',
   },

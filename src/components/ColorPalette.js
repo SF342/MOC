@@ -18,7 +18,7 @@ export class ColorPalette extends Component {
 
         return (
             <View style={styles.box1}>
-                <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                <View style={{flexDirection: 'row'}}>
                 <Text style={styles.topic}>Theme : </Text>
 
                     {

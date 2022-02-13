@@ -45,25 +45,14 @@ const RecommendPage = ({ navigation }) => {
 
     return (
         <View>
+            <View style={styles.box1}>
             <Text style={
                 {
                     color: '#FFC511',
-                    textAlign: 'center',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    fontSize: 35,
-                    width: '100%',
-                    height: '18%',
-                    marginBottom: 1,
-                    marginBottom: '3%',
-                    marginTop: '3%',
-                    fontFamily: "Mitr-Light",
-                    fontWeight: 'bold',
-                    textShadowColor: 'rgba(0, 0, 0, 0.75)',
-                    textShadowOffset: { width: -1, height: 1 },
-                    textShadowRadius: 5,
-                    backgroundColor: '#0A214A'
+                    fontSize: 25,
+                    fontFamily: "Mitr-Light",  
                 }}>Recommend</Text>
+                </View>
 
             {Loading ? <ActivityIndicator /> : (
 
@@ -92,7 +81,7 @@ const RecommendPage = ({ navigation }) => {
                         >
                             <Avatar source={Moc_logo} rounded />
                             <ListItem.Content>
-                                <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
+                                <ListItem.Title style={{ fontSize: 20, color: '#FFC511', fontWeight: '700', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
                                 <View style={styles.TextContainer1}>
                                     <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.group_name} </ListItem.Subtitle>
                                     <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.categoty_name} </ListItem.Subtitle>
@@ -114,6 +103,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 20,
         paddingTop: 10,
+    },
+    box1:{
+        color: '#FFC511',
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        width: '60%',
+        height: '18%',
+        marginBottom: 1,
+        marginBottom: '3%',
+        marginTop: '3%',
+        fontFamily: "Mitr-Light",
+        fontWeight: 'bold',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 5,
+        backgroundColor: '#0A214A',
+        borderRadius: 20
     },
     TextContainer1: {
         flexDirection: 'row',

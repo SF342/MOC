@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { useSelector, useDispatch } from 'react-redux';
 import ColorPalette from '../components/ColorPalette';
 import LinearGradient from 'react-native-linear-gradient';
+import user_icon from '../../assets/IconBros.png'
 
 
 const RegisterScreen = ({ navigation }) => {
@@ -51,6 +52,11 @@ const RegisterScreen = ({ navigation }) => {
       marginBottom: 1,
       fontWeight: 'bold',
     },
+    userlogo : {
+      width:150,
+      height: 150,
+      alignSelf: 'center'
+    },  
     title2: {
       color: 'black',
       textAlign: 'center',
@@ -125,9 +131,11 @@ const RegisterScreen = ({ navigation }) => {
     start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
     style={styles.container1}>
     <SafeAreaView
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      style={{ flex: 1, alignItems: 'center', marginTop: '5%' }}>
       <View>
         <Text style={styles.title}>Welcome</Text>
+        <Image source={user_icon} style={styles.userlogo} />
+
         <Text style={styles.title2}>Email : {user.email}</Text>
         <ColorPalette />
         <TouchableOpacity

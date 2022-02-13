@@ -9,6 +9,10 @@ import firestore from '@react-native-firebase/firestore';
 import { ActivityIndicator } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import add_logo from '../../assets/Abstract_Add_1.png'
+import favorite_logo from '../../assets/favorite.png'
+
+import { HStack, NativeBaseProvider, Center, Box, ZStack, VStack } from "native-base";
+
 
 const FavoriteList = () => {
 
@@ -30,8 +34,12 @@ const FavoriteList = () => {
     .doc(uid)
     .collection('FavoriteList');
 
-  useEffect(() => {
+  if (products.length === 0) {
     dispatch(getData());
+    setLoading(false)
+  }
+
+  useEffect(() => {
     setData(products);
     auth().onAuthStateChanged((user) => {
       if (user) {
@@ -49,7 +57,7 @@ const FavoriteList = () => {
         });
       }
     });
-  }, [Loading])
+  }, [favoriteArray])
 
   // Function call to open modal add 
   function toggleModalVisibility() {
@@ -86,17 +94,20 @@ const FavoriteList = () => {
       start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
       style={styles.container1}>
       <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-        }}>
+        style={styles.boxFavelist}>
+        <View style={styles.boxTopic}>
+          <LinearGradient
+            colors={[theme.pri500, theme.pri50]}
+            start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+            style={styles.boxTopicGra}>
 
-        <Text style={styles.title}>Favorite List Page</Text>
+            <Image source={favorite_logo} style={styles.favLogo} />
+            <Text style={styles.title}> Favorite List</Text>
+          </LinearGradient>
+        </View>
         {Loading ? <ActivityIndicator /> :
           (
             <ScrollView>
-
               <FlatList
                 data={favoriteArray}
                 style={styles.superListFav}
@@ -111,10 +122,7 @@ const FavoriteList = () => {
                       style={styles.delButton}
                     >
                       <Text style={styles.textDelButton}>x</Text>
-
                     </TouchableOpacity>
-                    <View>
-                    </View>
                   </View>
 
                 )} />
@@ -176,6 +184,7 @@ const FavoriteList = () => {
         </View>
       </View>
     </LinearGradient>
+
   )
 }
 
@@ -185,6 +194,45 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  boxTopic: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignSelf: 'center',
+    backgroundColor: 'white',
+    shadowColor: "#000000",
+    shadowOpacity: 5,
+    shadowRadius: 5,
+    elevation: 5,
+    borderRadius: 10,
+    width: '100%'
+  },
+  boxTopicGra: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignSelf: 'center',
+    backgroundColor: 'white',
+    shadowColor: "#000000",
+    shadowOpacity: 5,
+    shadowRadius: 5,
+    elevation: 5,
+    borderRadius: 10,
+    width: '100%'
+  },
+  boxFavelist : {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: 'center',
+    marginTop: "5%",
+    height: '100%',
+    width: '80%',
+    marginBottom: '20%',
+    backgroundColor: '#0062f6',
+    borderRadius: 10,
+    shadowColor: "#000000",
+    shadowOpacity: 5,
+    shadowRadius: 5,
+  },
   superListFav: {
     marginTop: '5%',
     marginBottom: '20%',
@@ -192,6 +240,10 @@ const styles = StyleSheet.create({
   container1: {
     width: '100%',
     height: '100%',
+  },
+  favLogo: {
+    width: 40,
+    height: 50,
   },
   delButton: {
     marginVertical: 10,
@@ -223,7 +275,9 @@ const styles = StyleSheet.create({
   },
   textTopicList: {
     color: 'white',
-    fontSize: 20
+    fontSize: 20,
+    fontFamily: "Mitr-Light",
+
   },
   bottomContainer: {
     flex: 1,
@@ -236,9 +290,7 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     fontSize: 35,
-    width: 320,
-    marginBottom: 1,
-    fontWeight: 'bold',
+    fontFamily: "Mitr-Light",
   },
   title2: {
     color: 'black',
@@ -252,7 +304,6 @@ const styles = StyleSheet.create({
   circleText: {
     width: '115%',
     height: '100%',
-    textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
