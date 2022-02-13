@@ -21,14 +21,16 @@ export default Home = ({ navigation }) => {
 
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.data)
+  const image = useSelector(state => state.data.urlimage)
+  const theme = useSelector(state => state.theme.theme);
+
+
   const [data, setData] = useState()
   const [valueInput, setValue] = useState("")
   const [checkUserType, setCheckUserType] = useState(true)
 
   const [uid, setUid] = useState(null);
-  const theme = useSelector(state => state.theme.theme);
   const [isLoading, setLoading] = useState(true);
-
 
   useEffect(() => {
     setData(products);
@@ -53,6 +55,16 @@ export default Home = ({ navigation }) => {
       if (uid) {
         setCheckUserType(true)
       }
+    }
+  }
+
+  const filterImageUrl = (val) => {
+    let nameImg = image.filter(element => val.search(element.name) !== -1);
+
+    if (nameImg.length !== 0){
+      return {uri:nameImg[0].url}
+    }else{
+      return Moc_logo
     }
   }
 
@@ -83,7 +95,7 @@ export default Home = ({ navigation }) => {
         containerStyle={{ backgroundColor: '#e3eeff' }}
       />
 
-      {checkUserType ? <RecommendPage navigation={navigation} /> :
+      {checkUserType === true ? <RecommendPage navigation={navigation} /> :
         (<View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}>
           <Text style={{ fontSize: 18, color: 'red', textAlign: 'center', fontFamily: "Mitr-Light" }}>{data.title}</Text>
           <FlatList
@@ -109,7 +121,7 @@ export default Home = ({ navigation }) => {
                   navigation.navigate('ShowPricePage', { id: item.product_id })
                 }
               >
-                <Avatar source={Moc_logo} rounded />
+                <Avatar source={filterImageUrl(item.product_name) } rounded />
                 <ListItem.Content>
                   <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
                   <View style={styles.TextContainer1}>

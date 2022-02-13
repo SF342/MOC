@@ -1,4 +1,6 @@
-import { PRODUCTS_DATA, PRICE_PRODUCT } from '../types';
+import { PRODUCTS_DATA, PRICE_PRODUCT, SET_URL_IMAGE } from '../types';
+import { useState } from 'react';
+import storage from "@react-native-firebase/storage"
 import db from '../../../db.json'
 
 export const getData = () => async (dispatch) => {
@@ -16,9 +18,9 @@ export const getData = () => async (dispatch) => {
 export const getPrice = (PID) => async (dispatch) => {
 
     const date = new Date()
-    const today = date.getFullYear() + '-' + date.getMonth() + 1 + '-' + (date.getDay() -1);
+    const today = date.getFullYear() + '-' + date.getMonth() + 1 + '-' + (date.getDay() - 1);
 
-    
+
     const getWeekAgo = () => {
         const day = date.getDay() - 8;
         if (day <= 0) {
@@ -36,3 +38,40 @@ export const getPrice = (PID) => async (dispatch) => {
             dispatch({ type: PRICE_PRODUCT, payload: result });
         }).catch(console.error())
 }
+
+// export const getUrlImage = () => (dispatch) => {
+
+//     const [img, setImg] = useState(null);
+//     function listFilesAndDirectories(reference, pageToken) {
+//         return reference.list({ pageToken }).then(result => {
+//             // Loop over each item
+//             const imgTemp = []
+//             result.items.forEach((ref) => {
+//                 imgTemp.push(ref.fullPath)
+//             });
+//             setImg(imgTemp)
+//             loopUrl()
+//             if (result.nextPageToken) {
+//                 return listFilesAndDirectories(reference, result.nextPageToken);
+//             }
+
+//             return Promise.resolve();
+//         });
+//     }
+//     const reference = storage().ref("AnimalIcon")
+//     listFilesAndDirectories(reference)
+//     console.log(url)
+//     dispatch(loopUrl(img))
+
+// }
+
+// export const loopUrl = (img) => (dispatch) => {
+//     var UrlImage = []
+//     img.forEach(async (element) => {
+//         let url = await storage().ref(element).getDownloadURL();
+//         let t1 = { element: url };
+//         UrlImage.push(t1);
+//     });
+
+//     dispatch({ type: SET_URL_IMAGE, payload: UrlImage })
+// }
