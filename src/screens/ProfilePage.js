@@ -8,7 +8,7 @@ import {
     View,
     Image
 } from 'react-native';
-import ShopingCart from '../../assets/shopping-cart.png';
+import ShopingCart from '../../assets/Add-To-Cart-256.png';
 import { useSelector } from 'react-redux';
 
 const ChooseLoginRegister = ({ navigation }) => {
@@ -26,13 +26,13 @@ const ChooseLoginRegister = ({ navigation }) => {
             height: '100%',
         },
         logo: {
-            width: 150,
-            height: 150,
+            width: 230,
+            height: 170,
             resizeMode: 'stretch',
             marginBottom: 15
         },
         title: {
-            color: 'black',
+            color: 'white',
             textAlign: 'center',
             fontSize: 35,
             width: 320,
@@ -89,21 +89,21 @@ const ChooseLoginRegister = ({ navigation }) => {
             paddingTop: 50,
         },
         text: {
-            color: 'black',
-            fontSize: 18
+            color: 'white',
+            fontSize: 16
         },
     });
     
     return (
         <LinearGradient
-            colors={[theme.pri500, theme.pri50]}
+            colors={[theme.pri700, theme.pri50]}
             start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
             style={styles.container1}>
             <SafeAreaView style={{ flex: 1 }}>
                 <View style={styles.container} >
                     <Text style={styles.title} >Welcome</Text>
                     <Image style={styles.logo} source={ShopingCart} rounded />
-                    <Text>Please sign in for use add product </Text>
+                    <Text style={styles.text}>Please sign in for use add product </Text>
                     <View style={styles.box2}>
                         <TouchableOpacity style={styles.loginButton}
                             onPress={() => navigation.navigate('LoginScreen')}>

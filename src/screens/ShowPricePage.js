@@ -14,6 +14,8 @@ const ShowPricePage = ({ navigation, route }) => {
 
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.productprice)
+  const image = useSelector(state => state.data.urlimage)
+
   const PID = route.params.id;
   const [product, setProduct] = useState(null);
   const [Loading, setLoading] = useState(true);
@@ -40,6 +42,16 @@ const ShowPricePage = ({ navigation, route }) => {
     }
     if (product !== null) {
       setLoading(false);
+    }
+  }
+
+  const filterImageUrl = (val) => {
+    let nameImg = image.filter(element => val.search(element.name) !== -1);
+
+    if (nameImg.length !== 0) {
+      return { uri: nameImg[0].url }
+    } else {
+      return Moc_logo
     }
   }
 
@@ -85,7 +97,7 @@ const ShowPricePage = ({ navigation, route }) => {
                   colors={['#012c7a', '#0A214A']}
                   start={{ x: 1, y: 0.5 }} end={{ x: 1, y: 0.01 }}
                   style={styles.container2}>
-                  <Image style={styles.logo} source={Moc_logo} rounded />
+                  <Image style={styles.logo} source={filterImageUrl(product.product_name)}  rounded />
                 </LinearGradient>
 
               </Center>

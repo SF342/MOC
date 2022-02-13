@@ -11,8 +11,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import add_logo from '../../assets/Abstract_Add_1.png'
 import favorite_logo from '../../assets/favorite.png'
 
-import { HStack, NativeBaseProvider, Center, Box, ZStack, VStack } from "native-base";
-
 
 const FavoriteList = () => {
 
@@ -90,7 +88,7 @@ const FavoriteList = () => {
 
   return (
     <LinearGradient
-      colors={[theme.pri500, theme.pri50]}
+      colors={[theme.pri700, theme.pri50]}
       start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
       style={styles.container1}>
       <View
@@ -193,6 +191,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: '3%'
   },
   boxTopic: {
     justifyContent: 'center',
@@ -216,7 +215,8 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5,
     borderRadius: 10,
-    width: '100%'
+    width: '100%',
+    height: 55
   },
   boxFavelist : {
     flex: 1,
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '80%',
     marginBottom: '20%',
-    backgroundColor: '#0062f6',
+    backgroundColor: '#6188c2',
     borderRadius: 10,
     shadowColor: "#000000",
     shadowOpacity: 5,
@@ -246,10 +246,9 @@ const styles = StyleSheet.create({
     height: 50,
   },
   delButton: {
-    marginVertical: 10,
     backgroundColor: '#b53531',
     width: 50,
-    height: 60,
+    height: 50,
     shadowColor: "#000000",
     shadowOpacity: 5,
     shadowRadius: 5,
@@ -266,7 +265,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 60,
+    height: 50,
     backgroundColor: '#0A214A',
     shadowColor: "#000000",
     shadowOpacity: 5,
@@ -275,7 +274,7 @@ const styles = StyleSheet.create({
   },
   textTopicList: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: "Mitr-Light",
 
   },
@@ -283,7 +282,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignSelf: 'flex-end',
-    marginBottom: "17%",
     marginRight: '5%'
   },
   title: {
@@ -311,7 +309,7 @@ const styles = StyleSheet.create({
   circleButton: {
     borderRadius: 100,
     marginVertical: 10,
-    backgroundColor: '#A4A3FE',
+    backgroundColor: 'white',
     width: 70,
     height: 70,
     shadowColor: "#000000",

@@ -8,6 +8,7 @@ import Moc_logo from '../../assets/moc_logo.png';
 import firestore from '@react-native-firebase/firestore';
 import auth from "@react-native-firebase/auth"
 import { ActivityIndicator, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
 
 
 const RecommendPage = ({ navigation }) => {
@@ -16,6 +17,9 @@ const RecommendPage = ({ navigation }) => {
     const [uid, setUid] = useState();
     const [favoriteArray, setFavoriteArray] = useState();
     const [Loading, setLoading] = useState(true);
+    const theme = useSelector(state => state.theme.theme);
+    const image = useSelector(state => state.data.urlimage)
+
 
     let usersCollectionRef = firestore()
         .collection('users')
@@ -42,8 +46,22 @@ const RecommendPage = ({ navigation }) => {
         });
     }, [favoriteArray])
 
+    const filterImageUrl = (val) => {
+        let nameImg = image.filter(element => val.search(element.name) !== -1);
+    
+        if (nameImg.length !== 0) {
+          return { uri: nameImg[0].url }
+        } else {
+          return Moc_logo
+        }
+      }
+
 
     return (
+        <LinearGradient
+        colors={[theme.pri700, theme.pri50]}
+        start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+        style={styles.container1}>
         <View>
             <View style={styles.box1}>
             <Text style={
@@ -79,7 +97,7 @@ const RecommendPage = ({ navigation }) => {
                                 navigation.navigate('ShowPricePage', { id: item.product_id })
                             }
                         >
-                            <Avatar source={Moc_logo} rounded />
+                            <Avatar source={filterImageUrl(item.product_name)} rounded />
                             <ListItem.Content>
                                 <ListItem.Title style={{ fontSize: 20, color: '#FFC511', fontWeight: '700', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
                                 <View style={styles.TextContainer1}>
@@ -94,6 +112,8 @@ const RecommendPage = ({ navigation }) => {
                 />
             )}
         </View>
+        </LinearGradient>
+
     )
 }
 
@@ -103,6 +123,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 20,
         paddingTop: 10,
+    },
+    container1 :{
+        width: '100%',
+        height: '100%'
     },
     box1:{
         color: '#FFC511',

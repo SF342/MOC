@@ -2,10 +2,10 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ColorPalette from '../components/ColorPalette';
 import LinearGradient from 'react-native-linear-gradient';
-import user_icon from '../../assets/IconBros.png'
+import user_icon from '../../assets/kindpng_746008.png'
 
 
 const RegisterScreen = ({ navigation }) => {
@@ -45,26 +45,27 @@ const RegisterScreen = ({ navigation }) => {
 
   const styles = StyleSheet.create({
     title: {
-      color: theme.sec900,
       textAlign: 'center',
       fontSize: 35,
       width: 320,
-      marginBottom: 1,
+      marginBottom: '4%',
       fontWeight: 'bold',
+      color: 'white'
     },
     userlogo : {
       width:150,
       height: 150,
-      alignSelf: 'center'
+      alignSelf: 'center',
     },  
     title2: {
-      color: 'black',
+      color: 'white',
       textAlign: 'center',
       fontSize: 20,
       width: 320,
       marginBottom: 10,
       marginTop: 10,
       fontWeight: 'bold',
+      marginTop: '4%',
     },
     input: {
       marginVertical: 10,
@@ -127,7 +128,7 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <LinearGradient
-    colors={[theme.pri500, theme.pri50]}
+    colors={[theme.pri700, theme.pri50]}
     start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
     style={styles.container1}>
     <SafeAreaView
