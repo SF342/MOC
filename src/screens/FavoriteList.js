@@ -10,20 +10,24 @@ import { ActivityIndicator } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import add_logo from '../../assets/Abstract_Add_1.png'
 import favorite_logo from '../../assets/favorite.png'
+import uuid from 'react-native-uuid';
+import { addTask, removeTask } from '../redux/actions/userActions';
 
 
 const FavoriteList = () => {
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.data.data)
+  const user = useSelector(state => state.user)
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
-  const dispatch = useDispatch();
-  const products = useSelector(state => state.data.data)
+
   const [data, setData] = useState([]);
   const [value, setValue] = useState();
   const [p_id, setProductId] = useState();
   const [uid, setUid] = useState();
   const [favoriteArray, setFavoriteArray] = useState();
-  const [Loading, setLoading] = useState(true);
+  const [Loading, setLoading] = useState(false);
   const theme = useSelector(state => state.theme.theme);
 
 
@@ -39,22 +43,22 @@ const FavoriteList = () => {
 
   useEffect(() => {
     setData(products);
-    auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUid(user.uid)
-        usersCollectionRef.onSnapshot(querySnapshot => {
-          const dataTask = [];
-          querySnapshot.forEach(documentSnapshot => {
-            dataTask.push({
-              ...documentSnapshot.data(),
-              id: documentSnapshot.id,
-            });
-          })
-          setFavoriteArray(dataTask);
-          setLoading(false)
-        });
-      }
-    });
+    // auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     setUid(user.uid)
+    //     usersCollectionRef.onSnapshot(querySnapshot => {
+    //       const dataTask = [];
+    //       querySnapshot.forEach(documentSnapshot => {
+    //         dataTask.push({
+    //           ...documentSnapshot.data(),
+    //           id: documentSnapshot.id,
+    //         });
+    //       })
+    //       setFavoriteArray(dataTask);
+    //       setLoading(false)
+    //     });
+    //   }
+    // });
   }, [favoriteArray])
 
   // Function call to open modal add 
@@ -64,18 +68,29 @@ const FavoriteList = () => {
 
   function confirmAdd() {
     toggleModalVisibility();
-    usersCollectionRef.add({
-      product_id: p_id,
-      product_name: value
-    });
     setSelectedProduct('');
+
+    let check = user.favoritelist.indexOf((val) => val.product_id !== p_id)
+    if (check === -1){
+      const data = {
+        id: uuid.v4(),
+        product_id: p_id,
+        product_name: value
+      }
+      dispatch(addTask(user.uid, data))
+    }
+    
+
+    // usersCollectionRef.add({
+    //   product_id: p_id,
+    //   product_name: value
+    // });
+
   }
 
   async function deleteTasklist(userDocId) {
-    const res = await firestore()
-      .collection('users')
-      .doc(uid)
-      .collection('FavoriteList').doc(userDocId).delete();
+    dispatch(removeTask(user.uid, userDocId))
+
   };
 
 
@@ -85,7 +100,7 @@ const FavoriteList = () => {
     setProductId(dummyData.value)
   };
 
-
+  console.log(user.favoritelist.length, 1232132100000);
   return (
     <LinearGradient
       colors={[theme.pri700, theme.pri50]}
@@ -107,7 +122,7 @@ const FavoriteList = () => {
           (
             <ScrollView>
               <FlatList
-                data={favoriteArray}
+                data={user.favoritelist}
                 style={styles.superListFav}
                 renderItem={({ item }) =>
                 (
@@ -218,7 +233,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 55
   },
-  boxFavelist : {
+  boxFavelist: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
