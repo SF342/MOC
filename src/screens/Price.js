@@ -12,6 +12,14 @@ import {Colors, Picker,Button,} from 'react-native-ui-lib';
 import {ActivityIndicator} from 'react-native';
 import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  ProgressChart,
+  ContributionGraph,
+  StackedBarChart
+} from "react-native-chart-kit";
 
 const settingsIcon = require('../../assets/settings.png');
 const titanIcon = require('../../assets/titan.png');
@@ -103,6 +111,15 @@ const Price = () => {
   };
   const onProductChange1 = dummyData1 => {
     setSelectedProduct1(dummyData1);
+  };
+  const data = {
+      labels: [price.product_name,price1.product_name,],
+      datasets: [
+        {
+          data: [price.price_max_avg, price1.price_max_avg,]
+        }
+      ]
+    
   };
 
   return (
@@ -234,9 +251,37 @@ const Price = () => {
                 <Text style={styles.modalText}>Price max : {price1.price_max_avg}  {price1.unit}</Text>
                 <Text style={styles.modalText}>Price min : {price1.price_min_avg}  {price1.unit}</Text>
               </View>
+              
+              <BarChart
+                data={data}
+                width={220} // from react-native
+                height={220}
+                yAxisLabel=""
+                yAxisSuffix="THB"
+                yAxisInterval={1} // optional, defaults to 1
+                chartConfig={{
+                  backgroundColor: "#0A214A",
+                  backgroundGradientFrom: "#0A214A",
+                  backgroundGradientTo: "#068ECD",
+                  decimalPlaces: 1, // optional, defaults to 2dp
+                  color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                  labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                  style: {
+                    borderRadius: 16
+                  },
+                  propsForDots: {
+                    r: "6",
+                    strokeWidth: "2",
+                  }
+                }}
+                fromZero
+                style={{
+                  borderRadius: 16
+                }}
+              />
             </View>
-            
             )}
+            
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
