@@ -3,6 +3,9 @@ import {
   View,
   Text,
   StyleSheet,
+  Modal,
+  Pressable,
+  Dimensions,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useState, useEffect} from 'react';
@@ -10,6 +13,17 @@ import {Colors, Picker,Button,} from 'react-native-ui-lib';
 import {ActivityIndicator} from 'react-native';
 import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+import { VictoryBar, VictoryChart, VictoryGroup, VictoryLegend, VictoryTheme } from "victory-native";
+// import {
+//   LineChart,
+//   BarChart,
+//   PieChart,
+//   ProgressChart,
+//   ContributionGraph,
+//   StackedBarChart
+// } from "react-native-chart-kit";
 
 const settingsIcon = require('../../assets/settings.png');
 const titanIcon = require('../../assets/titan.png');
@@ -23,6 +37,8 @@ const Price = () => {
   const products = useSelector(state => state.data.data)
 
   const [price, setPrice] = useState([]);
+  const [price1, setPrice1] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState('date');
@@ -62,10 +78,10 @@ const Price = () => {
   //     .finally(() => setLoading(false));
   // }
 
-  useEffect(() => {
-    // fetchData()
-    dispatch(getData());
-  }, []);
+  // useEffect(() => {
+  //   fetchData()
+  //   dispatch(getData());
+  // }, []);
 
   const [selectedProduct, setSelectedProduct] = useState('');
   const [selectedProduct1, setSelectedProduct1] = useState('');
@@ -79,11 +95,19 @@ const Price = () => {
       .then(res => res.json())
       .then(resjson => {
         setPrice(resjson);
+      })
+    
+    const priceURL1 = `https://dataapi.moc.go.th/gis-product-prices?product_id=${selectedProduct1.value}&from_date=${textDate}&to_date=${textDate}`;
+    fetch(priceURL1)
+      .then(res1 => res1.json())
+      .then(resjson1 => {
+        setPrice1(resjson1);
         setPriceLoading(false);
-        console.log(resjson);
+        console.log(resjson1);
       })
     console.log(selectedProduct.value)   
     console.log(price)
+    setModalVisible(true);
   };
 
   const onProductChange = dummyData => {
@@ -91,6 +115,18 @@ const Price = () => {
   };
   const onProductChange1 = dummyData1 => {
     setSelectedProduct1(dummyData1);
+  };
+  const data = {
+      price1: [
+        {x: 'price_max' , y:price.price_max_avg},
+        {x: 'price_min' , y:price.price_min_avg},
+      ],
+    
+      price2: [
+        {x: 'price_max' , y:price1.price_max_avg},
+        {x: 'price_min' , y:price1.price_min_avg},
+      ],
+    
   };
 
   return (
@@ -137,47 +173,8 @@ const Price = () => {
           </Picker>
         </View>
         <View style={{ alignItems: 'center', paddingBottom: 10 , margin:20}}>
-          <Button onPress={showDatepicker} label="Compare" borderRadius={10} backgroundColor='#0A214A'/>
+          <Button onPress={onClickSearch} label="Compare" borderRadius={10} backgroundColor='#0A214A'/>
         </View>
-        {/* <View style={styles.ButtonContainer}> */}
-          {/* <Button
-            title="Search"
-            onPress={onClickSearch}
-            color="#068ECD"
-          /> */}
-          {/* <Button
-              style={{marginBottom: 20}}
-              size={Button.sizes.small}
-              backgroundColor='#3297F4'
-              iconSource={titanIcon}
-              iconStyle={{tintColor: 'white'}}
-              onPress={onClickSearch}
-              label="Search"
-            /> */}
-           {/* <Button
-              size={'small'}
-              style={{marginBottom: 20 / 4, marginLeft: 20}}
-              backgroundColor='#52CF92'
-              iconSource={settingsIcon}
-              onPress={onClickSearch}
-              iconOnRight
-              animateLayout
-              animateTo={'left'}
-            /> */}
-        {/* </View> */}
-      </View>
-      {/* {isPriceLoading ? (
-        <ActivityIndicator />
-      ) : (     
-      <View style={styles.headerContainer}>
-        <Text style={styles.t1}>Name : {price.product_name}</Text>
-        <Text style={styles.t1}>Id : {price.product_id}</Text>
-        <Text style={styles.t1}>Price max : {price.price_max_avg}  {price.unit}</Text>
-        <Text style={styles.t1}>Price min : {price.price_min_avg}  {price.unit}</Text>
-      </View>
-      )}
-      <View>
-        <Text style={styles.t1}>Date Select : {textDate}</Text>
       </View>
       <View style={{ alignItems: 'center', paddingBottom: 10 , margin:20}}>
         <Button onPress={showDatepicker} label="Show date" />
@@ -192,7 +189,55 @@ const Price = () => {
           display="default"
           onChange={onChange}
         />
-      )} */}
+      )}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalTextheader}>COMPARE</Text>
+            {isPriceLoading ? (
+              <ActivityIndicator />
+            ) : (     
+            <View style={styles.modalbox}>
+              <View>
+                <Text style={styles.modalHeader}> <FontAwesome name="circle" color='#0A214A' size={13} /> {price.product_name}</Text>
+                <Text style={styles.modalText}>Price max : {price.price_max_avg}  {price.unit}</Text>
+                <Text style={styles.modalText}>Price min : {price.price_min_avg}  {price.unit}</Text>
+              </View>
+              <View>
+                <Text style={styles.modalHeader}> <FontAwesome name="circle" color='#FFBD12' size={13} /> {price1.product_name}</Text>
+                <Text style={styles.modalText}>Price max : {price1.price_max_avg}  {price1.unit}</Text>
+                <Text style={styles.modalText}>Price min : {price1.price_min_avg}  {price1.unit}</Text>
+
+                <VictoryChart width={250} height={230}>
+                  <VictoryGroup offset={20}>
+                    <VictoryBar data={data.price1} style={{data: {fill: '#0A214A'}}}/>
+                    <VictoryBar data={data.price2} style={{data: {fill: '#FFBD12'}}}/>
+                  </VictoryGroup>
+                </VictoryChart>
+
+                <Text style={styles.modalText}>{moment(textDate).format('LL')}</Text>
+            
+              </View>
+            </View>
+            )}
+            
+            <Pressable
+              style={[styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>BACK</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -228,17 +273,19 @@ const styles = StyleSheet.create({
     padding: 5,
     
   },
-  headerContainer: {
-    height: 200,
-    width: 370,
+  modalbox: {
     borderRadius: 30,
     padding: 10,
-    marginLeft: 20,
+    margin: 20,
     backgroundColor: 'rgba(180, 180, 180,0.09)',
     marginBottom: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
    
+  },
+  modalTextheader: {
+    color: "black",
+    fontWeight: "bold",
   },
   text: {
     color: 'white',
@@ -273,6 +320,7 @@ const styles = StyleSheet.create({
   ScrollView: {
     marginTop: 1,
   },
+
   ButtonContainer: {
     width: 90,
     height: 60,
@@ -280,5 +328,68 @@ const styles = StyleSheet.create({
     marginTop: 15,
     paddingLeft: 13,
   },
+  centeredView: {
+    flex: 1,
+    backgroundColor: "#000000aa",
+    // justifyContent: "center",
+    // alignItems: "center",
+    // margin: 22
+  },
+  modalView: {
+    flex:1,
+    margin: 50,
+    // marginTop: 100,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  buttonClose: {
+    backgroundColor: "#0A214A",
+    borderRadius: 12,
+    width:80,
+    padding: 10,
+    marginTop:10,
+    elevation: 2
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    fontWeight:'600',
+    marginBottom: 5,
+    fontSize: 14,
+    textAlign: "center"
+  },
+  modalHeader: {
+    fontWeight:'600',
+    fontSize: 15,
+    paddingHorizontal: 10,
+    marginBottom: 5,
+
+    
+  },
+  icontext: {
+    alignItems: 'center',
+    
+  },
+  barChart:{
+    marginBottom:25,
+  }
 });
 export default Price;
