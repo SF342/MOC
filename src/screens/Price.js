@@ -206,24 +206,26 @@ const Price = () => {
               <ActivityIndicator />
             ) : (     
             <View style={styles.modalbox}>
-              <View style={styles.icontext}>
-                <FontAwesome name="circle" color='#0A214A' size={13} />
-                <Text style={styles.modalHeader}>{price.product_name}</Text>
-              </View>
-              <View style={styles.icontext}>
-                <FontAwesome name="circle" color='#FFBD12' size={13} />
-                <Text style={styles.modalHeader}>{price1.product_name}</Text>
-              </View>
-              
               <View>
-                <VictoryChart width={250} height={300}>
+                <Text style={styles.modalHeader}> <FontAwesome name="circle" color='#0A214A' size={13} /> {price.product_name}</Text>
+                <Text style={styles.modalText}>Price max : {price.price_max_avg}  {price.unit}</Text>
+                <Text style={styles.modalText}>Price min : {price.price_min_avg}  {price.unit}</Text>
+              </View>
+              <View>
+                <Text style={styles.modalHeader}> <FontAwesome name="circle" color='#FFBD12' size={13} /> {price1.product_name}</Text>
+                <Text style={styles.modalText}>Price max : {price1.price_max_avg}  {price1.unit}</Text>
+                <Text style={styles.modalText}>Price min : {price1.price_min_avg}  {price1.unit}</Text>
+
+                <VictoryChart width={250} height={230}>
                   <VictoryGroup offset={20}>
                     <VictoryBar data={data.price1} style={{data: {fill: '#0A214A'}}}/>
                     <VictoryBar data={data.price2} style={{data: {fill: '#FFBD12'}}}/>
                   </VictoryGroup>
                 </VictoryChart>
+
+                <Text style={styles.modalText}>{moment(textDate).format('LL')}</Text>
+            
               </View>
-              <Text style={styles.modalText}>{moment(textDate).format('LL')}</Text>
             </View>
             )}
             
@@ -360,7 +362,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     width:80,
     padding: 10,
-    marginTop:20,
+    marginTop:10,
     elevation: 2
   },
   textStyle: {
@@ -370,7 +372,7 @@ const styles = StyleSheet.create({
   },
   modalText: {
     fontWeight:'600',
-    marginBottom: 15,
+    marginBottom: 5,
     fontSize: 14,
     textAlign: "center"
   },
@@ -378,13 +380,16 @@ const styles = StyleSheet.create({
     fontWeight:'600',
     fontSize: 15,
     paddingHorizontal: 10,
+    marginBottom: 5,
+
     
   },
   icontext: {
-    flexDirection: 'row',
     alignItems: 'center',
     
   },
-
+  barChart:{
+    marginBottom:25,
+  }
 });
 export default Price;
