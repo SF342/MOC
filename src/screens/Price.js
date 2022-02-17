@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Modal,
   Pressable,
+  Dimensions,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useState, useEffect} from 'react';
@@ -12,14 +13,17 @@ import {Colors, Picker,Button,} from 'react-native-ui-lib';
 import {ActivityIndicator} from 'react-native';
 import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {
-  LineChart,
-  BarChart,
-  PieChart,
-  ProgressChart,
-  ContributionGraph,
-  StackedBarChart
-} from "react-native-chart-kit";
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+import { VictoryBar, VictoryChart, VictoryGroup, VictoryLegend, VictoryTheme } from "victory-native";
+// import {
+//   LineChart,
+//   BarChart,
+//   PieChart,
+//   ProgressChart,
+//   ContributionGraph,
+//   StackedBarChart
+// } from "react-native-chart-kit";
 
 const settingsIcon = require('../../assets/settings.png');
 const titanIcon = require('../../assets/titan.png');
@@ -74,10 +78,10 @@ const Price = () => {
   //     .finally(() => setLoading(false));
   // }
 
-  useEffect(() => {
-    // fetchData()
-    dispatch(getData());
-  }, []);
+  // useEffect(() => {
+  //   fetchData()
+  //   dispatch(getData());
+  // }, []);
 
   const [selectedProduct, setSelectedProduct] = useState('');
   const [selectedProduct1, setSelectedProduct1] = useState('');
@@ -113,12 +117,15 @@ const Price = () => {
     setSelectedProduct1(dummyData1);
   };
   const data = {
-      labels: [price.product_name,price1.product_name,],
-      datasets: [
-        {
-          data: [price.price_max_avg, price1.price_max_avg,]
-        }
-      ]
+      price1: [
+        {x: 'price_max' , y:price.price_max_avg},
+        {x: 'price_min' , y:price.price_min_avg},
+      ],
+    
+      price2: [
+        {x: 'price_max' , y:price1.price_max_avg},
+        {x: 'price_min' , y:price1.price_min_avg},
+      ],
     
   };
 
@@ -168,46 +175,7 @@ const Price = () => {
         <View style={{ alignItems: 'center', paddingBottom: 10 , margin:20}}>
           <Button onPress={onClickSearch} label="Compare" borderRadius={10} backgroundColor='#0A214A'/>
         </View>
-        {/* <View style={styles.ButtonContainer}> */}
-          {/* <Button
-            title="Search"
-            onPress={onClickSearch}
-            color="#068ECD"
-          /> */}
-          {/* <Button
-              style={{marginBottom: 20}}
-              size={Button.sizes.small}
-              backgroundColor='#3297F4'
-              iconSource={titanIcon}
-              iconStyle={{tintColor: 'white'}}
-              onPress={onClickSearch}
-              label="Search"
-            /> */}
-           {/* <Button
-              size={'small'}
-              style={{marginBottom: 20 / 4, marginLeft: 20}}
-              backgroundColor='#52CF92'
-              iconSource={settingsIcon}
-              onPress={onClickSearch}
-              iconOnRight
-              animateLayout
-              animateTo={'left'}
-            /> */}
-        {/* </View> */}
       </View>
-      {/* {isPriceLoading ? (
-        <ActivityIndicator />
-      ) : (     
-      <View style={styles.headerContainer}>
-        <Text style={styles.t1}>Name : {price.product_name}</Text>
-        <Text style={styles.t1}>Id : {price.product_id}</Text>
-        <Text style={styles.t1}>Price max : {price.price_max_avg}  {price.unit}</Text>
-        <Text style={styles.t1}>Price min : {price.price_min_avg}  {price.unit}</Text>
-      </View>
-      )} */}
-      {/* <View>
-        <Text style={styles.t1}>Date Select : {textDate}</Text>
-      </View> */}
       <View style={{ alignItems: 'center', paddingBottom: 10 , margin:20}}>
         <Button onPress={showDatepicker} label="Show date" />
       </View>
@@ -238,55 +206,32 @@ const Price = () => {
               <ActivityIndicator />
             ) : (     
             <View style={styles.modalbox}>
-              <View>
-                <Text style={styles.modalHeader}>Name : {price.product_name}</Text>
-                {/* <Text style={styles.modalText}>Id : {price.product_id}</Text> */}
-                <Text style={styles.modalText}>Price max : {price.price_max_avg}  {price.unit}</Text>
-                <Text style={styles.modalText}>Price min : {price.price_min_avg}  {price.unit}</Text>
+              <View style={styles.icontext}>
+                <FontAwesome name="circle" color='#0A214A' size={13} />
+                <Text style={styles.modalHeader}>{price.product_name}</Text>
               </View>
-
-              <View>
-                <Text style={styles.modalHeader}>Name : {price1.product_name}</Text>
-                {/* <Text style={styles.modalText}>Id : {price1.product_id}</Text> */}
-                <Text style={styles.modalText}>Price max : {price1.price_max_avg}  {price1.unit}</Text>
-                <Text style={styles.modalText}>Price min : {price1.price_min_avg}  {price1.unit}</Text>
+              <View style={styles.icontext}>
+                <FontAwesome name="circle" color='#FFBD12' size={13} />
+                <Text style={styles.modalHeader}>{price1.product_name}</Text>
               </View>
               
-              <BarChart
-                data={data}
-                width={220} // from react-native
-                height={220}
-                yAxisLabel=""
-                yAxisSuffix="THB"
-                yAxisInterval={1} // optional, defaults to 1
-                chartConfig={{
-                  backgroundColor: "#0A214A",
-                  backgroundGradientFrom: "#0A214A",
-                  backgroundGradientTo: "#068ECD",
-                  decimalPlaces: 1, // optional, defaults to 2dp
-                  color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                  labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                  style: {
-                    borderRadius: 16
-                  },
-                  propsForDots: {
-                    r: "6",
-                    strokeWidth: "2",
-                  }
-                }}
-                fromZero
-                style={{
-                  borderRadius: 16
-                }}
-              />
+              <View>
+                <VictoryChart width={250} height={300}>
+                  <VictoryGroup offset={20}>
+                    <VictoryBar data={data.price1} style={{data: {fill: '#0A214A'}}}/>
+                    <VictoryBar data={data.price2} style={{data: {fill: '#FFBD12'}}}/>
+                  </VictoryGroup>
+                </VictoryChart>
+              </View>
+              <Text style={styles.modalText}>{moment(textDate).format('LL')}</Text>
             </View>
             )}
             
             <Pressable
-              style={[styles.button, styles.buttonClose]}
+              style={[styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
             >
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={styles.textStyle}>BACK</Text>
             </Pressable>
           </View>
         </View>
@@ -391,6 +336,7 @@ const styles = StyleSheet.create({
   modalView: {
     flex:1,
     margin: 50,
+    // marginTop: 100,
     backgroundColor: "white",
     borderRadius: 20,
     padding: 35,
@@ -410,7 +356,12 @@ const styles = StyleSheet.create({
     elevation: 2
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#0A214A",
+    borderRadius: 12,
+    width:80,
+    padding: 10,
+    marginTop:20,
+    elevation: 2
   },
   textStyle: {
     color: "white",
@@ -418,14 +369,22 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   modalText: {
+    fontWeight:'600',
     marginBottom: 15,
+    fontSize: 14,
     textAlign: "center"
   },
   modalHeader: {
-    marginBottom: 15,
-    fontWeight:'800',
-    textAlign: "center"
-  }
+    fontWeight:'600',
+    fontSize: 15,
+    paddingHorizontal: 10,
+    
+  },
+  icontext: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    
+  },
 
 });
 export default Price;
