@@ -12,6 +12,8 @@ import UserLoginPage from './src/screens/LoggedInPage';
 import FavoriteList from './src/screens/FavoriteList';
 import RecommendPage from './src/screens/RecommendPage';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 
 import auth from '@react-native-firebase/auth';
 import { useState, useEffect } from 'react';
@@ -82,6 +84,9 @@ const LoggedInPage = () => {
 
 const ProfileStatePage = () => {
 
+    const dataApi = useSelector(state => state.user.user)
+    console.log("Custom  ",dataApi)
+
     // Set an initializing state whilst Firebase connects
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState();
@@ -89,6 +94,7 @@ const ProfileStatePage = () => {
     // Handle user state changes
     function onAuthStateChanged(user) {
         setUser(user);
+        console.log("user", user)
         if (initializing) setInitializing(false);
     }
 
@@ -97,7 +103,7 @@ const ProfileStatePage = () => {
         return subscriber; // unsubscribe on unmount
     }, []);
     return (
-        user ? <LoggedInPage /> : <SecondScreen_Home />
+        dataApi ? <LoggedInPage /> : <SecondScreen_Home />
     )
 }
 

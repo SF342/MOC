@@ -6,16 +6,14 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  Alert,
   Image,
   View
 } from 'react-native';
-import auth from "@react-native-firebase/auth"
 import Moc_logo from '../../assets/moc_logo.png'
 import LinearGradient from 'react-native-linear-gradient';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { __doSingIn } from '../redux/actions/userActions';
+import { __doSingIn, login } from '../redux/actions/userActions';
 
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -26,7 +24,8 @@ const LoginScreen = ({ navigation }) => {
 
 
   const SignIn = (email, password) => {
-    dispatch(__doSingIn(email, password))
+    //dispatch(__doSingIn(email, password))
+    dispatch(login(email, password))
   }
 
   // const __doSingIn = async (email, password) => {

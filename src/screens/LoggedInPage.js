@@ -12,10 +12,10 @@ import { __doSingOut } from '../redux/actions/userActions';
 const RegisterScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const theme = useSelector(state => state.theme.theme);
-  
+  const user = useSelector(state => state.user.user)
+
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
   
   function logout() {
     dispatch(__doSingOut())
@@ -23,7 +23,6 @@ const RegisterScreen = ({ navigation }) => {
 
   // Handle user state changes
   function onAuthStateChanged(user) {
-    setUser(user);
     if (initializing) setInitializing(false);
   }
 

@@ -3,7 +3,8 @@ import { SET_SIGN_IN, SET_SIGN_OUT, SET_TASK_FAVORITE, ADD_TASK_FAVORITE, DELETE
 const initialState = {
     authenticated: false,
     email: '',
-    favoritelist: []
+    favoritelist: [],
+    user: null
 };
 
 export default function (state = initialState, action) {
@@ -13,7 +14,8 @@ export default function (state = initialState, action) {
                 ...state,
                 authenticated: true,
                 email: action.payload.email,
-                uid: action.payload.uid
+                uid: action.payload._id,
+                user: action.payload
             };
         case SET_SIGN_OUT:
             return {

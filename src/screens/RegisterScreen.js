@@ -5,7 +5,8 @@ import { Input } from '../components/Input';
 import auth from "@react-native-firebase/auth"
 import { ScrollView } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { __doSingIn, register } from '../redux/actions/userActions';
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState();
@@ -13,15 +14,14 @@ const RegisterScreen = () => {
   const [name, setName] = useState();
 
   const theme = useSelector(state => state.theme.theme);
+  const dispatch = useDispatch();
 
 
-  const __doCreateUser = async (email, password) => {
+  const __doCreateUser = async () => {
     try {
-      let response = await auth().createUserWithEmailAndPassword(email, password)
-      if (response) {
-        console.log(response)
-        Alert.alert("Success ✅", "Authenticated successfully")
-      }
+
+      dispatch(register(name, email, password))
+      
     } catch (e) {
       console.error(e.message)
     }
@@ -70,7 +70,7 @@ const RegisterScreen = () => {
           <TouchableOpacity
             style={styles.loginButton}
             onPress={() => {
-              __doCreateUser(email, password);
+              __doCreateUser();
             }}>
             <Text style={styles.loginButtonText}>SIGN UP</Text>
           </TouchableOpacity>

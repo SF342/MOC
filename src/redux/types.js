@@ -12,4 +12,6 @@ export const ADD_TASK_FAVORITE = "ADD_TASK_FAVORITE";
 export const DELETE_TASK_FAVORITE = "DELETE_TASK_FAVORITE";
 export const SET_TASK_FAVORITE = "SET_TASK_FAVORITE";
 
-
+// Backend API Auth
+export const API_USER = "API_USER";
+export const API_LOGOUT = "API_LOGOUT";
