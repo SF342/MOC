@@ -2,17 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Modal, FlatList, Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Colors, Picker, } from 'react-native-ui-lib';
-import { getData } from "../redux/actions/dataActions"
 import { useSelector, useDispatch } from 'react-redux'
-import auth from "@react-native-firebase/auth"
-import firestore from '@react-native-firebase/firestore';
 import { ActivityIndicator } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import add_logo from '../../assets/Abstract_Add_1.png'
 import favorite_logo from '../../assets/favorite.png'
 import uuid from 'react-native-uuid';
-import { addTask, removeTask } from '../redux/actions/userActions';
-import { addFavoriteList, getFavoriteList } from '../redux/actions/favoriteActions';
+import { addFavoriteList, getFavoriteList, deleteTask } from '../redux/actions/favoriteActions';
 
 
 const FavoriteList = () => {
@@ -42,7 +38,6 @@ const FavoriteList = () => {
   // }
 
   useEffect(() => {
-
     if(length != fav_api.length){
       console.log("dif")
       console.log(length, fav_api.length)
@@ -52,13 +47,9 @@ const FavoriteList = () => {
       dispatch(getFavoriteList(user_api._id));
       console.log(length, fav_api.length)
       console.log("not dif")
-    } else{
-      console.log("else")
-      console.log(length, fav_api.length)
     }
 
-    setData(fav_api);
-    console.log("Fav page", fav_api)
+    setData(products);
 
   })
 
@@ -90,8 +81,8 @@ const FavoriteList = () => {
 
   }
 
-  async function deleteTasklist(userDocId) {
-    dispatch(removeTask(user.uid, userDocId))
+  async function deleteTasklist(_id) {
+    dispatch(deleteTask(_id))
 
   };
 
@@ -131,7 +122,7 @@ const FavoriteList = () => {
                       <Text style={styles.textTopicList}> {item.product_name}  </Text>
                     </View>
                     <TouchableOpacity
-                      onPress={() => { deleteTasklist(item.id) }}
+                      onPress={() => { deleteTasklist(item._id) }}
                       style={styles.delButton}
                     >
                       <Text style={styles.textDelButton}>x</Text>
@@ -164,7 +155,7 @@ const FavoriteList = () => {
                         placeholderTextColor="black"
                         containerStyle={styles.pickerStyle}
                         style={{ color: Colors.black }}>
-                        {data.map((option, index) => (
+                        {products.map((option, index) => (
                           <Picker.Item
                             key={index}
                             value={option.product_id}

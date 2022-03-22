@@ -7,9 +7,12 @@ export const getFavoriteList = (user_id) => dispatch => {
   axios
     .get(API_URL + '/' + user_id)
     .then(response => {
-      dispatch({type: API_TODO, payload: response.data});
-
-      return response.data;
+      if (response.data.length !== 0){
+        dispatch({type: API_TODO, payload: response.data});
+        console.log("test")
+        console.log(response.data)
+        return response.data;
+      }
     })
     .catch(err => {
       alert('Get data error');
@@ -30,7 +33,7 @@ export const addFavoriteList =
         product_name : pname
       })
       .then(response => {
-        //dispatch({type: API_TODOUPDATE, payload: response.data});
+        dispatch({type: API_TODO, payload: []});
         return response.data;
       })
       .catch(err => {
@@ -99,7 +102,7 @@ export const deleteTask = _id => dispatch => {
   axios
     .delete(API_URL + '/' + _id)
     .then( 
-      dispatch({type: API_TODODELETE, payload: []})
+      dispatch({type: API_TODO, payload: []})
     )
     .catch(err => {
       console.log("Delete fail")
