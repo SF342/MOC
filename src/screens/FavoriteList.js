@@ -12,6 +12,7 @@ import add_logo from '../../assets/Abstract_Add_1.png'
 import favorite_logo from '../../assets/favorite.png'
 import uuid from 'react-native-uuid';
 import { addTask, removeTask } from '../redux/actions/userActions';
+import { addFavoriteList, getFavoriteList } from '../redux/actions/favoriteActions';
 
 
 const FavoriteList = () => {
@@ -29,37 +30,37 @@ const FavoriteList = () => {
   const [favoriteArray, setFavoriteArray] = useState();
   const [Loading, setLoading] = useState(false);
   const theme = useSelector(state => state.theme.theme);
+  const [length, setLength] = useState(0)
+
+  const user_api = useSelector(state => state.user.user)
+  const fav_api = useSelector(state => state.user.favList)
 
 
-  let usersCollectionRef = firestore()
-    .collection('users')
-    .doc(uid)
-    .collection('FavoriteList');
-
-  if (products.length === 0) {
-    dispatch(getData());
-    setLoading(false)
-  }
+  // if (products.length === 0) {
+  //   dispatch(getFavoriteList(user_api._id));
+  //   setLoading(false)
+  // }
 
   useEffect(() => {
-    setData(products);
-    // auth().onAuthStateChanged((user) => {
-    //   if (user) {
-    //     setUid(user.uid)
-    //     usersCollectionRef.onSnapshot(querySnapshot => {
-    //       const dataTask = [];
-    //       querySnapshot.forEach(documentSnapshot => {
-    //         dataTask.push({
-    //           ...documentSnapshot.data(),
-    //           id: documentSnapshot.id,
-    //         });
-    //       })
-    //       setFavoriteArray(dataTask);
-    //       setLoading(false)
-    //     });
-    //   }
-    // });
-  }, [favoriteArray])
+
+    if(length != fav_api.length){
+      console.log("dif")
+      console.log(length, fav_api.length)
+      setLength(fav_api.length)
+      dispatch(getFavoriteList(user_api._id));
+    } else if (length == 0){
+      dispatch(getFavoriteList(user_api._id));
+      console.log(length, fav_api.length)
+      console.log("not dif")
+    } else{
+      console.log("else")
+      console.log(length, fav_api.length)
+    }
+
+    setData(fav_api);
+    console.log("Fav page", fav_api)
+
+  })
 
   // Function call to open modal add 
   function toggleModalVisibility() {
@@ -77,7 +78,8 @@ const FavoriteList = () => {
         product_id: p_id,
         product_name: value
       }
-      dispatch(addTask(user.uid, data))
+      console.log(user_api._id, p_id)
+      dispatch(addFavoriteList(user_api._id, p_id, value))
     }
     
 
@@ -120,7 +122,7 @@ const FavoriteList = () => {
           (
             <ScrollView>
               <FlatList
-                data={user.favoritelist}
+                data={fav_api}
                 style={styles.superListFav}
                 renderItem={({ item }) =>
                 (

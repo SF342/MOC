@@ -15,3 +15,5 @@ export const SET_TASK_FAVORITE = "SET_TASK_FAVORITE";
 // Backend API Auth
 export const API_USER = "API_USER";
 export const API_LOGOUT = "API_LOGOUT";
+
+export const API_TODO = "API_TODO";

@@ -1,10 +1,11 @@
-import { SET_SIGN_IN, SET_SIGN_OUT, SET_TASK_FAVORITE, ADD_TASK_FAVORITE, DELETE_TASK_FAVORITE } from "../types"
+import { SET_SIGN_IN, SET_SIGN_OUT, SET_TASK_FAVORITE, ADD_TASK_FAVORITE, DELETE_TASK_FAVORITE, API_TODO } from "../types"
 
 const initialState = {
     authenticated: false,
     email: '',
     favoritelist: [],
-    user: null
+    user: null,
+    favList : []
 };
 
 export default function (state = initialState, action) {
@@ -56,6 +57,12 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 favoritelist: favoriteTemp,
+            }
+        
+        case API_TODO:
+            return {
+                ...state,
+                favList : action.payload
             }
         default:
             return state;
