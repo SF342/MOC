@@ -47,6 +47,9 @@ const FavoriteList = () => {
       dispatch(getFavoriteList(user_api._id));
       console.log(length, fav_api.length)
       console.log("not dif")
+    } else{
+      console.log("else")
+      console.log(length, fav_api.length)
     }
 
     setData(products);

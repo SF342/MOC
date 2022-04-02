@@ -23,6 +23,7 @@ export default Home = ({ navigation }) => {
   const products = useSelector(state => state.data.data)
   const image = useSelector(state => state.data.urlimage)
   const theme = useSelector(state => state.theme.theme);
+  const user_api = useSelector(state => state.user.user)
 
 
   const [data, setData] = useState()

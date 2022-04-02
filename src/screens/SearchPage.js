@@ -19,33 +19,6 @@ class SearchPage extends Component {
     this.arrayholder = props.data;
   }
 
-  // componentDidMount() {
-  //   this.makeRemoteRequest();
-  // }
-
-  // makeRemoteRequest = () => {
-  //   const detail = [];
-  //   const url = `https://dataapi.moc.go.th/gis-products`;
-  //   this.setState({ loading: true });
-
-  //   fetch(url)
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       for (let i = 1; i < res.length; i++) {
-  //         detail.push(res[i]);
-  //       };
-  //       this.setState({
-  //         data: detail,
-  //         error: res.error || null,
-  //         loading: false,
-  //       });
-  //       this.arrayholder = detail;
-  //     })
-  //     .catch(error => {
-  //       this.setState({ error, loading: false });
-  //     });
-
-  // };
 
   renderSeparator = () => {
     return (
