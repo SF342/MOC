@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { useState, useContext } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity,SafeAreaView} from 'react-native';
 import { Input } from '../components/Input';
 import auth from "@react-native-firebase/auth"
 import { ScrollView } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSelector, useDispatch } from 'react-redux';
 import { __doSingIn, register } from '../redux/actions/userActions';
+import { SocialIcon } from 'react-native-elements'
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState();
@@ -29,113 +30,119 @@ const RegisterScreen = () => {
 
   return (
     <LinearGradient
-                colors={[theme.pri700, theme.pri50
-                ]}
-                start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-                style={styles.container1}
-                >
-    <ScrollView>
-      <View style={styles.container}>
+      colors={[theme.pri700, theme.pri50]}
+      start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+      style={styles.container1}
+    >
+      <SafeAreaView
+        style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
         <View style={styles.bgInput}>
-          
-          <Text style={styles.title}>Register</Text>
-          <View style={styles.box1}>
-          <Text style={styles.inputText}>USERNAME</Text>
-          <Input
-            style={styles.input}
-            labelValue={name}
-            onChangeText={userName => setName(userName)}
-            placeholder="Enter username"
-            autoCorrect={false}
+        
+          <View style={styles.Box}>
+            <Text style={styles.loginText}>
+              Register Account
+            </Text>
+            <Input
+              style={styles.input}
+              labelValue={name}
+              onChangeText={userName => setName(userName)}
+              placeholder="Username"
+              placeholderTextColor="#3911BD" 
+              autoCorrect={false}
             />
-          <Text style={styles.inputText}>EMAIL</Text>
-          <Input
-            style={styles.input}
-            labelValue={email}
-            onChangeText={userEmail => setEmail(userEmail)}
-            placeholder="Enter email"
-            keyboardType={'email-address'}
-            autoCorrect={false}
+            <Input
+              style={styles.input}
+              labelValue={email}
+              onChangeText={userEmail => setEmail(userEmail)}
+              placeholder="Enter email"
+              keyboardType={'email-address'}
+              autoCorrect={false}
             />
-          <Text style={styles.inputText}>PASSWORD</Text>
-          <Input
-            style={styles.input}
-            labelValue={password}
-            onChangeText={userPassword => setPassword(userPassword)}
-            placeholderText="Enter password"
-            secureTextEntry={true}
+            <Input
+              style={styles.input}
+              labelValue={password}
+              onChangeText={userPassword => setPassword(userPassword)}
+              placeholderText="Enter password"
+              secureTextEntry={true}
             />
-            </View>
 
-          <TouchableOpacity
-            style={styles.loginButton}
-            onPress={() => {
-              __doCreateUser();
-            }}>
-            <Text style={styles.loginButtonText}>SIGN UP</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => SignIn(email, password)}>
+              <Text style={styles.btnTxt}>Register</Text>
+            </TouchableOpacity>
+            <View style={styles.textbox}>
+              <Text style={styles.text1}>or</Text>
+            </View>
+            <View style={styles.textbox2}>
+              <SocialIcon
+                type='facebook'
+                onPress={() => alert("facebook")}
+              />
+              <SocialIcon
+                type='google'
+                onPress={() => alert("google")}
+                
+              />
+            </View>
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </SafeAreaView>
     </LinearGradient>
+
   );
-};
+}
 const styles = StyleSheet.create({
-  inputText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-    alignSelf: 'flex-start',
+  logo: {
+    width: 200,
+    height: 200,
+    resizeMode: 'stretch',
+    marginBottom: 15
   },
-  box1 :{
-  },  
-  bgInput: {
-    height: '100%',
+  container1: {
     width: '100%',
+    height: '100%',
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  bgInput: {
+    height: '80%',
+    width: '85%',
+    borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
     marginBottom: '10%'
   },
   title: {
     color: 'white',
-    textAlign: 'center',
     fontSize: 35,
-    width: 320,
     fontWeight: 'bold',
-    marginTop: 10,
-    marginBottom: '5%'
-
+    marginBottom: '2%'
   },
-  input: {
-    marginVertical: 10,
-    width: 320,
-    height: 60,
+  btn: {
+    height: 50,
+    width: 150,
+    backgroundColor: "#37379C",
+    borderRadius: 80,
+    marginLeft: 75,
+    marginTop: 20,
+    marginBottom: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btnTxt: {
+    color: 'white',
+    fontWeight: '400',
     fontSize: 18,
-    marginBottom: 5,
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
-    backgroundColor: '#FFFFFF'
   },
-  loginButton: {
-    marginVertical: 10,
-    marginBottom: 30,
-    backgroundColor: 'white',
-    width: 320,
-    height: 60,
-    borderRadius: 10,
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
-    marginTop: '7%'
+  loginText: {
+    textAlign: 'center',
+    color: 'black',
+    fontWeight: '500',
+    fontSize: 30,
+    padding: 15,
+    marginTop:10
   },
-
   loginButtonText: {
     textAlign: 'center',
     color: 'black',
@@ -146,17 +153,62 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
+    backgroundColor: '#E2FCFA',
     alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 50,
   },
-
   text: {
-    color: '#00CABA',
-    fontSize: 18,
+    color: 'black',
+    fontSize: 18
+  },
+  img: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+    marginBottom: 20,
+  },
+  Box: {
+    width: "90%",
+    backgroundColor: 'white',
+    marginHorizontal: 10,
+    borderRadius: 20,
+  },
+  forget:{
+    marginLeft: 25,
+    marginTop: 10,
+  },
+  forgettext:{
+    color: '#3D51CA',
+    fontSize: 12
+  },
+  text1:{
+    color: 'black',
+    fontSize: 16,
     textAlign: 'center',
   },
-  container1: {
-    width: '100%',
-    height: '100%',
-  }
+  textbox:{
+    marginBottom: 10,
+    
+  },
+  textbox2:{
+    marginBottom: 20,
+    marginLeft:85,
+    flexDirection: 'row'
+  },
+  footerText:{
+    color: '#FFFFFF',
+    fontSize: 14,
+    textAlign: 'center',
+    marginTop: 20
+  },
+  RegisterText:{
+    color: '#FFFFFF',
+    fontSize: 16,
+    textAlign: 'center',
+    marginTop: 10,
+    textDecorationLine: 'underline',
+    textDecorationStyle: "solid",
+  },
 });
 export default RegisterScreen;
