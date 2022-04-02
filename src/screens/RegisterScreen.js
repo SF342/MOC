@@ -54,7 +54,7 @@ const RegisterScreen = () => {
               style={styles.input}
               labelValue={email}
               onChangeText={userEmail => setEmail(userEmail)}
-              placeholder="Enter email"
+              placeholder="E-mail"
               keyboardType={'email-address'}
               autoCorrect={false}
             />
@@ -62,7 +62,12 @@ const RegisterScreen = () => {
               style={styles.input}
               labelValue={password}
               onChangeText={userPassword => setPassword(userPassword)}
-              placeholderText="Enter password"
+              placeholderText="Password"
+              secureTextEntry={true}
+            />
+            <Input
+              style={styles.input}
+              placeholderText="Re-type Password"
               secureTextEntry={true}
             />
 
@@ -125,7 +130,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#37379C",
     borderRadius: 80,
     marginLeft: 75,
-    marginTop: 20,
+    marginTop: 30,
     marginBottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
