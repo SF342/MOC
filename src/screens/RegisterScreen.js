@@ -71,7 +71,7 @@ const RegisterScreen = () => {
               secureTextEntry={true}
             />
 
-            <TouchableOpacity style={styles.btn} onPress={() => SignIn(email, password)}>
+            <TouchableOpacity style={styles.btn} onPress={() => {__doCreateUser();}}>
               <Text style={styles.btnTxt}>Register</Text>
             </TouchableOpacity>
             <View style={styles.textbox}>
