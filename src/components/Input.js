@@ -16,10 +16,11 @@ export function Input({labelValue,placeholderText,style, ...rest}) {
 
 const styles = StyleSheet.create({
   input: {
-    backgroundColor: '#e8e8e8',
-    width: '100%',
-    padding: 20,
-    borderRadius: 8,
-    color: 'black',
+    width: 250,
+    height: 40,
+    borderBottomWidth: 1,
+    borderBottomColor: '#C9C9C9',
+    marginLeft: 25,
+    marginTop: 10,
   },
 });

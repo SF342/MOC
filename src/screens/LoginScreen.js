@@ -11,9 +11,11 @@ import {
 } from 'react-native';
 import Moc_logo from '../../assets/moc_logo.png'
 import LinearGradient from 'react-native-linear-gradient';
+import {Colors, Picker,Button,} from 'react-native-ui-lib';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { __doSingIn, login } from '../redux/actions/userActions';
+import { SocialIcon } from 'react-native-elements'
 
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -57,32 +59,58 @@ const LoginScreen = ({ navigation }) => {
       <SafeAreaView
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
         <View style={styles.bgInput}>
-
-          <Image
-            style={styles.img}
-            source={Moc_logo}
-          />
-          <Input
-            style={styles.input}
-            labelValue={email}
-            onChangeText={(userEmail) => setEmail(userEmail)}
-            placeholder="Email"
-            keyboardType={'email-address'}
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          <Input
-            style={styles.input}
-            labelValue={password}
-            onChangeText={(userPassword) => setPassword(userPassword)}
-            placeholderText="Password"
-            secureTextEntry={true}
-          />
-          <TouchableOpacity style={styles.loginButton} onPress={() => SignIn(email, password)}>
-            <Text style={styles.loginButtonText}>
-              LOGIN
+        
+          <View style={styles.Box}>
+            <Text style={styles.loginText}>
+              Login Account
             </Text>
-          </TouchableOpacity>
+            <Input
+              style={styles.input}
+              labelValue={email}
+              onChangeText={(userEmail) => setEmail(userEmail)}
+              placeholder="Username or E-mail"
+              placeholderTextColor="#3911BD" 
+              keyboardType={'email-address'}
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <Input
+              style={styles.input}
+              labelValue={password}
+              onChangeText={(userPassword) => setPassword(userPassword)}
+              placeholderText="Password"
+              secureTextEntry={true}
+            />
+            <TouchableOpacity
+              style={styles.forget}
+              onPress={() => alert("forget password?")}>
+              <Text style={styles.forgettext}>forget password?</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.btn} onPress={() => SignIn(email, password)}>
+              <Text style={styles.btnTxt}>LOGIN</Text>
+            </TouchableOpacity>
+            <View style={styles.textbox}>
+              <Text style={styles.text1}>or</Text>
+            </View>
+            <View style={styles.textbox2}>
+              <SocialIcon
+                type='facebook'
+                onPress={() => alert("facebook")}
+              />
+              <SocialIcon
+                type='google'
+                onPress={() => alert("google")}
+                
+              />
+            </View>
+          </View>
+          <Text style={styles.footerText}>
+              Don't have an account ?
+          </Text>
+          <Text style={styles.RegisterText} onPress={() => navigation.navigate('RegisterScreen')}>
+              Register
+          </Text>
         </View>
       </SafeAreaView>
     </LinearGradient>
@@ -118,29 +146,28 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: '2%'
   },
-  input: {
-    marginVertical: 10,
-    width: 320,
-    height: 60,
-    fontSize: 18,
-    marginBottom: 5,
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
+  btn: {
+    height: 50,
+    width: 150,
+    backgroundColor: "#37379C",
+    borderRadius: 80,
+    marginLeft: 75,
+    marginTop: 20,
+    marginBottom: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  loginButton: {
-    marginVertical: 10,
-    marginBottom: 30,
-    backgroundColor: 'white',
-    width: 320,
-    height: 60,
-    borderRadius: 10,
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
-    marginTop: '7%'
+  btnTxt: {
+    color: 'white',
+    fontWeight: '400',
+    fontSize: 18,
+  },
+  loginText: {
+    textAlign: 'center',
+    color: 'black',
+    fontWeight: '500',
+    fontSize: 30,
+    padding: 15
   },
   loginButtonText: {
     textAlign: 'center',
@@ -162,11 +189,53 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   img: {
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
     resizeMode: 'contain',
     marginBottom: 20,
-  }
+  },
+  Box: {
+    width: "90%",
+    backgroundColor: 'white',
+    marginHorizontal: 10,
+    borderRadius: 20,
+  },
+  forget:{
+    marginLeft: 25,
+    marginTop: 10,
+  },
+  forgettext:{
+    color: '#3D51CA',
+    fontSize: 12
+  },
+  text1:{
+    color: 'black',
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  textbox:{
+    marginBottom: 10,
+    
+  },
+  textbox2:{
+    marginBottom: 20,
+    marginLeft:85,
+    flexDirection: 'row'
+  },
+  footerText:{
+    color: '#FFFFFF',
+    fontSize: 14,
+    textAlign: 'center',
+    marginTop: 20
+  },
+  RegisterText:{
+    color: '#FFFFFF',
+    fontSize: 16,
+    textAlign: 'center',
+    marginTop: 10,
+    textDecorationLine: 'underline',
+    textDecorationStyle: "solid",
+  },
 });
 
 export default LoginScreen;
