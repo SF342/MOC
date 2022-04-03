@@ -23,7 +23,6 @@ const FavoriteList = () => {
   const [value, setValue] = useState();
   const [p_id, setProductId] = useState();
   const [uid, setUid] = useState();
-  const [favoriteArray, setFavoriteArray] = useState();
   const [Loading, setLoading] = useState(false);
   const theme = useSelector(state => state.theme.theme);
   const [length, setLength] = useState(0)
@@ -32,29 +31,17 @@ const FavoriteList = () => {
   const fav_api = useSelector(state => state.user.favList)
 
 
-  // if (products.length === 0) {
-  //   dispatch(getFavoriteList(user_api._id));
-  //   setLoading(false)
-  // }
-
-  useEffect(() => {
-    if(length != fav_api.length){
-      console.log("dif")
-      console.log(length, fav_api.length)
-      setLength(fav_api.length)
-      dispatch(getFavoriteList(user_api._id));
-    } else if (length == 0){
-      dispatch(getFavoriteList(user_api._id));
-      console.log(length, fav_api.length)
-      console.log("not dif")
-    } else{
-      console.log("else")
-      console.log(length, fav_api.length)
-    }
-
-    setData(products);
-
-  })
+    // Use for update realtime data
+    useEffect(() => {
+      if (length != fav_api.length) {
+        setLength(fav_api.length);
+        dispatch(getFavoriteList(user_api._id));
+      } else if (length == 0) {
+        dispatch(getFavoriteList(user_api._id));
+      } else {
+        console.log('else');
+      }
+      });
 
   // Function call to open modal add 
   function toggleModalVisibility() {

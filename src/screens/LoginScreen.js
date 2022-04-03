@@ -30,25 +30,6 @@ const LoginScreen = ({ navigation }) => {
     dispatch(login(email, password))
   }
 
-  // const __doSingIn = async (email, password) => {
-  //   try {
-  //     let response = await auth().signInWithEmailAndPassword(email, password)
-  //     if (response && response.user) {
-  //       Alert.alert("Success ✅", "Authenticated successfully")
-  //     }
-  //   } catch (e) {
-  //     console.error(e.message)
-  //   }
-  //   let user = auth().currentUser.uid;
-
-  //   if (user) {
-  //     console.log(user);
-  //     this.setState({ authenticated: true });
-  //   } else {
-  //     this.setState({ authenticated: false });
-  //   }
-  // }
-
 
   return (
     <LinearGradient

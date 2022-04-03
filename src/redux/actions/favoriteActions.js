@@ -15,6 +15,7 @@ export const getFavoriteList = (user_id) => dispatch => {
       }
     })
     .catch(err => {
+      console.log(err)
       alert('Get data error');
     });
 };
