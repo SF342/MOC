@@ -47,27 +47,40 @@ export default StyleSheet.create({
         marginTop: '5%'
       },
       logo: {
-        width: 150,
-        height: 150,
-        alignSelf:'center'
+        width: 125,
+        height: 125,
+        alignSelf:'center',
+        backgroundColor: '#0A214A',
+        marginBottom: '2%',
+        borderRadius: 60,
       },
       topic: {
-        color: '#FFC511',
+        flex: 1,
+        color: 'black',
         textAlign: 'center',
-        fontSize: 35,
+        fontSize: 22,
         fontWeight: 'bold',
         fontFamily: "Mitr-Light",
-        marginBottom: '3%'
+        marginBottom: '2%'
+      },
+      update: {
+        color: '#21325E',
+        textAlign: 'center',
+        paddingLeft: '10%',
+        fontSize: 15,
+        fontWeight: 'bold',
+        fontFamily: "Mitr-Light",
       },
       title: {
-        color: '#FFC511',
+        color: '#21325E',
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 19,
         fontWeight: 'bold',
+        paddingLeft: '20%',
         fontFamily: "Mitr-Light",
       },
       title1: {
-        color: '#CED0CE',
+        color: '#21325E',
         textAlign: 'center',
         fontSize: 20,
         fontFamily: "Mitr-Light",
@@ -87,9 +100,8 @@ export default StyleSheet.create({
         color: '#FFC511',
         fontWeight: '700'
       },
-      main: {
-        flex: 1,
-        textAlign: 'center',
-        justifyContent: "center",
-      }
+      imcontainer: {
+
+      },
+      
 });
