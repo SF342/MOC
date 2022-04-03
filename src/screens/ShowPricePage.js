@@ -78,17 +78,20 @@ const ShowPricePage = ({navigation, route}) => {
               <HStack space={4} alignItems="center" padding={3}>
                 <Center w="325" h="550" rounded="md" shadow={3}>
                   <LinearGradient
-                    colors={['#DFDFDE', '#DFDFDE']}
-                    start={{x: 1, y: 1}}
+                    colors={['#EDEDED', '#7F7C82']}
+                    start={{x: 1, y: 0}}
                     end={{x: 1, y: 1}}
                     style={styles.container1}>
                     <View style={styles.box1}>
-                      <View style={styles.imcontainer}>
+                      <View>
+                        <View style={{ position:'absolute',width:135,height:136,alignSelf:'center',backgroundColor:'white',borderRadius:100}}></View>
                       <Image
                         style={styles.logo}
                         source={filterImageUrl(product.product_name)}
                         rounded
-                      />
+                      >
+                      </Image>
+                      
                       </View>
                       <View style={styles.TextContainer1}>
                         <Text style={styles.topic}>
@@ -113,7 +116,7 @@ const ShowPricePage = ({navigation, route}) => {
                       </View>
                       <View style={styles.TextContainer1}>
                         <Text style={styles.update}>**อัพเดทราคาเมื่อ : </Text>
-                        <Text style={styles.update}> {date}</Text>
+                        <Text style={styles.update1}> {date}</Text>
                       </View>
                     </View>
                   </LinearGradient>
