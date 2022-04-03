@@ -76,7 +76,7 @@ const ShowPricePage = ({navigation, route}) => {
           <ScrollView>
             <Center h="100%" justifyContent="center" alignItems="center">
               <HStack space={4} alignItems="center" padding={3}>
-                <Center w="350" h="550" rounded="md" shadow={3}>
+                <Center w="325" h="550" rounded="md" shadow={3}>
                   <LinearGradient
                     colors={['#DFDFDE', '#DFDFDE']}
                     start={{x: 1, y: 1}}
@@ -98,13 +98,6 @@ const ShowPricePage = ({navigation, route}) => {
                       <View style={styles.TextContainer1}>
                         <Text style={styles.title}>ประเภท : </Text>
                         <Text style={styles.title1}> {product.group_name}</Text>
-                      </View>
-                      <View style={styles.TextContainer1}>
-                        <Text style={styles.title}>การจำหน่าย :</Text>
-                        <Text style={styles.title1}>
-                          {' '}
-                          {product.category_name}
-                        </Text>
                       </View>
                       <View style={styles.TextContainer1}>
                         <Text style={styles.title}>ราคาต่ำสุด : </Text>
