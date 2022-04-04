@@ -50,58 +50,53 @@ export default StyleSheet.create({
         width: 125,
         height: 125,
         alignSelf:'center',
-        backgroundColor: '#0A214A',
-        marginBottom: '2%',
-        borderRadius: 60,
+        backgroundColor: 'black',
+        marginBottom: '4%',
+        borderRadius: 100,
+        marginTop: '2%'
       },
       topic: {
         flex: 1,
         color: 'black',
         textAlign: 'center',
-        fontSize: 22,
+        fontSize: 20.5,
         fontWeight: 'bold',
         fontFamily: "Mitr-Light",
         marginBottom: '2%'
       },
       update: {
-        color: '#21325E',
+        color: 'black',
         textAlign: 'center',
-        paddingLeft: '10%',
-        fontSize: 15,
-        fontWeight: 'bold',
+        paddingLeft: '18%',
+        fontSize: 12,
+        fontWeight: 'normal',
         fontFamily: "Mitr-Light",
+        paddingTop: '1.5%',
+      },
+      update1: {
+        color: 'black',
+        textAlign: 'center',
+        fontSize: 12,
+        fontWeight: 'normal',
+        fontFamily: "Mitr-Light",
+        paddingTop: '1.5%',
       },
       title: {
-        color: '#21325E',
+        color: 'black',
         textAlign: 'center',
-        fontSize: 19,
+        fontSize: 16,
         fontWeight: 'bold',
-        paddingLeft: '20%',
+        paddingLeft: '25%',
         fontFamily: "Mitr-Light",
       },
       title1: {
-        color: '#21325E',
+        color: 'black',
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 16,
         fontFamily: "Mitr-Light",
         fontWeight: 'bold',
       },
-      title2: {
-        color: '#CED0CE',
-        textAlign: 'center',
-        fontSize: 20,
-        fontWeight: 'bold',
-        fontFamily: "Mitr-Light"
-      },
-      title3: {
-        textAlign: 'center',
-        fontSize: 40,
-        fontFamily: "Mitr-Light",
-        color: '#FFC511',
-        fontWeight: '700'
-      },
-      imcontainer: {
 
-      },
+      
       
 });
