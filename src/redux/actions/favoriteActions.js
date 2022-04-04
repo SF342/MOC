@@ -15,6 +15,7 @@ export const getFavoriteList = (user_id) => dispatch => {
       }
     })
     .catch(err => {
+      console.log(err)
       alert('Get data error');
     });
 };
@@ -30,7 +31,7 @@ export const addFavoriteList =
       .post(API_URL, {
         _id : user_id,
         product_id : pid,
-        product_name : pname,
+        product_name : pname
       })
       .then(response => {
         dispatch({type: API_TODO, payload: []});
