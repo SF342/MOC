@@ -103,14 +103,15 @@ export const updateTaskList =
   };
 
 
-export const deleteTask = _id => dispatch => {
-  axios
-    .delete(API_URL + '/' + _id)
-    .then( 
-      dispatch({type: API_TODO, payload: []})
-    )
-    .catch(err => {
-      console.log("Delete fail")
+export const deleteFavorite = (user_id, _id) => dispatch => {
+    console.log("Rook : ",user_id," ", _id)
+    axios
+        .delete(API_URL + '/' +user_id+'/'+ _id)
+        .then( 
+        dispatch({type: API_TODO, payload: []})
+        )
+        .catch(err => {
+        console.log("Delete fail")
 
-    });
+        });
 };

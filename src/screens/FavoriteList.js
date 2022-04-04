@@ -12,7 +12,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Moc_logo from '../../assets/moc_logo.png';
 import {  Avatar } from 'react-native-elements';
-import { getProductId, getFavoriteId } from '../redux/actions/newFavoriteAction';
+import { getProductId, getFavoriteId, deleteFavorite } from '../redux/actions/newFavoriteAction';
 
 const FavoriteList = () => {
   const dispatch = useDispatch();
@@ -96,8 +96,8 @@ const FavoriteList = () => {
     }
   }
 
-  async function deleteTasklist(_id) {
-    dispatch(deleteTask(_id))
+  async function deleteTasklist(user_id, _id) {
+    dispatch(deleteFavorite(user_id, _id))
 
   };
 
@@ -151,7 +151,7 @@ const FavoriteList = () => {
                   <View style={styles.listFavorite}>
                     <View style={styles.topicList}>
                       <Text style={styles.textTopicList}> {item.product_name}  </Text>
-                      <MaterialCommunityIcons name="delete-empty" style={styles.icon} size={20} color="#F21729" onPress={() => { deleteTasklist(item._id) }}/>
+                      <MaterialCommunityIcons name="delete-empty" style={styles.icon} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }}/>
                     </View>
                   </View>
 
@@ -174,7 +174,7 @@ const FavoriteList = () => {
                   <View style={styles.topicList2}>
                     <Avatar style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
                     <Text style={styles.textTopicList2}> {item.product_name}  </Text>
-                    <MaterialCommunityIcons name="delete-empty" style={styles.icon} size={20} color="#F21729" onPress={() => { deleteTasklist(item._id) }}/>
+                    <MaterialCommunityIcons name="delete-empty" style={styles.icon} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }}/>
                   </View>
                 </View>
 
