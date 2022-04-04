@@ -17,3 +17,5 @@ export const API_USER = "API_USER";
 export const API_LOGOUT = "API_LOGOUT";
 
 export const API_TODO = "API_TODO";
+export const API_PRODUCTID = "API_PRODUCTID";
+

@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { __doSingIn, login } from '../redux/actions/userActions';
 import { SocialIcon } from 'react-native-elements'
 import styles from '../css/LoginScreen'
+import { Alert, Platform } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();

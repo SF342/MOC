@@ -1,11 +1,12 @@
-import { SET_SIGN_IN, SET_SIGN_OUT, SET_TASK_FAVORITE, ADD_TASK_FAVORITE, DELETE_TASK_FAVORITE, API_TODO } from "../types"
+import { SET_SIGN_IN, SET_SIGN_OUT, SET_TASK_FAVORITE, ADD_TASK_FAVORITE, DELETE_TASK_FAVORITE, API_TODO, API_PRODUCTID } from "../types"
 
 const initialState = {
     authenticated: false,
     email: '',
     favoritelist: [],
     user: null,
-    favList : []
+    favList : [],
+    productName : []
 };
 
 export default function (state = initialState, action) {
@@ -63,6 +64,12 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 favList : action.payload
+            }
+
+        case API_PRODUCTID:
+            return {
+                ...state,
+                productName : action.payload
             }
         default:
             return state;

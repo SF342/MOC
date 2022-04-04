@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Modal, FlatList, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Modal, FlatList, Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Colors, Picker, } from 'react-native-ui-lib';
 import { useSelector, useDispatch } from 'react-redux'
@@ -10,7 +10,7 @@ import favorite_logo from '../../assets/favorite.png'
 import uuid from 'react-native-uuid';
 import styles from '../css/FavoriteList'
 import { addFavoriteList, getFavoriteList, deleteTask } from '../redux/actions/favoriteActions';
-
+import {getFavoriteId, getProductId} from '../redux/actions/newFavoriteAction'
 
 const FavoriteList = () => {
   const dispatch = useDispatch();
@@ -20,25 +20,27 @@ const FavoriteList = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
 
-  const [data, setData] = useState([]);
   const [value, setValue] = useState();
   const [p_id, setProductId] = useState();
-  const [uid, setUid] = useState();
   const [Loading, setLoading] = useState(false);
   const theme = useSelector(state => state.theme.theme);
   const [length, setLength] = useState(0)
 
   const user_api = useSelector(state => state.user.user)
   const fav_api = useSelector(state => state.user.favList)
+  const productName = useSelector(state => state.user.productName)
 
 
     // Use for update realtime data
     useEffect(() => {
       if (length != fav_api.length) {
         setLength(fav_api.length);
-        dispatch(getFavoriteList(user_api._id));
+        dispatch(getFavoriteId(user_api._id));
+        dispatch(getProductId(fav_api));
+
       } else if (length == 0) {
-        dispatch(getFavoriteList(user_api._id));
+        dispatch(getFavoriteId(user_api._id));
+        dispatch(getProductId(fav_api));
       } else {
         console.log('else');
       }
@@ -63,13 +65,6 @@ const FavoriteList = () => {
       console.log(user_api._id, p_id)
       dispatch(addFavoriteList(user_api._id, p_id, value))
     }
-    
-
-    // usersCollectionRef.add({
-    //   product_id: p_id,
-    //   product_name: value
-    // });
-
   }
 
   async function deleteTasklist(_id) {
@@ -104,7 +99,7 @@ const FavoriteList = () => {
           (
             <ScrollView>
               <FlatList
-                data={fav_api}
+                data={productName}
                 style={styles.superListFav}
                 renderItem={({ item }) =>
                 (
