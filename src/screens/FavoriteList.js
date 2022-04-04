@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Modal, FlatList, Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Colors, Picker, } from 'react-native-ui-lib';
+import { Picker, } from 'react-native-ui-lib';
 import { useSelector, useDispatch } from 'react-redux'
-import { ActivityIndicator,Button, } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import add_logo from '../../assets/Abstract_Add_1.png'
-import favorite_logo from '../../assets/favorite.png'
 import uuid from 'react-native-uuid';
-import { addFavoriteList, getFavoriteList, deleteTask } from '../redux/actions/favoriteActions';
+import { addFavoriteList, deleteTask } from '../redux/actions/favoriteActions';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import Moc_logo from '../../assets/moc_logo.png';
-import { ListItem, SearchBar, Avatar } from 'react-native-elements';
+import {  Avatar } from 'react-native-elements';
+import { getProductId, getFavoriteId } from '../redux/actions/newFavoriteAction';
 
 const FavoriteList = () => {
   const dispatch = useDispatch();
@@ -36,6 +34,7 @@ const FavoriteList = () => {
   const user_api = useSelector(state => state.user.user)
   const image = useSelector(state => state.data.urlimage)
   const fav_api = useSelector(state => state.user.favList)
+  const productName = useSelector(state => state.user.productName)
 
   const [shouldShow1, setShouldShow1] = useState(true);
   const [shouldShow2, setShouldShow2] = useState(false);
@@ -50,29 +49,21 @@ const FavoriteList = () => {
     }
   }
 
-  // if (products.length === 0) {
-  //   dispatch(getFavoriteList(user_api._id));
-  //   setLoading(false)
-  // }
+    // Use for update realtime data
+    useEffect(() => {
+      if (length != fav_api.length) {
+        setLength(fav_api.length);
+        dispatch(getFavoriteId(user_api._id));
+        dispatch(getProductId(fav_api));
 
-  useEffect(() => {
-    if(length != fav_api.length){
-      console.log("dif")
-      console.log(length, fav_api.length)
-      setLength(fav_api.length)
-      dispatch(getFavoriteList(user_api._id));
-    } else if (length == 0){
-      dispatch(getFavoriteList(user_api._id));
-      console.log(length, fav_api.length)
-      console.log("not dif")
-    } else{
-      console.log("else")
-      console.log(length, fav_api.length)
-    }
-
-    setData(products);
-
-  })
+      } else if (length == 0) {
+        dispatch(getFavoriteId(user_api._id));
+        dispatch(getProductId(fav_api));
+      } else {
+        console.log('else');
+      }
+      setData(products)
+      });
 
   function Show1() {
     setShouldShow1(true);
@@ -103,13 +94,6 @@ const FavoriteList = () => {
       console.log(user_api._id, p_id)
       dispatch(addFavoriteList(user_api._id, p_id, value))
     }
-    
-
-    // usersCollectionRef.add({
-    //   product_id: p_id,
-    //   product_name: value
-    // });
-
   }
 
   async function deleteTasklist(_id) {
@@ -160,7 +144,7 @@ const FavoriteList = () => {
           (
             <ScrollView>
               <FlatList
-                data={fav_api}
+                data={productName}
                 style={styles.superListFav}
                 renderItem={({ item }) =>
                 (
@@ -180,7 +164,7 @@ const FavoriteList = () => {
         {shouldShow2 ? (
           <ScrollView>
             <FlatList
-              data={fav_api}
+              data={productName}
               numColumns={2}
               
               style={styles.superListFav2}
