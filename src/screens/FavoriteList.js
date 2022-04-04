@@ -3,13 +3,18 @@ import { Text, View, TouchableOpacity, StyleSheet, Modal, FlatList, Image } from
 import { ScrollView } from 'react-native-gesture-handler';
 import { Colors, Picker, } from 'react-native-ui-lib';
 import { useSelector, useDispatch } from 'react-redux'
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator,Button, } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import add_logo from '../../assets/Abstract_Add_1.png'
 import favorite_logo from '../../assets/favorite.png'
 import uuid from 'react-native-uuid';
 import { addFavoriteList, getFavoriteList, deleteTask } from '../redux/actions/favoriteActions';
-
+import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Moc_logo from '../../assets/moc_logo.png';
+import { ListItem, SearchBar, Avatar } from 'react-native-elements';
 
 const FavoriteList = () => {
   const dispatch = useDispatch();
@@ -29,8 +34,21 @@ const FavoriteList = () => {
   const [length, setLength] = useState(0)
 
   const user_api = useSelector(state => state.user.user)
+  const image = useSelector(state => state.data.urlimage)
   const fav_api = useSelector(state => state.user.favList)
 
+  const [shouldShow1, setShouldShow1] = useState(true);
+  const [shouldShow2, setShouldShow2] = useState(false);
+
+  const filterImageUrl = (val) => {
+    let nameImg = image.filter(element => val.search(element.name) !== -1);
+
+    if (nameImg.length !== 0) {
+      return { uri: nameImg[0].url }
+    } else {
+      return Moc_logo
+    }
+  }
 
   // if (products.length === 0) {
   //   dispatch(getFavoriteList(user_api._id));
@@ -55,6 +73,16 @@ const FavoriteList = () => {
     setData(products);
 
   })
+
+  function Show1() {
+    setShouldShow1(true);
+    setShouldShow2(false);
+  };
+
+  function Show2() {
+    setShouldShow1(false);
+    setShouldShow2(true);
+  };
 
   // Function call to open modal add 
   function toggleModalVisibility() {
@@ -104,15 +132,31 @@ const FavoriteList = () => {
       <View
         style={styles.boxFavelist}>
         <View style={styles.boxTopic}>
-          <LinearGradient
-            colors={[theme.pri500, theme.pri50]}
-            start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-            style={styles.boxTopicGra}>
-            <Image source={favorite_logo} style={styles.favLogo} />
-            <Text style={styles.title}> Favorite List</Text>
-          </LinearGradient>
+          <Text style={styles.title}> MY</Text>
+          <Text style={styles.titlecolor}> FAVORITE</Text>
+          <Text style={styles.title}> LIST</Text>
         </View>
-        {Loading ? <ActivityIndicator /> :
+        <View style={styles.pickerbox}>
+          <Picker
+            value={selectedProduct}
+            placeholder="Search Product . . ."
+            onChange={onProductChange}
+            showSearch
+            placeholderTextColor="black"
+            containerStyle={styles.pickerStyle}
+            style={{ height: 50, width: 150 , }}>
+            {products.map((option, index) => (
+              <Picker.Item
+                key={index}
+                value={option.product_id}
+                label={option.product_name}
+              />
+            ))}
+          </Picker>
+          <Entypo name="menu" size={50} color="#FFFFFF" onPress={() => {Show1()}}/>
+          <MaterialIcons name="crop-square" size={50} color="#FFFFFF" onPress={() => {Show2()}}/>
+        </View>
+        {shouldShow1 ?
           (
             <ScrollView>
               <FlatList
@@ -123,68 +167,42 @@ const FavoriteList = () => {
                   <View style={styles.listFavorite}>
                     <View style={styles.topicList}>
                       <Text style={styles.textTopicList}> {item.product_name}  </Text>
+                      <MaterialCommunityIcons name="delete-empty" style={styles.icon} size={20} color="#F21729" onPress={() => { deleteTasklist(item._id) }}/>
                     </View>
-                    <TouchableOpacity
-                      onPress={() => { deleteTasklist(item._id) }}
-                      style={styles.delButton}
-                    >
-                      <Text style={styles.textDelButton}>x</Text>
-                    </TouchableOpacity>
                   </View>
 
                 )} />
 
-              <Modal
-                animationType="slide"
-                transparent
-                visible={isModalVisible}
-                presentationStyle="overFullScreen"
-                onDismiss={toggleModalVisibility}
-                onRequestClose={() => { setModalVisible(false) }}
-              >
-                <View style={styles.bg_modal}>
-                  <View style={styles.paper_madal}>
-                    <ScrollView>
-                      <TouchableOpacity
-                        onPress={() => { setModalVisible(false) }}>
-                        <Text>x</Text>
-                      </TouchableOpacity>
-                      <Text style={styles.title2}>Add Favorite</Text>
-                      <Picker
-                        value={selectedProduct}
-                        placeholder="Search Product . . ."
-                        onChange={onProductChange}
-                        showSearch
-                        placeholderTextColor="black"
-                        containerStyle={styles.pickerStyle}
-                        style={{ color: Colors.black }}>
-                        {products.map((option, index) => (
-                          <Picker.Item
-                            key={index}
-                            value={option.product_id}
-                            label={option.product_name}
-                          />
-                        ))}
-                      </Picker>
-                      <TouchableOpacity
-                        style={styles.logInButton}
-                        onPress={() => { confirmAdd() }}
-                      >
-                        <Text style={styles.loginButtonText}>
-                          Confirm
-                        </Text>
-                      </TouchableOpacity>
-                    </ScrollView>
-                  </View>
-                </View>
-              </Modal>
             </ScrollView>
           )
-        }
+        : null}
+
+        {shouldShow2 ? (
+          <ScrollView>
+            <FlatList
+              data={fav_api}
+              numColumns={2}
+              
+              style={styles.superListFav2}
+              renderItem={({ item }) =>
+              (
+                <View style={styles.GridViewBlockStyle}>
+                  <View style={styles.topicList2}>
+                    <Avatar style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
+                    <Text style={styles.textTopicList2}> {item.product_name}  </Text>
+                    <MaterialCommunityIcons name="delete-empty" style={styles.icon} size={20} color="#F21729" onPress={() => { deleteTasklist(item._id) }}/>
+                  </View>
+                </View>
+
+              )} />
+
+          </ScrollView>
+        ) : null}
+
         <View style={styles.bottomContainer}>
           <TouchableOpacity
             style={styles.circleButton}
-            onPress={() => { toggleModalVisibility() }}
+            onPress={() => { confirmAdd() }}
           >
             <Image source={add_logo} style={styles.circleText} />
           </TouchableOpacity>
@@ -200,19 +218,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: '3%'
+    marginBottom: '4%',
+  },
+  logo : {
+    width: 100,
   },
   boxTopic: {
-    justifyContent: 'center',
     flexDirection: 'row',
     alignSelf: 'center',
-    backgroundColor: 'white',
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
-    borderRadius: 10,
-    width: '100%'
+    width: '100%',
   },
   boxTopicGra: {
     justifyContent: 'center',
@@ -234,9 +248,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: "5%",
     height: '100%',
-    width: '80%',
+    width: '90%',
     marginBottom: '20%',
-    backgroundColor: '#6188c2',
     borderRadius: 10,
     shadowColor: "#000000",
     shadowOpacity: 5,
@@ -245,6 +258,10 @@ const styles = StyleSheet.create({
   superListFav: {
     marginTop: '5%',
     marginBottom: '20%',
+  },
+  superListFav2: {
+    marginTop: '5%',
+    marginRight: '0%'
   },
   container1: {
     width: '100%',
@@ -270,22 +287,41 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   topicList: {
-    width: '80%',
+    width: '97%',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    height: 50,
-    backgroundColor: '#0A214A',
+    height: 60,
+    backgroundColor: '#5DB2BD',
     shadowColor: "#000000",
     shadowOpacity: 5,
     shadowRadius: 5,
     elevation: 5,
+    borderRadius: 20
+  },
+  topicList2: {
+    width: '65%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 150,
+    backgroundColor: '#5DB2BD',
+    shadowColor: "#000000",
+    shadowOpacity: 5,
+    shadowRadius: 5,
+    elevation: 5,
+    borderRadius: 20,
+    marginLeft: '3%'
   },
   textTopicList: {
-    color: 'white',
+    color: '#F0FF00',
     fontSize: 18,
     fontFamily: "Mitr-Light",
-
+    marginLeft:10,
+  },
+  textTopicList2: {
+    color: '#F0FF00',
+    fontSize: 12,
+    fontFamily: "Mitr-Light",
+    marginLeft:10,
   },
   bottomContainer: {
     flex: 1,
@@ -294,10 +330,15 @@ const styles = StyleSheet.create({
     marginRight: '5%'
   },
   title: {
-    color: 'black',
+    color: '#FFFFFF',
     textAlign: 'center',
-    fontSize: 35,
-    fontFamily: "Mitr-Light",
+    fontSize: 30,
+    fontWeight: '600',
+  },
+  titlecolor:{
+    color: '#FFFAD3',
+    fontSize: 30,
+    fontWeight: '600',
   },
   title2: {
     color: 'black',
@@ -374,6 +415,36 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     flex: 1
-  }
+  },
+  pickerbox:{
+    flexDirection: 'row',
+    alignSelf: 'center',
+    width: '100%',
+  },
+  pickerStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 30,
+    justifyContent: 'space-between',
+    padding: 15,
+    width: 240,
+    height: 35,
+    alignSelf: 'center',
+    marginLeft: 10,
+    backgroundColor: '#ffffff',
+    marginTop:10,
+  },
+  icon:{
+    width: 25,
+    height: 25,
+    position: 'absolute',
+    right: 15, // Keep some space between your left border and Image
+  },
+  GridViewBlockStyle: {
+    margin:5,
+    marginRight: 'auto',
+    marginBottom: '5%',
+    flexDirection: 'row',
+  },
 });
 export default FavoriteList;
