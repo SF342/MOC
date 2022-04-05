@@ -133,7 +133,7 @@ const FavoriteList = () => {
               <Picker.Item
                 key={index}
                 value={option.product_id}
-                label={option.product_name}
+                 label={option.product_name}
               />
             ))}
           </Picker>

@@ -29,9 +29,12 @@ export const getProductId = (data) => dispatch => {
         axios
         .get(API_URL + '/productDetail/' + obj.product_id)
         .then(response => {
-            allProduct.push(response.data[0])
-            console.log('all prod ', allProduct)
-            dispatch({type: API_PRODUCTID, payload: allProduct});
+            if(response.data[0] != undefined) {
+
+              allProduct.push(response.data[0])
+              console.log('all prod ', allProduct)
+              dispatch({type: API_PRODUCTID, payload: allProduct});
+            }
 
         })
         .catch(err => {
@@ -45,15 +48,14 @@ export const getProductId = (data) => dispatch => {
 export const addFavoriteList =
    (
     user_id,
-    pid,
-    pname
-  ) =>
+    pid
+    ) =>
   (dispatch) => {
+    console.log("test add")
     axios
       .post(API_URL, {
         _id : user_id,
         product_id : pid,
-        product_name : pname
       })
       .then(response => {
         dispatch({type: API_TODO, payload: []});

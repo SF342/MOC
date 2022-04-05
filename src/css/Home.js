@@ -22,7 +22,7 @@ export default StyleSheet.create({
       },
       loginButtonText: {
         textAlign: 'center',
-        color: '#F0FFFF',
+        color: '#000000',
         fontWeight: 'bold',
         fontSize: 20,
         padding: 15
@@ -37,6 +37,28 @@ export default StyleSheet.create({
         shadowOpacity: 5,
         shadowRadius: 5,
         elevation: 5
+      },
+      bg_modal: {
+        backgroundColor: '#000000aa',
+        flex: 1
+      },
+      paper_madal: {
+        backgroundColor: '#ffffff',
+        margin: 30,
+        marginTop: 200,
+        marginBottom: 300,
+        padding: 20,
+        borderRadius: 10,
+        flex: 1
+      },
+      title2: {
+        color: 'black',
+        textAlign: 'center',
+        fontSize: 20,
+        width: 320,
+        marginBottom: 10,
+        marginTop: 10,
+        fontWeight: 'bold',
       },
 
 });

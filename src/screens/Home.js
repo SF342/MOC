@@ -1,35 +1,30 @@
 import React from 'react';
-import { useEffect, useState } from 'react'
-import { ListItem, SearchBar, Avatar } from 'react-native-elements';
-import {
-  StyleSheet,
-  View,
-  FlatList,
-  Text
-} from 'react-native';
+import {useEffect, useState} from 'react';
+import {ListItem, SearchBar, Avatar} from 'react-native-elements';
+import {Modal, View, FlatList, Text, TouchableOpacity} from 'react-native';
 //redux stuff
-import { getData } from "../redux/actions/dataActions"
-import { useSelector, useDispatch } from 'react-redux'
-import styles from '../css/Home'
+import {getData} from '../redux/actions/dataActions';
+import { addFavoriteList } from '../redux/actions/newFavoriteAction'; 
+import {useSelector, useDispatch} from 'react-redux';
+import styles from '../css/Home';
 
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import Moc_logo from '../../assets/moc_logo.png';
-import auth from "@react-native-firebase/auth"
 import RecommendPage from './RecommendPage';
 
-export default Home = ({ navigation }) => {
-
+export default Home = ({navigation}) => {
   const dispatch = useDispatch();
-  const products = useSelector(state => state.data.data)
-  const image = useSelector(state => state.data.urlimage)
+  const products = useSelector(state => state.data.data);
+  const image = useSelector(state => state.data.urlimage);
   const theme = useSelector(state => state.theme.theme);
-  const user_api = useSelector(state => state.user.user)
+  const user_api = useSelector(state => state.user.user);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [pid, serPid] = useState();
 
-
-  const [data, setData] = useState()
-  const [valueInput, setValue] = useState("")
-  const [checkUserType, setCheckUserType] = useState(true)
+  const [data, setData] = useState();
+  const [valueInput, setValue] = useState('');
+  const [checkUserType, setCheckUserType] = useState(true);
 
   const [uid, setUid] = useState(null);
   const [isLoading, setLoading] = useState(true);
@@ -37,60 +32,70 @@ export default Home = ({ navigation }) => {
   useEffect(() => {
     setData(products);
 
-    auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUid(user.uid)
-        setCheckUserType(true)
-      } else {
-        setCheckUserType(false)
-        setUid(null)
-      }
-    });
-  }, [])
+  }, []);
 
   const updateInput = text => {
-    setValue(text)
-    searchFilterFunction(text)
-    if (text != "" || uid == null) {
-      setCheckUserType(false)
+    setValue(text);
+    searchFilterFunction(text);
+    if (text != '' || uid == null) {
+      setCheckUserType(false);
     } else {
       if (uid) {
-        setCheckUserType(true)
+        setCheckUserType(true);
       }
     }
+  };
+
+  // Function call to open modal add
+  function toggleModalVisibility() {
+    setModalVisible(!isModalVisible);
   }
 
-  const filterImageUrl = (val) => {
+  const filterImageUrl = val => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
 
     if (nameImg.length !== 0) {
-      return { uri: nameImg[0].url }
+      return {uri: nameImg[0].url};
     } else {
-      return Moc_logo
+      return Moc_logo;
     }
+  };
+0
+   // Function call to open modal add
+   const confirmAdd = () => {
+     if(user_api != null){
+       console.log(user_api._id, pid)
+       dispatch(addFavoriteList(user_api._id, pid))
+       setModalVisible(false);
+
+     }else{
+      alert("Please Login to add favorite")
+     }
   }
 
   const searchFilterFunction = text => {
     const newData = products.filter(item => {
-      const itemData = `${item.product_id.toUpperCase()} ${item.product_name} ${item.category_name}`;
+      const itemData = `${item.product_id.toUpperCase()} ${item.product_name} ${
+        item.category_name
+      }`;
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
     });
-    setData(newData)
+    setData(newData);
   };
 
   if (products.length === 0) {
     dispatch(getData());
-    setLoading(false)
+    setLoading(false);
   }
 
   return (
     <LinearGradient
       colors={[theme.pri700, theme.pri50]}
-      start={{ x: 1, y: 0 }} end={{ x: 0, y: 1 }}
+      start={{x: 1, y: 0}}
+      end={{x: 0, y: 1}}
       style={styles.container1}>
-      <View style={{ flex: 1,  }}>
-
+      <View style={{flex: 1}}>
         <SearchBar
           placeholder="Type Here..."
           lightTheme
@@ -98,24 +103,44 @@ export default Home = ({ navigation }) => {
           value={valueInput}
           onChangeText={text => updateInput(text)}
           autoCorrect={false}
-          containerStyle={{ backgroundColor: '#0A214A' }}
+          containerStyle={{backgroundColor: '#0A214A'}}
         />
 
-        {checkUserType === true ? <RecommendPage navigation={navigation} /> :
-          (<View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-between' }}>
-            <Text style={{ fontSize: 18, color: 'red', textAlign: 'center', fontFamily: "Mitr-Light" }}>{data.title}</Text>
+        {checkUserType === true ? (
+          <RecommendPage navigation={navigation} />
+        ) : (
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+            }}>
+            <Text
+              style={{
+                fontSize: 18,
+                color: 'red',
+                textAlign: 'center',
+                fontFamily: 'Mitr-Light',
+              }}>
+              {data.title}
+            </Text>
             <FlatList
               data={data}
-              renderItem={({ item }) => (
+              renderItem={({item}) => (
                 <ListItem
                   Component={TouchableScale}
                   friction={0} //
+                  onLongPress={() => {
+                    toggleModalVisibility();
+                    serPid(item.product_id)
+                    console.log("user api ",user_api)
+                  }}
                   tension={200} // These props are passed to the parent component (here TouchableScale)
                   activeScale={0.95} //
                   linearGradientProps={{
                     colors: ['#1544E2', '#0A214A'],
-                    start: { x: 1, y: 0 },
-                    end: { x: 0.2, y: 0 },
+                    start: {x: 1, y: 0},
+                    end: {x: 0.2, y: 0},
                   }}
                   ViewComponent={LinearGradient}
                   containerStyle={{
@@ -124,16 +149,34 @@ export default Home = ({ navigation }) => {
                     borderRadius: 8,
                   }}
                   onPress={() =>
-                    navigation.navigate('ShowPricePage', { id: item.product_id })
-                  }
-                >
-                  <Avatar style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
+                    navigation.navigate('ShowPricePage', {id: item.product_id})
+                  }>
+                  <Avatar
+                    style={styles.logo}
+                    source={filterImageUrl(item.product_name)}
+                    rounded
+                  />
                   <ListItem.Content>
-                    <ListItem.Title style={{ fontSize: 22, color: '#FFC511', fontWeight: '700', fontFamily: "Mitr-Light" }}>{`${item.product_name}`}</ListItem.Title>
+                    <ListItem.Title
+                      style={{
+                        fontSize: 22,
+                        color: '#FFC511',
+                        fontWeight: '700',
+                        fontFamily: 'Mitr-Light',
+                      }}>{`${item.product_name}`}</ListItem.Title>
                     <View style={styles.TextContainer1}>
-                      <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.group_name} </ListItem.Subtitle>
-                      <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>{item.categoty_name} </ListItem.Subtitle>
-                      <ListItem.Subtitle style={{ color: '#CED0CE', fontFamily: "Mitr-Light" }}>รหัสสินค้า : {item.product_id}</ListItem.Subtitle>
+                      <ListItem.Subtitle
+                        style={{color: '#CED0CE', fontFamily: 'Mitr-Light'}}>
+                        {item.group_name}{' '}
+                      </ListItem.Subtitle>
+                      <ListItem.Subtitle
+                        style={{color: '#CED0CE', fontFamily: 'Mitr-Light'}}>
+                        {item.categoty_name}{' '}
+                      </ListItem.Subtitle>
+                      <ListItem.Subtitle
+                        style={{color: '#CED0CE', fontFamily: 'Mitr-Light'}}>
+                        รหัสสินค้า : {item.product_id}
+                      </ListItem.Subtitle>
                     </View>
                   </ListItem.Content>
                 </ListItem>
@@ -141,11 +184,37 @@ export default Home = ({ navigation }) => {
               keyExtractor={item => item.product_id}
             />
           </View>
-          )}
-
+        )}
       </View>
-    </LinearGradient>
+      <Modal
+        animationType="slide"
+        transparent
+        visible={isModalVisible}
+        presentationStyle="overFullScreen"
+        onDismiss={toggleModalVisibility}
+        onRequestClose={() => {
+          setModalVisible(false);
+        }}>
+        <View style={styles.bg_modal}>
+          <View style={styles.paper_madal}>
+            <TouchableOpacity
+              onPress={() => {
+                setModalVisible(false);
+              }}>
+              <Text>x</Text>
+            </TouchableOpacity>
+            <Text style={styles.title2}>Add Favorite</Text>
 
+            <TouchableOpacity
+              style={styles.logInButton}
+              onPress={() => {
+                confirmAdd();
+              }}>
+              <Text style={styles.loginButtonText}>Confirm</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    </LinearGradient>
   );
 };
-
