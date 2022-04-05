@@ -16,8 +16,37 @@ import {
   ScrollView,
 } from 'native-base';
 import styles from '../css/ShowPricePage';
+import {LineChart} from 'react-native-chart-kit';
+import {Dimensions} from 'react-native';
+
 
 const ShowPricePage = ({navigation, route}) => {
+
+  /////////////////////////CHART//////////////////////
+  const prices = useSelector(state => state.data.productprice); 
+  const data = { 
+    labels: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sun'],
+    datasets: [
+      {
+        data: [20, 45, 28, 80, 99, 43, 50],
+        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+        strokeWidth: 2, // optional
+      },
+    ],
+    
+  };
+  const chartConfig = {
+    backgroundGradientFrom: "#1E2923",
+    backgroundGradientFromOpacity: 0,
+    backgroundGradientTo: "#08130D",
+    backgroundGradientToOpacity: 0.5,
+    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+    strokeWidth: 2, // optional, default 3
+    barPercentage: 0.5,
+    useShadowColorFromDataset: false // optional
+  };
+  ////////////////////////////////////////////////////
+  
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.productprice);
   const image = useSelector(state => state.data.urlimage);
@@ -84,19 +113,22 @@ const ShowPricePage = ({navigation, route}) => {
                     style={styles.container1}>
                     <View style={styles.box1}>
                       <View>
-                        <View style={{ position:'absolute',width:135,height:136,alignSelf:'center',backgroundColor:'white',borderRadius:100}}></View>
-                      <Image
-                        style={styles.logo}
-                        source={filterImageUrl(product.product_name)}
-                        rounded
-                      >
-                      </Image>
-                      
+                        <View
+                          style={{
+                            position: 'absolute',
+                            width: 135,
+                            height: 136,
+                            alignSelf: 'center',
+                            backgroundColor: 'white',
+                            borderRadius: 100,
+                          }}></View>
+                        <Image
+                          style={styles.logo}
+                          source={filterImageUrl(product.product_name)}
+                          rounded></Image>
                       </View>
                       <View style={styles.TextContainer1}>
-                        <Text style={styles.topic}>
-                          {product.product_name}
-                        </Text>
+                        <Text style={styles.topic}>{product.product_name}</Text>
                       </View>
                       <View style={styles.TextContainer1}>
                         <Text style={styles.title}>ประเภท : </Text>
@@ -118,11 +150,16 @@ const ShowPricePage = ({navigation, route}) => {
                         <Text style={styles.update}>**อัพเดทราคาเมื่อ : </Text>
                         <Text style={styles.update1}> {date}</Text>
                       </View>
+                      <LineChart
+                        data={data}
+                        width={300}
+                        height={180}
+                        chartConfig={chartConfig}
+                      />
                     </View>
                   </LinearGradient>
                 </Center>
               </HStack>
-              
             </Center>
           </ScrollView>
         )}
