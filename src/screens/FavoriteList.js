@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Modal, FlatList, Image } from 'react-native';
+import { Text, View, StyleSheet, FlatList } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Picker, } from 'react-native-ui-lib';
 import { useSelector, useDispatch } from 'react-redux'
 import LinearGradient from 'react-native-linear-gradient';
-import add_logo from '../../assets/Abstract_Add_1.png'
 import uuid from 'react-native-uuid';
-import { addFavoriteList, deleteTask } from '../redux/actions/favoriteActions';
+import { addFavoriteList } from '../redux/actions/favoriteActions';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -25,9 +24,6 @@ const FavoriteList = () => {
   const [data, setData] = useState([]);
   const [value, setValue] = useState();
   const [p_id, setProductId] = useState();
-  const [uid, setUid] = useState();
-  const [favoriteArray, setFavoriteArray] = useState();
-  const [Loading, setLoading] = useState(false);
   const theme = useSelector(state => state.theme.theme);
   const [length, setLength] = useState(0)
 
@@ -62,7 +58,6 @@ const FavoriteList = () => {
       } else {
         console.log('else');
       }
-      setData(products)
       });
 
   function Show1() {
@@ -183,14 +178,6 @@ const FavoriteList = () => {
           </ScrollView>
         ) : null}
 
-        <View style={styles.bottomContainer}>
-          <TouchableOpacity
-            style={styles.circleButton}
-            onPress={() => { confirmAdd() }}
-          >
-            <Image source={add_logo} style={styles.circleText} />
-          </TouchableOpacity>
-        </View>
       </View>
     </LinearGradient>
 
