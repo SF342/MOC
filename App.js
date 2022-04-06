@@ -38,35 +38,30 @@ const App = () => {
       <Header />
       <NavigationContainer>
         <Tab.Navigator initialRouteName="Main"
-          tabBarOptions={{
-            activeTintColor: '#ffffff',
-            // activeBackgroundColor: '#0A214A',
-            // inactiveBackgroundColor: '#0A214A',
-            inactiveTintColor: '#778899',
-            labelStyle: {
+          screenOptions={{
+            tabBarActiveTintColor: "#ffffff",
+            tabBarInactiveTintColor: "#778899",
+            tabBarLabelStyle: {
               fontSize: 0,
               paddingBottom: 0,
-
-              fontWeight: 'bold',
+              fontWeight: "bold"
             },
-          }}
-          initialRouteName="Main"
-          screenOptions={{
-            headerShown:false,
-            tabBarStyle:{
-              headerShown:false,
-              backgroundColor:'#0A214A',
+            headerShown: false,
+            tabBarStyle: {
+              headerShown: false,
+              backgroundColor: '#0A214A',
               position: 'absolute',
-              left:15,
-              right:15,
-              bottom:10,
+              left: 15,
+              right: 15,
+              bottom: 10,
               borderRadius: 15,
-              height:60,
-              elevation:0,
-              shadowColor:10,
-              paddingBottom:1,
+              height: 60,
+              elevation: 0,
+              shadowColor: 10,
+              paddingBottom: 1,
               borderTopWidth: 0
-          }}}>
+            }
+          }}>
           <Tab.Screen name="Home" component={FirstScreen_Home}
             options={{
               tabBarLabel: 'Home',
