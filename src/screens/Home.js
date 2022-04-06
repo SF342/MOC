@@ -4,7 +4,7 @@ import {ListItem, SearchBar, Avatar} from 'react-native-elements';
 import {Modal, View, FlatList, Text, TouchableOpacity} from 'react-native';
 //redux stuff
 import {getData} from '../redux/actions/dataActions';
-import { addFavoriteList } from '../redux/actions/newFavoriteAction'; 
+import {addFavoriteList} from '../redux/actions/newFavoriteAction';
 import {useSelector, useDispatch} from 'react-redux';
 import styles from '../css/Home';
 
@@ -19,12 +19,12 @@ export default Home = ({navigation}) => {
   const image = useSelector(state => state.data.urlimage);
   const theme = useSelector(state => state.theme.theme);
   const user_api = useSelector(state => state.user.user);
-  const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(true);
   const [pid, serPid] = useState();
 
   const [data, setData] = useState();
   const [valueInput, setValue] = useState('');
-  const [checkUserType, setCheckUserType] = useState(true);
+  const [checkUserType, setCheckUserType] = useState(false);
 
   const [uid, setUid] = useState(null);
   const [isLoading, setLoading] = useState(true);
@@ -32,16 +32,28 @@ export default Home = ({navigation}) => {
   useEffect(() => {
     setData(products);
 
-  }, []);
+    // Check user login or not
+    if (user_api) {
+      setUid(user_api);
+      setCheckUserType(true);
+    } else {
+      setCheckUserType(false);
+      setUid(null);
+    }
+  }, [user_api]);
 
   const updateInput = text => {
     setValue(text);
     searchFilterFunction(text);
-    if (text != '' || uid == null) {
+
+    // let user search if finish turn back  recommend page
+    if (text != '' || user_api._id == null) {
       setCheckUserType(false);
+      console.log('check ', user_api._id);
     } else {
-      if (uid) {
+      if (user_api._id) {
         setCheckUserType(true);
+        console.log('check ', user_api._id);
       }
     }
   };
@@ -60,18 +72,17 @@ export default Home = ({navigation}) => {
       return Moc_logo;
     }
   };
-0
-   // Function call to open modal add
-   const confirmAdd = () => {
-     if(user_api != null){
-       console.log(user_api._id, pid)
-       dispatch(addFavoriteList(user_api._id, pid))
-       setModalVisible(false);
-
-     }else{
-      alert("Please Login to add favorite")
-     }
-  }
+  0;
+  // Function call to open modal add
+  const confirmAdd = () => {
+    if (user_api != null) {
+      console.log(user_api._id, pid);
+      dispatch(addFavoriteList(user_api._id, pid));
+      setModalVisible(false);
+    } else {
+      alert('Please Login to add favorite');
+    }
+  };
 
   const searchFilterFunction = text => {
     const newData = products.filter(item => {
@@ -122,7 +133,7 @@ export default Home = ({navigation}) => {
                 textAlign: 'center',
                 fontFamily: 'Mitr-Light',
               }}>
-              {data.title}
+              {/* {data.title} */}
             </Text>
             <FlatList
               data={data}
@@ -132,8 +143,8 @@ export default Home = ({navigation}) => {
                   friction={0} //
                   onLongPress={() => {
                     toggleModalVisibility();
-                    serPid(item.product_id)
-                    console.log("user api ",user_api)
+                    serPid(item.product_id);
+                    console.log('user api ', user_api);
                   }}
                   tension={200} // These props are passed to the parent component (here TouchableScale)
                   activeScale={0.95} //
