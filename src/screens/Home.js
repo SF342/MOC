@@ -19,7 +19,7 @@ export default Home = ({navigation}) => {
   const image = useSelector(state => state.data.urlimage);
   const theme = useSelector(state => state.theme.theme);
   const user_api = useSelector(state => state.user.user);
-  const [isModalVisible, setModalVisible] = useState(true);
+  const [isModalVisible, setModalVisible] = useState(false);
   const [pid, serPid] = useState();
 
   const [data, setData] = useState();

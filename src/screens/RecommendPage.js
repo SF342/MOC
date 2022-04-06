@@ -22,17 +22,26 @@ const RecommendPage = ({navigation}) => {
   const userdata = useSelector(state => state.user);
   const image = useSelector(state => state.data.urlimage);
   const [Loading, setLoading] = useState(false);
+  const [length, setLength] = useState(0)
 
   const user_api = useSelector(state => state.user.user);
   const fav_api = useSelector(state => state.user.favList);
   const productName = useSelector(state => state.user.productName);
 
-  useEffect(() => {
-    dispatch(getFavoriteId(user_api._id));
-    dispatch(getProductId(fav_api));
-    console.log('userr', user_api);
-    console.log('api ', productName);
-  }, [user_api]);
+    // Use for update realtime data
+    useEffect(() => {
+        if (length != fav_api.length) {
+          setLength(fav_api.length);
+          dispatch(getFavoriteId(user_api._id));
+          dispatch(getProductId(fav_api));
+  
+        } else if (length == 0) {
+          dispatch(getFavoriteId(user_api._id));
+          dispatch(getProductId(fav_api));
+        } else {
+          console.log('else');
+        }
+        });
 
   const filterImageUrl = val => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
