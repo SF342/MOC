@@ -11,7 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Moc_logo from '../../assets/moc_logo.png';
 import {  Avatar } from 'react-native-elements';
-import { getProductId, getFavoriteId, deleteFavorite } from '../redux/actions/newFavoriteAction';
+import { getProductId, deleteFavorite, getFavoriteId } from '../redux/actions/newFavoriteAction';
 
 const FavoriteList = () => {
   const dispatch = useDispatch();
@@ -25,13 +25,14 @@ const FavoriteList = () => {
   const [value, setValue] = useState();
   const [p_id, setProductId] = useState();
   const theme = useSelector(state => state.theme.theme);
-  const [length, setLength] = useState(0)
 
   const user_api = useSelector(state => state.user.user)
   const image = useSelector(state => state.data.urlimage)
   const fav_api = useSelector(state => state.user.favList)
   const productName = useSelector(state => state.user.productName)
+  const delete_state = useSelector(state => state.user.delete)
 
+  const [deleteState, setDelete] = useState(false);
   const [shouldShow1, setShouldShow1] = useState(true);
   const [shouldShow2, setShouldShow2] = useState(false);
 
@@ -47,18 +48,14 @@ const FavoriteList = () => {
 
     // Use for update realtime data
     useEffect(() => {
-      if (length != fav_api.length) {
-        setLength(fav_api.length);
+      
+      if(deleteState === true){
+        setDelete(false)
         dispatch(getFavoriteId(user_api._id));
-        dispatch(getProductId(fav_api));
-
-      } else if (length == 0) {
-        dispatch(getFavoriteId(user_api._id));
-        dispatch(getProductId(fav_api));
-      } else {
-        console.log('else');
       }
-      });
+      console.log("Fav ", fav_api)
+      dispatch(getProductId(fav_api));
+    }, [deleteState]);
 
   function Show1() {
     setShouldShow1(true);
@@ -92,7 +89,9 @@ const FavoriteList = () => {
   }
 
   async function deleteTasklist(user_id, _id) {
+    setDelete(true)
     dispatch(deleteFavorite(user_id, _id))
+
 
   };
 

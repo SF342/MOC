@@ -8,6 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import user_icon from '../../assets/kindpng_746008.png'
 import { __doSingOut } from '../redux/actions/userActions';
 import styles from '../css/LoggedInPage'
+import {  getFavoriteId } from '../redux/actions/newFavoriteAction';
 
 
 const RegisterScreen = ({ navigation }) => {
@@ -30,6 +31,7 @@ const RegisterScreen = ({ navigation }) => {
  
 
   useEffect(() => {
+    dispatch(getFavoriteId(user._id))
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);

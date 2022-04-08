@@ -85,7 +85,6 @@ const LoggedInPage = () => {
 const ProfileStatePage = () => {
 
     const dataApi = useSelector(state => state.user.user)
-    console.log("Custom  ",dataApi)
 
     // Set an initializing state whilst Firebase connects
     const [initializing, setInitializing] = useState(true);
@@ -94,7 +93,6 @@ const ProfileStatePage = () => {
     // Handle user state changes
     function onAuthStateChanged(user) {
         setUser(user);
-        console.log("user", user)
         if (initializing) setInitializing(false);
     }
 

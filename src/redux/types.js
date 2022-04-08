@@ -19,3 +19,9 @@ export const API_LOGOUT = "API_LOGOUT";
 export const API_TODO = "API_TODO";
 export const API_PRODUCTID = "API_PRODUCTID";
 
+export const API_TODODELETE = "API_TODODELETE";
+export const API_FAVID = "API_FAVID";
+export const API_ADDFAV = "API_ADDFAV";
+
+
+export const RETRIEVE_FAVORITE = "RETRIEVE_FAVORITE";

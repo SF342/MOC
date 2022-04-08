@@ -26,20 +26,20 @@ export default Home = ({navigation}) => {
   const [valueInput, setValue] = useState('');
   const [checkUserType, setCheckUserType] = useState(false);
 
-  const [uid, setUid] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  const productName = useSelector(state => state.user.productName);
+  const redux_fav_state = useSelector(state => state.user.idle);
 
   useEffect(() => {
     setData(products);
-
+    console.log(user_api)
     // Check user login or not
     if (user_api) {
-      setUid(user_api);
       setCheckUserType(true);
     } else {
       setCheckUserType(false);
-      setUid(null);
     }
+
   }, [user_api]);
 
   const updateInput = text => {

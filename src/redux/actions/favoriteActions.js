@@ -3,22 +3,22 @@ import axios from 'axios';
 
 const API_URL = 'http://10.0.2.2:4001/moc';
 
-export const getFavoriteList = (user_id) => dispatch => {
-  axios
-    .get(API_URL + '/' + user_id)
-    .then(response => {
-      if (response.data.length !== 0){
-        dispatch({type: API_TODO, payload: response.data});
-        console.log("test")
-        console.log(response.data)
-        return response.data;
-      }
-    })
-    .catch(err => {
-      console.log(err)
-      alert('Get data Fav error');
-    });
-};
+// export const getFavoriteList = (user_id) => dispatch => {
+//   axios
+//     .get(API_URL + '/' + user_id)
+//     .then(response => {
+//       if (response.data.length !== 0){
+//         dispatch({type: API_TODO, payload: response.data});
+//         console.log("test")
+//         console.log(response.data)
+//         return response.data;
+//       }
+//     })
+//     .catch(err => {
+//       console.log(err)
+//       alert('Get data Fav error');
+//     });
+// };
 
 export const addFavoriteList =
    (

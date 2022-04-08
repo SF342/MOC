@@ -1,4 +1,4 @@
-import {API_TODO, API_TODODELETE, API_PRODUCTID} from '../types';
+import {API_ADDFAV, API_FAVID, API_TODODELETEE, API_PRODUCTID} from '../types';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -9,7 +9,7 @@ export const getFavoriteId = (user_id) => dispatch => {
     .get(API_URL + '/' + user_id)
     .then(response => {
       if (response.data.length !== 0){
-        dispatch({type: API_TODO, payload: response.data});
+        dispatch({type: API_FAVID, payload: response.data});
         return response.data;
       }
     })
@@ -23,19 +23,21 @@ export const getProductId = (data) => dispatch => {
     
     const allProduct = []
     console.log("Test za",data)
-    for (let i = 0; i < data.length; i++) {
+    if (data !== undefined){
+
+      for (let i = 0; i < data.length; i++) {
         var obj = data[i];
         console.log(obj.product_id)
         axios
         .get(API_URL + '/productDetail/' + obj.product_id)
         .then(response => {
-            if(response.data[0] != undefined) {
-
-              allProduct.push(response.data[0])
-              console.log('all prod ', allProduct)
-              dispatch({type: API_PRODUCTID, payload: allProduct});
-            }
-
+          if(response.data[0] != undefined) {
+            
+            allProduct.push(response.data[0])
+            console.log('all prod ', allProduct)
+            dispatch({type: API_PRODUCTID, payload: allProduct});
+          }
+          
         })
         .catch(err => {
           console.log(err)
@@ -43,6 +45,7 @@ export const getProductId = (data) => dispatch => {
         });
       }
       console.log('all prod last', allProduct)
+    }
   };
 
 export const addFavoriteList =
@@ -51,6 +54,7 @@ export const addFavoriteList =
     pid
     ) =>
   (dispatch) => {
+
     console.log("test add")
     axios
       .post(API_URL, {
@@ -58,10 +62,12 @@ export const addFavoriteList =
         product_id : pid,
       })
       .then(response => {
-        dispatch({type: API_TODO, payload: []});
+        console.log("Response ", response.data)
+        dispatch({type: API_ADDFAV, payload: response.data});
         return response.data;
       })
       .catch(err => {
+        console.log(err)
         console.log("Add fail")
       });
   };
@@ -110,7 +116,7 @@ export const deleteFavorite = (user_id, _id) => dispatch => {
     axios
         .delete(API_URL + '/' +user_id+'/'+ _id)
         .then( 
-        dispatch({type: API_TODO, payload: []})
+        dispatch({type: API_TODODELETEE, payload: []})
         )
         .catch(err => {
         console.log("Delete fail")

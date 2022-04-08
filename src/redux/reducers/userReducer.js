@@ -1,4 +1,4 @@
-import { SET_SIGN_IN, SET_SIGN_OUT, SET_TASK_FAVORITE, ADD_TASK_FAVORITE, DELETE_TASK_FAVORITE, API_TODO, API_PRODUCTID } from "../types"
+import { API_TODODELETEE, API_ADDFAV, API_FAVID, SET_SIGN_IN, SET_SIGN_OUT, SET_TASK_FAVORITE, ADD_TASK_FAVORITE, DELETE_TASK_FAVORITE, API_TODO, API_PRODUCTID } from "../types"
 
 const initialState = {
     authenticated: false,
@@ -6,7 +6,10 @@ const initialState = {
     favoritelist: [],
     user: null,
     favList : [],
-    productName : []
+    productName : [],
+    idle : false,
+    add : false,
+    delete : false
 };
 
 export default function (state = initialState, action) {
@@ -59,17 +62,31 @@ export default function (state = initialState, action) {
                 ...state,
                 favoritelist: favoriteTemp,
             }
-        
-        case API_TODO:
-            return {
-                ...state,
-                favList : action.payload
-            }
 
         case API_PRODUCTID:
             return {
                 ...state,
-                productName : action.payload
+                productName : action.payload,
+                add : false,
+                delete : false
+            }
+        case API_FAVID:
+            return {
+                ...state,
+                favList : action.payload,
+                idle : true,
+                add : false
+            }
+        case API_ADDFAV:
+            return {
+                ...state,
+                favList : action.payload,
+                add : true
+            }
+        case API_TODODELETEE:
+            return{
+                ...state,
+                delete : true
             }
         default:
             return state;

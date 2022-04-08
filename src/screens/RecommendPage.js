@@ -22,26 +22,29 @@ const RecommendPage = ({navigation}) => {
   const userdata = useSelector(state => state.user);
   const image = useSelector(state => state.data.urlimage);
   const [Loading, setLoading] = useState(false);
-  const [length, setLength] = useState(0)
 
-  const user_api = useSelector(state => state.user.user);
+  const user = useSelector(state => state.user.user);
   const fav_api = useSelector(state => state.user.favList);
   const productName = useSelector(state => state.user.productName);
+  const redux_fav_state = useSelector(state => state.user.idle);
+  const redux_fav_add = useSelector(state => state.user.add);
 
-    // Use for update realtime data
-    useEffect(() => {
-        if (length != fav_api.length) {
-          setLength(fav_api.length);
-          dispatch(getFavoriteId(user_api._id));
-          dispatch(getProductId(fav_api));
-  
-        } else if (length == 0) {
-          dispatch(getFavoriteId(user_api._id));
-          dispatch(getProductId(fav_api));
-        } else {
-          console.log('else');
-        }
-        });
+  // Use for update realtime data
+  useEffect(() => {
+    if (redux_fav_state === false) {
+      dispatch(getFavoriteId(user._id));
+      dispatch(getProductId(fav_api));
+      console.log('in');
+    }else if (redux_fav_add === true) {
+      dispatch(getFavoriteId(user._id));
+      dispatch(getProductId(fav_api));
+      console.log('in add');
+    }else{
+      console.log("State ",redux_fav_state)
+      dispatch(getProductId(fav_api));
+    }
+    
+  }, [redux_fav_state, redux_fav_add]);
 
   const filterImageUrl = val => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
