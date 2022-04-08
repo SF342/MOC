@@ -12,14 +12,12 @@ import styles from '../css/RecommendPage';
 import {
   getProductId,
   getFavoriteId,
-  deleteFavorite,
 } from '../redux/actions/newFavoriteAction';
 import {ScrollView} from 'react-native-gesture-handler';
 
 const RecommendPage = ({navigation}) => {
   const dispatch = useDispatch();
   const theme = useSelector(state => state.theme.theme);
-  const userdata = useSelector(state => state.user);
   const image = useSelector(state => state.data.urlimage);
   const [Loading, setLoading] = useState(false);
 

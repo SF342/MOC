@@ -68,7 +68,6 @@ export default function (state = initialState, action) {
                 ...state,
                 productName : action.payload,
                 add : false,
-                delete : false
             }
         case API_FAVID:
             return {
@@ -82,11 +81,6 @@ export default function (state = initialState, action) {
                 ...state,
                 favList : action.payload,
                 add : true
-            }
-        case API_TODODELETEE:
-            return{
-                ...state,
-                delete : true
             }
         default:
             return state;

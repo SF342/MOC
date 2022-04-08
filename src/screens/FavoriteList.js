@@ -4,8 +4,6 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { Picker, } from 'react-native-ui-lib';
 import { useSelector, useDispatch } from 'react-redux'
 import LinearGradient from 'react-native-linear-gradient';
-import uuid from 'react-native-uuid';
-import { addFavoriteList } from '../redux/actions/favoriteActions';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -65,34 +63,12 @@ const FavoriteList = () => {
   function Show2() {
     setShouldShow1(false);
     setShouldShow2(true);
-  };
-
-  // Function call to open modal add 
-  function toggleModalVisibility() {
-    setModalVisible(!isModalVisible);
-  };
-
-  function confirmAdd() {
-    toggleModalVisibility();
-    setSelectedProduct('');
-
-    let check = user.favoritelist.indexOf((val) => val.product_id !== p_id)
-    if (check === -1){
-      const data = {
-        id: uuid.v4(),
-        product_id: p_id,
-        product_name: value
-      }
-      console.log(user_api._id, p_id)
-      dispatch(addFavoriteList(user_api._id, p_id, value))
-    }
   }
+
 
   async function deleteTasklist(user_id, _id) {
     setDelete(true)
     dispatch(deleteFavorite(user_id, _id))
-
-
   };
 
 

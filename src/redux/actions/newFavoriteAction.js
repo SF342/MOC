@@ -1,6 +1,5 @@
-import {API_ADDFAV, API_FAVID, API_TODODELETEE, API_PRODUCTID} from '../types';
+import {API_ADDFAV, API_FAVID, API_PRODUCTID} from '../types';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux'
 
 const API_URL = 'http://10.0.2.2:4001/favorite';
 
@@ -8,10 +7,9 @@ export const getFavoriteId = (user_id) => dispatch => {
   axios
     .get(API_URL + '/' + user_id)
     .then(response => {
-      if (response.data.length !== 0){
         dispatch({type: API_FAVID, payload: response.data});
         return response.data;
-      }
+      
     })
     .catch(err => {
       console.log(err)
@@ -35,6 +33,8 @@ export const getProductId = (data) => dispatch => {
             
             allProduct.push(response.data[0])
             console.log('all prod ', allProduct)
+            dispatch({type: API_PRODUCTID, payload: allProduct});
+          }else{
             dispatch({type: API_PRODUCTID, payload: allProduct});
           }
           
@@ -72,51 +72,13 @@ export const addFavoriteList =
       });
   };
 
-export const updateTaskList =
-  (
-    _id,
-    date,
-    priority,
-    taskDetail,
-    taskDate,
-    taskDatetaskDate,
-    timestamp,
-    topic,
-    urlPhoto,
-  ) =>
-  dispatch => {
-      
-    axios
-      .put(API_URL, {
-        _id,
-        date,
-        priority,
-        taskDetail,
-        taskDate,
-        taskDatetaskDate,
-        timestamp,
-        topic,
-        urlPhoto:urlPhoto,
-      })
-      .then(response => {
-        dispatch({type: API_TODODELETE, payload: []})
-        console.log(response.data);
-
-        return response.data;
-      })
-      .catch(err => {
-        console.log("Update fail")
-        console.log(err)
-      });
-  };
-
 
 export const deleteFavorite = (user_id, _id) => dispatch => {
     console.log("Rook : ",user_id," ", _id)
     axios
         .delete(API_URL + '/' +user_id+'/'+ _id)
         .then( 
-        dispatch({type: API_TODODELETEE, payload: []})
+        dispatch({type: API_ADDFAV, payload: []})
         )
         .catch(err => {
         console.log("Delete fail")
