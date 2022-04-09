@@ -7,6 +7,8 @@ import {getData} from '../redux/actions/dataActions';
 import {addFavoriteList} from '../redux/actions/newFavoriteAction';
 import {useSelector, useDispatch} from 'react-redux';
 import styles from '../css/Home';
+import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
@@ -27,20 +29,29 @@ export default Home = ({navigation}) => {
   const [checkUserType, setCheckUserType] = useState(false);
 
   const [isLoading, setLoading] = useState(true);
-  const productName = useSelector(state => state.user.productName);
-  const redux_fav_state = useSelector(state => state.user.idle);
+  const [shouldShow1, setShouldShow1] = useState(true);
+  const [shouldShow2, setShouldShow2] = useState(false);
 
   useEffect(() => {
     setData(products);
-    console.log(user_api)
+    console.log(user_api);
     // Check user login or not
     if (user_api) {
       setCheckUserType(true);
     } else {
       setCheckUserType(false);
     }
-
   }, [user_api]);
+
+  function Show1() {
+    setShouldShow1(true);
+    setShouldShow2(false);
+  }
+
+  function Show2() {
+    setShouldShow1(false);
+    setShouldShow2(true);
+  }
 
   const updateInput = text => {
     setValue(text);
@@ -118,7 +129,118 @@ export default Home = ({navigation}) => {
         />
 
         {checkUserType === true ? (
-          <RecommendPage navigation={navigation} />
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+            }}>
+            <View style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+            }}>
+            <Entypo
+              name="menu"
+              size={50}
+              color="#FFFFFF"
+              onPress={() => {
+                Show1();
+              }}
+            />
+            <MaterialIcons
+              name="crop-square"
+              size={50}
+              color="#FFFFFF"
+              onPress={() => {
+                Show2();
+              }}
+            />
+            </View>
+            {shouldShow1 ? (
+              <View>
+                <Text
+                  style={{
+                    fontSize: 18,
+                    color: 'red',
+                    textAlign: 'center',
+                    fontFamily: 'Mitr-Light',
+                  }}>
+                  {/* {data.title} */}
+                </Text>
+                <FlatList
+                  data={data}
+                  renderItem={({item}) => (
+                    <ListItem
+                      Component={TouchableScale}
+                      friction={0} //
+                      onLongPress={() => {
+                        toggleModalVisibility();
+                        serPid(item.product_id);
+                        console.log('user api ', user_api);
+                      }}
+                      tension={200} // These props are passed to the parent component (here TouchableScale)
+                      activeScale={0.95} //
+                      linearGradientProps={{
+                        colors: ['#1544E2', '#0A214A'],
+                        start: {x: 1, y: 0},
+                        end: {x: 0.2, y: 0},
+                      }}
+                      ViewComponent={LinearGradient}
+                      containerStyle={{
+                        marginHorizontal: 4,
+                        marginVertical: 4,
+                        borderRadius: 8,
+                      }}
+                      onPress={() =>
+                        navigation.navigate('ShowPricePage', {
+                          id: item.product_id,
+                        })
+                      }>
+                      <Avatar
+                        style={styles.logo}
+                        source={filterImageUrl(item.product_name)}
+                        rounded
+                      />
+                      <ListItem.Content>
+                        <ListItem.Title
+                          style={{
+                            fontSize: 22,
+                            color: '#FFC511',
+                            fontWeight: '700',
+                            fontFamily: 'Mitr-Light',
+                          }}>{`${item.product_name}`}</ListItem.Title>
+                        <View style={styles.TextContainer1}>
+                          <ListItem.Subtitle
+                            style={{
+                              color: '#CED0CE',
+                              fontFamily: 'Mitr-Light',
+                            }}>
+                            {item.group_name}{' '}
+                          </ListItem.Subtitle>
+                          <ListItem.Subtitle
+                            style={{
+                              color: '#CED0CE',
+                              fontFamily: 'Mitr-Light',
+                            }}>
+                            {item.categoty_name}{' '}
+                          </ListItem.Subtitle>
+                          <ListItem.Subtitle
+                            style={{
+                              color: '#CED0CE',
+                              fontFamily: 'Mitr-Light',
+                            }}>
+                            รหัสสินค้า : {item.product_id}
+                          </ListItem.Subtitle>
+                        </View>
+                      </ListItem.Content>
+                    </ListItem>
+                  )}
+                  keyExtractor={item => item.product_id}
+                />
+              </View>
+            ) : null}
+            {shouldShow2 ? <RecommendPage navigation={navigation} /> : null}
+          </View>
         ) : (
           <View
             style={{
