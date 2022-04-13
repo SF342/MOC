@@ -4,7 +4,10 @@ import {ListItem, SearchBar, Avatar} from 'react-native-elements';
 import {Modal, View, FlatList, Text, TouchableOpacity} from 'react-native';
 //redux stuff
 import {getData} from '../redux/actions/dataActions';
-import {addFavoriteList} from '../redux/actions/newFavoriteAction';
+import {
+  addFavoriteList,
+  getFavoriteId,
+} from '../redux/actions/newFavoriteAction';
 import {useSelector, useDispatch} from 'react-redux';
 import styles from '../css/Home';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -34,14 +37,15 @@ export default Home = ({navigation}) => {
 
   useEffect(() => {
     setData(products);
-    console.log(user_api);
+
     // Check user login or not
     if (user_api) {
+      dispatch(getFavoriteId(user_api._id));
       setCheckUserType(true);
     } else {
       setCheckUserType(false);
     }
-  }, [user_api]);
+  });
 
   function Show1() {
     setShouldShow1(true);
@@ -87,7 +91,6 @@ export default Home = ({navigation}) => {
   // Function call to open modal add
   const confirmAdd = () => {
     if (user_api != null) {
-      console.log(user_api._id, pid);
       dispatch(addFavoriteList(user_api._id, pid));
       setModalVisible(false);
     } else {
@@ -118,16 +121,6 @@ export default Home = ({navigation}) => {
       end={{x: 0, y: 1}}
       style={styles.container1}>
       <View style={{flex: 1}}>
-        <SearchBar
-          placeholder="Type Here..."
-          lightTheme
-          round
-          value={valueInput}
-          onChangeText={text => updateInput(text)}
-          autoCorrect={false}
-          containerStyle={{backgroundColor: '#0A214A'}}
-        />
-
         {checkUserType === true ? (
           <View
             style={{
@@ -135,29 +128,39 @@ export default Home = ({navigation}) => {
               flexDirection: 'column',
               justifyContent: 'space-between',
             }}>
-            <View style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-            }}>
-            <Entypo
-              name="menu"
-              size={50}
-              color="#FFFFFF"
-              onPress={() => {
-                Show1();
-              }}
-            />
-            <MaterialIcons
-              name="crop-square"
-              size={50}
-              color="#FFFFFF"
-              onPress={() => {
-                Show2();
-              }}
-            />
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+              }}>
+              <Entypo
+                name="menu"
+                size={50}
+                color="#FFFFFF"
+                onPress={() => {
+                  Show1();
+                }}
+              />
+              <MaterialIcons
+                name="crop-square"
+                size={50}
+                color="#FFFFFF"
+                onPress={() => {
+                  Show2();
+                }}
+              />
             </View>
             {shouldShow1 ? (
               <View>
+                <SearchBar
+                  placeholder="Type Here..."
+                  lightTheme
+                  round
+                  value={valueInput}
+                  onChangeText={text => updateInput(text)}
+                  autoCorrect={false}
+                  containerStyle={{backgroundColor: '#0A214A'}}
+                />
                 <Text
                   style={{
                     fontSize: 18,
