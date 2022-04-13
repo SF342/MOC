@@ -1,1 +1,4149 @@
-[{"product_id":"P11001","product_name":"สุกรชำแหละ เนื้อสัน สันใน","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11002","product_name":"สุกรชำแหละ เนื้อสัน สันนอก","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11003","product_name":"สุกรชำแหละ เนื้อแดง สะโพก  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11004","product_name":"สุกรชำแหละ เนื้อแดง ไหล่  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11005","product_name":"สุกรชำแหละ เนื้อสามชั้น  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11006","product_name":"สุกรชำแหละ มันแข็ง  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11007","product_name":"สุกรชำแหละ เศษมัน  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11008","product_name":"สุกรชำแหละ มันเปลว  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11009","product_name":"ไก่สดทั้งตัว (รวมเครื่องใน)  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11010","product_name":"ไก่สดทั้งตัว (ไม่รวมเครื่องใน)  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11011","product_name":"ไก่สดชำแหละ เนื้อสันใน  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11012","product_name":"ไก่สดชำแหละ เนื้ออก (เนื้อล้วน)  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11013","product_name":"ไก่สดชำแหละ น่อง สะโพก  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11014","product_name":"ไก่สดชำแหละ ปีก ทั้งปีก (ปีกเต็ม)  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11015","product_name":"ไก่สดชำแหละ ปีกบน  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11016","product_name":"ไก่สดชำแหละ เครื่องใน  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11017","product_name":"ไก่สดชำแหละ หนัง  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11018","product_name":"ไก่สดชำแหละ แข้ง ขา ตีน  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11019","product_name":"ไก่สดชำแหละ โครงกระดูก  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11020","product_name":"ไข่เป็ด ใหญ่  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11021","product_name":"ไข่เป็ด กลาง  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11022","product_name":"ไข่เป็ด เล็ก  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11023","product_name":"ไข่เป็ดเค็ม ใหญ่  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"},{"product_id":"P11024","product_name":"ไข่เป็ดเค็ม กลาง  ","categoty_name":"ขายปลีก","group_name":"เนื้อสัตว์"}]
+
+[
+    {
+      "product_id": "P11001",
+      "product_name": "สุกรชำแหละ เนื้อสัน สันใน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11002",
+      "product_name": "สุกรชำแหละ เนื้อสัน สันนอก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11003",
+      "product_name": "สุกรชำแหละ เนื้อแดง สะโพก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11004",
+      "product_name": "สุกรชำแหละ เนื้อแดง ไหล่",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11005",
+      "product_name": "สุกรชำแหละ เนื้อสามชั้น",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11006",
+      "product_name": "สุกรชำแหละ มันแข็ง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11007",
+      "product_name": "สุกรชำแหละ เศษมัน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11008",
+      "product_name": "สุกรชำแหละ มันเปลว",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11009",
+      "product_name": "ไก่สดทั้งตัว (รวมเครื่องใน)",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11010",
+      "product_name": "ไก่สดทั้งตัว (ไม่รวมเครื่องใน)",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11011",
+      "product_name": "ไก่สดชำแหละ เนื้อสันใน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11012",
+      "product_name": "ไก่สดชำแหละ เนื้ออก (เนื้อล้วน)",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11013",
+      "product_name": "ไก่สดชำแหละ น่อง สะโพก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11014",
+      "product_name": "ไก่สดชำแหละ ปีก ทั้งปีก (ปีกเต็ม)",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11015",
+      "product_name": "ไก่สดชำแหละ ปีกบน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11016",
+      "product_name": "ไก่สดชำแหละ เครื่องใน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11017",
+      "product_name": "ไก่สดชำแหละ หนัง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11018",
+      "product_name": "ไก่สดชำแหละ แข้ง ขา ตีน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11019",
+      "product_name": "ไก่สดชำแหละ โครงกระดูก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11020",
+      "product_name": "ไข่เป็ด ใหญ่",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11021",
+      "product_name": "ไข่เป็ด กลาง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11022",
+      "product_name": "ไข่เป็ด เล็ก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11023",
+      "product_name": "ไข่เป็ดเค็ม ใหญ่",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11024",
+      "product_name": "ไข่เป็ดเค็ม กลาง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11025",
+      "product_name": "ไข่ไก่ เบอร์ 0",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11026",
+      "product_name": "ไข่ไก่ เบอร์ 1",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11027",
+      "product_name": "ไข่ไก่ เบอร์ 2",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11028",
+      "product_name": "ไข่ไก่ เบอร์ 3",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11029",
+      "product_name": "ไข่ไก่ เบอร์ 4",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11030",
+      "product_name": "ไข่ไก่ เบอร์ 5",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11031",
+      "product_name": "เนื้อโค ธรรมดา",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11032",
+      "product_name": "เนื้อโค สันนอก สะโพก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11033",
+      "product_name": "เนื้อโค สันใน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11034",
+      "product_name": "เนื้อกระบือ ธรรมดา",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11035",
+      "product_name": "เนื้อกระบือ สันนอก สะโพก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11036",
+      "product_name": "เนื้อกระบือ สันใน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11037",
+      "product_name": "สุกรชำแหละ เนื้อแดง สะโพก (ไม่ได้ตัดแต่ง)",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11038",
+      "product_name": "สุกรชำแหละ เนื้อแดง ไหล่ (ไม่ได้ตัดแต่ง)",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11039",
+      "product_name": "เนื้อโค ติดกระดูก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11040",
+      "product_name": "เนื้อโค เลาะกระดูกขาหน้า",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11041",
+      "product_name": "เนื้อโค เลาะกระดูกขาหลัง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11042",
+      "product_name": "เนื้อโค ส่วนน่อง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11043",
+      "product_name": "เนื้อโค สามชั้น",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11044",
+      "product_name": "ไก่สดชำแหละ น่อง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P11045",
+      "product_name": "ไก่สดชำแหละ สะโพก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12001",
+      "product_name": "กุ้งขาว (40 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12002",
+      "product_name": "กุ้งขาว (50 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12003",
+      "product_name": "กุ้งขาว (60 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12004",
+      "product_name": "กุ้งขาว (70 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12005",
+      "product_name": "กุ้งขาว (80 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12006",
+      "product_name": "กุ้งแชบ๊วย (40-50 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12007",
+      "product_name": "กุ้งเปลือกแข็ง (40-50 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12008",
+      "product_name": "กุ้งก้ามกรามบ่อเลี้ยงไทย (ขนาดกลาง) 15-16 ตัว/กก.",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12009",
+      "product_name": "ปลาหมึกกล้วย คละ",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12010",
+      "product_name": "ปลาหมึกกระดอง คละ",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12011",
+      "product_name": "หอยแครง คละ",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12012",
+      "product_name": "หอยลาย คละ",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12013",
+      "product_name": "หอยแมลงภู่ คละ",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12014",
+      "product_name": "ปลาทูสด (9-12 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12015",
+      "product_name": "ปลาช่อน",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12016",
+      "product_name": "ปลาดุก (พันธุ์บิ๊กอุย)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12017",
+      "product_name": "ปลานิล",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12018",
+      "product_name": "ปลาสวาย",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12019",
+      "product_name": "ปลาทับทิม",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12020",
+      "product_name": "ปลาทู (3 ตัว/เข่ง)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12021",
+      "product_name": "เส้นก๋วยเตี๋ยว (เส้นใหญ่)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P12022",
+      "product_name": "เส้นก๋วยเตี๋ยว (เส้นเล็ก)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13001",
+      "product_name": "ผักคะน้า คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13002",
+      "product_name": "ผักคะน้า คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13003",
+      "product_name": "ผักบุ้งจีน คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13004",
+      "product_name": "ผักบุ้งจีน คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13005",
+      "product_name": "ผักกวางตุ้ง คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13006",
+      "product_name": "ผักกวางตุ้ง คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13007",
+      "product_name": "ผักกาดหอม คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13008",
+      "product_name": "ผักกาดหอม คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13009",
+      "product_name": "ผักกาดขาว (ลุ้ย) คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13010",
+      "product_name": "ผักกาดขาว (ลุ้ย) คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13011",
+      "product_name": "กะหล่ำปลี คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13012",
+      "product_name": "กะหล่ำปลี คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13013",
+      "product_name": "กะหล่ำดอก คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13014",
+      "product_name": "กะหล่ำดอก คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13015",
+      "product_name": "มะระจีน คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13016",
+      "product_name": "มะระจีน คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13017",
+      "product_name": "มะเขือเทศสีดา คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13018",
+      "product_name": "มะเขือเทศสีดา คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13019",
+      "product_name": "มะเขือเทศผลใหญ่ คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13020",
+      "product_name": "มะเขือเทศผลใหญ่ คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13021",
+      "product_name": "มะเขือเจ้าพระยา",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13022",
+      "product_name": "ถั่วฝักยาว คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13023",
+      "product_name": "ถั่วฝักยาว คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13024",
+      "product_name": "แตงกวา คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13025",
+      "product_name": "แตงกวา คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13026",
+      "product_name": "ฟักเขียว คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13027",
+      "product_name": "ฟักเขียว คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13028",
+      "product_name": "หัวผักกาด คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13029",
+      "product_name": "หัวผักกาด คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13030",
+      "product_name": "หน่อไม้ฝรั่ง คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13031",
+      "product_name": "หน่อไม้ฝรั่ง คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13032",
+      "product_name": "ข้าวโพดฝักอ่อน",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13033",
+      "product_name": "ผักชี คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13034",
+      "product_name": "ผักชี คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13035",
+      "product_name": "ต้นหอม คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13036",
+      "product_name": "ต้นหอม คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13037",
+      "product_name": "พริกสดชี้ฟ้า",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13038",
+      "product_name": "พริกขี้หนูจินดา",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13039",
+      "product_name": "ขึ้นฉ่าย คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13040",
+      "product_name": "ขึ้นฉ่าย คัด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13041",
+      "product_name": "ผักกะเฉด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13042",
+      "product_name": "ผักบุ้งไทย",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13043",
+      "product_name": "มะนาว เบอร์ 1-2",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13044",
+      "product_name": "มะนาว เบอร์ 3-4",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13045",
+      "product_name": "ขิง อ่อน",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13046",
+      "product_name": "ขิงแก่",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13047",
+      "product_name": "ผักคะน้า อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13048",
+      "product_name": "ผักคะน้า อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13049",
+      "product_name": "ผักบุ้งจีน อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13050",
+      "product_name": "ผักบุ้งจีน อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13051",
+      "product_name": "ผักกวางตุ้ง อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13052",
+      "product_name": "ผักกวางตุ้ง อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13053",
+      "product_name": "ผักกาดหอม อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13054",
+      "product_name": "ผักกาดหอม อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13055",
+      "product_name": "ผักกาดขาวปลี อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13056",
+      "product_name": "ผักกาดขาวปลี อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13057",
+      "product_name": "กะหล่ำปลี อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13058",
+      "product_name": "กะหล่ำปลี อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13059",
+      "product_name": "กระชายขาว คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13060",
+      "product_name": "ผักชี อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13061",
+      "product_name": "ผักชี อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13062",
+      "product_name": "ต้นหอม อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13063",
+      "product_name": "ต้นหอม อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13064",
+      "product_name": "ขึ้นฉ่าย อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13065",
+      "product_name": "ขึ้นฉ่าย อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13066",
+      "product_name": "มะเขือเจ้าพระยา อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13067",
+      "product_name": "มะเขือเจ้าพระยา อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13068",
+      "product_name": "ถั่วฝักยาว อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13069",
+      "product_name": "ถั่วฝักยาว อินทรีย์ ท็อปซูเปอร์มาร์เก็ต\r\n",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13070",
+      "product_name": "แตงกวา อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13071",
+      "product_name": "แตงกวา อินทรีย์ ท็อปซูเปอร์มาร์เก็ต\r\n",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13072",
+      "product_name": "ฟักเขียว อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13073",
+      "product_name": "ฟักเขียว อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13074",
+      "product_name": "พริกขี้หนูจินดา อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13075",
+      "product_name": "พริกขี้หนูจินดา อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13076",
+      "product_name": "มะนาว อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13077",
+      "product_name": "มะนาว อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13078",
+      "product_name": "หน่อไม้ฝรั่ง อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13079",
+      "product_name": "หน่อไม้ฝรั่ง อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13080",
+      "product_name": "ข้าวโพดฝักอ่อน อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13081",
+      "product_name": "ข้าวโพดฝักอ่อน อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13082",
+      "product_name": "ผักชี คละ (บาท/กก.)",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13083",
+      "product_name": "ผักชี คัด \n(บาท/กก.)",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13084",
+      "product_name": "ต้นหอม คละ (บาท/กก.)\n",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13085",
+      "product_name": "ต้นหอม คัด (บาท/กก.)\n",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13086",
+      "product_name": "พริกสดชี้ฟ้า (บาท/กก.)\n",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13087",
+      "product_name": "พริกขี้หนูจินดา (บาท/กก.)\n",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13088",
+      "product_name": "ขึ้นฉ่าย คละ (บาท/กก.)\n",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13089",
+      "product_name": "ขึ้นฉ่าย คัด (บาท/กก.)\n",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13090",
+      "product_name": "ผักบุ้งไทย (10 กำ)",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13091",
+      "product_name": "พริกขี้หนูสวน คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P13092",
+      "product_name": "มะลอกอ (พันธุ์แขกดำดำเนิน) คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14001",
+      "product_name": "ส้มเขียวหวาน สายน้ำผึ้ง เบอร์ 4",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14002",
+      "product_name": "ส้มเขียวหวาน สายน้ำผึ้ง เบอร์ 5",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14003",
+      "product_name": "ส้มเขียวหวาน สายน้ำผึ้ง เบอร์ 6",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14004",
+      "product_name": "มะละกอแขกดำ",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14005",
+      "product_name": "แตงโม พันธุ์กินรี",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14006",
+      "product_name": "กล้วยหอมทอง ใหญ่",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14007",
+      "product_name": "กล้วยน้ำว้า",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14008",
+      "product_name": "กล้วยไข่ ใหญ่",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14009",
+      "product_name": "กล้วยไข่ กลาง",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14010",
+      "product_name": "ฝรั่งกิมจู คละ",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14011",
+      "product_name": "ฝรั่งกิมจู คัด",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14012",
+      "product_name": "มะม่วงน้ำดอกไม้ เบอร์ 0",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14013",
+      "product_name": "มะม่วงน้ำดอกไม้ เบอร์ 1",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14014",
+      "product_name": "มะม่วงเขียวเสวย เบอร์ 0",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14015",
+      "product_name": "มะม่วงเขียวเสวย เบอร์ 1",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14016",
+      "product_name": "เงาะโรงเรียน",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14017",
+      "product_name": "มังคุด (ผิวมัน)",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14018",
+      "product_name": "มังคุด (ผิวกระ)",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14019",
+      "product_name": "ทุเรียนชะนี",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14020",
+      "product_name": "ทุเรียนหมอนทอง",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14021",
+      "product_name": "ลองกอง",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14022",
+      "product_name": "ลิ้นจี่ พันธุ์ฮงฮวย",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14023",
+      "product_name": "ลิ้นจี่ พันธุ์จักรพรรดิ์",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14024",
+      "product_name": "ส้มโอ ขาวทองดี ใหญ่",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14025",
+      "product_name": "ส้มโอ ขาวทองดี เล็ก",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14026",
+      "product_name": "สับปะรด ศรีราชา เบอร์ 1",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14027",
+      "product_name": "สับปะรด ศรีราชา เบอร์ 2",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14028",
+      "product_name": "สับปะรด ศรีราชา เบอร์ 3",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14029",
+      "product_name": "น้อยหน่า",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14030",
+      "product_name": "ลำไย อีดอ",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14031",
+      "product_name": "องุ่นพันธุ์ไวท์มะละกา คัด",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14032",
+      "product_name": "องุ่นพันธุ์ไวท์มะละกา คละ",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14033",
+      "product_name": "มะละกอฮอลแลนด์",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14034",
+      "product_name": "กล้วยหอมทอง ใหญ่ (14 ผล)",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14035",
+      "product_name": "ส้มโอ ขาวน้ำผึ้ง ใหญ่",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14036",
+      "product_name": "ส้มโอ ขาวน้ำผึ้ง เล็ก",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14037",
+      "product_name": "กล้วยหอมทอง อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14038",
+      "product_name": "กล้วยหอมทอง อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14039",
+      "product_name": "กล้วยน้ำว้า อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14040",
+      "product_name": "กล้วยน้ำว้า อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14041",
+      "product_name": "กล้วยไข่ อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14042",
+      "product_name": "กล้วยไข่ อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14043",
+      "product_name": "กล้วยเล็บมือนาง อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14044",
+      "product_name": "กล้วยเล็บมือนาง อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14045",
+      "product_name": "ฝรั่งพันธุ์กิมจู อินทรีย์ ร้านเลมอนฟาร์ม",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P14046",
+      "product_name": "ฝรั่งพันธุ์กิมจู อินทรีย์ ท็อปซูเปอร์มาร์เก็ต",
+      "category_name": "ผัก-ผลไม้อินทรีย์",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15001",
+      "product_name": "กระเทียมแห้ง มัดจุก หัวใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15002",
+      "product_name": "กระเทียมแห้ง มัดจุก หัวกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15003",
+      "product_name": "กระเทียมแห้ง มัดจุก หัวเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15004",
+      "product_name": "กระเทียมแห้ง ตัดจุก หัวใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15005",
+      "product_name": "กระเทียมแห้ง ตัดจุก หัวกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15006",
+      "product_name": "กระเทียมแห้งตัดจุก หัวเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15007",
+      "product_name": "กระเทียมแห้ง แกะกลีบ กลีบใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15008",
+      "product_name": "กระเทียมแห้ง แกะกลีบ กลีบกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15009",
+      "product_name": "กระเทียมแห้ง แกะกลีบ กลีบเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15010",
+      "product_name": "หอมแดงภาคเหนือ มัดจุก หัวใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15011",
+      "product_name": "หอมแดงภาคเหนือ มัดจุก หัวกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15012",
+      "product_name": "หอมแดงภาคเหนือ มัดจุก หัวเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15013",
+      "product_name": "หอมแดงภาคเหนือ ตัดจุก หัวใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15014",
+      "product_name": "หอมแดงภาคเหนือ ตัดจุก หัวกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15015",
+      "product_name": "หอมแดงภาคเหนือ ตัดจุก หัวเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15016",
+      "product_name": "หอมแดงศรีสะเกษ มัดจุก หัวใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15017",
+      "product_name": "หอมแดงศรีสะเกษ มัดจุก หัวกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15018",
+      "product_name": "หอมแดงศรีสะเกษ มัดจุก หัวเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15019",
+      "product_name": "หอมแดงศรีสะเกษ ตัดจุก หัวใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15020",
+      "product_name": "หอมแดงศรีสะเกษ ตัดจุก หัวกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15021",
+      "product_name": "หอมแดงศรีสะเกษ ตัดจุก หัวเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15022",
+      "product_name": "หอมหัวใหญ่ สันป่าตอง เบอร์ 0-1",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15023",
+      "product_name": "หอมหัวใหญ่ สันป่าตอง เบอร์ 2",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15024",
+      "product_name": "หอมหัวใหญ่ กาญจนบุรี เบอร์ 0-1",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15025",
+      "product_name": "หอมหัวใหญ่ กาญจนบุรี เบอร์ 2",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15026",
+      "product_name": "หอมหัวใหญ่ ห้องเย็น เบอร์ 0-1",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15027",
+      "product_name": "หอมหัวใหญ่ ห้องเย็น เบอร์ 2",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15028",
+      "product_name": "หอมหัวใหญ่ ฝาง เบอร์ 0-1",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15029",
+      "product_name": "หอมหัวใหญ่ ฝาง เบอร์ 2",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15030",
+      "product_name": "มันฝรั่ง เกรดโอ",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15031",
+      "product_name": "มันฝรั่ง เกรดเอ",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15032",
+      "product_name": "มันฝรั่ง เกรดบี",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15033",
+      "product_name": "มะขามเปียก แกะเมล็ด",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15034",
+      "product_name": "มะขามเปียก ไม่แกะเมล็ด",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15035",
+      "product_name": "กระเจี๊ยบแห้ง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15036",
+      "product_name": "ลูกเดือย กะเทาะเปลือก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15037",
+      "product_name": "พริกไทยขาว อย่างดี",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15038",
+      "product_name": "พริกไทยดำ อย่างดี",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15039",
+      "product_name": "พริกขี้หนูแห้ง อย่างดี",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P15040",
+      "product_name": "พริกขี้หนูแห้ง อย่างรอง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16001",
+      "product_name": "ถั่วลิสงกะเทาะเปลือก คัดพิเศษ",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16002",
+      "product_name": "ถั่วลิสงกะเทาะเปลือก คัดธรรมดา",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16003",
+      "product_name": "ถั่วลิสงกะเทาะเปลือก คละ",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16004",
+      "product_name": "น้ำมันถั่วลิสงบริสุทธิ์ บรรจุขวด 2 ลิตร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16005",
+      "product_name": "น้ำมันถั่วลิสงบริสุทธิ์ บรรจุขวด 1 ลิตร ตรากวางบิน",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16006",
+      "product_name": "น้ำมันถั่วเหลืองบริสุทธิ์ บรรจุขวด 1 ลิตร ตราองุ่น",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16007",
+      "product_name": "น้ำมันถั่วเหลืองบริสุทธิ์ บรรจุขวด 1 ลิตร ตรากุ๊ก",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16008",
+      "product_name": "น้ำมันรำข้าวบริสุทธิ์สำเร็จรูป บรรจุขวด 1 ลิตร ตราคิง",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16009",
+      "product_name": "น้ำมันรำข้าวบริสุทธิ์สำเร็จรูป บรรจุขวด 1 ลิตร ตราชิม",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16010",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป บรรจุถุงไม่มีตรา",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16011",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป บรรจุขวด1 ลิตร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16012",
+      "product_name": "มะพร้าวทับสะแก ผลใหญ่ ปอกเปลือก",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16013",
+      "product_name": "มะพร้าวขาวขูด (ไม่ขูดผิว)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16014",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุปี๊บ 12.50 กก.",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16015",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุปี๊บ 12.50 กก. ตราผักกาด",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16016",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุปี๊บ 12.50 กก. ตราไพ่ป๊อก",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16017",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุปี๊บ 12.50 กก. ตราดอกไม้",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16018",
+      "product_name": "น้ำมันทานตะวันสำเร็จรูป บรรจุขวด ตรากุ๊ก (น้ำมันในประเทศ)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16019",
+      "product_name": "น้ำมันทานตะวันสำเร็จรูป บรรจุขวด ตราชิม (น้ำมันในประเทศ)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16020",
+      "product_name": "งาดำ",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16021",
+      "product_name": "งาขาว เมล็ดใหญ่",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16022",
+      "product_name": "น้ำมันทานตะวันสำเร็จรูป บรรจุขวด ตราองุ่น (น้ำมันในประเทศ)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16023",
+      "product_name": "น้ำมันรำข้าวบริสุทธิ์สำเร็จรูป บรรจุขวด 1 ลิตร ตราอโรซ่า",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16024",
+      "product_name": "น้ำมันถั่วลิสงบริสุทธิ์ บรรจุปี๊ป 13.75 ลิตร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16025",
+      "product_name": "น้ำมันถั่วลิสงบริสุทธิ์ บรรจุขวด 5 ลิตร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16026",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุขวด 1 ลิตร ตราไทยเพียว",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16027",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุขวด 1 ลิตร ตราเนเชอเรล",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "P16028",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุขวด 1 ลิตร ตรารอยไทย",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "R11001",
+      "product_name": "ข้าวขาว 100% ชั้น 1",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11002",
+      "product_name": "ข้าวขาว 100% ชั้น 1 (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11003",
+      "product_name": "ข้าวขาว 100% ชั้น 2",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11004",
+      "product_name": "ข้าวขาว 100% ชั้น 2 (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11005",
+      "product_name": "ข้าวขาว 100% ชั้น 3",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11006",
+      "product_name": "ข้าวขาว 100% ชั้น 3 (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11007",
+      "product_name": "ข้าวขาว 5%",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11008",
+      "product_name": "ข้าวขาว 5% (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11009",
+      "product_name": "ข้าวขาว 10%",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11010",
+      "product_name": "ข้าวขาว 10% (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11011",
+      "product_name": "ข้าวขาว 15% (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11012",
+      "product_name": "ข้าวขาว 25% (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11013",
+      "product_name": "ปลายข้าวขาว เอ วัน เลิศ",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11014",
+      "product_name": "ปลายข้าวขาว เอ วัน เลิศ (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11015",
+      "product_name": "ปลายข้าว เอ วัน พิเศษ",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11016",
+      "product_name": "ปลายข้าว เอ วัน พิเศษ (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11017",
+      "product_name": "ปลายข้าวขาว ซี วัน",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11018",
+      "product_name": "ข้าวสารเหนียว กข.6",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11019",
+      "product_name": "ข้าวสารเหนียว กข.6 (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11020",
+      "product_name": "ข้าวสารเหนียว 10% เมล็ดยาว",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11021",
+      "product_name": "ข้าวสารเหนียว 10% เมล็ดยาว (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11022",
+      "product_name": "ข้าวสารเหนียว 10% เมล็ดสั้น",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11023",
+      "product_name": "ข้าวสารเหนียว 10% เมล็ดสั้น (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11024",
+      "product_name": "ปลายข้าวสารเหนียว เอ วัน",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11025",
+      "product_name": "ปลายข้าวสารเหนียว เอ วัน (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11026",
+      "product_name": "ข้าวนึ่ง 100%",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11027",
+      "product_name": "ข้าวนึ่ง 5%",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11028",
+      "product_name": "ปลายข้าวนึ่ง เอ วัน",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11029",
+      "product_name": "ข้าวหอมมะลิ 100% ชั้น 1",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11030",
+      "product_name": "ข้าวหอมมะลิ 100% ชั้น 1 (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11031",
+      "product_name": "ข้าวหอมมะลิ 100% ชั้น 2",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11032",
+      "product_name": "ข้าวหอมมะลิ 100% ชั้น 2 (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11033",
+      "product_name": "ปลายข้าวหอมมะลิ",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11034",
+      "product_name": "ปลายข้าวหอมมะลิ (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11035",
+      "product_name": "ข้าวหอมจังหวัด",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11036",
+      "product_name": "ข้าวหอมจังหวัด (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11037",
+      "product_name": "ข้าวหอมปทุมธานี",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11038",
+      "product_name": "ข้าวหอมปทุมธานี (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11039",
+      "product_name": "ปลายข้าวหอมปทุมธานี",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11040",
+      "product_name": "ปลายข้าวหอมปทุมธานี (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11041",
+      "product_name": "รำข้าว ขาว",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11042",
+      "product_name": "รำข้าว นึ่ง",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11043",
+      "product_name": "รำข้าว สกัด",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11044",
+      "product_name": "รำข้าวกล้อง",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11045",
+      "product_name": "แป้งข้าวเจ้าโม่น้ำ",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11046",
+      "product_name": "แป้งข้าวเหนียวโม่น้ำ ",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11047",
+      "product_name": "กระสอบป่าน 29x43 นิ้ว (ใหม่)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11048",
+      "product_name": "กระสอบป่าน 29x43 นิ้ว ใช้แล้ว (ไม่มีตรา)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11049",
+      "product_name": "กระสอบป่าน 29x43 นิ้ว ใช้แล้ว (มีตรา)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11050",
+      "product_name": "กระสอบจัมโบ้ ขนาด 1,000 กก. (นน. 2.5 kg. ไม่รวม VAT)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11051",
+      "product_name": "กระสอบใหม่ 50 กก. (ไม่มีตรา)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11052",
+      "product_name": "กระสอบจัมโบ้ ขนาด 1,000 กก. (นน. 2 kg. ไม่รวม VAT)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11053",
+      "product_name": "ข้าวเปลือกเจ้า 5% นาปรัง จ.สุพรรณบุรี",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11054",
+      "product_name": "ข้าวเปลือกเจ้า 5% นาปี จ.สุพรรณบุรี",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11055",
+      "product_name": "ข้าวเปลือกหอมมะลิ (ตัน)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11056",
+      "product_name": "ข้าวเปลือกหอมมะลินอกพื้นที่ (ตัน)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11057",
+      "product_name": "ข้าวเปลือกเจ้า (ตัน)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11058",
+      "product_name": "ข้าวเปลือกปทุมธานี (ตัน)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R11059",
+      "product_name": "ข้าวเปลือกเหนียวเมล็ดยาว (ตัน)",
+      "category_name": "ราคาขายส่งข้าว ผลิตภัณฑ์ข้าวและกระสอบป่าน",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R12001",
+      "product_name": "ข้าวสารเจ้า 100% ข้าวหอม",
+      "category_name": "ราคาขายส่งข้าวสารให้ร้านขายปลีก",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R12002",
+      "product_name": "ข้าวสารเจ้า 100% ข้าวหอม (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าวสารให้ร้านขายปลีก",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R12003",
+      "product_name": "ข้าวสารเจ้า 100%",
+      "category_name": "ราคาขายส่งข้าวสารให้ร้านขายปลีก",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R12004",
+      "product_name": "ข้าวสารเจ้า 100% (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าวสารให้ร้านขายปลีก",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R12005",
+      "product_name": "ข้าวสารเจ้า 5%",
+      "category_name": "ราคาขายส่งข้าวสารให้ร้านขายปลีก",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R12006",
+      "product_name": "ข้าวสารเจ้า 5% (ข้าวใหม่)",
+      "category_name": "ราคาขายส่งข้าวสารให้ร้านขายปลีก",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R12007",
+      "product_name": "ข้าวสารเหนียว สันป่าตอง (เขี้ยวงู) 100%",
+      "category_name": "ราคาขายส่งข้าวสารให้ร้านขายปลีก",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R12008",
+      "product_name": "ข้าวสารเหนียว สันป่าตอง (เขี้ยวงู) 5%",
+      "category_name": "ราคาขายส่งข้าวสารให้ร้านขายปลีก",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R12009",
+      "product_name": "ข้าวสารเหนียว สันป่าตอง (เขี้ยวงู) 10% เมล็ดยาว",
+      "category_name": "ราคาขายส่งข้าวสารให้ร้านขายปลีก",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R12010",
+      "product_name": "ข้าวสารเหนียว สันป่าตอง (เขี้ยวงู) 10% เมล็ดสั้น",
+      "category_name": "ราคาขายส่งข้าวสารให้ร้านขายปลีก",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "R13001",
+      "product_name": "ข้าวสารเจ้า 100% ข้าวหอม ร้านค้าทั่วไป",
+      "category_name": "ราคาขายปลีกข้าวสาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "R13002",
+      "product_name": "ข้าวสารเจ้า 100% ข้าวหอม (ข้าวใหม่)",
+      "category_name": "ราคาขายปลีกข้าวสาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "R13003",
+      "product_name": "ข้าวสารเจ้า 100% ธรรมดา ร้านค้าทั่วไป",
+      "category_name": "ราคาขายปลีกข้าวสาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "R13004",
+      "product_name": "ข้าวสารเจ้า 100% ธรรมดา (ข้าวใหม่)",
+      "category_name": "ราคาขายปลีกข้าวสาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "R13005",
+      "product_name": "ข้าวสารเจ้า 5% ร้านค้าทั่วไป",
+      "category_name": "ราคาขายปลีกข้าวสาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "R13006",
+      "product_name": "ข้าวสารเจ้า 5% (ข้าวใหม่)",
+      "category_name": "ราคาขายปลีกข้าวสาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "R13007",
+      "product_name": "ข้าวสารเหนียว สันป่าตอง (เขี้ยวงู) 100%",
+      "category_name": "ราคาขายปลีกข้าวสาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "R13008",
+      "product_name": "ข้าวสารเหนียว สันป่าตอง (เขี้ยวงู) 5%",
+      "category_name": "ราคาขายปลีกข้าวสาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "R13009",
+      "product_name": "ข้าวสารเหนียว สันป่าตอง (เขี้ยวงู) 10% เมล็ดยาว",
+      "category_name": "ราคาขายปลีกข้าวสาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "R13010",
+      "product_name": "ข้าวสารเหนียว สันป่าตอง (เขี้ยวงู) 10% เมล็ดสั้น",
+      "category_name": "ราคาขายปลีกข้าวสาร",
+      "sell_type": "ขายปลีก"
+    },
+    {
+      "product_id": "W11001",
+      "product_name": "ลูกสุกรทั่วไป (นน. 12 กก./ตัว)",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11002",
+      "product_name": "ลูกสุกรซีพี (นน. 16 กก./ตัว)",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11003",
+      "product_name": "สุกรมีชีวิต ทั่วไป",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11004",
+      "product_name": "สุกรมีชีวิต ฟาร์ม",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11005",
+      "product_name": "สุกรชำแหละ ทั่วไป",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11006",
+      "product_name": "สุกรชำแหละ ฟาร์ม",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11007",
+      "product_name": "สุกรชำแหละ เนื้อสัน สันใน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11008",
+      "product_name": "สุกรชำแหละ เนื้อสัน สันนอก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11009",
+      "product_name": "สุกรชำแหละ เนื้อแดง สะโพก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11010",
+      "product_name": "สุกรชำแหละ เนื้อแดง ไหล่",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11011",
+      "product_name": "สุกรชำแหละ เนื้อสามชั้น",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11012",
+      "product_name": "สุกรชำแหละ มันแข็ง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11013",
+      "product_name": "สุกรชำแหละ เศษมัน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11014",
+      "product_name": "สุกรชำแหละ มันเปลว",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11015",
+      "product_name": "ลูกไก่ไข่",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11016",
+      "product_name": "ลูกไก่เนื้อ ทั่วไป",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11017",
+      "product_name": "ลูกไก่เนื้อ ซีพี",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11018",
+      "product_name": "ไก่มีชีวิต (หน้าโรงฆ่ากทม.) ทั่วไป",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11019",
+      "product_name": "ไก่มีชีวิต (หน้าโรงฆ่ากทม.) ซีพี",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11020",
+      "product_name": "ไก่สดทั้งตัว (รวมเครื่องใน)",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11021",
+      "product_name": "ไข่เป็ด คละ ณ แหล่งผลิต",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11022",
+      "product_name": "ไข่เป็ด ใหญ่",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11023",
+      "product_name": "ไข่เป็ด กลาง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11024",
+      "product_name": "ไข่เป็ด เล็ก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11025",
+      "product_name": "ไข่เป็ดเค็ม ใหญ่",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11026",
+      "product_name": "ไข่เป็ดเค็ม กลาง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11027",
+      "product_name": "ไข่ไก่ คละ ณ แหล่งผลิต",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11028",
+      "product_name": "ไข่ไก่ เบอร์ 0",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11029",
+      "product_name": "ไข่ไก่ เบอร์ 1",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11030",
+      "product_name": "ไข่ไก่ เบอร์ 2",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11031",
+      "product_name": "ไข่ไก่ เบอร์ 3",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11032",
+      "product_name": "ไข่ไก่ เบอร์ 4",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11033",
+      "product_name": "ไข่ไก่ เบอร์ 5",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11034",
+      "product_name": "โคมีชีวิต",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11035",
+      "product_name": "เนื้อโค ติดกระดูก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11036",
+      "product_name": "เนื้อโค เลาะกระดูกขาหน้า",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11037",
+      "product_name": "เนื้อโค เลาะกระดูกขาหลัง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11038",
+      "product_name": "กระบือ มีชีวิต",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11039",
+      "product_name": "เนื้อกระบือ ติดกระดูก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11040",
+      "product_name": "เนื้อกระบือ เลาะกระดูกขาหน้า",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11041",
+      "product_name": "เนื้อกระบือ เลาะกระดูกขาหลัง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11042",
+      "product_name": "ไก่สดชำแหละ เนื้อสันใน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11043",
+      "product_name": "ไก่สดชำแหละ เนื้ออก (เนื้อล้วน)",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11044",
+      "product_name": "ไก่สดชำแหละ น่อง สะโพก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11045",
+      "product_name": "ไก่สดชำแหละ ปีก ทั้งปีก (ปีกเต็ม)",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11046",
+      "product_name": "ไก่สดชำแหละ ปีกบน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11047",
+      "product_name": "ไก่สดชำแหละ เครื่องใน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11048",
+      "product_name": "ไก่สดชำแหละ หนัง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11049",
+      "product_name": "ไก่สดชำแหละ แข้ง ขา ตีน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11050",
+      "product_name": "ไก่สดชำแหละ โครงกระดูก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11051",
+      "product_name": "เนื้อโค ธรรมดา",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11052",
+      "product_name": "เนื้อโค สันนอก สะโพก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11053",
+      "product_name": "เนื้อโค สันใน",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11054",
+      "product_name": "เนื้อโค ส่วนน่อง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11055",
+      "product_name": "เนื้อโค สามชั้น",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11056",
+      "product_name": "ไก่สดชำแหละ น่อง",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W11057",
+      "product_name": "ไก่สดชำแหละ สะโพก",
+      "category_name": "เนื้อสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12001",
+      "product_name": "กุ้งขาว (40 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12002",
+      "product_name": "กุ้งขาว (50 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12003",
+      "product_name": "กุ้งขาว (60 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12004",
+      "product_name": "กุ้งขาว (70 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12005",
+      "product_name": "กุ้งขาว (80 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12006",
+      "product_name": "กุ้งแชบ๊วย (40-50 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12007",
+      "product_name": "กุ้งเปลือกแข็ง (40-50 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12008",
+      "product_name": "กุ้งก้ามกรามบ่อเลี้ยงไทย (ขนาดกลาง) 15-16 ตัว/กก.",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12009",
+      "product_name": "ปลาหมึกกล้วย คละ",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12010",
+      "product_name": "ปลาหมึกกระดอง คละ",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12011",
+      "product_name": "หอยแครง คละ",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12012",
+      "product_name": "หอยลาย คละ",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12013",
+      "product_name": "หอยแมลงภู่ คละ",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12014",
+      "product_name": "ปลาทูสด (9-12 ตัว/กก.)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12015",
+      "product_name": "ปลาช่อน",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12016",
+      "product_name": "ปลาดุก (พันธ์บิ๊กอุย)",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12017",
+      "product_name": "ปลานิล",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12018",
+      "product_name": "ปลาสวาย",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W12019",
+      "product_name": "ปลาทับทิม",
+      "category_name": "สัตว์น้ำ",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13001",
+      "product_name": "ผักคะน้า",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13002",
+      "product_name": "ผักบุ้งจีน",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13003",
+      "product_name": "ผักกวางตุ้ง",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13004",
+      "product_name": "ผักกาดหอม",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13005",
+      "product_name": "ผักกาดขาว (ลุ้ย)",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13006",
+      "product_name": "กะหล่ำปลี",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13007",
+      "product_name": "กะหล่ำดอก",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13008",
+      "product_name": "มะระจีน",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13009",
+      "product_name": "มะเขือเทศสีดา",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13010",
+      "product_name": "มะเขือเทศผลใหญ่",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13011",
+      "product_name": "มะเขือเจ้าพระยา",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13012",
+      "product_name": "ถั่วฝักยาว",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13013",
+      "product_name": "แตงกวา",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13014",
+      "product_name": "ฟักเขียว",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13015",
+      "product_name": "หัวผักกาด",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13016",
+      "product_name": "หน่อไม้ฝรั่ง",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13017",
+      "product_name": "ข้าวโพดฝักอ่อน",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13018",
+      "product_name": "ผักชี",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13019",
+      "product_name": "ต้นหอม",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13020",
+      "product_name": "พริกสดชี้ฟ้า",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13021",
+      "product_name": "พริกขี้หนูจินดา",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13022",
+      "product_name": "ขึ้นฉ่าย",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13023",
+      "product_name": "ผักกะเฉด 1 กำ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13024",
+      "product_name": "ผักบุ้งไทย 10 กำ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13025",
+      "product_name": "มะนาว เบอร์ 1-2",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13026",
+      "product_name": "มะนาว เบอร์ 3-4",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13027",
+      "product_name": "ขิงอ่อน",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13028",
+      "product_name": "ขิงแก่ คละ",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13029",
+      "product_name": "กระชายขาว",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13030",
+      "product_name": "พริกขี้หนูสวน",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W13031",
+      "product_name": "มะละกอ พันธุ์แขกดำดำเนิน",
+      "category_name": "ผักสด",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14001",
+      "product_name": "ส้มเขียวหวาน สายน้ำผึ้ง เบอร์ 4",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14002",
+      "product_name": "ส้มเขียวหวาน สายน้ำผึ้ง เบอร์ 5",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14003",
+      "product_name": "ส้มเขียวหวาน สายน้ำผึ้ง เบอร์ 6",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14004",
+      "product_name": "ส้มโอ ขาวทองดี ใหญ่",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14005",
+      "product_name": "ส้มโอ ขาวทองดี เล็ก",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14006",
+      "product_name": "มะละกอแขกดำ",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14007",
+      "product_name": "แตงโม พันธุ์กินรี",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14008",
+      "product_name": "กล้วยหอมทอง ใหญ่",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14009",
+      "product_name": "กล้วยน้ำว้า",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14010",
+      "product_name": "กล้วยไข่ ใหญ่",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14011",
+      "product_name": "กล้วยไข่ กลาง",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14012",
+      "product_name": "ฝรั่งกิมจู คละ",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14013",
+      "product_name": "ฝรั่งกิมจู คัด",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14014",
+      "product_name": "สับปะรด ศรีราชา เบอร์ 1",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14015",
+      "product_name": "สับปะรด ศรีราชา เบอร์ 2",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14016",
+      "product_name": "สับปะรด ศรีราชา เบอร์ 3",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14017",
+      "product_name": "องุ่นพันธุ์ไวท์มะละกา คัด",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14018",
+      "product_name": "องุ่นพันธุ์ไวท์มะละกา คละ",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14019",
+      "product_name": "เงาะโรงเรียน",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14020",
+      "product_name": "ทุเรียนชะนี",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14021",
+      "product_name": "ทุเรียนหมอนทอง",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14022",
+      "product_name": "มังคุด (ผิวมัน)",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14023",
+      "product_name": "มังคุด (ผิวกระ)",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14024",
+      "product_name": "มะม่วงน้ำดอกไม้ เบอร์ 0",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14025",
+      "product_name": "มะม่วงน้ำดอกไม้ เบอร์ 1",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14026",
+      "product_name": "มะม่วงเขียวเสวย เบอร์ 0",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14027",
+      "product_name": "มะม่วงเขียวเสวย เบอร์ 1",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14028",
+      "product_name": "ลิ้นจี่ พันธุ์ฮงฮวย",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14029",
+      "product_name": "ลิ้นจี่ พันธุ์จักรพรรดิ์",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14030",
+      "product_name": "ลองกอง",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14031",
+      "product_name": "น้อยหน่า",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14032",
+      "product_name": "ลำไย อีดอ",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14033",
+      "product_name": "มะละกอฮอลแลนด์",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14034",
+      "product_name": "กล้วยหอมทอง ใหญ่ (14 ผล)",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14035",
+      "product_name": "ส้มโอ ขาวน้ำผึ้ง ใหญ่",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W14036",
+      "product_name": "ส้มโอ ขาวน้ำผึ้ง เล็ก",
+      "category_name": "ผลไม้",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15001",
+      "product_name": "กระเทียมแห้ง มัดจุก หัวใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15002",
+      "product_name": "กระเทียมแห้ง มัดจุก หัวกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15003",
+      "product_name": "กระเทียมแห้ง มัดจุก หัวเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15004",
+      "product_name": "กระเทียมแห้ง ตัดจุก หัวใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15005",
+      "product_name": "กระเทียมแห้ง ตัดจุก หัวกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15006",
+      "product_name": "กระเทียมแห้ง ตัดจุก หัวเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15007",
+      "product_name": "กระเทียมแห้ง แกะกลีบ กลีบใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15008",
+      "product_name": "กระเทียมแห้ง แกะกลีบ กลีบกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15009",
+      "product_name": "กระเทียมแห้ง แกะกลีบ กลีบเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15010",
+      "product_name": "หอมแดงภาคเหนือ มัดจุก หัวใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15011",
+      "product_name": "หอมแดงภาคเหนือ มัดจุก หัวกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15012",
+      "product_name": "หอมแดงภาคเหนือ มัดจุก หัวเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15013",
+      "product_name": "หอมแดงภาคเหนือ ตัดจุก หัวใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15014",
+      "product_name": "หอมแดงภาคเหนือ ตัดจุก หัวกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15015",
+      "product_name": "หอมแดงภาคเหนือ ตัดจุก หัวเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15016",
+      "product_name": "หอมแดงศรีสะเกษ มัดจุก หัวใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15017",
+      "product_name": "หอมแดงศรีสะเกษ มัดจุก หัวกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15018",
+      "product_name": "หอมแดงศรีสะเกษ มัดจุก หัวเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15019",
+      "product_name": "หอมแดงศรีสะเกษ ตัดจุก หัวใหญ่",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15020",
+      "product_name": "หอมแดงศรีสะเกษ ตัดจุก หัวกลาง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15021",
+      "product_name": "หอมแดงศรีสะเกษ ตัดจุก หัวเล็ก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15022",
+      "product_name": "หอมหัวใหญ่ กาญจนบุรี เบอร์ 0-1",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15023",
+      "product_name": "หอมหัวใหญ่ กาญจนบุรี เบอร์ 2",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15024",
+      "product_name": "หอมหัวใหญ่ สันป่าตอง เบอร์ 0-1",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15025",
+      "product_name": "หอมหัวใหญ่ สันป่าตอง เบอร์ 2",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15026",
+      "product_name": "หอมหัวใหญ่ ฝาง เบอร์ 0-1",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15027",
+      "product_name": "หอมหัวใหญ่ ฝาง เบอร์ 2",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15028",
+      "product_name": "หอมหัวใหญ่ ห้องเย็น เบอร์ 0-1",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15029",
+      "product_name": "หอมหัวใหญ่ ห้องเย็น เบอร์ 2",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15030",
+      "product_name": "มันฝรั่ง เกรดโอ",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15031",
+      "product_name": "มันฝรั่ง เกรดเอ",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15032",
+      "product_name": "มันฝรั่ง เกรดบี",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15033",
+      "product_name": "มะขามเปียก แกะเมล็ด",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15034",
+      "product_name": "มะขามเปียก ไม่แกะเมล็ด",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15035",
+      "product_name": "กระเจี๊ยบแห้ง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15036",
+      "product_name": "ลูกเดือย ทั้งเปลือก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15037",
+      "product_name": "ลูกเดือย กระเทาะเปลือก",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15038",
+      "product_name": "พริกไทยขาว อย่างดี",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15039",
+      "product_name": "พริกไทยดำ อย่างดี",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15040",
+      "product_name": "พริกไทยดำ อย่างรอง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15041",
+      "product_name": "พริกขี้หนูแห้ง อย่างดี",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W15042",
+      "product_name": "พริกขี้หนูแห้ง อย่างรอง",
+      "category_name": "พืชอาหาร",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16001",
+      "product_name": "มันเส้นราคาซื้อขายในประเทศ (ส่งมอบ ณ คลังสินค้าเขตจ.อยุธยา)",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16002",
+      "product_name": "มันเส้น ราคาซื้อขายในประเทศ (ส่งมอบ ณ คลังสินค้าเขตจ.ชลบุรี)",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16003",
+      "product_name": "แป้งมันประเภทสตาร์ช ชั้นพิเศษ ราคาซื้อขายในประเทศ (ส่งมอบณ คลังสินค้าเขต กรุงเทพและปริมณฑล)",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16004",
+      "product_name": "มันเส้น ราคาส่งออก FOB (ดอลลาร์สหรัฐ/ตัน)",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16005",
+      "product_name": "มันเส้น ราคาส่งออก FOB (บาท/กก.)",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16006",
+      "product_name": "แป้งมันประเภทสตาร์ช ชั้นพิเศษ ราคาส่งออก FOB (ดอลลาร์สหรัฐ/ตัน)",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16007",
+      "product_name": "แป้งมันประเภทสตาร์ช ชั้นพิเศษ ราคาส่งออก FOB (บาท/กก.)",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16008",
+      "product_name": "มันอัดเม็ดแข็งราคาส่งออก FOB (ดอลลาร์สหรัฐ/ตัน)",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16009",
+      "product_name": "มันอัดเม็ดแข็งราคาส่งออก FOB (บาท/กก.)",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16010",
+      "product_name": "แป้งมันซุปเปอร์ไฮเกรด",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16011",
+      "product_name": "แป้งมันละเอียด อย่างดี",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16012",
+      "product_name": "แป้งมันละเอียด อย่างรอง",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16013",
+      "product_name": "แป้งมันอย่างหยาบ",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16014",
+      "product_name": "สาคูเม็ดเล็ก",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16015",
+      "product_name": "สาคูเม็ดใหญ่",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16016",
+      "product_name": "ข้าวโพดเลี้ยงสัตว์ ไซโล",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16017",
+      "product_name": "ข้าวโพดเลี้ยงสัตว์ โรงงานอาหารสัตว์",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16018",
+      "product_name": "ข้าวฟ่าง ขาว",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16019",
+      "product_name": "ข้าวฟ่าง แดง",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16020",
+      "product_name": "ถั่วเขียวผิวมัน อย่างดี",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16021",
+      "product_name": "ถั่วเขียวผิวมัน อย่างรอง",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16022",
+      "product_name": "ถั่วดำ",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16023",
+      "product_name": "ยางแผ่นดิบชั้น 3 ราคาเกษตรกรขายได้ จ.สุราษฎร์ธานี",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16024",
+      "product_name": "ยางแผ่นดิบชั้น 3 ราคาเกษตรกรขายได้ จ.สงขลา",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16025",
+      "product_name": "ยางแผ่นดิบชั้น 3 ราคาเกษตรกรขายได้ จ.นครศรีธรรมราช",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16026",
+      "product_name": "ยางแผ่นดิบชั้น 3 ราคาตลาดกลาง จ.สุราษฎร์ธานี",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16027",
+      "product_name": "ยางแผ่นดิบชั้น 3 ราคาตลาดกลาง จ.สงขลา",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16028",
+      "product_name": "ยางแผ่นดิบชั้น 3 ราคาตลาดกลาง จ.นครศรีธรรมราช",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16029",
+      "product_name": "เศษยาง 100% จ.สงขลา",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16030",
+      "product_name": "ยางแผ่นดิบรมควันชั้น 3 (ราคา FOB ชั้น 3 กทม.)",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16031",
+      "product_name": "มันสำปะหลัง ราคาเกษตรกรขายได้ (นครราชสีมา แป้ง 25%)",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16032",
+      "product_name": "มันเส้น บจ.สุวรรณเกลียวทอง อ.ท่าเรือ จ.อยุธยา (บาท/กก.)",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16033",
+      "product_name": "ยางแผ่นรมควัน ชั้น 3 ตลาดกลาง จ.สงขลา",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16034",
+      "product_name": "ยางก้อนถ้วย 100% จ.สงขลา",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16035",
+      "product_name": "ข้าวโพดเลี้ยงสัตว์ ความชื้นไม่เกิน 14.5% จ.เพชรบูรณ์",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W16036",
+      "product_name": "น้ำยางสด (ณ โรงงาน) ท้องถิ่น จ.สงขลา\n",
+      "category_name": "พืชไร่",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17001",
+      "product_name": "ปลาป่นโปรตีนร้อยละ 60 ขึ้นไป กลิ่นเบอร์ 1",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17002",
+      "product_name": "ปลาป่นโปรตีนร้อยละ 60 ลงมา กลิ่นเบอร์ 1",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17003",
+      "product_name": "ปลาป่นโปรตีนร้อยละ 60 ขึ้นไป กลิ่นเบอร์ 2",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17004",
+      "product_name": "ปลาป่นโปรตีนร้อยละ 60 ลงมา กลิ่นเบอร์ 2",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17005",
+      "product_name": "ปลาป่นโปรตีนร้อยละ 60 ขึ้นไป กลิ่นเบอร์ 3",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17006",
+      "product_name": "ปลาป่นโปรตีนร้อยละ 60 ลงมา กลิ่นเบอร์ 3",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17007",
+      "product_name": "หัวปลาโปรตีนร้อยละ 45 ขึ้นไป",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17008",
+      "product_name": "หัวปลาโปรตีนร้อยละ 55 ขึ้นไป",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17009",
+      "product_name": "หัวปลาโปรตีนร้อยละ 55 ลงมา",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17010",
+      "product_name": "ปลาขาย โปรตีนร้อยละ 60",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17011",
+      "product_name": "กากถั่วเหลืองนำเข้า โปรตีนร้อยละ 42-45",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17012",
+      "product_name": "กากถั่วเหลืองนำเข้า โปรตีนร้อยละ 47",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17013",
+      "product_name": "กากถั่วเหลืองผลิตในประเทศ (เมล็ดนำเข้า)",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17014",
+      "product_name": "กากถั่วเหลืองผลิตในประเทศ (เมล็ดในประเทศ)",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W17015",
+      "product_name": "ปลาป่นเกรดกุ้ง",
+      "category_name": "อาหารสัตว์และวัตถุดิบอาหารสัตว์",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18001",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน คละ",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18002",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน คละ จ.กระบี่",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18003",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน คละ จ.สุราษฏร์ธานี",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18004",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน คละ จ.ชุมพร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18005",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน คละ จ.ตรัง",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18006",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน คละ จ.สตูล",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18007",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน (15%)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18008",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน (15%) จ.กระบี่",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18009",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน (15%) จ.สุราษฏร์ธานี",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18010",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน (15%) จ.ชุมพร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18011",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน (15%) จ.ตรัง",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18012",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน (15%) จ.สตูล",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18013",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน (17%)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18014",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน (17%) จ.กระบี่",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18015",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน (17%) จ.สุราษฏร์ธานี",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18016",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน (17%) จ.ชุมพร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18017",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน (17%) จ.ตรัง",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18018",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน (17%) จ.สตูล",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18019",
+      "product_name": "ผลปาล์มร่วง จ. ชุมพร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18020",
+      "product_name": "น้ำมันปาล์มดิบ (ราคาซื้อขายทั่วไปส่งมอบถึงผู้ซื้อ) เกรด A (น้ำมันจากเปลือก)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18021",
+      "product_name": "น้ำมันปาล์มดิบ (ราคาซื้อขายทั่วไปส่งมอบถึงผู้ซื้อ) เกรด B (น้ำมันรวม)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18022",
+      "product_name": "น้ำมันปาล์มดิบ น้ำมันเมล็ดในปาล์มดิบ",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18023",
+      "product_name": "น้ำมันปาล์มกึ่งบริสุทธิ์ (ปาล์มออยล์)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18024",
+      "product_name": "น้ำมันปาล์มบริสุทธิ์ โอลีอีน (ราคาซื้อขายทั่วไปส่งมอบถึงผู้ซื้อ)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18025",
+      "product_name": "น้ำมันปาล์มบริสุทธิ์ สเตอรีน (ราคาซื้อขายทั่วไปส่งมอบถึงผู้ซื้อ)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18026",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป (ราคารวม VAT โรงกลั่นส่งมอบถึงยี่ปั๊ว) บรรจุปีบ 12.50 กก.",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18027",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป (ราคารวม VAT โรงกลั่นส่งมอบถึงยี่ปั๊ว) บรรจุปีบ 12.50 กก. ตรามรกต",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18028",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป (ราคารวม VAT โรงกลั่นส่งมอบถึงยี่ปั๊ว) บรรจุปีบ 12.50 กก. ตราหยก",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18029",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป (ราคารวม VAT โรงกลั่นส่งมอบถึงยี่ปั๊ว) บรรจุปีบ 12.50 กก. ตราโอลีน",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18030",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป (ราคารวม VAT โรงกลั่นส่งมอบถึงยี่ปั๊ว) บรรจุปีบ 12.50 กก. ตราเกสร ",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18031",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป บรรจุขวด 1 ลิตร (12 ขวด/หีบ) ราคาขายส่ง โรงงานกลั่นส่งมอบถึงยี่ปั๊ว",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18032",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป บรรจุขวด 1 ลิตร (12 ขวด/หีบ) ตรามรกต",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18033",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป บรรจุขวด 1 ลิตร (12 ขวด/หีบ) ตราหยก",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18034",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป บรรจุขวด 1 ลิตร (12 ขวด/หีบ) ตราโอลีน",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18035",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป บรรจุขวด 1 ลิตร (12 ขวด/หีบ) ตราเกสร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18036",
+      "product_name": "น้ำมันปาล์มดิบ (Crude Palm Oil) ตลาดมาเลเซีย",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18037",
+      "product_name": "น้ำมันปาล์มดิบ (Crude Palm Oil) ตลาดมาเลเซีย",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18038",
+      "product_name": "น้ำมันกึ่งบริสุทธิ์ (RBD Palm Oil) ตลาดมาเลเซีย",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18039",
+      "product_name": "น้ำมันกึ่งบริสุทธิ์ (RBD Palm Oil) ตลาดมาเลเซีย",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18040",
+      "product_name": "น้ำมันบริสุทธิ์ (RBD Palm Olein) ตลาดมาเลเซีย",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18041",
+      "product_name": "น้ำมันบริสุทธิ์ (RBD Palm Olein) ตลาดมาเลเซีย",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18042",
+      "product_name": "สเตียรีนบริสุทธิ์ (RBD Palm Stearin) ตลาดมาเลเซีย",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18043",
+      "product_name": "สเตียรีนบริสุทธิ์ (RBD Palm Stearin) ตลาดมาเลเซีย",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18044",
+      "product_name": "มะพร้าวทับสะแก ผลใหญ่ (ปอกเปลือก)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18045",
+      "product_name": "เนื้อมะพร้าวแห้ง 90%",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18046",
+      "product_name": "เนื้อมะพร้าวขาว รับซื้อหน้าโรงงาน",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18047",
+      "product_name": "น้ำมันมะพร้าวดิบ",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18048",
+      "product_name": "น้ำมันมะพร้าวดิบ ราคาซื้อขายทั่วไปส่งมอบถึงผู้ซื้อ",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18049",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุปีบ 12.50 กก. (ราคาที่โรงงานกลั่นขายส่ง ส่งมอบถึงยี่ปั๊ว)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18050",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุปีบ 12.50 กก. ตราผักกาด",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18051",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุปีบ 12.50 กก. ตราไพ่ป๊อก",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18052",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุปีบ 12.50 กก. ตราดอกไม้",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18053",
+      "product_name": "เมล็ดถั่วเหลือง เกรดแปรรูป-ผลิตภัณฑ์อาหาร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18054",
+      "product_name": "เมล็ดถั่วเหลือง เกรดผลิตอาหารสัตว์",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18055",
+      "product_name": "เมล็ดถั่วเหลือง เกรดสกัดน้ำมัน (สกัดน้ำมัน ความชื้นไม่เกิน 13%)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18056",
+      "product_name": "น้ำมันถั่วเหลืองบริสุทธิ์ บรรจุถัง 200 ลิตร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18057",
+      "product_name": "น้ำมันถั่วเหลืองบริสุทธิ์ บรรจุปี๊บ 13.75 ลิตร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18058",
+      "product_name": "น้ำมันถั่วเหลืองบริสุทธิ์ บรรจุขวด 1 ลิตร หน้าโรงงาน ตราองุ่น",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18059",
+      "product_name": "น้ำมันถั่วเหลืองบริสุทธิ์ บรรจุขวด 1 ลิตร หน้าโรงงาน ตรากุ๊ก",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18060",
+      "product_name": "น้ำมันถั่วเหลืองบริสุทธิ์ บรรจุขวด 1 ลิตร ตลาดกรุงเทพฯ ตราองุ่น",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18061",
+      "product_name": "น้ำมันถั่วเหลืองบริสุทธิ์ บรรจุขวด 1 ลิตร ตลาดกรุงเทพฯ ตรากุ๊ก",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18062",
+      "product_name": "น้ำมันรำข้าวบริสุทธิ์ บรรจุปี๊บ 13.75 ลิตร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18063",
+      "product_name": "น้ำมันรำข้าวบริสุทธิ์ บรรจุขวด 1 ลิตร ตราคิง",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18064",
+      "product_name": "น้ำมันรำข้าวบริสุทธิ์ บรรจุขวด 1 ลิตร ตราชิม",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18065",
+      "product_name": "ถั่วลิสงกะเทาะเปลือก คัดพิเศษ",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18066",
+      "product_name": "ถั่วลิสงกะเทาะเปลือก คัดธรรมดา",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18067",
+      "product_name": "ถั่วลิสงกะเทาะเปลือก คละ",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18068",
+      "product_name": "น้ำมันถั่วลิสงบริสุทธิ์ บรรจุปี๊ป 15 กก.",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18069",
+      "product_name": "น้ำมันถั่วลิสงบริสุทธิ์ บรรจุปี๊ป 13.75 ลิตร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18070",
+      "product_name": "น้ำมันถั่วลิสงบริสุทธิ์ บรรจุขวด 2 ลิตร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18071",
+      "product_name": "น้ำมันถั่วลิสงบริสุทธิ์ บรรจุขวด 1 ลิตร ตรากวางบิน",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18072",
+      "product_name": "เมล็ดทานตะวัน ราคารับซื้อ ณ แหล่งผลิต",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18073",
+      "product_name": "เมล็ดทานตะวัน ที่โรงงานหีบ รับซื้อหน้าโรงงาน",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18074",
+      "product_name": "น้ำมันทานตะวันสำเร็จรูป (ราคาที่โรงงานกลั่น ขายส่งถึงยี่ปั๊ว)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18075",
+      "product_name": "น้ำมันทานตะวันสำเร็จรูป บรรจุขวด (12ขวด/หีบ) ตรากุ๊ก (น้ำมันในประเทศ)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18076",
+      "product_name": "น้ำมันทานตะวันสำเร็จรูป บรรจุขวด (12 ขวด/หีบ) ตราชิม (น้ำมันในประเทศ)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18077",
+      "product_name": "งาเกษตร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18078",
+      "product_name": "งาดำ",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18079",
+      "product_name": "งาขาว เมล็ดใหญ่",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18080",
+      "product_name": "ละหุ่ง (กะเทาะเปลือก) ",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18081",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน 15% จ.ชลบุรี",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18082",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน 17% จ.ชลบุรี",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18083",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซนต์น้ำมัน คละ จ.ชลบุรี",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18084",
+      "product_name": "น้ำมันทานตะวันสำเร็จรูป บรรจุขวด (12 ขวด/หีบ) ตราองุ่น (น้ำมันในประเทศ)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18085",
+      "product_name": "น้ำมันรำข้าวบริสุทธิ์ บรรจุขวด 1 ลิตร ตราอโรซ่า",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18086",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซ็นต์น้ำมัน (18%)",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18087",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซ็นต์น้ำมัน (18%) จ.กระบี่",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18088",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซ็นต์น้ำมัน (18%) จ.สุราษฎร์ธานี",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18089",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซ็นต์น้ำมัน (18%) จ.ชุมพร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18090",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซ็นต์น้ำมัน (18%) จ.ตรัง",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18091",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซ็นต์น้ำมัน (18%) จ.สตูล",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18092",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซ็นต์น้ำมัน (18%) จ.ชลบุรี",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18093",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป (ราคา VAT โรงกลั่นส่งมอบถึงยี่ปั๊ว) บรรจุปี๊บ 12.50 กก. ตราทับทิม",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18094",
+      "product_name": "น้ำมันปาล์มสำเร็จรูป บรรจุขวด 1 ลิตร (12 ขวด/หีบ) ตราทับทิม",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18095",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซ็นต์น้ำมัน (18%) จ.นครศรีธรรมราช",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18096",
+      "product_name": "ผลปาล์มทะลาย คุณภาพเปอร์เซ็นต์น้ำมัน (18%) จ.พังงา",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18097",
+      "product_name": "น้ำมันถั่วเหลืองบริสุทธิ์ บรรจุปี๊บ 13.75 ลิตร ตราองุ่น",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18098",
+      "product_name": "น้ำมันถั่วเหลืองบริสุทธิ์บรรจุปี๊บ 13.75 ลิตร ตรากุ๊ก",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18099",
+      "product_name": "น้ำมันรำข้าวบริสุทธิ์ บรรจุแกลลอน 5 ลิตร ตราคิง",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18100",
+      "product_name": "น้ำมันถั่วลิสงบริสุทธิ์ บรรจุขวด 5 ลิตร",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18101",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุขวด 1 ลิตร ตราไทยเพียว",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18102",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุขวด 1 ลิตร ตราเนเชอเรล",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    },
+    {
+      "product_id": "W18103",
+      "product_name": "น้ำมันมะพร้าวสำเร็จรูป บรรจุขวด 1 ลิตร ตรารอยไทย",
+      "category_name": "พืชน้ำมันและน้ำมันพืช",
+      "sell_type": "ขายส่ง"
+    }
+  ]
