@@ -79,6 +79,11 @@ export default StyleSheet.create({
       container1: {
         width: '100%',
         height: '100%',
-    }
+      },
+      icontext:{
+        fontSize:15,
+        color:'#fff',
+        marginLeft:-5
+      }
 
 });

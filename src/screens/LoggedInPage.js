@@ -64,10 +64,21 @@ const RegisterScreen = ({ navigation }) => {
       <View style={{width:'90%',height:'25%',}}>
 
           <View style={{flexDirection:'row',justifyContent:'space-between',padding:30}}>
-              <MaterialIcons name="settings" size={50} color={("#FFF")} />
-              <MaterialIcons name="favorite" size={50} color={("#FFF")} onPress={() => { logout; navigation.navigate('FavoriteList') }}/>
-              <MaterialIcons name="power-settings-new" size={50} color={("#FFF")} onPress={logout}/>
-              
+
+            <View>
+              <MaterialIcons name="settings" size={40} color={("#FFF")} />
+              <Text style={styles.icontext}>Settings</Text>
+            </View>
+
+            <View>
+              <MaterialIcons name="favorite" size={40} color={("#FFF")} onPress={() => { logout; navigation.navigate('FavoriteList') }}/>
+              <Text style={styles.icontext}>Favorite</Text>
+            </View>
+
+            <View>
+              <MaterialIcons name="power-settings-new" size={40} color={("#FFF")} onPress={logout}/>
+              <Text style={styles.icontext}>Logout</Text>
+            </View>
               
 
           </View>
