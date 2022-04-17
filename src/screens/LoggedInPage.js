@@ -52,30 +52,34 @@ const RegisterScreen = ({ navigation }) => {
     start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
     style={styles.container1}>
     <SafeAreaView
-      style={{ flex: 1, alignItems: 'center', marginTop: '5%' }}>
-      <View>
-        <Text style={styles.title}>Welcome</Text>
-        <Image source={user_icon} style={styles.userlogo} />
-
-        <Text style={styles.title2}>Email : {user.email}</Text>
-        <ColorPalette />
-        <TouchableOpacity
-          onPress={() => { logout; navigation.navigate('FavoriteList') }}
-          style={styles.favoriteList}
-        >
-          <Text style={styles.loginButtonText}>
-            Favorite List
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={logout}
-          style={styles.logoutButton}
-        >
-          <Text style={styles.loginButtonText}>
-            Log out
-          </Text>
-        </TouchableOpacity>
+      style={{ flex: 1, paddingLeft:15, marginTop: '5%' }}>
+      <View style={{borderLeftWidth:6,borderLeftColor:'#ff7'}}>
+        <Text style={styles.title}>WELCOME</Text>
+        <Text style={styles.title2}>{user.username}</Text>
+        {/* <Image source={user_icon} style={styles.userlogo} /> */}
       </View>
+
+      <View style={{width:'90%',height:'25%'}}>
+                {/* buttonBox */}
+      </View>
+
+      <View style={{borderLeftWidth:6,borderLeftColor:'#ff7'}}>
+        <Text style={styles.title2}>Price TODAY</Text>
+      </View>
+                
+                {/* contentBox */}
+                <View style={{width:'90%',height:'20%'}}>
+                </View>
+
+      <View style={{borderLeftWidth:6,borderLeftColor:'#ff7'}}>
+        <Text style={styles.title2}>Favorite List</Text>
+      </View>
+
+                {/* contentBox */}
+                <View style={{width:'90%',height:'20%'}}>
+
+                </View>
+
     </SafeAreaView>
     </LinearGradient>
   );

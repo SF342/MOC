@@ -4,12 +4,12 @@ const {width} = Dimensions.get('window');
 export default StyleSheet.create({
     // These are user defined styles
     title: {
-        textAlign: 'center',
-        fontSize: 35,
+        fontSize: 28,
         width: 320,
-        marginBottom: '4%',
+        marginBottom: 3,
         fontWeight: 'bold',
-        color: 'white'
+        color: 'white',
+        paddingLeft:10,
       },
       userlogo : {
         width:150,
@@ -18,13 +18,10 @@ export default StyleSheet.create({
       },  
       title2: {
         color: 'white',
-        textAlign: 'center',
         fontSize: 20,
         width: 320,
-        marginBottom: 10,
-        marginTop: 10,
         fontWeight: 'bold',
-        marginTop: '4%',
+        paddingLeft:10,
       },
       input: {
         marginVertical: 10,
