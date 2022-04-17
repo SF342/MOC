@@ -120,6 +120,10 @@ const RegisterScreen = ({ navigation }) => {
                       return (
                         <TouchableOpacity
                           style={styles.cardContainer}
+                          onPress={() =>
+                            {console.log(item.product_id)
+                            navigation.navigate('ShowPricePage', {id: item.product_id})
+                          }}
                         >
                           <Card style={[styles.card]}>
                             <Text style={styles.text2}>{item.product_name}</Text>
