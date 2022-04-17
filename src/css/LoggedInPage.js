@@ -84,6 +84,35 @@ export default StyleSheet.create({
         fontSize:15,
         color:'#fff',
         marginLeft:-5
-      }
+      },
+      cardContainer: {
+        height: 100,
+        width: width * 0.5,
+        marginRight: 8,
+      },
+      card: {
+        height: 100,
+        width: width * 0.5,
+        borderRadius: 12,
+        padding: 10,
+        backgroundColor:'#2D648C',
+      },
+      flatList: {
+        paddingHorizontal: 16,
+        paddingVertical: 16,
+      },
+      logo : {
+        width: 100,
+        height: 100,
+        marginTop:0,
+        marginLeft:30,
+      },
+      text2: { 
+        color: "#ffffff",
+        fontWeight: '500',
+        fontSize: 13.5,
+        marginBottom:-15,
+        marginTop:-5,
+      },
 
 });

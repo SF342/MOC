@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image, FlatList } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import ColorPalette from '../components/ColorPalette';
@@ -10,6 +10,8 @@ import { __doSingOut } from '../redux/actions/userActions';
 import styles from '../css/LoggedInPage'
 import {  getFavoriteId } from '../redux/actions/newFavoriteAction';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Card } from "react-native-paper";
+
 
 
 
@@ -17,6 +19,8 @@ const RegisterScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const theme = useSelector(state => state.theme.theme);
   const user = useSelector(state => state.user.user)
+  const productName = useSelector(state => state.user.productName);
+  const image = useSelector(state => state.data.urlimage)
 
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
@@ -29,8 +33,17 @@ const RegisterScreen = ({ navigation }) => {
   function onAuthStateChanged(user) {
     if (initializing) setInitializing(false);
   }
+  const filterImageUrl = (val) => {
+    let nameImg = image.filter(element => val.search(element.name) !== -1);
 
- 
+    if (nameImg.length !== 0) {
+      return { uri: nameImg[0].url }
+    } else {
+      return Moc_logo
+    }
+  };
+  0;
+
 
   useEffect(() => {
     dispatch(getFavoriteId(user._id))
@@ -98,7 +111,24 @@ const RegisterScreen = ({ navigation }) => {
 
                 {/* contentBox */}
                 <View style={{width:'90%',height:'20%'}}>
-
+                  <FlatList
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={styles.flatList}
+                    horizontal={true}
+                    data={productName}
+                    renderItem={({ item }) => {
+                      return (
+                        <TouchableOpacity
+                          style={styles.cardContainer}
+                        >
+                          <Card style={[styles.card]}>
+                            <Text style={styles.text2}>{item.product_name}</Text>
+                            <Image style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
+                          </Card>
+                        </TouchableOpacity>
+                      );
+                    }}
+                  />
                 </View>
 
     </SafeAreaView>
