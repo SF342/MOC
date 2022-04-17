@@ -68,6 +68,14 @@ const RegisterScreen = ({ navigation }) => {
                   Log out
                 </Text>
               </TouchableOpacity>
+              <TouchableOpacity
+          onPress={() => { logout; navigation.navigate('FavoriteList') }}
+          style={styles.favoriteList}
+        >
+          <Text style={styles.loginButtonText}>
+            Favorite List
+          </Text>
+        </TouchableOpacity>
       </View>
 
       <View style={{borderLeftWidth:6,borderLeftColor:'#ff7'}}>
