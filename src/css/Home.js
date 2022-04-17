@@ -20,13 +20,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
         marginBottom: '1%',
       },
-      loginButtonText: {
-        textAlign: 'center',
-        color: '#000000',
-        fontWeight: 'bold',
-        fontSize: 20,
-        padding: 15
-      },
       logoutButton: {
         marginVertical: 10,
         backgroundColor: '#b53531',
@@ -40,25 +33,40 @@ export default StyleSheet.create({
       },
       bg_modal: {
         backgroundColor: '#000000aa',
-        flex: 1
+        width: '100%',
+        height: '100%',
       },
       paper_madal: {
         backgroundColor: '#ffffff',
         margin: 30,
-        marginTop: 200,
-        marginBottom: 300,
+        marginTop: 100,
+        marginBottom: 100,
         padding: 20,
         borderRadius: 10,
         flex: 1
       },
-      title2: {
+      confirmButtonText: {
+        textAlign: 'center',
+        color: '#000000',
+        fontWeight: 'bold',
+        fontSize: 20,
+        padding: 15
+      },
+      fav: {
         color: 'black',
         textAlign: 'center',
         fontSize: 20,
         width: 320,
-        marginBottom: 10,
-        marginTop: 10,
+        marginBottom: 15,
+        marginTop: 30,
         fontWeight: 'bold',
+      },
+      line: {
+        width: 315,
+        borderBottomColor: '#DFDFDE',
+        borderBottomWidth: 1,
+        marginTop: 240,
+        marginRight: 40,
       },
 
 });

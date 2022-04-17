@@ -1,7 +1,14 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 import {ListItem, SearchBar, Avatar} from 'react-native-elements';
-import {Modal, View, FlatList, Text, TouchableOpacity} from 'react-native';
+import {
+  Modal,
+  View,
+  FlatList,
+  Text,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 //redux stuff
 import {getData} from '../redux/actions/dataActions';
 import {
@@ -26,7 +33,7 @@ export default Home = ({navigation}) => {
   const user_api = useSelector(state => state.user.user);
   const [isModalVisible, setModalVisible] = useState(false);
   const [pid, serPid] = useState();
-
+  const [pname, setPname] = useState(null);
   const [data, setData] = useState();
   const [valueInput, setValue] = useState('');
   const [checkUserType, setCheckUserType] = useState(false);
@@ -34,6 +41,7 @@ export default Home = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [shouldShow1, setShouldShow1] = useState(true);
   const [shouldShow2, setShouldShow2] = useState(false);
+  
 
   useEffect(() => {
     setData(products);
@@ -113,6 +121,41 @@ export default Home = ({navigation}) => {
     dispatch(getData());
     setLoading(false);
   }
+  const MODAL = (prop) => {
+    return(<Modal
+      animationType="slide"
+      transparent
+      visible={isModalVisible}
+      presentationStyle="overFullScreen"
+      onDismiss={toggleModalVisibility}
+      onRequestClose={() => {
+        setModalVisible(false);
+      }}>
+      <View style={styles.bg_modal}>
+        <View style={styles.paper_madal}>
+          <Text style={styles.fav}>Add Favorite</Text>
+          <Avatar
+            style={styles.logo}
+            source={filterImageUrl(prop)}
+            rounded></Avatar>
+          <View style={styles.line} />
+          <TouchableOpacity
+            style={styles.logInButton}
+            onPress={() => {
+              confirmAdd();
+            }}>
+            <Text style={styles.confirmButtonText}>Confirm</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setModalVisible(false);
+            }}>
+            <Text style={styles.confirmButtonText}>Cancel</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </Modal>)
+  }
 
   return (
     <LinearGradient
@@ -179,6 +222,8 @@ export default Home = ({navigation}) => {
                       onLongPress={() => {
                         toggleModalVisibility();
                         serPid(item.product_id);
+                        setPname(item.product_name);
+                        console.log(item.product_name);
                         console.log('user api ', user_api);
                       }}
                       tension={200} // These props are passed to the parent component (here TouchableScale)
@@ -269,6 +314,8 @@ export default Home = ({navigation}) => {
                   onLongPress={() => {
                     toggleModalVisibility();
                     serPid(item.product_id);
+                    setPname(item.product_name);
+                    console.log(item.product_name);
                     console.log('user api ', user_api);
                   }}
                   tension={200} // These props are passed to the parent component (here TouchableScale)
@@ -322,35 +369,8 @@ export default Home = ({navigation}) => {
           </View>
         )}
       </View>
-      <Modal
-        animationType="slide"
-        transparent
-        visible={isModalVisible}
-        presentationStyle="overFullScreen"
-        onDismiss={toggleModalVisibility}
-        onRequestClose={() => {
-          setModalVisible(false);
-        }}>
-        <View style={styles.bg_modal}>
-          <View style={styles.paper_madal}>
-            <TouchableOpacity
-              onPress={() => {
-                setModalVisible(false);
-              }}>
-              <Text>x</Text>
-            </TouchableOpacity>
-            <Text style={styles.title2}>Add Favorite</Text>
-
-            <TouchableOpacity
-              style={styles.logInButton}
-              onPress={() => {
-                confirmAdd();
-              }}>
-              <Text style={styles.loginButtonText}>Confirm</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
+      
+      {isModalVisible === true && pname !== null ? MODAL(pname) : <></>}
     </LinearGradient>
   );
 };
