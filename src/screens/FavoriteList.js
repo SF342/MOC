@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, FlatList } from 'react-native';
+import { Text, View, StyleSheet, FlatList,Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Picker, } from 'react-native-ui-lib';
 import { useSelector, useDispatch } from 'react-redux'
@@ -8,8 +8,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Moc_logo from '../../assets/moc_logo.png';
-import {  Avatar } from 'react-native-elements';
 import { getProductId, deleteFavorite, getFavoriteId } from '../redux/actions/newFavoriteAction';
+import { ListItem, SearchBar, Avatar } from 'react-native-elements';
 
 const FavoriteList = () => {
   const dispatch = useDispatch();
@@ -33,6 +33,12 @@ const FavoriteList = () => {
   const [deleteState, setDelete] = useState(false);
   const [shouldShow1, setShouldShow1] = useState(true);
   const [shouldShow2, setShouldShow2] = useState(false);
+
+  const [Show1color, setShow1color] = useState("#1E1E1E");
+  const [Show2color, setShow2color] = useState("#FFFFFF");
+
+  const [search, setSearch] = useState('');
+  const [filteredDataSource, setFilteredDataSource] = useState([]);
 
   const filterImageUrl = (val) => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
@@ -58,11 +64,15 @@ const FavoriteList = () => {
   function Show1() {
     setShouldShow1(true);
     setShouldShow2(false);
+    setShow1color("#1E1E1E");
+    setShow2color("#FFFFFF")
   };
 
   function Show2() {
     setShouldShow1(false);
     setShouldShow2(true);
+    setShow1color("#FFFFFF")
+    setShow2color("#1E1E1E")
   }
 
 
@@ -78,6 +88,29 @@ const FavoriteList = () => {
     setProductId(dummyData.value)
   };
 
+  const searchFilterFunction = (text) => {
+    // Check if searched text is not blank
+    if (text) {
+      // Inserted text is not blank
+      // Filter the masterDataSource
+      // Update FilteredDataSource
+      const newData = productName.filter(function (item) {
+        const itemData = `${item.product_id.toUpperCase()} ${item.product_name} ${
+          item.category_name
+        }`;
+        const textData = text.toUpperCase();
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilteredDataSource(newData);
+      setSearch(text);
+    } else {
+      // Inserted text is blank
+      // Update FilteredDataSource with masterDataSource
+      setFilteredDataSource(productName);
+      setSearch(text);
+    }
+  };
+
   return (
     <LinearGradient
       colors={[theme.pri700, theme.pri50]}
@@ -91,7 +124,7 @@ const FavoriteList = () => {
           <Text style={styles.title}> LIST</Text>
         </View>
         <View style={styles.pickerbox}>
-          <Picker
+          {/* <Picker
             value={selectedProduct}
             placeholder="Search Product . . ."
             onChange={onProductChange}
@@ -99,22 +132,35 @@ const FavoriteList = () => {
             placeholderTextColor="black"
             containerStyle={styles.pickerStyle}
             style={{ height: 50, width: 150 , }}>
-            {products.map((option, index) => (
+            {productName.map((option, index) => (
               <Picker.Item
                 key={index}
                 value={option.product_id}
                  label={option.product_name}
               />
             ))}
-          </Picker>
-          <Entypo name="menu" size={50} color="#FFFFFF" onPress={() => {Show1()}}/>
-          <MaterialIcons name="crop-square" size={50} color="#FFFFFF" onPress={() => {Show2()}}/>
+          </Picker> */}
+          <View>
+            <SearchBar
+              placeholder="Type Here..."
+              lightTheme
+              round
+              value={search}
+              onChangeText={text => searchFilterFunction(text)}
+              onClear={(text) => searchFilterFunction('')}
+              autoCorrect={false}
+              containerStyle={styles.searchcontainer}
+              inputContainerStyle={{ height: 35 }}
+            />
+          </View>
+          <Entypo name="menu" size={50} color={Show1color} onPress={() => {Show1()}}/>
+          <MaterialIcons name="crop-square" size={50} color={Show2color} onPress={() => {Show2()}}/>
         </View>
         {shouldShow1 ?
           (
             <ScrollView>
               <FlatList
-                data={productName}
+                data={filteredDataSource}
                 style={styles.superListFav}
                 renderItem={({ item }) =>
                 (
@@ -134,7 +180,7 @@ const FavoriteList = () => {
         {shouldShow2 ? (
           <ScrollView>
             <FlatList
-              data={productName}
+              data={filteredDataSource}
               numColumns={2}
               
               style={styles.superListFav2}
@@ -142,9 +188,9 @@ const FavoriteList = () => {
               (
                 <View style={styles.GridViewBlockStyle}>
                   <View style={styles.topicList2}>
-                    <Avatar style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
+                    <Image style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
                     <Text style={styles.textTopicList2}> {item.product_name}  </Text>
-                    <MaterialCommunityIcons name="delete-empty" style={styles.icon} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }}/>
+                    <MaterialCommunityIcons name="delete-empty" style={styles.icon2} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }}/>
                   </View>
                 </View>
 
@@ -168,6 +214,7 @@ const styles = StyleSheet.create({
   },
   logo : {
     width: 100,
+    height: 100,
   },
   boxTopic: {
     flexDirection: 'row',
@@ -246,7 +293,7 @@ const styles = StyleSheet.create({
   },
   topicList2: {
     width: '65%',
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     height: 150,
     backgroundColor: '#5DB2BD',
@@ -386,11 +433,27 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 15, // Keep some space between your left border and Image
   },
+  icon2:{
+    width: 25,
+    height: 25,
+    position: 'absolute',
+    marginTop: 10,
+    right: 5, // Keep some space between your left border and Image
+  },
   GridViewBlockStyle: {
     margin:5,
     marginRight: 'auto',
     marginBottom: '5%',
     flexDirection: 'row',
   },
+  searchcontainer:{
+    backgroundColor: 'rgba(0,0,0,0.00001)',
+    borderWidth: 0, //no effect
+    shadowColor: 'white', //no effect
+    borderBottomColor: 'transparent',
+    borderTopColor: 'transparent',
+    width: 250,
+  },
+  
 });
 export default FavoriteList;
