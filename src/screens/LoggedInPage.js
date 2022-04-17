@@ -9,6 +9,8 @@ import user_icon from '../../assets/kindpng_746008.png'
 import { __doSingOut } from '../redux/actions/userActions';
 import styles from '../css/LoggedInPage'
 import {  getFavoriteId } from '../redux/actions/newFavoriteAction';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 
 
 const RegisterScreen = ({ navigation }) => {
@@ -59,23 +61,15 @@ const RegisterScreen = ({ navigation }) => {
         {/* <Image source={user_icon} style={styles.userlogo} /> */}
       </View>
 
-      <View style={{width:'90%',height:'25%'}}>
-            <TouchableOpacity
-                onPress={logout}
-                style={styles.logoutButton}
-              >
-                <Text style={styles.loginButtonText}>
-                  Log out
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-          onPress={() => { logout; navigation.navigate('FavoriteList') }}
-          style={styles.favoriteList}
-        >
-          <Text style={styles.loginButtonText}>
-            Favorite List
-          </Text>
-        </TouchableOpacity>
+      <View style={{width:'90%',height:'25%',}}>
+
+          <View style={{flexDirection:'row',justifyContent:'space-between',padding:30}}>
+              <MaterialIcons name="settings" size={50} color={("#FFF")} />
+              <MaterialIcons name="power-settings-new" size={50} color={("#FFF")} onPress={logout}/>
+              <MaterialIcons name="favorite" size={50} color={("#FFF")} onPress={() => { logout; navigation.navigate('FavoriteList') }}/>
+              
+
+          </View>
       </View>
 
       <View style={{borderLeftWidth:6,borderLeftColor:'#ff7'}}>
