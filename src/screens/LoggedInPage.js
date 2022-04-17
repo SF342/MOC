@@ -60,7 +60,14 @@ const RegisterScreen = ({ navigation }) => {
       </View>
 
       <View style={{width:'90%',height:'25%'}}>
-                {/* buttonBox */}
+            <TouchableOpacity
+                onPress={logout}
+                style={styles.logoutButton}
+              >
+                <Text style={styles.loginButtonText}>
+                  Log out
+                </Text>
+              </TouchableOpacity>
       </View>
 
       <View style={{borderLeftWidth:6,borderLeftColor:'#ff7'}}>
