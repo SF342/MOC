@@ -59,6 +59,7 @@ const FavoriteList = () => {
       }
       console.log("Fav ", fav_api)
       dispatch(getProductId(fav_api));
+      setFilteredDataSource(productName);
     }, [deleteState]);
 
   function Show1() {
