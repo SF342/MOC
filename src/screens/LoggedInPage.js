@@ -65,8 +65,9 @@ const RegisterScreen = ({ navigation }) => {
 
           <View style={{flexDirection:'row',justifyContent:'space-between',padding:30}}>
               <MaterialIcons name="settings" size={50} color={("#FFF")} />
-              <MaterialIcons name="power-settings-new" size={50} color={("#FFF")} onPress={logout}/>
               <MaterialIcons name="favorite" size={50} color={("#FFF")} onPress={() => { logout; navigation.navigate('FavoriteList') }}/>
+              <MaterialIcons name="power-settings-new" size={50} color={("#FFF")} onPress={logout}/>
+              
               
 
           </View>
