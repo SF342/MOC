@@ -22,27 +22,21 @@ const RecommendPage = ({navigation}) => {
   const [Loading, setLoading] = useState(false);
 
   const user = useSelector(state => state.user.user);
-  const fav_api = useSelector(state => state.user.favList);
-  const productName = useSelector(state => state.user.productName);
-  const redux_fav_state = useSelector(state => state.user.idle);
-  const redux_fav_add = useSelector(state => state.user.add);
+  const fav_api = useSelector(state => state.favorite.favoriteList)
+  const productName = useSelector(state => state.favorite.productList)
+  const favorite_state = useSelector(state => state.favorite.getFav)
+  const product_state = useSelector(state => state.favorite.getProduct)
+  const add_state = useSelector(state => state.favorite.add)
+  const delete_state = useSelector(state => state.favorite.delete)
 
-  // Use for update realtime data
-  useEffect(() => {
-    if (redux_fav_state === false) {
+    // Use for update realtime data
+    useEffect(() => {
+      
       dispatch(getFavoriteId(user._id));
       dispatch(getProductId(fav_api));
-      console.log('in');
-    }else if (redux_fav_add === true) {
-      dispatch(getFavoriteId(user._id));
-      dispatch(getProductId(fav_api));
-      console.log('in add');
-    }else{
-      console.log("State ",redux_fav_state)
-      dispatch(getProductId(fav_api));
-    }
-    
-  }, [redux_fav_state, redux_fav_add]);
+      console.log(delete_state)
+      
+    }, [favorite_state, product_state, add_state, delete_state]);
 
   const filterImageUrl = val => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);

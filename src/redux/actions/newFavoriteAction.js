@@ -1,4 +1,4 @@
-import {API_ADDFAV, API_FAVID, API_PRODUCTID} from '../types';
+import {DELETE_FAVORITE, GET_PRODUCTLIST, ADD_FAVORITE, GET_FAVLIST} from '../types';
 import axios from 'axios';
 
 const API_URL = 'http://10.0.2.2:4001/favorite';
@@ -7,7 +7,7 @@ export const getFavoriteId = (user_id) => dispatch => {
   axios
     .get(API_URL + '/' + user_id)
     .then(response => {
-        dispatch({type: API_FAVID, payload: response.data});
+        dispatch({type: GET_FAVLIST, payload: response.data});
         return response.data;
       
     })
@@ -33,9 +33,9 @@ export const getProductId = (data) => dispatch => {
             
             allProduct.push(response.data[0])
             console.log('all prod ', allProduct)
-            dispatch({type: API_PRODUCTID, payload: allProduct});
+            dispatch({type: GET_PRODUCTLIST, payload: allProduct});
           }else{
-            dispatch({type: API_PRODUCTID, payload: allProduct});
+            dispatch({type: GET_PRODUCTLIST, payload: allProduct});
           }
           
         })
@@ -63,7 +63,7 @@ export const addFavoriteList =
       })
       .then(response => {
         console.log("Response ", response.data)
-        dispatch({type: API_ADDFAV, payload: response.data});
+        dispatch({type: ADD_FAVORITE, payload: response.data});
         return response.data;
       })
       .catch(err => {
@@ -78,7 +78,7 @@ export const deleteFavorite = (user_id, _id) => dispatch => {
     axios
         .delete(API_URL + '/' +user_id+'/'+ _id)
         .then( 
-        dispatch({type: API_ADDFAV, payload: []})
+        dispatch({type: DELETE_FAVORITE, payload: []})
         )
         .catch(err => {
         console.log("Delete fail")

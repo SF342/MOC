@@ -26,9 +26,15 @@ const FavoriteList = () => {
 
   const user_api = useSelector(state => state.user.user)
   const image = useSelector(state => state.data.urlimage)
-  const fav_api = useSelector(state => state.user.favList)
-  const productName = useSelector(state => state.user.productName)
-  const delete_state = useSelector(state => state.user.delete)
+  
+  const fav_api = useSelector(state => state.favorite.favoriteList)
+  const productName = useSelector(state => state.favorite.productList)
+  const favorite_state = useSelector(state => state.favorite.getFav)
+  const product_state = useSelector(state => state.favorite.getProduct)
+  const add_state = useSelector(state => state.favorite.add)
+  const delete_state = useSelector(state => state.favorite.delete)
+
+
 
   const [deleteState, setDelete] = useState(false);
   const [shouldShow1, setShouldShow1] = useState(true);
@@ -39,6 +45,7 @@ const FavoriteList = () => {
 
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
+
 
   const filterImageUrl = (val) => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
@@ -53,14 +60,13 @@ const FavoriteList = () => {
     // Use for update realtime data
     useEffect(() => {
       
-      if(deleteState === true){
-        setDelete(false)
-        dispatch(getFavoriteId(user_api._id));
-      }
-      console.log("Fav ", fav_api)
+      dispatch(getFavoriteId(user_api._id));
       dispatch(getProductId(fav_api));
+      console.log(delete_state)
+
       setFilteredDataSource(productName);
-    }, [deleteState]);
+      
+    }, [favorite_state, product_state, add_state, delete_state]);
 
   function Show1() {
     setShouldShow1(true);
@@ -125,22 +131,6 @@ const FavoriteList = () => {
           <Text style={styles.title}> LIST</Text>
         </View>
         <View style={styles.pickerbox}>
-          {/* <Picker
-            value={selectedProduct}
-            placeholder="Search Product . . ."
-            onChange={onProductChange}
-            showSearch
-            placeholderTextColor="black"
-            containerStyle={styles.pickerStyle}
-            style={{ height: 50, width: 150 , }}>
-            {productName.map((option, index) => (
-              <Picker.Item
-                key={index}
-                value={option.product_id}
-                 label={option.product_name}
-              />
-            ))}
-          </Picker> */}
           <View>
             <SearchBar
               placeholder="Type Here..."

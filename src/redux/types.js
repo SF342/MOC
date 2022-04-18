@@ -25,3 +25,11 @@ export const API_ADDFAV = "API_ADDFAV";
 
 
 export const RETRIEVE_FAVORITE = "RETRIEVE_FAVORITE";
+
+
+export const GET_FAVLIST = "GET_FAVLIST";
+export const GET_PRODUCTLIST = "GET_PRODUCTLIST";
+export const ADD_FAVORITE = "ADD_FAVORITE";
+export const DELETE_FAVORITE = "DELETE_FAVORITE";
+
+

@@ -8,10 +8,12 @@ import LinearGradient from 'react-native-linear-gradient';
 import user_icon from '../../assets/kindpng_746008.png'
 import { __doSingOut } from '../redux/actions/userActions';
 import styles from '../css/LoggedInPage'
-import {  getFavoriteId } from '../redux/actions/newFavoriteAction';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Card } from "react-native-paper";
-
+import {
+  getProductId,
+  getFavoriteId,
+} from '../redux/actions/newFavoriteAction';
 
 
 
@@ -19,7 +21,13 @@ const RegisterScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const theme = useSelector(state => state.theme.theme);
   const user = useSelector(state => state.user.user)
-  const productName = useSelector(state => state.user.productName);
+  const fav_api = useSelector(state => state.favorite.favoriteList)
+  const productName = useSelector(state => state.favorite.productList)
+  const favorite_state = useSelector(state => state.favorite.getFav)
+  const product_state = useSelector(state => state.favorite.getProduct)
+  const add_state = useSelector(state => state.favorite.add)
+  const delete_state = useSelector(state => state.favorite.delete)
+
   const image = useSelector(state => state.data.urlimage)
 
   // Set an initializing state whilst Firebase connects
@@ -47,9 +55,10 @@ const RegisterScreen = ({ navigation }) => {
 
   useEffect(() => {
     dispatch(getFavoriteId(user._id))
+    dispatch(getProductId(fav_api));
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
-  }, []);
+  }, [favorite_state, product_state, add_state, delete_state]);
 
   if (initializing) return null;
 
