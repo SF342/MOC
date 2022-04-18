@@ -20,19 +20,16 @@ export const getFavoriteId = (user_id) => dispatch => {
 export const getProductId = (data) => dispatch => {
     
     const allProduct = []
-    console.log("Test za",data)
     if (data !== undefined){
 
       for (let i = 0; i < data.length; i++) {
         var obj = data[i];
-        console.log(obj.product_id)
         axios
         .get(API_URL + '/productDetail/' + obj.product_id)
         .then(response => {
           if(response.data[0] != undefined) {
             
             allProduct.push(response.data[0])
-            console.log('all prod ', allProduct)
             dispatch({type: GET_PRODUCTLIST, payload: allProduct});
           }else{
             dispatch({type: GET_PRODUCTLIST, payload: allProduct});
@@ -44,7 +41,6 @@ export const getProductId = (data) => dispatch => {
           alert('Get data error');
         });
       }
-      console.log('all prod last', allProduct)
     }
   };
 
@@ -62,7 +58,6 @@ export const addFavoriteList =
         product_id : pid,
       })
       .then(response => {
-        console.log("Response ", response.data)
         dispatch({type: ADD_FAVORITE, payload: response.data});
         return response.data;
       })

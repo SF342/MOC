@@ -42,6 +42,7 @@ export default Home = ({navigation}) => {
   const [shouldShow1, setShouldShow1] = useState(true);
   const [shouldShow2, setShouldShow2] = useState(false);
   
+  const favorite_list = useSelector(state => state.favorite.favoriteList)
   const favorite_state = useSelector(state => state.favorite.getFav)
   const product_state = useSelector(state => state.favorite.getProduct)
   const add_state = useSelector(state => state.favorite.add)
@@ -109,7 +110,12 @@ export default Home = ({navigation}) => {
   // Function call to open modal add
   const confirmAdd = () => {
     if (user_api != null) {
-      dispatch(addFavoriteList(user_api._id, pid));
+      let checkDuplicate = favorite_list.filter( vendor => vendor['product_id'] === pid )
+      if(checkDuplicate.length === 0){
+        dispatch(addFavoriteList(user_api._id, pid));
+      }else{
+        alert("Duplicate product!")
+      }
       setModalVisible(false);
     } else {
       alert('Please Login to add favorite');
