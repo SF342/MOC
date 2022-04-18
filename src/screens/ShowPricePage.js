@@ -5,7 +5,7 @@ import { Text, View } from 'react-native';
 import { getPrice } from '../redux/actions/dataActions';
 import LinearGradient from 'react-native-linear-gradient';
 import Moc_logo from '../../assets/moc_logo.png';
-import { ActivityIndicator, StyleSheet, SafeAreaView, Image } from 'react-native';
+import { ActivityIndicator, Image } from 'react-native';
 import {
   HStack,
   NativeBaseProvider,
