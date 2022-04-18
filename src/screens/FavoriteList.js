@@ -62,7 +62,6 @@ const FavoriteList = () => {
       
       dispatch(getFavoriteId(user_api._id));
       dispatch(getProductId(fav_api));
-      console.log(delete_state)
 
       setFilteredDataSource(productName);
       

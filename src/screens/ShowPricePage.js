@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Text, View } from 'react-native';
 import { getPrice } from '../redux/actions/dataActions';
@@ -26,6 +26,11 @@ const ShowPricePage = ({ navigation, route }) => {
   const [product, setProduct] = useState(null);
   const [Loading, setLoading] = useState(true);
   const [date, setDate] = useState();
+
+  useEffect(() => {
+    checkPD()
+  }, [PID]);
+
 
   const checkPD = () => {
     var id = products.findIndex(PD => PD.product_id === PID);
