@@ -42,6 +42,10 @@ export default Home = ({navigation}) => {
   const [shouldShow1, setShouldShow1] = useState(true);
   const [shouldShow2, setShouldShow2] = useState(false);
   
+  const favorite_state = useSelector(state => state.favorite.getFav)
+  const product_state = useSelector(state => state.favorite.getProduct)
+  const add_state = useSelector(state => state.favorite.add)
+  const delete_state = useSelector(state => state.favorite.delete)
 
   useEffect(() => {
     setData(products);
@@ -53,7 +57,7 @@ export default Home = ({navigation}) => {
     } else {
       setCheckUserType(false);
     }
-  });
+  }, [favorite_state, product_state, add_state, delete_state]);
 
   function Show1() {
     setShouldShow1(true);
@@ -64,6 +68,12 @@ export default Home = ({navigation}) => {
     setShouldShow1(false);
     setShouldShow2(true);
   }
+
+  const updateInput_notlogin = text => {
+    setValue(text);
+    searchFilterFunction(text);
+
+  };
 
   const updateInput = text => {
     setValue(text);
@@ -290,83 +300,98 @@ export default Home = ({navigation}) => {
             {shouldShow2 ? <RecommendPage navigation={navigation} /> : null}
           </View>
         ) : (
-          <View
+          <View>
+          <SearchBar
+            placeholder="Type Here..."
+            lightTheme
+            round
+            value={valueInput}
+            onChangeText={text => updateInput_notlogin(text)}
+            autoCorrect={false}
+            containerStyle={{backgroundColor: '#0A214A'}}
+          />
+          <Text
             style={{
-              flex: 1,
-              flexDirection: 'column',
-              justifyContent: 'space-between',
+              fontSize: 18,
+              color: 'red',
+              textAlign: 'center',
+              fontFamily: 'Mitr-Light',
             }}>
-            <Text
-              style={{
-                fontSize: 18,
-                color: 'red',
-                textAlign: 'center',
-                fontFamily: 'Mitr-Light',
-              }}>
-              {/* {data.title} */}
-            </Text>
-            <FlatList
-              data={data}
-              renderItem={({item}) => (
-                <ListItem
-                  Component={TouchableScale}
-                  friction={0} //
-                  onLongPress={() => {
-                    toggleModalVisibility();
-                    serPid(item.product_id);
-                    setPname(item.product_name);
-                    console.log(item.product_name);
-                    console.log('user api ', user_api);
-                  }}
-                  tension={200} // These props are passed to the parent component (here TouchableScale)
-                  activeScale={0.95} //
-                  linearGradientProps={{
-                    colors: ['#1544E2', '#0A214A'],
-                    start: {x: 1, y: 0},
-                    end: {x: 0.2, y: 0},
-                  }}
-                  ViewComponent={LinearGradient}
-                  containerStyle={{
-                    marginHorizontal: 4,
-                    marginVertical: 4,
-                    borderRadius: 8,
-                  }}
-                  onPress={() =>
-                    navigation.navigate('ShowPricePage', {id: item.product_id})
-                  }>
-                  <Avatar
-                    style={styles.logo}
-                    source={filterImageUrl(item.product_name)}
-                    rounded
-                  />
-                  <ListItem.Content>
-                    <ListItem.Title
+            {/* {data.title} */}
+          </Text>
+          <FlatList
+            data={data}
+            renderItem={({item}) => (
+              <ListItem
+                Component={TouchableScale}
+                friction={0} //
+                onLongPress={() => {
+                  toggleModalVisibility();
+                  serPid(item.product_id);
+                  setPname(item.product_name);
+                  console.log(item.product_name);
+                  console.log('user api ', user_api);
+                }}
+                tension={200} // These props are passed to the parent component (here TouchableScale)
+                activeScale={0.95} //
+                linearGradientProps={{
+                  colors: ['#1544E2', '#0A214A'],
+                  start: {x: 1, y: 0},
+                  end: {x: 0.2, y: 0},
+                }}
+                ViewComponent={LinearGradient}
+                containerStyle={{
+                  marginHorizontal: 4,
+                  marginVertical: 4,
+                  borderRadius: 8,
+                }}
+                onPress={() =>
+                  navigation.navigate('ShowPricePage', {
+                    id: item.product_id,
+                  })
+                }>
+                <Avatar
+                  style={styles.logo}
+                  source={filterImageUrl(item.product_name)}
+                  rounded
+                />
+                <ListItem.Content>
+                  <ListItem.Title
+                    style={{
+                      fontSize: 22,
+                      color: '#FFC511',
+                      fontWeight: '700',
+                      fontFamily: 'Mitr-Light',
+                    }}>{`${item.product_name}`}</ListItem.Title>
+                  <View style={styles.TextContainer1}>
+                    <ListItem.Subtitle
                       style={{
-                        fontSize: 22,
-                        color: '#FFC511',
-                        fontWeight: '700',
+                        color: '#CED0CE',
                         fontFamily: 'Mitr-Light',
-                      }}>{`${item.product_name}`}</ListItem.Title>
-                    <View style={styles.TextContainer1}>
-                      <ListItem.Subtitle
-                        style={{color: '#CED0CE', fontFamily: 'Mitr-Light'}}>
-                        {item.group_name}{' '}
-                      </ListItem.Subtitle>
-                      <ListItem.Subtitle
-                        style={{color: '#CED0CE', fontFamily: 'Mitr-Light'}}>
-                        {item.categoty_name}{' '}
-                      </ListItem.Subtitle>
-                      <ListItem.Subtitle
-                        style={{color: '#CED0CE', fontFamily: 'Mitr-Light'}}>
-                        รหัสสินค้า : {item.product_id}
-                      </ListItem.Subtitle>
-                    </View>
-                  </ListItem.Content>
-                </ListItem>
-              )}
-              keyExtractor={item => item.product_id}
-            />
-          </View>
+                      }}>
+                      {item.group_name}{' '}
+                    </ListItem.Subtitle>
+                    <ListItem.Subtitle
+                      style={{
+                        color: '#CED0CE',
+                        fontFamily: 'Mitr-Light',
+                      }}>
+                      {item.categoty_name}{' '}
+                    </ListItem.Subtitle>
+                    <ListItem.Subtitle
+                      style={{
+                        color: '#CED0CE',
+                        fontFamily: 'Mitr-Light',
+                      }}>
+                      รหัสสินค้า : {item.product_id}
+                    </ListItem.Subtitle>
+                  </View>
+                </ListItem.Content>
+              </ListItem>
+            )}
+            keyExtractor={item => item.product_id}
+          />
+        </View>
         )}
       </View>
       
