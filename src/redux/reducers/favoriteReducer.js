@@ -30,6 +30,7 @@ export default function (state = initialState, action) {
                 
             }
         case ADD_FAVORITE:
+            console.log(action.payload);
             return {
                 ...state,
                 add : true,

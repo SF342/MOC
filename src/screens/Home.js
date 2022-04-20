@@ -1,6 +1,6 @@
 import React from 'react';
-import {useEffect, useState} from 'react';
-import {ListItem, SearchBar, Avatar} from 'react-native-elements';
+import { useEffect, useState } from 'react';
+import { ListItem, SearchBar, Avatar } from 'react-native-elements';
 import {
   Modal,
   View,
@@ -10,12 +10,12 @@ import {
   Image,
 } from 'react-native';
 //redux stuff
-import {getData} from '../redux/actions/dataActions';
+import { getData } from '../redux/actions/dataActions';
 import {
   addFavoriteList,
   getFavoriteId,
 } from '../redux/actions/newFavoriteAction';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from '../css/Home';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -25,7 +25,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Moc_logo from '../../assets/moc_logo.png';
 import RecommendPage from './RecommendPage';
 
-export default Home = ({navigation}) => {
+export default Home = ({ navigation }) => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.data);
   const image = useSelector(state => state.data.urlimage);
@@ -41,24 +41,34 @@ export default Home = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [shouldShow1, setShouldShow1] = useState(true);
   const [shouldShow2, setShouldShow2] = useState(false);
-  
+
   const favorite_list = useSelector(state => state.favorite.favoriteList)
+
+
   const favorite_state = useSelector(state => state.favorite.getFav)
   const product_state = useSelector(state => state.favorite.getProduct)
   const add_state = useSelector(state => state.favorite.add)
   const delete_state = useSelector(state => state.favorite.delete)
 
   useEffect(() => {
-    setData(products);
 
     // Check user login or not
+    setCheckUserType(user_api ? true : false)
     if (user_api) {
       dispatch(getFavoriteId(user_api._id));
-      setCheckUserType(true);
-    } else {
-      setCheckUserType(false);
     }
+
+    console.log(favorite_list);
+
   }, [favorite_state, product_state, add_state, delete_state]);
+
+
+  useEffect(() => {
+    console.log('product');
+    setData(products);
+
+  }, [products]);
+
 
   function Show1() {
     setShouldShow1(true);
@@ -70,26 +80,9 @@ export default Home = ({navigation}) => {
     setShouldShow2(true);
   }
 
-  const updateInput_notlogin = text => {
-    setValue(text);
-    searchFilterFunction(text);
-
-  };
-
   const updateInput = text => {
     setValue(text);
     searchFilterFunction(text);
-
-    // let user search if finish turn back  recommend page
-    if (text != '' || user_api._id == null) {
-      setCheckUserType(false);
-      console.log('check ', user_api._id);
-    } else {
-      if (user_api._id) {
-        setCheckUserType(true);
-        console.log('check ', user_api._id);
-      }
-    }
   };
 
   // Function call to open modal add
@@ -101,19 +94,20 @@ export default Home = ({navigation}) => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
 
     if (nameImg.length !== 0) {
-      return {uri: nameImg[0].url};
+      return { uri: nameImg[0].url };
     } else {
       return Moc_logo;
     }
   };
-  0;
+
+
   // Function call to open modal add
   const confirmAdd = () => {
     if (user_api != null) {
-      let checkDuplicate = favorite_list.filter( vendor => vendor['product_id'] === pid )
-      if(checkDuplicate.length === 0){
+      let checkDuplicate = favorite_list.filter(vendor => vendor['product_id'] === pid)
+      if (checkDuplicate.length === 0) {
         dispatch(addFavoriteList(user_api._id, pid));
-      }else{
+      } else {
         alert("Duplicate product!")
       }
       setModalVisible(false);
@@ -124,9 +118,7 @@ export default Home = ({navigation}) => {
 
   const searchFilterFunction = text => {
     const newData = products.filter(item => {
-      const itemData = `${item.product_id.toUpperCase()} ${item.product_name} ${
-        item.category_name
-      }`;
+      const itemData = `${item.product_id.toUpperCase()} ${item.product_name} ${item.category_name}`;
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
     });
@@ -137,8 +129,9 @@ export default Home = ({navigation}) => {
     dispatch(getData());
     setLoading(false);
   }
+
   const MODAL = (prop) => {
-    return(<Modal
+    return (<Modal
       animationType="slide"
       transparent
       visible={isModalVisible}
@@ -176,10 +169,21 @@ export default Home = ({navigation}) => {
   return (
     <LinearGradient
       colors={[theme.pri700, theme.pri50]}
-      start={{x: 1, y: 0}}
-      end={{x: 0, y: 1}}
+      start={{ x: 1, y: 0 }}
+      end={{ x: 0, y: 1 }}
       style={styles.container1}>
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
+        {checkUserType && !shouldShow2 ? (
+          <SearchBar
+            placeholder="Type Here..."
+            lightTheme
+            round
+            value={valueInput}
+            onChangeText={text => updateInput(text)}
+            autoCorrect={false}
+            containerStyle={{ backgroundColor: '#0A214A' }}
+          />
+        ) : (<></>)}
         {checkUserType === true ? (
           <View
             style={{
@@ -211,45 +215,36 @@ export default Home = ({navigation}) => {
             </View>
             {shouldShow1 ? (
               <View>
-                <SearchBar
-                  placeholder="Type Here..."
-                  lightTheme
-                  round
-                  value={valueInput}
-                  onChangeText={text => updateInput(text)}
-                  autoCorrect={false}
-                  containerStyle={{backgroundColor: '#0A214A'}}
-                />
-                <Text
+                {/* <Text
                   style={{
                     fontSize: 18,
                     color: 'red',
                     textAlign: 'center',
                     fontFamily: 'Mitr-Light',
                   }}>
-                  {/* {data.title} */}
-                </Text>
+                  {data.title}
+                </Text> */}
                 <FlatList
                   data={data}
-                  renderItem={({item}) => (
+                  renderItem={({ item }) => (
                     <ListItem
-                      Component={TouchableScale}
-                      friction={0} //
+                      // Component={TouchableScale}
+                      // friction={0} //
                       onLongPress={() => {
                         toggleModalVisibility();
                         serPid(item.product_id);
                         setPname(item.product_name);
-                        console.log(item.product_name);
+                        // console.log(item.product_name);
                         console.log('user api ', user_api);
                       }}
-                      tension={200} // These props are passed to the parent component (here TouchableScale)
-                      activeScale={0.95} //
+                      // tension={200} // These props are passed to the parent component (here TouchableScale)
+                      // activeScale={0.95} //
+                      ViewComponent={LinearGradient}
                       linearGradientProps={{
                         colors: ['#1544E2', '#0A214A'],
-                        start: {x: 1, y: 0},
-                        end: {x: 0.2, y: 0},
+                        start: { x: 1, y: 0 },
+                        end: { x: 0.2, y: 0 },
                       }}
-                      ViewComponent={LinearGradient}
                       containerStyle={{
                         marginHorizontal: 4,
                         marginVertical: 4,
@@ -303,104 +298,104 @@ export default Home = ({navigation}) => {
                 />
               </View>
             ) : null}
-            {shouldShow2 ? <RecommendPage navigation={navigation} /> : null}
+            {shouldShow2 ? <RecommendPage navigation={navigation} /> : <></>}
           </View>
         ) : (
           <View>
-          <SearchBar
-            placeholder="Type Here..."
-            lightTheme
-            round
-            value={valueInput}
-            onChangeText={text => updateInput_notlogin(text)}
-            autoCorrect={false}
-            containerStyle={{backgroundColor: '#0A214A'}}
-          />
-          <Text
-            style={{
-              fontSize: 18,
-              color: 'red',
-              textAlign: 'center',
-              fontFamily: 'Mitr-Light',
-            }}>
-            {/* {data.title} */}
-          </Text>
-          <FlatList
-            data={data}
-            renderItem={({item}) => (
-              <ListItem
-                Component={TouchableScale}
-                friction={0} //
-                onLongPress={() => {
-                  toggleModalVisibility();
-                  serPid(item.product_id);
-                  setPname(item.product_name);
-                  console.log(item.product_name);
-                  console.log('user api ', user_api);
-                }}
-                tension={200} // These props are passed to the parent component (here TouchableScale)
-                activeScale={0.95} //
-                linearGradientProps={{
-                  colors: ['#1544E2', '#0A214A'],
-                  start: {x: 1, y: 0},
-                  end: {x: 0.2, y: 0},
-                }}
-                ViewComponent={LinearGradient}
-                containerStyle={{
-                  marginHorizontal: 4,
-                  marginVertical: 4,
-                  borderRadius: 8,
-                }}
-                onPress={() =>
-                  navigation.navigate('ShowPricePage', {
-                    id: item.product_id,
-                  })
-                }>
-                <Avatar
-                  style={styles.logo}
-                  source={filterImageUrl(item.product_name)}
-                  rounded
-                />
-                <ListItem.Content>
-                  <ListItem.Title
-                    style={{
-                      fontSize: 22,
-                      color: '#FFC511',
-                      fontWeight: '700',
-                      fontFamily: 'Mitr-Light',
-                    }}>{`${item.product_name}`}</ListItem.Title>
-                  <View style={styles.TextContainer1}>
-                    <ListItem.Subtitle
+            <SearchBar
+              placeholder="Type Here..."
+              lightTheme
+              round
+              value={valueInput}
+              onChangeText={text => updateInput(text)}
+              autoCorrect={false}
+              containerStyle={{ backgroundColor: '#0A214A' }}
+            />
+            {/* <Text
+              style={{
+                fontSize: 18,
+                color: 'red',
+                textAlign: 'center',
+                fontFamily: 'Mitr-Light',
+              }}>
+              {data.title}
+            </Text> */}
+            <FlatList
+              data={data}
+              renderItem={({ item }) => (
+                <ListItem
+                  // Component={TouchableScale}
+                  friction={0}
+                  onLongPress={() => {
+                    toggleModalVisibility();
+                    serPid(item.product_id);
+                    setPname(item.product_name);
+                    console.log(item);
+                    // console.log('user api ', user_api);
+                  }}
+                  // tension={200} // These props are passed to the parent component (here TouchableScale)
+                  // activeScale={0.95} //
+                  ViewComponent={LinearGradient}
+                  linearGradientProps={{
+                    colors: ['#1544E2', '#0A214A'],
+                    start: { x: 1, y: 0 },
+                    end: { x: 0.2, y: 0 },
+                  }}
+                  containerStyle={{
+                    marginHorizontal: 4,
+                    marginVertical: 4,
+                    borderRadius: 8,
+                  }}
+                  onPress={() =>
+                    navigation.navigate('ShowPricePage', {
+                      id: item.product_id,
+                    })
+                  }>
+                  <Avatar
+                    style={styles.logo}
+                    source={filterImageUrl(item.product_name)}
+                    rounded
+                  />
+                  <ListItem.Content>
+                    <ListItem.Title
                       style={{
-                        color: '#CED0CE',
+                        fontSize: 22,
+                        color: '#FFC511',
+                        fontWeight: '700',
                         fontFamily: 'Mitr-Light',
-                      }}>
-                      {item.group_name}{' '}
-                    </ListItem.Subtitle>
-                    <ListItem.Subtitle
-                      style={{
-                        color: '#CED0CE',
-                        fontFamily: 'Mitr-Light',
-                      }}>
-                      {item.categoty_name}{' '}
-                    </ListItem.Subtitle>
-                    <ListItem.Subtitle
-                      style={{
-                        color: '#CED0CE',
-                        fontFamily: 'Mitr-Light',
-                      }}>
-                      รหัสสินค้า : {item.product_id}
-                    </ListItem.Subtitle>
-                  </View>
-                </ListItem.Content>
-              </ListItem>
-            )}
-            keyExtractor={item => item.product_id}
-          />
-        </View>
+                      }}>{`${item.product_name}`}</ListItem.Title>
+                    <View style={styles.TextContainer1}>
+                      <ListItem.Subtitle
+                        style={{
+                          color: '#CED0CE',
+                          fontFamily: 'Mitr-Light',
+                        }}>
+                        {item.group_name}{' '}
+                      </ListItem.Subtitle>
+                      <ListItem.Subtitle
+                        style={{
+                          color: '#CED0CE',
+                          fontFamily: 'Mitr-Light',
+                        }}>
+                        {item.categoty_name}{' '}
+                      </ListItem.Subtitle>
+                      <ListItem.Subtitle
+                        style={{
+                          color: '#CED0CE',
+                          fontFamily: 'Mitr-Light',
+                        }}>
+                        รหัสสินค้า : {item.product_id}
+                      </ListItem.Subtitle>
+                    </View>
+                  </ListItem.Content>
+                </ListItem>
+              )}
+              keyExtractor={item => item.product_id}
+            />
+          </View>
         )}
       </View>
-      
+
       {isModalVisible === true && pname !== null ? MODAL(pname) : <></>}
     </LinearGradient>
   );
