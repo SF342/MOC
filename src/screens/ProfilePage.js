@@ -77,7 +77,7 @@ const ChooseLoginRegister = ({ navigation }) => {
         },
         loginButtonText: {
             textAlign: 'center',
-            color: theme.pri500,
+            color: theme.whitemain,
             fontWeight: 'bold',
             fontSize: 20,
             padding: 15
@@ -96,7 +96,7 @@ const ChooseLoginRegister = ({ navigation }) => {
     
     return (
         <LinearGradient
-            colors={[theme.pri700, theme.pri50]}
+            colors={[theme.background1, theme.background2]}
             start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
             style={styles.container1}>
             <SafeAreaView style={{ flex: 1 }}>

@@ -29,7 +29,7 @@ const RegisterScreen = () => {
 
   return (
     <LinearGradient
-      colors={[theme.pri700, theme.pri50]}
+      colors={[theme.background1, theme.background2]}
       start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
       style={styles.container1}
     >

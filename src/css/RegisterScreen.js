@@ -71,7 +71,7 @@ export default StyleSheet.create({
         paddingTop: 50,
       },
       text: {
-        color: 'black',
+        color: '#000000',
         fontSize: 18
       },
       img: {

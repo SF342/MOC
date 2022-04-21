@@ -48,7 +48,7 @@ export default StyleSheet.create({
       },
       loginButtonText: {
         textAlign: 'center',
-        color: '#F0FFFF',
+        color: '#FFFFFF',
         fontWeight: 'bold',
         fontSize: 20,
         padding: 15

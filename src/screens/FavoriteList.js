@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, FlatList,Image } from 'react-native';
+import { Text, View, StyleSheet, FlatList,Image, TouchableOpacity, } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Picker, } from 'react-native-ui-lib';
 import { useSelector, useDispatch } from 'react-redux'
@@ -10,8 +10,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Moc_logo from '../../assets/moc_logo.png';
 import { getProductId, deleteFavorite, getFavoriteId } from '../redux/actions/newFavoriteAction';
 import { ListItem, SearchBar, Avatar } from 'react-native-elements';
+import styles from '../css/FavoriteList';
 
-const FavoriteList = () => {
+const FavoriteList = ({ navigation }) => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.data)
   const user = useSelector(state => state.user)
@@ -119,7 +120,7 @@ const FavoriteList = () => {
 
   return (
     <LinearGradient
-      colors={[theme.pri700, theme.pri50]}
+      colors={[theme.background1, theme.background2]}
       start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
       style={styles.container1}>
       <View
@@ -155,10 +156,15 @@ const FavoriteList = () => {
                 renderItem={({ item }) =>
                 (
                   <View style={styles.listFavorite}>
-                    <View style={styles.topicList}>
-                      <Text style={styles.textTopicList}> {item.product_name}  </Text>
-                      <MaterialCommunityIcons name="delete-empty" style={styles.icon} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }}/>
-                    </View>
+                    <TouchableOpacity 
+                      style={styles.topicList}
+                      onPress={() =>
+                        {console.log(item.product_id)
+                        navigation.navigate('ShowPricePage', {id: item.product_id})
+                    }}>  
+                        <Text style={styles.textTopicList}> {item.product_name}  </Text>
+                        <MaterialCommunityIcons name="delete-empty" style={styles.icon} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }}/>
+                    </TouchableOpacity>
                   </View>
 
                 )} />
@@ -177,11 +183,16 @@ const FavoriteList = () => {
               renderItem={({ item }) =>
               (
                 <View style={styles.GridViewBlockStyle}>
-                  <View style={styles.topicList2}>
+                  <TouchableOpacity 
+                      style={styles.topicList2}
+                      onPress={() =>
+                        {console.log(item.product_id)
+                        navigation.navigate('ShowPricePage', {id: item.product_id})
+                    }}>  
                     <Image style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
                     <Text style={styles.textTopicList2}> {item.product_name}  </Text>
                     <MaterialCommunityIcons name="delete-empty" style={styles.icon2} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }}/>
-                  </View>
+                  </TouchableOpacity >
                 </View>
 
               )} />
@@ -195,255 +206,4 @@ const FavoriteList = () => {
   )
 }
 
-const styles = StyleSheet.create({
-  listFavorite: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: '4%',
-  },
-  logo : {
-    width: 100,
-    height: 100,
-  },
-  boxTopic: {
-    flexDirection: 'row',
-    alignSelf: 'center',
-    width: '100%',
-  },
-  boxTopicGra: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    alignSelf: 'center',
-    backgroundColor: 'white',
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
-    borderRadius: 10,
-    width: '100%',
-    height: 55
-  },
-  boxFavelist: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    alignSelf: 'center',
-    marginTop: "5%",
-    height: '100%',
-    width: '90%',
-    marginBottom: '20%',
-    borderRadius: 10,
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-  },
-  superListFav: {
-    marginTop: '5%',
-    marginBottom: '20%',
-  },
-  superListFav2: {
-    marginTop: '5%',
-    marginRight: '0%'
-  },
-  container1: {
-    width: '100%',
-    height: '100%',
-  },
-  favLogo: {
-    width: 40,
-    height: 50,
-  },
-  delButton: {
-    backgroundColor: '#b53531',
-    width: 50,
-    height: 50,
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  textDelButton: {
-    color: 'white',
-    fontSize: 20
-  },
-  topicList: {
-    width: '97%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: 60,
-    backgroundColor: '#5DB2BD',
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
-    borderRadius: 20
-  },
-  topicList2: {
-    width: '65%',
-    flexDirection: 'column',
-    alignItems: 'center',
-    height: 150,
-    backgroundColor: '#5DB2BD',
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
-    borderRadius: 20,
-    marginLeft: '3%'
-  },
-  textTopicList: {
-    color: '#F0FF00',
-    fontSize: 18,
-    fontFamily: "Mitr-Light",
-    marginLeft:10,
-  },
-  textTopicList2: {
-    color: '#F0FF00',
-    fontSize: 12,
-    fontFamily: "Mitr-Light",
-    marginLeft:10,
-  },
-  bottomContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignSelf: 'flex-end',
-    marginRight: '5%'
-  },
-  title: {
-    color: '#FFFFFF',
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: '600',
-  },
-  titlecolor:{
-    color: '#FFFAD3',
-    fontSize: 30,
-    fontWeight: '600',
-  },
-  title2: {
-    color: 'black',
-    textAlign: 'center',
-    fontSize: 20,
-    width: 320,
-    marginBottom: 10,
-    marginTop: 10,
-    fontWeight: 'bold',
-  },
-  circleText: {
-    width: '115%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
-  },
-  circleButton: {
-    borderRadius: 100,
-    marginVertical: 10,
-    backgroundColor: '#FFC511',
-    width: 70,
-    height: 70,
-    shadowColor: "#000000",
-    shadowOpacity: 15,
-    shadowRadius: 15,
-    elevation: 15,
-  },
-  logInButton: {
-    marginVertical: 10,
-    backgroundColor: '#0A214A',
-    width: 320,
-    height: 60,
-    borderRadius: 10,
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5,
-  },
-  loginButtonText: {
-    textAlign: 'center',
-    color: '#F0FFFF',
-    fontWeight: 'bold',
-    fontSize: 20,
-    padding: 15
-  },
-  container: {
-    flex: 1,
-    padding: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#E2FCFA',
-  },
-  favoriteList: {
-    marginVertical: 10,
-    backgroundColor: '#0A214A',
-    width: 320,
-    height: 60,
-    borderRadius: 10,
-    shadowColor: "#000000",
-    shadowOpacity: 5,
-    shadowRadius: 5,
-    elevation: 5
-  },
-  bg_modal: {
-    backgroundColor: '#000000aa',
-    flex: 1
-  },
-  paper_madal: {
-    backgroundColor: '#ffffff',
-    margin: 30,
-    marginTop: 200,
-    marginBottom: 200,
-    padding: 20,
-    borderRadius: 10,
-    flex: 1
-  },
-  pickerbox:{
-    flexDirection: 'row',
-    alignSelf: 'center',
-    width: '100%',
-  },
-  pickerStyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 30,
-    justifyContent: 'space-between',
-    padding: 15,
-    width: 240,
-    height: 35,
-    alignSelf: 'center',
-    marginLeft: 10,
-    backgroundColor: '#ffffff',
-    marginTop:10,
-  },
-  icon:{
-    width: 25,
-    height: 25,
-    position: 'absolute',
-    right: 15, // Keep some space between your left border and Image
-  },
-  icon2:{
-    width: 25,
-    height: 25,
-    position: 'absolute',
-    marginTop: 10,
-    right: 5, // Keep some space between your left border and Image
-  },
-  GridViewBlockStyle: {
-    margin:5,
-    marginRight: 'auto',
-    marginBottom: '5%',
-    flexDirection: 'row',
-  },
-  searchcontainer:{
-    backgroundColor: 'rgba(0,0,0,0.00001)',
-    borderWidth: 0, //no effect
-    shadowColor: 'white', //no effect
-    borderBottomColor: 'transparent',
-    borderTopColor: 'transparent',
-    width: 250,
-  },
-  
-});
 export default FavoriteList;

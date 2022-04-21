@@ -90,7 +90,7 @@ export default StyleSheet.create({
       },
       centeredView: {
         flex: 1,
-        backgroundColor: "#000000aa",
+        backgroundColor: "#000000",
         // justifyContent: "center",
         // alignItems: "center",
         // margin: 22
