@@ -3,37 +3,77 @@ import {getData} from './dataActions';
 import {CHANGE_THEME} from '../types';
 
 export const themeOptions = {
+    /////   Main   /////
   '#2fbe74': {
-    pri50: '#6bd8ff',
-    pri500: '#fff',
-    pri700: '#0A214A',
+    background2: '#6bd8ff',
+    whitemain: '#fff',
+    background1: '#0A214A',
     pri800: '#e66900',
     sec700: '#e3eeff',
-    sec900: 'black',
-  },
-  '#8b50da': {
-    pri50: '#f0e7fa',
-    pri500: '#752dd3',
-    pri700: '#5d1ec4',
-    pri800: '#4f17bd',
-    sec700: '#679f00',
-    sec900: '#256b00',
-  },
-  '#f69400': {
-    pri50: '#fef2e0',
-    pri500: '#f28800',
-    pri700: '#e66900',
-    pri800: '#dd4f00',
-    sec700: '#0062f6',
-    sec900: '#203ed7',
+    shadow1: '#000000',
+    /////   Favourite List   /////
+    topicbg: '#5DB2BD',
+    topictext: '#F0FF00',
+    title2: '#FFFAD3',
+
+    /////   Home   /////
+    container: '#393E46',
+    logoutbg: '#b53531',
+    line: '#DFDFDE',
+
+    /////   LoggedInPage   /////
+    containerbg: '#E2FCFA',
+    text: '#00CABA',
+    card: '#2D648C',
+
+    /////   LoginScreen   /////
+    btnbg: '#37379C',
+    forgettext: '#3D51CA',
+
+    /////   Price   /////
+
+
+    /////   RecommendPage   /////
+    box1: '#FFC511',
+
+    /////   ShowPricePage   /////
+
+
   },
   '#000000': {
-    pri50: '#f5f5f5',
-    pri500: '#555555',
-    pri700: '#262626',
-    pri800: '#000000',
-    sec700: '#434343',
-    sec900: '#000000',
+    background2: '#6bd8ff',
+    whitemain: '#fff',
+    background1: '#0A214A',
+    pri800: '#e66900',
+    sec700: '#e3eeff',
+    shadow1: '#000000',
+    /////   Favourite List   /////
+    topicbg: '#5DB2BD',
+    topictext: '#F0FF00',
+    title2: '#FFFAD3',
+
+    /////   Home   /////
+    container: '#393E46',
+    logoutbg: '#b53531',
+    line: '#DFDFDE',
+
+    /////   LoggedInPage   /////
+    containerbg: '#E2FCFA',
+    text: '#00CABA',
+    card: '#2D648C',
+
+    /////   LoginScreen   /////
+    btnbg: '#37379C',
+    forgettext: '#3D51CA',
+
+    /////   Price   /////
+
+
+    /////   RecommendPage   /////
+    box1: '#FFC511',
+
+    /////   ShowPricePage   /////
+
   },
 };
 
