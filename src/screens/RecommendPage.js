@@ -8,7 +8,7 @@ import Moc_logo from '../../assets/moc_logo.png';
 import {ActivityIndicator, StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
-import styles from '../css/RecommendPage';
+import {RecommendPageStyle} from '../css/RecommendPage';
 import {
   getProductId,
   getFavoriteId,
@@ -54,9 +54,9 @@ const RecommendPage = ({navigation}) => {
         colors={[theme.background1, theme.background2]}
         start={{x: 0, y: 0}}
         end={{x: 0, y: 1}}
-        style={styles.container1}>
+        style={RecommendPageStyle(theme).container1}>
         <View>
-          <View style={styles.box1}>
+          <View style={RecommendPageStyle(theme).box1}>
             <Text
               style={{
                 color: '#FFC511',
@@ -93,7 +93,7 @@ const RecommendPage = ({navigation}) => {
                     navigation.navigate('ShowPricePage', {id: item.product_id})
                   }>
                   <Avatar
-                    style={styles.logo}
+                    style={RecommendPageStyle(theme).logo}
                     source={filterImageUrl(item.product_name)}
                     rounded
                   />
@@ -105,7 +105,7 @@ const RecommendPage = ({navigation}) => {
                         fontWeight: '700',
                         fontFamily: 'Mitr-Light',
                       }}>{`${item.product_name}`}</ListItem.Title>
-                    <View style={styles.TextContainer1}>
+                    <View style={RecommendPageStyle(theme).TextContainer1}>
                       <ListItem.Subtitle
                         style={{color: '#CED0CE', fontFamily: 'Mitr-Light'}}>
                         {item.group_name}{' '}

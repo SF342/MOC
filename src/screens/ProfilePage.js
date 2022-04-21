@@ -32,7 +32,7 @@ const ChooseLoginRegister = ({ navigation }) => {
             marginBottom: 15
         },
         title: {
-            color: 'white',
+            color: theme.whitemain,
             textAlign: 'center',
             fontSize: 35,
             width: 320,
@@ -54,7 +54,7 @@ const ChooseLoginRegister = ({ navigation }) => {
         loginButton: {
             marginVertical: '2%',
             marginBottom: '1%',
-            backgroundColor: '#0A214A',
+            backgroundColor: theme.background1,
             width: 120,
             height: 60,
             borderRadius: 10,
@@ -66,11 +66,11 @@ const ChooseLoginRegister = ({ navigation }) => {
         registerButton: {
             marginVertical: '2%',
             marginLeft: '5%',
-            backgroundColor: '#0A214A',
+            backgroundColor: theme.background1,
             width: 120,
             height: 60,
             borderRadius: 10,
-            shadowColor: "#000000",
+            shadowColor: theme.shadow1,
             shadowOpacity: 5,
             shadowRadius: 5,
             elevation: 5,
@@ -89,7 +89,7 @@ const ChooseLoginRegister = ({ navigation }) => {
             paddingTop: 50,
         },
         text: {
-            color: 'white',
+            color: theme.whitemain,
             fontSize: 16
         },
     });

@@ -12,7 +12,7 @@ import {
   Center,
   ScrollView,
 } from 'native-base';
-import styles from '../css/ShowPricePage';
+import {ShowPricePageStyle} from '../css/ShowPricePage';
 import { LineChart } from 'react-native-chart-kit';
 
 
@@ -117,7 +117,7 @@ const ShowPricePage = ({ navigation, route }) => {
       colors={[theme.background1, theme.background2]}
       start={{ x: 1, y: 0 }}
       end={{ x: 0, y: 1 }}
-      style={styles.linearG}>
+      style={ShowPricePageStyle(theme).linearG}>
       <NativeBaseProvider
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         {product === null || Loading ? (
@@ -131,8 +131,8 @@ const ShowPricePage = ({ navigation, route }) => {
                     colors={['#EDEDED', '#7F7C82']}
                     start={{ x: 1, y: 0 }}
                     end={{ x: 1, y: 1 }}
-                    style={styles.container1}>
-                    <View style={styles.box1}>
+                    style={ShowPricePageStyle(theme).container1}>
+                    <View style={ShowPricePageStyle(theme).box1}>
                       <View>
                         <View
                           style={{
@@ -144,32 +144,32 @@ const ShowPricePage = ({ navigation, route }) => {
                             borderRadius: 100,
                           }}></View>
                         <Image
-                          style={styles.logo}
+                          style={ShowPricePageStyle(theme).logo}
                           source={filterImageUrl(product.product_name)}
                           rounded></Image>
                       </View>
-                      <View style={styles.TextContainer1}>
-                        <Text style={styles.topic}>{product.product_name}</Text>
+                      <View style={ShowPricePageStyle(theme).TextContainer1}>
+                        <Text style={ShowPricePageStyle(theme).topic}>{product.product_name}</Text>
                       </View>
-                      <View style={styles.TextContainer1}>
-                        <Text style={styles.title}>ประเภท : </Text>
-                        <Text style={styles.title1}> {product.group_name}</Text>
+                      <View style={ShowPricePageStyle(theme).TextContainer1}>
+                        <Text style={ShowPricePageStyle(theme).title}>ประเภท : </Text>
+                        <Text style={ShowPricePageStyle(theme).title1}> {product.group_name}</Text>
                       </View>
-                      <View style={styles.TextContainer1}>
-                        <Text style={styles.title}>ราคาต่ำสุด : </Text>
-                        <Text style={styles.title1}>
+                      <View style={ShowPricePageStyle(theme).TextContainer1}>
+                        <Text style={ShowPricePageStyle(theme).title}>ราคาต่ำสุด : </Text>
+                        <Text style={ShowPricePageStyle(theme).title1}>
                           {product.price_min_avg} บาท
                         </Text>
                       </View>
-                      <View style={styles.TextContainer1}>
-                        <Text style={styles.title}>ราคาสูงสุด : </Text>
-                        <Text style={styles.title1}>
+                      <View style={ShowPricePageStyle(theme).TextContainer1}>
+                        <Text style={ShowPricePageStyle(theme).title}>ราคาสูงสุด : </Text>
+                        <Text style={ShowPricePageStyle(theme).title1}>
                           {product.price_max_avg} บาท
                         </Text>
                       </View>
-                      <View style={styles.TextContainer1}>
-                        <Text style={styles.update}>**อัพเดทราคาเมื่อ : </Text>
-                        <Text style={styles.update1}> {date}</Text>
+                      <View style={ShowPricePageStyle(theme).TextContainer1}>
+                        <Text style={ShowPricePageStyle(theme).update}>**อัพเดทราคาเมื่อ : </Text>
+                        <Text style={ShowPricePageStyle(theme).update1}> {date}</Text>
                       </View>
                       <LineChart
                         data={data}

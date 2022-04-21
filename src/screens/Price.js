@@ -14,7 +14,7 @@ import {ActivityIndicator} from 'react-native';
 import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import styles  from '../css/Price';
+import { PriceStyle } from '../css/Price';
 import { VictoryBar, VictoryChart, VictoryGroup, VictoryLegend, VictoryTheme } from "victory-native";
 
 const settingsIcon = require('../../assets/settings.png');
@@ -27,6 +27,7 @@ import { useSelector, useDispatch } from 'react-redux'
 const Price = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.data)
+  const theme = useSelector(state => state.theme.theme)
 
   const [price, setPrice] = useState([]);
   const [price1, setPrice1] = useState([]);
@@ -103,20 +104,20 @@ const Price = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={PriceStyle(theme).container}>
       <View style={{marginTop: 20 , marginLeft:50}}>
-        <Text style={styles.t2}>COMPARE</Text>
+        <Text style={PriceStyle(theme).t2}>COMPARE</Text>
       </View>
 
-      <View style={styles.pickerContainer} >
-        <View style={styles.pickerbox}>
+      <View style={PriceStyle(theme).pickerContainer} >
+        <View style={PriceStyle(theme).pickerbox}>
           <Picker
             value={selectedProduct}
             placeholder="Search Product . . ."
             onChange={onProductChange}
             showSearch
             placeholderTextColor="#000000"
-            containerStyle={styles.pickerStyle}
+            containerStyle={PriceStyle(theme).pickerStyle}
             style={{color: Colors.black}}>
             {products.map((option, index) => (
               <Picker.Item
@@ -127,14 +128,14 @@ const Price = () => {
             ))}
           </Picker>
         </View>
-        <View style={styles.pickerbox}>
+        <View style={PriceStyle(theme).pickerbox}>
           <Picker
             value={selectedProduct1}
             placeholder="Search Product . . ."
             onChange={onProductChange1}
             showSearch
             placeholderTextColor="#000000"
-            containerStyle={styles.pickerStyle}
+            containerStyle={PriceStyle(theme).pickerStyle}
             style={{color: Colors.black}}>
             {products.map((option, index) => (
               <Picker.Item
@@ -172,22 +173,22 @@ const Price = () => {
           setModalVisible(!modalVisible);
         }}
       >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalTextheader}>COMPARE</Text>
+        <View style={PriceStyle(theme).centeredView}>
+          <View style={PriceStyle(theme).modalView}>
+            <Text style={PriceStyle(theme).modalTextheader}>COMPARE</Text>
             {isPriceLoading ? (
               <ActivityIndicator />
             ) : (     
-            <View style={styles.modalbox}>
+            <View style={PriceStyle(theme).modalbox}>
               <View>
-                <Text style={styles.modalHeader}> <FontAwesome name="circle" color='#0A214A' size={13} /> {price.product_name}</Text>
-                <Text style={styles.modalText}>Price max : {price.price_max_avg}  {price.unit}</Text>
-                <Text style={styles.modalText}>Price min : {price.price_min_avg}  {price.unit}</Text>
+                <Text style={PriceStyle(theme).modalHeader}> <FontAwesome name="circle" color='#0A214A' size={13} /> {price.product_name}</Text>
+                <Text style={PriceStyle(theme).modalText}>Price max : {price.price_max_avg}  {price.unit}</Text>
+                <Text style={PriceStyle(theme).modalText}>Price min : {price.price_min_avg}  {price.unit}</Text>
               </View>
               <View>
-                <Text style={styles.modalHeader}> <FontAwesome name="circle" color='#FFBD12' size={13} /> {price1.product_name}</Text>
-                <Text style={styles.modalText}>Price max : {price1.price_max_avg}  {price1.unit}</Text>
-                <Text style={styles.modalText}>Price min : {price1.price_min_avg}  {price1.unit}</Text>
+                <Text style={PriceStyle(theme).modalHeader}> <FontAwesome name="circle" color='#FFBD12' size={13} /> {price1.product_name}</Text>
+                <Text style={PriceStyle(theme).modalText}>Price max : {price1.price_max_avg}  {price1.unit}</Text>
+                <Text style={PriceStyle(theme).modalText}>Price min : {price1.price_min_avg}  {price1.unit}</Text>
 
                 <VictoryChart width={250} height={230}>
                   <VictoryGroup offset={20}>
@@ -196,17 +197,17 @@ const Price = () => {
                   </VictoryGroup>
                 </VictoryChart>
 
-                <Text style={styles.modalText}>{moment(textDate).format('LL')}</Text>
+                <Text style={PriceStyle(theme).modalText}>{moment(textDate).format('LL')}</Text>
             
               </View>
             </View>
             )}
             
             <Pressable
-              style={[styles.buttonClose]}
+              style={[PriceStyle(theme).buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
             >
-              <Text style={styles.textStyle}>BACK</Text>
+              <Text style={PriceStyle(theme).textStyle}>BACK</Text>
             </Pressable>
           </View>
         </View>

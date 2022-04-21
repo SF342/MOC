@@ -40,41 +40,41 @@ export const themeOptions = {
 
 
   },
-  '#000000': {
-    background2: '#6bd8ff',
-    whitemain: '#fff',
-    background1: '#0A214A',
-    pri800: '#e66900',
-    sec700: '#e3eeff',
-    shadow1: '#000000',
-    /////   Favourite List   /////
-    topicbg: '#5DB2BD',
-    topictext: '#F0FF00',
-    title2: '#FFFAD3',
+  // '#000000': {
+  //   background2: '#6bd8ff',
+  //   whitemain: '#fff',
+  //   background1: '#0A214A',
+  //   pri800: '#e66900',
+  //   sec700: '#e3eeff',
+  //   shadow1: '#000000',
+  //   /////   Favourite List   /////
+  //   topicbg: '#5DB2BD',
+  //   topictext: '#F0FF00',
+  //   title2: '#FFFAD3',
 
-    /////   Home   /////
-    container: '#393E46',
-    logoutbg: '#b53531',
-    line: '#DFDFDE',
+  //   /////   Home   /////
+  //   container: '#393E46',
+  //   logoutbg: '#b53531',
+  //   line: '#DFDFDE',
 
-    /////   LoggedInPage   /////
-    containerbg: '#E2FCFA',
-    text: '#00CABA',
-    card: '#2D648C',
+  //   /////   LoggedInPage   /////
+  //   containerbg: '#E2FCFA',
+  //   text: '#00CABA',
+  //   card: '#2D648C',
 
-    /////   LoginScreen   /////
-    btnbg: '#37379C',
-    forgettext: '#3D51CA',
+  //   /////   LoginScreen   /////
+  //   btnbg: '#37379C',
+  //   forgettext: '#3D51CA',
 
-    /////   Price   /////
+  //   /////   Price   /////
 
 
-    /////   RecommendPage   /////
-    box1: '#FFC511',
+  //   /////   RecommendPage   /////
+  //   box1: '#FFC511',
 
-    /////   ShowPricePage   /////
+  //   /////   ShowPricePage   /////
 
-  },
+  // },
 };
 
 export const storeData = async (name, value) => {

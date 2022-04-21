@@ -12,7 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 import { __doSingIn, login } from '../redux/actions/userActions';
 import { SocialIcon } from 'react-native-elements'
-import styles from '../css/LoginScreen'
+import {LoginScreenStyle} from '../css/LoginScreen'
 import { Alert, Platform } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
@@ -33,18 +33,18 @@ const LoginScreen = ({ navigation }) => {
     <LinearGradient
       colors={[theme.background1, theme.background2]}
       start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-      style={styles.container1}
+      style={LoginScreenStyle(theme).container1}
     >
       <SafeAreaView
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
-        <View style={styles.bgInput}>
+        <View style={LoginScreenStyle(theme).bgInput}>
         
-          <View style={styles.Box}>
-            <Text style={styles.loginText}>
+          <View style={LoginScreenStyle(theme).Box}>
+            <Text style={LoginScreenStyle(theme).loginText}>
               Login Account
             </Text>
             <Input
-              style={styles.input}
+              style={LoginScreenStyle(theme).input}
               labelValue={email}
               onChangeText={(userEmail) => setEmail(userEmail)}
               placeholder="Username or E-mail"
@@ -54,25 +54,25 @@ const LoginScreen = ({ navigation }) => {
               autoCorrect={false}
             />
             <Input
-              style={styles.input}
+              style={LoginScreenStyle(theme).input}
               labelValue={password}
               onChangeText={(userPassword) => setPassword(userPassword)}
               placeholderText="Password"
               secureTextEntry={true}
             />
             <TouchableOpacity
-              style={styles.forget}
+              style={LoginScreenStyle(theme).forget}
               onPress={() => alert("forget password?")}>
-              <Text style={styles.forgettext}>forget password?</Text>
+              <Text style={LoginScreenStyle(theme).forgettext}>forget password?</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.btn} onPress={() => SignIn(email, password)}>
-              <Text style={styles.btnTxt}>LOGIN</Text>
+            <TouchableOpacity style={LoginScreenStyle(theme).btn} onPress={() => SignIn(email, password)}>
+              <Text style={LoginScreenStyle(theme).btnTxt}>LOGIN</Text>
             </TouchableOpacity>
-            <View style={styles.textbox}>
-              <Text style={styles.text1}>or</Text>
+            <View style={LoginScreenStyle(theme).textbox}>
+              <Text style={LoginScreenStyle(theme).text1}>or</Text>
             </View>
-            <View style={styles.textbox2}>
+            <View style={LoginScreenStyle(theme).textbox2}>
               <SocialIcon
                 type='facebook'
                 onPress={() => alert("facebook")}
@@ -84,10 +84,10 @@ const LoginScreen = ({ navigation }) => {
               />
             </View>
           </View>
-          <Text style={styles.footerText}>
+          <Text style={LoginScreenStyle(theme).footerText}>
               Don't have an account ?
           </Text>
-          <Text style={styles.RegisterText} onPress={() => navigation.navigate('RegisterScreen')}>
+          <Text style={LoginScreenStyle(theme).RegisterText} onPress={() => navigation.navigate('RegisterScreen')}>
               Register
           </Text>
         </View>

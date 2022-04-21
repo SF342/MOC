@@ -1,10 +1,10 @@
 import { StyleSheet, Dimensions} from 'react-native';
 const {width} = Dimensions.get('window');
 
-export default StyleSheet.create({
+export const HomeStyle = (prop) => StyleSheet.create({
     // These are user defined styles
     container: {
-        backgroundColor: '#393E46',
+        backgroundColor: prop.container,
         alignItems: 'center',
         paddingHorizontal: 20,
         paddingTop: 10,
@@ -22,22 +22,22 @@ export default StyleSheet.create({
       },
       logoutButton: {
         marginVertical: 10,
-        backgroundColor: '#b53531',
+        backgroundColor: prop.logoutbg,
         width: 320,
         height: 60,
         borderRadius: 10,
-        shadowColor: "#000000",
+        shadowColor: prop.shadow1,
         shadowOpacity: 5,
         shadowRadius: 5,
         elevation: 5
       },
       bg_modal: {
-        backgroundColor: '#000000',
+        backgroundColor: prop.shadow1,
         width: '100%',
         height: '100%',
       },
       paper_madal: {
-        backgroundColor: '#ffffff',
+        backgroundColor: prop.whitemain,
         margin: 30,
         marginTop: 100,
         marginBottom: 100,
@@ -47,7 +47,7 @@ export default StyleSheet.create({
       },
       confirmButtonText: {
         textAlign: 'center',
-        color: '#000000',
+        color: prop.shadow1,
         fontWeight: 'bold',
         fontSize: 20,
         padding: 15
@@ -63,7 +63,7 @@ export default StyleSheet.create({
       },
       line: {
         width: 315,
-        borderBottomColor: '#DFDFDE',
+        borderBottomColor: prop.line,
         borderBottomWidth: 1,
         marginTop: 240,
         marginRight: 40,

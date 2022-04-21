@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions} from 'react-native';
 const {width} = Dimensions.get('window');
 
-export default StyleSheet.create({
+export const LoginScreenStyle = (prop) => StyleSheet.create({
     // These are user defined styles
     logo: {
         width: 200,
@@ -26,7 +26,7 @@ export default StyleSheet.create({
         marginBottom: '10%'
       },
       title: {
-        color: 'white',
+        color: prop.whitemain,
         fontSize: 35,
         fontWeight: 'bold',
         marginBottom: '2%'
@@ -34,7 +34,7 @@ export default StyleSheet.create({
       btn: {
         height: 50,
         width: 150,
-        backgroundColor: "#37379C",
+        backgroundColor: prop.btnbg,
         borderRadius: 80,
         marginLeft: 75,
         marginTop: 20,
@@ -64,7 +64,7 @@ export default StyleSheet.create({
     
       container: {
         flex: 1,
-        backgroundColor: '#E2FCFA',
+        backgroundColor: prop.containerbg,
         alignItems: 'center',
         paddingHorizontal: 20,
         paddingTop: 50,
@@ -90,11 +90,11 @@ export default StyleSheet.create({
         marginTop: 10,
       },
       forgettext:{
-        color: '#3D51CA',
+        color: prop.forgettext,
         fontSize: 12
       },
       text1:{
-        color: 'black',
+        color: prop.shadow1,
         fontSize: 16,
         textAlign: 'center',
       },
@@ -108,13 +108,13 @@ export default StyleSheet.create({
         flexDirection: 'row'
       },
       footerText:{
-        color: '#FFFFFF',
+        color: prop.whitemain,
         fontSize: 14,
         textAlign: 'center',
         marginTop: 20
       },
       RegisterText:{
-        color: '#FFFFFF',
+        color: prop.whitemain,
         fontSize: 16,
         textAlign: 'center',
         marginTop: 10,

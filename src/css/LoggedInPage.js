@@ -1,14 +1,14 @@
 import { StyleSheet, Dimensions} from 'react-native';
 const {width} = Dimensions.get('window');
 
-export default StyleSheet.create({
+export const LoggedInPageStyle = (prop) => StyleSheet.create({
     // These are user defined styles
     title: {
         fontSize: 28,
         width: 320,
         marginBottom: 3,
         fontWeight: 'bold',
-        color: 'white',
+        color: prop.whitemain,
         paddingLeft:10,
       },
       userlogo : {
@@ -17,7 +17,7 @@ export default StyleSheet.create({
         alignSelf: 'center',
       },  
       title2: {
-        color: 'white',
+        color: prop.whitemain,
         fontSize: 20,
         width: 320,
         fontWeight: 'bold',
@@ -29,26 +29,26 @@ export default StyleSheet.create({
         height: 60,
         fontSize: 18,
         marginBottom: 5,
-        shadowColor: "#000000",
+        shadowColor: prop.shadow1,
         shadowOpacity: 5,
         shadowRadius: 5,
         elevation: 5,
-        backgroundColor: '#FFFFFF'
+        backgroundColor: prop.whitemain
       },
       logoutButton: {
         marginVertical: 10,
-        backgroundColor: '#b53531',
+        backgroundColor: prop.logoutbg,
         width: 320,
         height: 60,
         borderRadius: 10,
-        shadowColor: "#000000",
+        shadowColor: prop.shadow1,
         shadowOpacity: 5,
         shadowRadius: 5,
         elevation: 5
       },
       loginButtonText: {
         textAlign: 'center',
-        color: '#FFFFFF',
+        color: prop.whitemain,
         fontWeight: 'bold',
         fontSize: 20,
         padding: 15
@@ -58,20 +58,20 @@ export default StyleSheet.create({
         padding: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#E2FCFA',
+        backgroundColor: prop.containerbg,
       },
       text: {
-        color: '#00CABA',
+        color: prop.text,
         fontSize: 18,
         textAlign: 'center',
       },
       favoriteList: {
         marginVertical: 10,
-        backgroundColor: '#0A214A',
+        backgroundColor: prop.background1,
         width: 320,
         height: 60,
         borderRadius: 10,
-        shadowColor: "#000000",
+        shadowColor: prop.shadow1,
         shadowOpacity: 5,
         shadowRadius: 5,
         elevation: 5
@@ -82,7 +82,7 @@ export default StyleSheet.create({
       },
       icontext:{
         fontSize:15,
-        color:'#fff',
+        color: prop.whitemain,
         marginLeft:-5
       },
       cardContainer: {
@@ -95,7 +95,7 @@ export default StyleSheet.create({
         width: width * 0.5,
         borderRadius: 12,
         padding: 10,
-        backgroundColor:'#2D648C',
+        backgroundColor: prop.card,
       },
       flatList: {
         paddingHorizontal: 16,
@@ -108,7 +108,7 @@ export default StyleSheet.create({
         marginLeft:30,
       },
       text2: { 
-        color: "#ffffff",
+        color: prop.whitemain,
         fontWeight: '500',
         fontSize: 13.5,
         marginBottom:-15,

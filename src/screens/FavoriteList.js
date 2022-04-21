@@ -10,7 +10,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Moc_logo from '../../assets/moc_logo.png';
 import { getProductId, deleteFavorite, getFavoriteId } from '../redux/actions/newFavoriteAction';
 import { ListItem, SearchBar, Avatar } from 'react-native-elements';
-import styles from '../css/FavoriteList';
+import {FavoriteStyle} from '../css/FavoriteList';
 
 const FavoriteList = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -123,15 +123,15 @@ const FavoriteList = ({ navigation }) => {
     <LinearGradient
       colors={[theme.background1, theme.background2]}
       start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-      style={styles.container1}>
+      style={FavoriteStyle(theme).container1}>
       <View
-        style={styles.boxFavelist}>
-        <View style={styles.boxTopic}>
-          <Text style={styles.title}> MY</Text>
-          <Text style={styles.titlecolor}> FAVORITE</Text>
-          <Text style={styles.title}> LIST</Text>
+        style={FavoriteStyle(theme).boxFavelist}>
+        <View style={FavoriteStyle(theme).boxTopic}>
+          <Text style={FavoriteStyle(theme).title}> MY</Text>
+          <Text style={FavoriteStyle(theme).titlecolor}> FAVORITE</Text>
+          <Text style={FavoriteStyle(theme).title}> LIST</Text>
         </View>
-        <View style={styles.pickerbox}>
+        <View style={FavoriteStyle(theme).pickerbox}>
           <View>
             <SearchBar
               placeholder="Type Here..."
@@ -141,7 +141,7 @@ const FavoriteList = ({ navigation }) => {
               onChangeText={text => searchFilterFunction(text)}
               onClear={(text) => searchFilterFunction('')}
               autoCorrect={false}
-              containerStyle={styles.searchcontainer}
+              containerStyle={FavoriteStyle(theme).searchcontainer}
               inputContainerStyle={{ height: 35 }}
             />
           </View>
@@ -154,20 +154,20 @@ const FavoriteList = ({ navigation }) => {
 
             <FlatList
               data={filteredDataSource}
-              style={styles.superListFav}
+              style={FavoriteStyle(theme).superListFav}
               key={"_"}
               keyExtractor={item => "_" + item.product_id}
               renderItem={({ item }) =>
               (
-                <View style={styles.listFavorite}>
+                <View style={FavoriteStyle(theme).listFavorite}>
                   <TouchableOpacity
-                    style={styles.topicList}
+                    style={FavoriteStyle(theme).topicList}
                     onPress={() => {
                       console.log(item.product_id)
                       navigation.navigate('ShowPricePage', { id: item.product_id })
                     }}>
-                    <Text style={styles.textTopicList}> {item.product_name}  </Text>
-                    <MaterialCommunityIcons name="delete-empty" style={styles.icon} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }} />
+                    <Text style={FavoriteStyle(theme).textTopicList}> {item.product_name}  </Text>
+                    <MaterialCommunityIcons name="delete-empty" style={FavoriteStyle(theme).icon} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }} />
                   </TouchableOpacity>
                 </View>
 
@@ -185,19 +185,19 @@ const FavoriteList = ({ navigation }) => {
               key={"#"}
               keyExtractor={item => "#" + item.product_id}
 
-              style={styles.superListFav2}
+              style={FavoriteStyle(theme).superListFav2}
               renderItem={({ item }) =>
               (
-                <View style={styles.GridViewBlockStyle}>
+                <View style={FavoriteStyle(theme).GridViewBlockStyle}>
                   <TouchableOpacity
-                    style={styles.topicList2}
+                    style={FavoriteStyle(theme).topicList2}
                     onPress={() => {
                       console.log(item.product_id)
                       navigation.navigate('ShowPricePage', { id: item.product_id })
                     }}>
-                    <Image style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
-                    <Text style={styles.textTopicList2}> {item.product_name}  </Text>
-                    <MaterialCommunityIcons name="delete-empty" style={styles.icon2} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }} />
+                    <Image style={FavoriteStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
+                    <Text style={FavoriteStyle(theme).textTopicList2}> {item.product_name}  </Text>
+                    <MaterialCommunityIcons name="delete-empty" style={FavoriteStyle(theme).icon2} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }} />
                   </TouchableOpacity >
                 </View>
 

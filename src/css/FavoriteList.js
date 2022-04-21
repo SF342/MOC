@@ -1,10 +1,12 @@
+import { theme } from 'native-base';
 import { StyleSheet, Dimensions} from 'react-native';
-
+import { useSelector, useDispatch } from 'react-redux';
 const {width} = Dimensions.get('window');
 
 
 
-export default StyleSheet.create({
+export const FavoriteStyle = (prop) => StyleSheet.create({
+
     // These are user defined styles
     listFavorite: {
       flexDirection: 'row',
@@ -31,7 +33,7 @@ export default StyleSheet.create({
       width: '90%',
       marginBottom: '20%',
       borderRadius: 10,
-      shadowColor: "#000000",
+      shadowColor: prop.shadow1,
       shadowOpacity: 5,
       shadowRadius: 5,
     },
@@ -52,8 +54,8 @@ export default StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       height: 60,
-      backgroundColor: '#5DB2BD',
-      shadowColor: "#000000",
+      backgroundColor: prop.topicbg,
+      shadowColor: prop.shadow1,
       shadowOpacity: 5,
       shadowRadius: 5,
       elevation: 5,
@@ -64,8 +66,8 @@ export default StyleSheet.create({
       flexDirection: 'column',
       alignItems: 'center',
       height: 150,
-      backgroundColor: '#5DB2BD',
-      shadowColor: "#000000",
+      backgroundColor: prop.topicbg,
+      shadowColor: prop.shadow1,
       shadowOpacity: 5,
       shadowRadius: 5,
       elevation: 5,
@@ -73,25 +75,25 @@ export default StyleSheet.create({
       marginLeft: '3%'
     },
     textTopicList: {
-      color: '#F0FF00',
+      color: prop.topictext,
       fontSize: 18,
       fontFamily: "Mitr-Light",
       marginLeft:10,
     },
     textTopicList2: {
-      color: '#F0FF00',
+      color: prop.topictext,
       fontSize: 12,
       fontFamily: "Mitr-Light",
       marginLeft:10,
     },
     title: {
-      color: '#FFFFFF',
+      color: prop.whitemain,
       textAlign: 'center',
       fontSize: 30,
       fontWeight: '600',
     },
     titlecolor:{
-      color: '#FFFAD3',
+      color: prop.title2,
       fontSize: 30,
       fontWeight: '600',
     },

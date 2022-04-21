@@ -17,7 +17,7 @@ import {
   getFavoriteId,
 } from '../redux/actions/newFavoriteAction';
 import { useSelector, useDispatch } from 'react-redux';
-import styles from '../css/Home';
+import {HomeStyle} from '../css/Home';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -173,26 +173,26 @@ export default Home = ({ navigation }) => {
       onRequestClose={() => {
         setModalVisible(false);
       }}>
-      <View style={styles.bg_modal}>
-        <View style={styles.paper_madal}>
-          <Text style={styles.fav}>Add Favorite</Text>
+      <View style={HomeStyle(theme).bg_modal}>
+        <View style={HomeStyle(theme).paper_madal}>
+          <Text style={HomeStyle(theme).fav}>Add Favorite</Text>
           <Avatar
-            style={styles.logo}
+            style={HomeStyle(theme).logo}
             source={filterImageUrl(prop)}
             rounded></Avatar>
-          <View style={styles.line} />
+          <View style={HomeStyle(theme).line} />
           <TouchableOpacity
-            style={styles.logInButton}
+            style={HomeStyle(theme).logInButton}
             onPress={() => {
               confirmAdd();
             }}>
-            <Text style={styles.confirmButtonText}>Confirm</Text>
+            <Text style={HomeStyle(theme).confirmButtonText}>Confirm</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               setModalVisible(false);
             }}>
-            <Text style={styles.confirmButtonText}>Cancel</Text>
+            <Text style={HomeStyle(theme).confirmButtonText}>Cancel</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -204,7 +204,7 @@ export default Home = ({ navigation }) => {
       colors={[theme.background1, theme.background2]}
       start={{ x: 1, y: 0 }}
       end={{ x: 0, y: 1 }}
-      style={styles.container1}>
+      style={HomeStyle(theme).container1}>
       <View style={{ flex: 1 }}>
         {checkUserType && !shouldShow2 ? (
           <SearchBar
@@ -268,7 +268,7 @@ export default Home = ({ navigation }) => {
                         })
                       }>
                       <Avatar
-                        style={styles.logo}
+                        style={HomeStyle(theme).logo}
                         source={filterImageUrl(item.product_name)}
                         rounded
                       />
@@ -281,7 +281,7 @@ export default Home = ({ navigation }) => {
                               fontWeight: '700',
                               fontFamily: 'Mitr-Light',
                             }}>{`${item.product_name}`}</ListItem.Title>
-                          <View style={styles.TextContainer1}>
+                          <View style={HomeStyle(theme).TextContainer1}>
                             <ListItem.Subtitle
                               style={{
                                 color: '#CED0CE',
@@ -352,7 +352,7 @@ export default Home = ({ navigation }) => {
                   }>
 
                   <Avatar
-                    style={styles.logo}
+                    style={HomeStyle(theme).logo}
                     source={filterImageUrl(item.product_name)}
                     rounded
                   />
@@ -365,7 +365,7 @@ export default Home = ({ navigation }) => {
                           fontWeight: '700',
                           fontFamily: 'Mitr-Light',
                         }}>{`${item.product_name}`}</ListItem.Title>
-                      <View style={styles.TextContainer1}>
+                      <View style={HomeStyle(theme).TextContainer1}>
                         <ListItem.Subtitle
                           style={{
                             color: '#CED0CE',

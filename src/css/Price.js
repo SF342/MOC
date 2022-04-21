@@ -1,18 +1,18 @@
 import { StyleSheet, Dimensions} from 'react-native';
 const {width} = Dimensions.get('window');
 
-export default StyleSheet.create({
+export const PriceStyle = (prop) => StyleSheet.create({
     // These are user defined styles
     container: {
         flex: 1,
-        backgroundColor: '#E3EEFF',
+        backgroundColor: prop.sec700,
       },
       Header: {
         fontSize: 20,
-        color: 'white',
+        color: prop.whitemain,
         alignSelf: 'center',
         padding: 5,
-        borderColor: 'white',
+        borderColor: prop.whitemain,
         borderRadius: 20,
         borderBottomWidth: 1,
         fontWeight: '300',
@@ -20,7 +20,7 @@ export default StyleSheet.create({
       },
       t1: {
         fontSize: 20,
-        color: 'white',
+        color: prop.whitemain,
         alignSelf: 'center',
         fontWeight: '300',
         padding: 5,
@@ -28,7 +28,7 @@ export default StyleSheet.create({
       },
       t2: {
         fontSize: 20,
-        color: 'black',
+        color: prop.shadow1,
         fontWeight: '500',
         padding: 5,
         
@@ -44,11 +44,11 @@ export default StyleSheet.create({
        
       },
       modalTextheader: {
-        color: "black",
+        color: prop.shadow1,
         fontWeight: "bold",
       },
       text: {
-        color: 'white',
+        color: prop.whitemain,
         marginTop: 15,
         alignSelf: 'center',
         fontWeight: '300',
@@ -60,7 +60,7 @@ export default StyleSheet.create({
         borderRadius: 30,
         justifyContent: 'space-between',
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: prop.shadow1,
         padding: 15,
         width: 300,
         alignSelf: 'center',
@@ -90,7 +90,7 @@ export default StyleSheet.create({
       },
       centeredView: {
         flex: 1,
-        backgroundColor: "#000000",
+        backgroundColor: prop.shadow1,
         // justifyContent: "center",
         // alignItems: "center",
         // margin: 22
@@ -103,7 +103,7 @@ export default StyleSheet.create({
         borderRadius: 20,
         padding: 35,
         alignItems: "center",
-        shadowColor: "#000",
+        shadowColor: prop.shadow1,
         shadowOffset: {
           width: 0,
           height: 2
@@ -118,7 +118,7 @@ export default StyleSheet.create({
         elevation: 2
       },
       buttonClose: {
-        backgroundColor: "#0A214A",
+        backgroundColor: prop.background1,
         borderRadius: 12,
         width:80,
         padding: 10,
@@ -126,7 +126,7 @@ export default StyleSheet.create({
         elevation: 2
       },
       textStyle: {
-        color: "white",
+        color: prop.whitemain,
         fontWeight: "bold",
         textAlign: "center"
       },

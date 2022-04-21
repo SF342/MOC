@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useSelector, useDispatch } from 'react-redux';
 import { __doSingIn, register } from '../redux/actions/userActions';
 import { SocialIcon } from 'react-native-elements'
-import styles from '../css/RegisterScreen'
+import {RegisterScreenStyle} from '../css/RegisterScreen'
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState();
@@ -31,18 +31,18 @@ const RegisterScreen = () => {
     <LinearGradient
       colors={[theme.background1, theme.background2]}
       start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-      style={styles.container1}
+      style={RegisterScreenStyle(theme).container1}
     >
       <SafeAreaView
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
-        <View style={styles.bgInput}>
+        <View style={RegisterScreenStyle(theme).bgInput}>
         
-          <View style={styles.Box}>
-            <Text style={styles.loginText}>
+          <View style={RegisterScreenStyle(theme).Box}>
+            <Text style={RegisterScreenStyle(theme).loginText}>
               Register Account
             </Text>
             <Input
-              style={styles.input}
+              style={RegisterScreenStyle(theme).input}
               labelValue={name}
               onChangeText={userName => setName(userName)}
               placeholder="Username"
@@ -50,7 +50,7 @@ const RegisterScreen = () => {
               autoCorrect={false}
             />
             <Input
-              style={styles.input}
+              style={RegisterScreenStyle(theme).input}
               labelValue={email}
               onChangeText={userEmail => setEmail(userEmail)}
               placeholder="E-mail"
@@ -58,25 +58,25 @@ const RegisterScreen = () => {
               autoCorrect={false}
             />
             <Input
-              style={styles.input}
+              style={RegisterScreenStyle(theme).input}
               labelValue={password}
               onChangeText={userPassword => setPassword(userPassword)}
               placeholderText="Password"
               secureTextEntry={true}
             />
             <Input
-              style={styles.input}
+              style={RegisterScreenStyle(theme).input}
               placeholderText="Re-type Password"
               secureTextEntry={true}
             />
 
-            <TouchableOpacity style={styles.btn} onPress={() => {__doCreateUser();}}>
-              <Text style={styles.btnTxt}>Register</Text>
+            <TouchableOpacity style={RegisterScreenStyle(theme).btn} onPress={() => {__doCreateUser();}}>
+              <Text style={RegisterScreenStyle(theme).btnTxt}>Register</Text>
             </TouchableOpacity>
-            <View style={styles.textbox}>
-              <Text style={styles.text1}>or</Text>
+            <View style={RegisterScreenStyle(theme).textbox}>
+              <Text style={RegisterScreenStyle(theme).text1}>or</Text>
             </View>
-            <View style={styles.textbox2}>
+            <View style={RegisterScreenStyle(theme).textbox2}>
               <SocialIcon
                 type='facebook'
                 onPress={() => alert("facebook")}

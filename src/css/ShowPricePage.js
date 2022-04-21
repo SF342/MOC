@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions} from 'react-native';
 const {width} = Dimensions.get('window');
 
-export default StyleSheet.create({
+export const ShowPricePageStyle = (prop) => StyleSheet.create({
     // These are user defined styles
     boxImg: {
         width: '80%',
@@ -16,7 +16,7 @@ export default StyleSheet.create({
         width: '100%',
         height: '100%',
         borderRadius: 20,
-        shadowColor: "#000000",
+        shadowColor: prop.shadow1,
         shadowOpacity: 5,
         shadowRadius: 5,
         elevation: 5
@@ -26,7 +26,7 @@ export default StyleSheet.create({
         height: 300,
         justifyContent: 'center',
         borderRadius: 20,
-        shadowColor: "#000000",
+        shadowColor: prop.shadow1,
         shadowOpacity: 5,
         shadowRadius: 5,
         elevation: 5
@@ -50,14 +50,14 @@ export default StyleSheet.create({
         width: 125,
         height: 125,
         alignSelf:'center',
-        backgroundColor: 'black',
+        backgroundColor: prop.shadow1,
         marginBottom: '4%',
         borderRadius: 100,
         marginTop: '2%'
       },
       topic: {
         flex: 1,
-        color: 'black',
+        color: prop.shadow1,
         textAlign: 'center',
         fontSize: 20.5,
         fontWeight: 'bold',
@@ -65,7 +65,7 @@ export default StyleSheet.create({
         marginBottom: '2%'
       },
       update: {
-        color: 'black',
+        color: prop.shadow1,
         textAlign: 'center',
         paddingLeft: '18%',
         fontSize: 12,
@@ -74,7 +74,7 @@ export default StyleSheet.create({
         paddingTop: '1.5%',
       },
       update1: {
-        color: 'black',
+        color: prop.shadow1,
         textAlign: 'center',
         fontSize: 12,
         fontWeight: 'normal',
@@ -82,7 +82,7 @@ export default StyleSheet.create({
         paddingTop: '1.5%',
       },
       title: {
-        color: 'black',
+        color: prop.shadow1,
         textAlign: 'center',
         fontSize: 16,
         fontWeight: 'bold',
@@ -90,7 +90,7 @@ export default StyleSheet.create({
         fontFamily: "Mitr-Light",
       },
       title1: {
-        color: 'black',
+        color: prop.shadow1,
         textAlign: 'center',
         fontSize: 16,
         fontFamily: "Mitr-Light",

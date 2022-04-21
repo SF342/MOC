@@ -7,7 +7,7 @@ import ColorPalette from '../components/ColorPalette';
 import LinearGradient from 'react-native-linear-gradient';
 import user_icon from '../../assets/kindpng_746008.png'
 import { __doSingOut } from '../redux/actions/userActions';
-import styles from '../css/LoggedInPage'
+import {LoggedInPageStyle} from '../css/LoggedInPage'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Card } from "react-native-paper";
 import {
@@ -74,13 +74,13 @@ const RegisterScreen = ({ navigation }) => {
     <LinearGradient
       colors={[theme.background1, theme.background2]}
       start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-      style={styles.container1}>
+      style={LoggedInPageStyle(theme).container1}>
       <SafeAreaView
         style={{ flex: 1, paddingLeft: 15, marginTop: '5%' }}>
         <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
-          <Text style={styles.title}>WELCOME</Text>
-          <Text style={styles.title2}>{user.username}</Text>
-          {/* <Image source={user_icon} style={styles.userlogo} /> */}
+          <Text style={LoggedInPageStyle(theme).title}>WELCOME</Text>
+          <Text style={LoggedInPageStyle(theme).title2}>{user.username}</Text>
+          {/* <Image source={user_icon} style={LoggedInPageStyle(theme).userlogo} /> */}
         </View>
 
         <View style={{ width: '90%', height: '25%', }}>
@@ -89,17 +89,17 @@ const RegisterScreen = ({ navigation }) => {
 
             <View>
               <MaterialIcons name="settings" size={40} color={("#FFF")} />
-              <Text style={styles.icontext}>Settings</Text>
+              <Text style={LoggedInPageStyle(theme).icontext}>Settings</Text>
             </View>
 
             <View>
               <MaterialIcons name="favorite" size={40} color={("#FFF")} onPress={() => { navigation.navigate('FavoriteList') }} />
-              <Text style={styles.icontext}>Favorite</Text>
+              <Text style={LoggedInPageStyle(theme).icontext}>Favorite</Text>
             </View>
 
             <View>
               <MaterialIcons name="power-settings-new" size={40} color={("#FFF")} onPress={logout} />
-              <Text style={styles.icontext}>Logout</Text>
+              <Text style={LoggedInPageStyle(theme).icontext}>Logout</Text>
             </View>
 
 
@@ -107,7 +107,7 @@ const RegisterScreen = ({ navigation }) => {
         </View>
 
         <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
-          <Text style={styles.title2}>Price TODAY</Text>
+          <Text style={LoggedInPageStyle(theme).title2}>Price TODAY</Text>
         </View>
 
         {/* contentBox */}
@@ -115,28 +115,28 @@ const RegisterScreen = ({ navigation }) => {
         </View>
 
         <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
-          <Text style={styles.title2}>Favorite List</Text>
+          <Text style={LoggedInPageStyle(theme).title2}>Favorite List</Text>
         </View>
 
         {/* contentBox */}
         <View style={{ width: '90%', height: '20%' }}>
           <FlatList
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.flatList}
+            contentContainerStyle={LoggedInPageStyle(theme).flatList}
             horizontal={true}
             data={productName}
             renderItem={({ item }) => {
               return (
                 <TouchableOpacity
-                  style={styles.cardContainer}
+                  style={LoggedInPageStyle(theme).cardContainer}
                   onPress={() => {
                     console.log(item.product_id)
                     navigation.navigate('ShowPricePage', { id: item.product_id })
                   }}
                 >
-                  <Card style={[styles.card]}>
-                    <Text style={styles.text2}>{item.product_name}</Text>
-                    <Image style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
+                  <Card style={[LoggedInPageStyle(theme).card]}>
+                    <Text style={LoggedInPageStyle(theme).text2}>{item.product_name}</Text>
+                    <Image style={LoggedInPageStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
                   </Card>
                 </TouchableOpacity>
               );

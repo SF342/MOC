@@ -1,10 +1,10 @@
 import { StyleSheet, Dimensions} from 'react-native';
 const {width} = Dimensions.get('window');
 
-export default StyleSheet.create({
+export const RecommendPageStyle = (prop) => StyleSheet.create({
     // These are user defined styles
     container: {
-        backgroundColor: '#393E46',
+        backgroundColor: prop.container,
         alignItems: 'center',
         paddingHorizontal: 20,
         paddingTop: 10,
@@ -18,7 +18,7 @@ export default StyleSheet.create({
         marginBottom: '20%'
     },
     box1: {
-        color: '#FFC511',
+        color: prop.box1,
         textAlign: 'center',
         justifyContent: 'center',
         alignItems: 'center',
@@ -33,7 +33,7 @@ export default StyleSheet.create({
         textShadowColor: 'rgba(0, 0, 0, 0.75)',
         textShadowOffset: { width: -1, height: 1 },
         textShadowRadius: 5,
-        backgroundColor: '#0A214A',
+        backgroundColor: prop.background1,
         borderRadius: 20
     },
     TextContainer1: {
@@ -42,18 +42,18 @@ export default StyleSheet.create({
     },
     loginButtonText: {
         textAlign: 'center',
-        color: '#F0FFFF',
+        color: prop.whitemain,
         fontWeight: 'bold',
         fontSize: 20,
         padding: 15
     },
     logoutButton: {
         marginVertical: 10,
-        backgroundColor: '#b53531',
+        backgroundColor: prop.logoutbg,
         width: 320,
         height: 60,
         borderRadius: 10,
-        shadowColor: "#000000",
+        shadowColor: prop.shadow1,
         shadowOpacity: 5,
         shadowRadius: 5,
         elevation: 5
