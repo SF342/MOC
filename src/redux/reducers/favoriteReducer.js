@@ -36,7 +36,8 @@ export default function (state = initialState, action) {
                 add: true,
                 getFav: false,
                 getProduct: false,
-                favoriteList: [...state.favoriteList, action.payload.data]
+                favoriteList: [...state.favoriteList, action.payload.fav],
+                productList: [...state.productList, action.payload.detail]
             }
 
         case DELETE_FAVORITE:

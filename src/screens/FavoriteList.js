@@ -10,12 +10,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Moc_logo from '../../assets/moc_logo.png';
 import { getProductId, deleteFavorite, getFavoriteId } from '../redux/actions/newFavoriteAction';
 import { ListItem, SearchBar, Avatar } from 'react-native-elements';
-import {FavoriteStyle} from '../css/FavoriteList';
+import { FavoriteStyle } from '../css/FavoriteList';
 
 const FavoriteList = ({ navigation }) => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.data)
-  const user = useSelector(state => state.user)
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
@@ -23,13 +22,15 @@ const FavoriteList = ({ navigation }) => {
   const [data, setData] = useState([]);
   const [value, setValue] = useState();
   const [p_id, setProductId] = useState();
-  const theme = useSelector(state => state.theme.theme);
-
-  const user_api = useSelector(state => state.user.user)
+  
+  const { theme } = useSelector(state => state.theme);
+  const { user } = useSelector(state => state.user)
   const image = useSelector(state => state.data.urlimage)
 
-  const fav_api = useSelector(state => state.favorite.favoriteList)
-  const productName = useSelector(state => state.favorite.productList)
+  const { productList, favoriteList } = useSelector(state => state.favorite)
+
+
+
   const favorite_state = useSelector(state => state.favorite.getFav)
   const product_state = useSelector(state => state.favorite.getProduct)
   const add_state = useSelector(state => state.favorite.add)
@@ -59,23 +60,23 @@ const FavoriteList = ({ navigation }) => {
   }
 
   // Use for update realtime data
-  useEffect(() => {
-    dispatch(getFavoriteId(user_api._id));
-  }, [user_api]);
+  // useEffect(() => {
+  //   dispatch(getFavoriteId(user._id));
+  // }, [user]);
 
   useEffect(() => {
-    console.log(productName);
+    // console.log(productList);
 
-    setFilteredDataSource(productName);
+    setFilteredDataSource(productList);
 
-  }, [productName]);
+  }, [productList]);
 
   // useEffect(() => {
-  //   console.log(fav_api);
-  //   dispatch(getFavoriteId(user_api._id));
-  //   dispatch(getProductId(fav_api));
+  //   console.log(favoriteList);
+  //   dispatch(getFavoriteId(user._id));
+  //   dispatch(getProductId(favoriteList));
 
-  // }, [fav_api]);
+  // }, [favoriteList]);
 
   function Show1() {
     setShouldShow1(shouldShow1 ? false : true);
@@ -84,7 +85,7 @@ const FavoriteList = ({ navigation }) => {
 
   };
 
-  
+
   async function deleteTasklist(user_id, _id) {
     setDelete(true)
     dispatch(deleteFavorite(user_id, _id))
@@ -103,7 +104,7 @@ const FavoriteList = ({ navigation }) => {
       // Inserted text is not blank
       // Filter the masterDataSource
       // Update FilteredDataSource
-      const newData = productName.filter(function (item) {
+      const newData = productList.filter(function (item) {
         const itemData = `${item.product_id.toUpperCase()} ${item.product_name} ${item.category_name
           }`;
         const textData = text.toUpperCase();
@@ -114,7 +115,7 @@ const FavoriteList = ({ navigation }) => {
     } else {
       // Inserted text is blank
       // Update FilteredDataSource with masterDataSource
-      setFilteredDataSource(productName);
+      setFilteredDataSource(productList);
       setSearch(text);
     }
   };
@@ -167,7 +168,7 @@ const FavoriteList = ({ navigation }) => {
                       navigation.navigate('ShowPricePage', { id: item.product_id })
                     }}>
                     <Text style={FavoriteStyle(theme).textTopicList}> {item.product_name}  </Text>
-                    <MaterialCommunityIcons name="delete-empty" style={FavoriteStyle(theme).icon} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }} />
+                    <MaterialCommunityIcons name="delete-empty" style={FavoriteStyle(theme).icon} size={20} color="#F21729" onPress={() => { deleteTasklist(user._id, item.product_id) }} />
                   </TouchableOpacity>
                 </View>
 
@@ -197,7 +198,7 @@ const FavoriteList = ({ navigation }) => {
                     }}>
                     <Image style={FavoriteStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
                     <Text style={FavoriteStyle(theme).textTopicList2}> {item.product_name}  </Text>
-                    <MaterialCommunityIcons name="delete-empty" style={FavoriteStyle(theme).icon2} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }} />
+                    <MaterialCommunityIcons name="delete-empty" style={FavoriteStyle(theme).icon2} size={20} color="#F21729" onPress={() => { deleteTasklist(user._id, item.product_id) }} />
                   </TouchableOpacity >
                 </View>
 

@@ -12,7 +12,7 @@ import ShopingCart from '../../assets/Add-To-Cart-256.png';
 import { useSelector } from 'react-redux';
 
 const ChooseLoginRegister = ({ navigation }) => {
-    const theme = useSelector(state => state.theme.theme);
+    const { theme } = useSelector(state => state.theme);
 
     const styles = StyleSheet.create({
         box2: {
@@ -93,7 +93,7 @@ const ChooseLoginRegister = ({ navigation }) => {
             fontSize: 16
         },
     });
-    
+
     return (
         <LinearGradient
             colors={[theme.background1, theme.background2]}

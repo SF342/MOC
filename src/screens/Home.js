@@ -17,7 +17,7 @@ import {
   getFavoriteId,
 } from '../redux/actions/newFavoriteAction';
 import { useSelector, useDispatch } from 'react-redux';
-import {HomeStyle} from '../css/Home';
+import { HomeStyle } from '../css/Home';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -28,10 +28,14 @@ import RecommendPage from './RecommendPage';
 
 export default Home = ({ navigation }) => {
   const dispatch = useDispatch();
+
   const products = useSelector(state => state.data.data);
   const image = useSelector(state => state.data.urlimage);
-  const theme = useSelector(state => state.theme.theme);
-  const user_api = useSelector(state => state.user.user);
+  const { theme } = useSelector(state => state.theme);
+  const { user } = useSelector(state => state.user);
+  const { favoriteList } = useSelector(state => state.favorite)
+
+
   const [isModalVisible, setModalVisible] = useState(false);
 
   const [pid, serPid] = useState();
@@ -47,25 +51,24 @@ export default Home = ({ navigation }) => {
   const [shouldShow1, setShouldShow1] = useState(true);
   const [shouldShow2, setShouldShow2] = useState(false);
 
-  const favorite_list = useSelector(state => state.favorite.favoriteList)
 
 
-  const favorite_state = useSelector(state => state.favorite.getFav)
-  const product_state = useSelector(state => state.favorite.getProduct)
-  const add_state = useSelector(state => state.favorite.add)
-  const delete_state = useSelector(state => state.favorite.delete)
+  // const favorite_state = useSelector(state => state.favorite.getFav)
+  // const product_state = useSelector(state => state.favorite.getProduct)
+  // const add_state = useSelector(state => state.favorite.add)
+  // const delete_state = useSelector(state => state.favorite.delete)
 
   useEffect(() => {
 
     // Check user login or not
-    setCheckUserType(user_api ? true : false)
-    if (user_api) {
-      dispatch(getFavoriteId(user_api._id));
+    setCheckUserType(user ? true : false)
+    if (user) {
+      dispatch(getFavoriteId(user._id));
     }
 
-    console.log(favorite_list);
+    console.log(favoriteList);
 
-  }, [user_api]);
+  }, [user]);
 
 
   useEffect(() => {
@@ -109,10 +112,10 @@ export default Home = ({ navigation }) => {
 
   // Function call to open modal add
   const confirmAdd = () => {
-    if (user_api != null) {
-      let checkDuplicate = favorite_list.filter(vendor => vendor['product_id'] === item.product_id)
+    if (user != null) {
+      let checkDuplicate = favoriteList.filter(vendor => vendor['product_id'] === item.product_id)
       if (checkDuplicate.length === 0) {
-        dispatch(addFavoriteList(user_api._id, item.product_id));
+        dispatch(addFavoriteList(user._id, item.product_id));
       } else {
         alert("Duplicate product!")
       }

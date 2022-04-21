@@ -12,17 +12,18 @@ import {
   Center,
   ScrollView,
 } from 'native-base';
-import {ShowPricePageStyle} from '../css/ShowPricePage';
+import { ShowPricePageStyle } from '../css/ShowPricePage';
 import { LineChart } from 'react-native-chart-kit';
 
 
 const ShowPricePage = ({ navigation, route }) => {
-  const dispatch = useDispatch();
-  const products = useSelector(state => state.data.productprice);
-  const image = useSelector(state => state.data.urlimage);
-  const theme = useSelector(state => state.theme.theme);
-
   const PID = route.params.id;
+
+  const dispatch = useDispatch();
+  const { productprice } = useSelector(state => state.data);
+  const { theme } = useSelector(state => state.theme);
+  const image = useSelector(state => state.data.urlimage);
+
   const [product, setProduct] = useState(null);
   const [Loading, setLoading] = useState(true);
   const [date, setDate] = useState();
@@ -33,11 +34,11 @@ const ShowPricePage = ({ navigation, route }) => {
 
 
   const checkPD = () => {
-    var id = products.findIndex(PD => PD.product_id === PID);
+    var id = productprice.findIndex(PD => PD.product_id === PID);
     if (id === -1) {
       dispatch(getPrice(PID));
     } else {
-      setProduct(products[id]);
+      setProduct(productprice[id]);
     }
   };
 

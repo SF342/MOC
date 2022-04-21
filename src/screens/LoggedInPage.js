@@ -7,7 +7,7 @@ import ColorPalette from '../components/ColorPalette';
 import LinearGradient from 'react-native-linear-gradient';
 import user_icon from '../../assets/kindpng_746008.png'
 import { __doSingOut } from '../redux/actions/userActions';
-import {LoggedInPageStyle} from '../css/LoggedInPage'
+import { LoggedInPageStyle } from '../css/LoggedInPage'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Card } from "react-native-paper";
 import {
@@ -19,10 +19,11 @@ import {
 
 const RegisterScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const theme = useSelector(state => state.theme.theme);
-  const user = useSelector(state => state.user.user)
-  const fav_api = useSelector(state => state.favorite.favoriteList)
-  const productName = useSelector(state => state.favorite.productList)
+  const { theme } = useSelector(state => state.theme);
+  const { user } = useSelector(state => state.user)
+  const { productList, favoriteList } = useSelector(state => state.favorite)
+
+
   const favorite_state = useSelector(state => state.favorite.getFav)
   const product_state = useSelector(state => state.favorite.getProduct)
   const add_state = useSelector(state => state.favorite.add)
@@ -31,16 +32,13 @@ const RegisterScreen = ({ navigation }) => {
   const image = useSelector(state => state.data.urlimage)
 
   // Set an initializing state whilst Firebase connects
-  const [initializing, setInitializing] = useState(true);
 
   function logout() {
     dispatch(__doSingOut())
   }
 
   // Handle user state changes
-  function onAuthStateChanged(user) {
-    if (initializing) setInitializing(false);
-  }
+
   const filterImageUrl = (val) => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
 
@@ -50,17 +48,25 @@ const RegisterScreen = ({ navigation }) => {
       return Moc_logo
     }
   };
-  0;
 
 
   useEffect(() => {
+    console.log('get fav user');
     dispatch(getFavoriteId(user._id))
-    dispatch(getProductId(fav_api));
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
-  }, [favorite_state, product_state, add_state, delete_state]);
+    console.log(user);
 
-  if (initializing) return null;
+  }, [user]);
+
+  useEffect(() => {
+    console.log('get favoriteList');
+    if (favoriteList !== [] && productList.length === 0) {
+      dispatch(getProductId(favoriteList));
+    }
+    console.log(favoriteList, 64);
+    console.log(productList, 65);
+
+  }, [favoriteList]);
+
 
   if (!user) {
     return (
@@ -71,21 +77,22 @@ const RegisterScreen = ({ navigation }) => {
   }
 
   return (
-    <LinearGradient
-      colors={[theme.background1, theme.background2]}
-      start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-      style={LoggedInPageStyle(theme).container1}>
-      <SafeAreaView
-        style={{ flex: 1, paddingLeft: 15, marginTop: '5%' }}>
-        <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
-          <Text style={LoggedInPageStyle(theme).title}>WELCOME</Text>
-          <Text style={LoggedInPageStyle(theme).title2}>{user.username}</Text>
-          {/* <Image source={user_icon} style={LoggedInPageStyle(theme).userlogo} /> */}
-        </View>
+    <>
+      <LinearGradient
+        colors={[theme.background1, theme.background2]}
+        start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+        style={LoggedInPageStyle(theme).container1}>
+        <SafeAreaView
+          style={{ flex: 1, paddingLeft: 15, marginTop: '5%' }}>
+          <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
+            <Text style={LoggedInPageStyle(theme).title}>WELCOME</Text>
+            <Text style={LoggedInPageStyle(theme).title2}>{user.username}</Text>
+            {/* <Image source={user_icon} style={LoggedInPageStyle(theme).userlogo} /> */}
+          </View>
 
-        <View style={{ width: '90%', height: '25%', }}>
 
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 30 }}>
+
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 30, width: '90%', height: '25%' }}>
 
             <View>
               <MaterialIcons name="settings" size={40} color={("#FFF")} />
@@ -98,54 +105,60 @@ const RegisterScreen = ({ navigation }) => {
             </View>
 
             <View>
-              <MaterialIcons name="power-settings-new" size={40} color={("#FFF")} onPress={logout} />
+              <MaterialIcons name="power-settings-new" size={40} color={("#FFF")} onPress={() => logout()} />
               <Text style={LoggedInPageStyle(theme).icontext}>Logout</Text>
             </View>
 
-
           </View>
-        </View>
 
-        <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
-          <Text style={LoggedInPageStyle(theme).title2}>Price TODAY</Text>
-        </View>
 
-        {/* contentBox */}
-        <View style={{ width: '90%', height: '20%' }}>
-        </View>
 
-        <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
-          <Text style={LoggedInPageStyle(theme).title2}>Favorite List</Text>
-        </View>
+          <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
+            <Text style={LoggedInPageStyle(theme).title2}>Price TODAY</Text>
+          </View>
 
-        {/* contentBox */}
-        <View style={{ width: '90%', height: '20%' }}>
-          <FlatList
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={LoggedInPageStyle(theme).flatList}
-            horizontal={true}
-            data={productName}
-            renderItem={({ item }) => {
-              return (
-                <TouchableOpacity
-                  style={LoggedInPageStyle(theme).cardContainer}
-                  onPress={() => {
-                    console.log(item.product_id)
-                    navigation.navigate('ShowPricePage', { id: item.product_id })
-                  }}
-                >
-                  <Card style={[LoggedInPageStyle(theme).card]}>
-                    <Text style={LoggedInPageStyle(theme).text2}>{item.product_name}</Text>
-                    <Image style={LoggedInPageStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
-                  </Card>
-                </TouchableOpacity>
-              );
-            }}
-          />
-        </View>
+          {/* contentBox */}
+          <View style={{ width: '90%', height: '20%' }}>
+          </View>
 
-      </SafeAreaView>
-    </LinearGradient>
+          <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
+            <Text style={LoggedInPageStyle(theme).title2}>Favorite List</Text>
+          </View>
+
+          {/* contentBox */}
+          <View style={{ width: '90%', height: '20%' }}>
+            {productList !== [] ? (
+              <FlatList
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={LoggedInPageStyle(theme).flatList}
+                horizontal={true}
+                data={productList}
+                renderItem={({ item }) => {
+                  return (
+                    <TouchableOpacity
+                      style={LoggedInPageStyle(theme).cardContainer}
+                      onPress={() => {
+                        console.log(item.product_id)
+                        navigation.navigate('ShowPricePage', { id: item.product_id })
+                      }}
+                    >
+                      <Card style={[LoggedInPageStyle(theme).card]}>
+                        <Text style={LoggedInPageStyle(theme).text2}>{item.product_name}</Text>
+                        <Image style={LoggedInPageStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
+                      </Card>
+                    </TouchableOpacity>
+                  );
+                }}
+              />)
+              :
+              (
+                <Text >loadding...</Text>
+              )}
+          </View>
+
+        </SafeAreaView>
+      </LinearGradient>
+    </>
   );
 };
 

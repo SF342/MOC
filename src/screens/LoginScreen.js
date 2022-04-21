@@ -12,12 +12,12 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 import { __doSingIn, login } from '../redux/actions/userActions';
 import { SocialIcon } from 'react-native-elements'
-import {LoginScreenStyle} from '../css/LoginScreen'
+import { LoginScreenStyle } from '../css/LoginScreen'
 import { Alert, Platform } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const theme = useSelector(state => state.theme.theme);
+  const { theme } = useSelector(state => state.theme);
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -38,7 +38,7 @@ const LoginScreen = ({ navigation }) => {
       <SafeAreaView
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
         <View style={LoginScreenStyle(theme).bgInput}>
-        
+
           <View style={LoginScreenStyle(theme).Box}>
             <Text style={LoginScreenStyle(theme).loginText}>
               Login Account
@@ -48,7 +48,7 @@ const LoginScreen = ({ navigation }) => {
               labelValue={email}
               onChangeText={(userEmail) => setEmail(userEmail)}
               placeholder="Username or E-mail"
-              placeholderTextColor="#3911BD" 
+              placeholderTextColor="#3911BD"
               keyboardType={'email-address'}
               autoCapitalize="none"
               autoCorrect={false}
@@ -80,15 +80,15 @@ const LoginScreen = ({ navigation }) => {
               <SocialIcon
                 type='google'
                 onPress={() => alert("google")}
-                
+
               />
             </View>
           </View>
           <Text style={LoginScreenStyle(theme).footerText}>
-              Don't have an account ?
+            Don't have an account ?
           </Text>
           <Text style={LoginScreenStyle(theme).RegisterText} onPress={() => navigation.navigate('RegisterScreen')}>
-              Register
+            Register
           </Text>
         </View>
       </SafeAreaView>
