@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   Image,
+  Pressable
 } from 'react-native';
 //redux stuff
 import { getData } from '../redux/actions/dataActions';
@@ -32,8 +33,12 @@ export default Home = ({ navigation }) => {
   const theme = useSelector(state => state.theme.theme);
   const user_api = useSelector(state => state.user.user);
   const [isModalVisible, setModalVisible] = useState(false);
+
   const [pid, serPid] = useState();
   const [pname, setPname] = useState(null);
+  const [item, setItem] = useState(null);
+
+
   const [data, setData] = useState();
   const [valueInput, setValue] = useState('');
   const [checkUserType, setCheckUserType] = useState(false);
@@ -60,10 +65,11 @@ export default Home = ({ navigation }) => {
 
     console.log(favorite_list);
 
-  }, [favorite_state, product_state, add_state, delete_state]);
+  }, [user_api]);
 
 
   useEffect(() => {
+
     console.log('product');
     setData(products);
 
@@ -104,9 +110,9 @@ export default Home = ({ navigation }) => {
   // Function call to open modal add
   const confirmAdd = () => {
     if (user_api != null) {
-      let checkDuplicate = favorite_list.filter(vendor => vendor['product_id'] === pid)
+      let checkDuplicate = favorite_list.filter(vendor => vendor['product_id'] === item.product_id)
       if (checkDuplicate.length === 0) {
-        dispatch(addFavoriteList(user_api._id, pid));
+        dispatch(addFavoriteList(user_api._id, item.product_id));
       } else {
         alert("Duplicate product!")
       }
@@ -128,6 +134,33 @@ export default Home = ({ navigation }) => {
   if (products.length === 0) {
     dispatch(getData());
     setLoading(false);
+  }
+
+  // console.log(data.length);
+
+  const RECOMMENDMENU = () => {
+    return (<View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'center',
+      }}>
+      <Entypo
+        name="menu"
+        size={50}
+        color="#FFFFFF"
+        onPress={() => {
+          Show1();
+        }}
+      />
+      <MaterialIcons
+        name="crop-square"
+        size={50}
+        color="#FFFFFF"
+        onPress={() => {
+          Show2();
+        }}
+      />
+    </View>)
   }
 
   const MODAL = (prop) => {
@@ -184,35 +217,14 @@ export default Home = ({ navigation }) => {
             containerStyle={{ backgroundColor: '#0A214A' }}
           />
         ) : (<></>)}
-        {checkUserType === true ? (
+        {checkUserType ? (
           <View
             style={{
               flex: 1,
               flexDirection: 'column',
               justifyContent: 'space-between',
             }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-              }}>
-              <Entypo
-                name="menu"
-                size={50}
-                color="#FFFFFF"
-                onPress={() => {
-                  Show1();
-                }}
-              />
-              <MaterialIcons
-                name="crop-square"
-                size={50}
-                color="#FFFFFF"
-                onPress={() => {
-                  Show2();
-                }}
-              />
-            </View>
+            {RECOMMENDMENU}
             {shouldShow1 ? (
               <View>
                 {/* <Text
@@ -229,13 +241,13 @@ export default Home = ({ navigation }) => {
                   renderItem={({ item }) => (
                     <ListItem
                       // Component={TouchableScale}
+                      // Component={Pressable}
+
                       // friction={0} //
+                      delayLongPress={250}
                       onLongPress={() => {
                         toggleModalVisibility();
-                        serPid(item.product_id);
-                        setPname(item.product_name);
-                        // console.log(item.product_name);
-                        console.log('user api ', user_api);
+                        setItem(item);
                       }}
                       // tension={200} // These props are passed to the parent component (here TouchableScale)
                       // activeScale={0.95} //
@@ -260,44 +272,33 @@ export default Home = ({ navigation }) => {
                         source={filterImageUrl(item.product_name)}
                         rounded
                       />
-                      <ListItem.Content>
-                        <ListItem.Title
-                          style={{
-                            fontSize: 22,
-                            color: '#FFC511',
-                            fontWeight: '700',
-                            fontFamily: 'Mitr-Light',
-                          }}>{`${item.product_name}`}</ListItem.Title>
-                        <View style={styles.TextContainer1}>
-                          <ListItem.Subtitle
+                      <View>
+                        <ListItem.Content>
+                          <ListItem.Title
                             style={{
-                              color: '#CED0CE',
+                              fontSize: 22,
+                              color: '#FFC511',
+                              fontWeight: '700',
                               fontFamily: 'Mitr-Light',
-                            }}>
-                            {item.group_name}{' '}
-                          </ListItem.Subtitle>
-                          <ListItem.Subtitle
-                            style={{
-                              color: '#CED0CE',
-                              fontFamily: 'Mitr-Light',
-                            }}>
-                            {item.categoty_name}{' '}
-                          </ListItem.Subtitle>
-                          <ListItem.Subtitle
-                            style={{
-                              color: '#CED0CE',
-                              fontFamily: 'Mitr-Light',
-                            }}>
-                            รหัสสินค้า : {item.product_id}
-                          </ListItem.Subtitle>
-                        </View>
-                      </ListItem.Content>
+                            }}>{`${item.product_name}`}</ListItem.Title>
+                          <View style={styles.TextContainer1}>
+                            <ListItem.Subtitle
+                              style={{
+                                color: '#CED0CE',
+                                fontFamily: 'Mitr-Light',
+                              }}>
+                              รหัสสินค้า : {item.product_id}
+                            </ListItem.Subtitle>
+                          </View>
+                        </ListItem.Content>
+                      </View>
+
                     </ListItem>
                   )}
                   keyExtractor={item => item.product_id}
                 />
               </View>
-            ) : null}
+            ) : <></>}
             {shouldShow2 ? <RecommendPage navigation={navigation} /> : <></>}
           </View>
         ) : (
@@ -325,13 +326,11 @@ export default Home = ({ navigation }) => {
               renderItem={({ item }) => (
                 <ListItem
                   // Component={TouchableScale}
+                  delayLongPress={250}
                   friction={0}
                   onLongPress={() => {
                     toggleModalVisibility();
-                    serPid(item.product_id);
-                    setPname(item.product_name);
-                    console.log(item);
-                    // console.log('user api ', user_api);
+                    setItem(item);
                   }}
                   // tension={200} // These props are passed to the parent component (here TouchableScale)
                   // activeScale={0.95} //
@@ -351,43 +350,33 @@ export default Home = ({ navigation }) => {
                       id: item.product_id,
                     })
                   }>
+
                   <Avatar
                     style={styles.logo}
                     source={filterImageUrl(item.product_name)}
                     rounded
                   />
-                  <ListItem.Content>
-                    <ListItem.Title
-                      style={{
-                        fontSize: 22,
-                        color: '#FFC511',
-                        fontWeight: '700',
-                        fontFamily: 'Mitr-Light',
-                      }}>{`${item.product_name}`}</ListItem.Title>
-                    <View style={styles.TextContainer1}>
-                      <ListItem.Subtitle
+                  <View>
+                    <ListItem.Content>
+                      <ListItem.Title
                         style={{
-                          color: '#CED0CE',
+                          fontSize: 22,
+                          color: '#FFC511',
+                          fontWeight: '700',
                           fontFamily: 'Mitr-Light',
-                        }}>
-                        {item.group_name}{' '}
-                      </ListItem.Subtitle>
-                      <ListItem.Subtitle
-                        style={{
-                          color: '#CED0CE',
-                          fontFamily: 'Mitr-Light',
-                        }}>
-                        {item.categoty_name}{' '}
-                      </ListItem.Subtitle>
-                      <ListItem.Subtitle
-                        style={{
-                          color: '#CED0CE',
-                          fontFamily: 'Mitr-Light',
-                        }}>
-                        รหัสสินค้า : {item.product_id}
-                      </ListItem.Subtitle>
-                    </View>
-                  </ListItem.Content>
+                        }}>{`${item.product_name}`}</ListItem.Title>
+                      <View style={styles.TextContainer1}>
+                        <ListItem.Subtitle
+                          style={{
+                            color: '#CED0CE',
+                            fontFamily: 'Mitr-Light',
+                          }}>
+                          รหัสสินค้า : {item.product_id}
+                        </ListItem.Subtitle>
+                      </View>
+                    </ListItem.Content>
+                  </View>
+
                 </ListItem>
               )}
               keyExtractor={item => item.product_id}
@@ -396,7 +385,7 @@ export default Home = ({ navigation }) => {
         )}
       </View>
 
-      {isModalVisible === true && pname !== null ? MODAL(pname) : <></>}
+      {isModalVisible === true && item !== null ? MODAL(item.product_name) : <></>}
     </LinearGradient>
   );
 };

@@ -32,7 +32,7 @@ const RegisterScreen = ({ navigation }) => {
 
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
-  
+
   function logout() {
     dispatch(__doSingOut())
   }
@@ -72,20 +72,20 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <LinearGradient
-    colors={[theme.background1, theme.background2]}
-    start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-    style={styles.container1}>
-    <SafeAreaView
-      style={{ flex: 1, paddingLeft:15, marginTop: '5%' }}>
-      <View style={{borderLeftWidth:6,borderLeftColor:'#ff7'}}>
-        <Text style={styles.title}>WELCOME</Text>
-        <Text style={styles.title2}>{user.username}</Text>
-        {/* <Image source={user_icon} style={styles.userlogo} /> */}
-      </View>
+      colors={[theme.background1, theme.background2]}
+      start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+      style={styles.container1}>
+      <SafeAreaView
+        style={{ flex: 1, paddingLeft: 15, marginTop: '5%' }}>
+        <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
+          <Text style={styles.title}>WELCOME</Text>
+          <Text style={styles.title2}>{user.username}</Text>
+          {/* <Image source={user_icon} style={styles.userlogo} /> */}
+        </View>
 
-      <View style={{width:'90%',height:'25%',}}>
+        <View style={{ width: '90%', height: '25%', }}>
 
-          <View style={{flexDirection:'row',justifyContent:'space-between',padding:30}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 30 }}>
 
             <View>
               <MaterialIcons name="settings" size={40} color={("#FFF")} />
@@ -93,58 +93,58 @@ const RegisterScreen = ({ navigation }) => {
             </View>
 
             <View>
-              <MaterialIcons name="favorite" size={40} color={("#FFF")} onPress={() => { logout; navigation.navigate('FavoriteList') }}/>
+              <MaterialIcons name="favorite" size={40} color={("#FFF")} onPress={() => { navigation.navigate('FavoriteList') }} />
               <Text style={styles.icontext}>Favorite</Text>
             </View>
 
             <View>
-              <MaterialIcons name="power-settings-new" size={40} color={("#FFF")} onPress={logout}/>
+              <MaterialIcons name="power-settings-new" size={40} color={("#FFF")} onPress={logout} />
               <Text style={styles.icontext}>Logout</Text>
             </View>
-              
+
 
           </View>
-      </View>
+        </View>
 
-      <View style={{borderLeftWidth:6,borderLeftColor:'#ff7'}}>
-        <Text style={styles.title2}>Price TODAY</Text>
-      </View>
-                
-                {/* contentBox */}
-                <View style={{width:'90%',height:'20%'}}>
-                </View>
+        <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
+          <Text style={styles.title2}>Price TODAY</Text>
+        </View>
 
-      <View style={{borderLeftWidth:6,borderLeftColor:'#ff7'}}>
-        <Text style={styles.title2}>Favorite List</Text>
-      </View>
+        {/* contentBox */}
+        <View style={{ width: '90%', height: '20%' }}>
+        </View>
 
-                {/* contentBox */}
-                <View style={{width:'90%',height:'20%'}}>
-                  <FlatList
-                    showsHorizontalScrollIndicator={false}
-                    contentContainerStyle={styles.flatList}
-                    horizontal={true}
-                    data={productName}
-                    renderItem={({ item }) => {
-                      return (
-                        <TouchableOpacity
-                          style={styles.cardContainer}
-                          onPress={() =>
-                            {console.log(item.product_id)
-                            navigation.navigate('ShowPricePage', {id: item.product_id})
-                          }}
-                        >
-                          <Card style={[styles.card]}>
-                            <Text style={styles.text2}>{item.product_name}</Text>
-                            <Image style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
-                          </Card>
-                        </TouchableOpacity>
-                      );
-                    }}
-                  />
-                </View>
+        <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
+          <Text style={styles.title2}>Favorite List</Text>
+        </View>
 
-    </SafeAreaView>
+        {/* contentBox */}
+        <View style={{ width: '90%', height: '20%' }}>
+          <FlatList
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.flatList}
+            horizontal={true}
+            data={productName}
+            renderItem={({ item }) => {
+              return (
+                <TouchableOpacity
+                  style={styles.cardContainer}
+                  onPress={() => {
+                    console.log(item.product_id)
+                    navigation.navigate('ShowPricePage', { id: item.product_id })
+                  }}
+                >
+                  <Card style={[styles.card]}>
+                    <Text style={styles.text2}>{item.product_name}</Text>
+                    <Image style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
+                  </Card>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
+
+      </SafeAreaView>
     </LinearGradient>
   );
 };
