@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, FlatList,Image, TouchableOpacity, } from 'react-native';
+import { Text, View, StyleSheet, FlatList, Image, TouchableOpacity, } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Picker, } from 'react-native-ui-lib';
 import { useSelector, useDispatch } from 'react-redux'
@@ -27,7 +27,7 @@ const FavoriteList = ({ navigation }) => {
 
   const user_api = useSelector(state => state.user.user)
   const image = useSelector(state => state.data.urlimage)
-  
+
   const fav_api = useSelector(state => state.favorite.favoriteList)
   const productName = useSelector(state => state.favorite.productList)
   const favorite_state = useSelector(state => state.favorite.getFav)
@@ -58,31 +58,33 @@ const FavoriteList = ({ navigation }) => {
     }
   }
 
-    // Use for update realtime data
-    useEffect(() => {
-      
-      dispatch(getFavoriteId(user_api._id));
-      dispatch(getProductId(fav_api));
+  // Use for update realtime data
+  useEffect(() => {
+    dispatch(getFavoriteId(user_api._id));
+  }, [user_api]);
 
-      setFilteredDataSource(productName);
-      
-    }, [favorite_state, product_state, add_state, delete_state]);
+  useEffect(() => {
+    console.log(productName);
+
+    setFilteredDataSource(productName);
+
+  }, [productName]);
+
+  // useEffect(() => {
+  //   console.log(fav_api);
+  //   dispatch(getFavoriteId(user_api._id));
+  //   dispatch(getProductId(fav_api));
+
+  // }, [fav_api]);
 
   function Show1() {
-    setShouldShow1(true);
-    setShouldShow2(false);
-    setShow1color("#1E1E1E");
-    setShow2color("#FFFFFF")
+    setShouldShow1(shouldShow1 ? false : true);
+    setShow1color(shouldShow1 ? "#1E1E1E" : "#FFFFFF");
+    setShow2color(shouldShow1 ? "#FFFFFF" : "#1E1E1E");
+
   };
 
-  function Show2() {
-    setShouldShow1(false);
-    setShouldShow2(true);
-    setShow1color("#FFFFFF")
-    setShow2color("#1E1E1E")
-  }
-
-
+  
   async function deleteTasklist(user_id, _id) {
     setDelete(true)
     dispatch(deleteFavorite(user_id, _id))
@@ -102,9 +104,8 @@ const FavoriteList = ({ navigation }) => {
       // Filter the masterDataSource
       // Update FilteredDataSource
       const newData = productName.filter(function (item) {
-        const itemData = `${item.product_id.toUpperCase()} ${item.product_name} ${
-          item.category_name
-        }`;
+        const itemData = `${item.product_id.toUpperCase()} ${item.product_name} ${item.category_name
+          }`;
         const textData = text.toUpperCase();
         return itemData.indexOf(textData) > -1;
       });
@@ -144,62 +145,66 @@ const FavoriteList = ({ navigation }) => {
               inputContainerStyle={{ height: 35 }}
             />
           </View>
-          <Entypo name="menu" size={50} color={Show1color} onPress={() => {Show1()}}/>
-          <MaterialIcons name="crop-square" size={50} color={Show2color} onPress={() => {Show2()}}/>
+          <Entypo name="menu" size={50} color={Show1color} onPress={() => { Show1() }} />
+          <MaterialIcons name="crop-square" size={50} color={Show2color} onPress={() => { Show1() }} />
         </View>
+
         {shouldShow1 ?
           (
-            <ScrollView>
-              <FlatList
-                data={filteredDataSource}
-                style={styles.superListFav}
-                renderItem={({ item }) =>
-                (
-                  <View style={styles.listFavorite}>
-                    <TouchableOpacity 
-                      style={styles.topicList}
-                      onPress={() =>
-                        {console.log(item.product_id)
-                        navigation.navigate('ShowPricePage', {id: item.product_id})
-                    }}>  
-                        <Text style={styles.textTopicList}> {item.product_name}  </Text>
-                        <MaterialCommunityIcons name="delete-empty" style={styles.icon} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }}/>
-                    </TouchableOpacity>
-                  </View>
 
-                )} />
-
-            </ScrollView>
-          )
-        : null}
-
-        {shouldShow2 ? (
-          <ScrollView>
             <FlatList
               data={filteredDataSource}
+              style={styles.superListFav}
+              key={"_"}
+              keyExtractor={item => "_" + item.product_id}
+              renderItem={({ item }) =>
+              (
+                <View style={styles.listFavorite}>
+                  <TouchableOpacity
+                    style={styles.topicList}
+                    onPress={() => {
+                      console.log(item.product_id)
+                      navigation.navigate('ShowPricePage', { id: item.product_id })
+                    }}>
+                    <Text style={styles.textTopicList}> {item.product_name}  </Text>
+                    <MaterialCommunityIcons name="delete-empty" style={styles.icon} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }} />
+                  </TouchableOpacity>
+                </View>
+
+              )}
+            />
+
+
+          )
+          :
+          (
+            <FlatList
+              data={filteredDataSource}
+
               numColumns={2}
-              
+              key={"#"}
+              keyExtractor={item => "#" + item.product_id}
+
               style={styles.superListFav2}
               renderItem={({ item }) =>
               (
                 <View style={styles.GridViewBlockStyle}>
-                  <TouchableOpacity 
-                      style={styles.topicList2}
-                      onPress={() =>
-                        {console.log(item.product_id)
-                        navigation.navigate('ShowPricePage', {id: item.product_id})
-                    }}>  
+                  <TouchableOpacity
+                    style={styles.topicList2}
+                    onPress={() => {
+                      console.log(item.product_id)
+                      navigation.navigate('ShowPricePage', { id: item.product_id })
+                    }}>
                     <Image style={styles.logo} source={filterImageUrl(item.product_name)} rounded />
                     <Text style={styles.textTopicList2}> {item.product_name}  </Text>
-                    <MaterialCommunityIcons name="delete-empty" style={styles.icon2} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }}/>
+                    <MaterialCommunityIcons name="delete-empty" style={styles.icon2} size={20} color="#F21729" onPress={() => { deleteTasklist(user_api._id, item.product_id) }} />
                   </TouchableOpacity >
                 </View>
 
-              )} />
+              )}
+            />
 
-          </ScrollView>
-        ) : null}
-
+          )}
       </View>
     </LinearGradient>
 
