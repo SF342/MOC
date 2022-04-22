@@ -39,6 +39,17 @@ const Price = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const [showPrice,setShowPrice] = useState(false);
+  const [showPrice1,setShowPrice1] = useState(false);
+  const [index,setIndex] = useState();
+
+  const [data2, setData2] = useState();
+  useEffect(() => {
+
+    console.log('product');
+    setData2(products[1]);
+    console.log(data2);
+
+  }, [products]);
 
   const filterImageUrl = (val) => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
@@ -75,13 +86,16 @@ const Price = () => {
     console.log(selectedProduct.value)
     console.log(price)
     setModalVisible(true);
+    setShowPrice(!showPrice);
   };
 
   const onProductChange = dummyData => {
     setSelectedProduct(dummyData);
+    setShowPrice(true);
   };
   const onProductChange1 = dummyData1 => {
     setSelectedProduct1(dummyData1);
+    setShowPrice1(true);
   };
   const data = {
     price1: [
@@ -115,7 +129,8 @@ const Price = () => {
             showSearch
             placeholderTextColor="#000000"
             containerStyle={PriceStyle(theme).pickerStyle}
-            style={{ color: Colors.black }}>
+            style={{ color: Colors.black }}
+            >
             {products.map((option, index) => (
               <Picker.Item
                 key={index}
@@ -123,6 +138,7 @@ const Price = () => {
                 label={option.product_name}
               />
             ))}
+
           </Picker>
         </View>
         <View style={PriceStyle(theme).pickerbox}>
@@ -149,28 +165,27 @@ const Price = () => {
             showPrice ? (
               <><View
                 style={PriceStyle(theme).topicList2}
-                onPress={() => {
-                  console.log(item.product_id);
-                  navigation.navigate('ShowPricePage', { id: item.product_id });
-                } }>
+                >
+                <Text style={PriceStyle(theme).textTopicList2}> {selectedProduct.value}  </Text>
+                <Text style={PriceStyle(theme).textTopicList2}> {data2.product_name}  </Text>
                 
-              </View>
-              
-              <View
+              </View></>
+            ) : null
+          }
+          {
+            showPrice1 ? (
+              <><View
                 style={PriceStyle(theme).topicList2}
-                onPress={() => {
-                  console.log(item.product_id);
-                  navigation.navigate('ShowPricePage', { id: item.product_id });
-                } }>
-
-                </View></>
+                >
+                <Text style={PriceStyle(theme).textTopicList2}> {selectedProduct1.value}  </Text>
+              </View></>
             ) : null
           }
           
         </View>
 
         <View style={{ alignItems: 'center', paddingBottom: 10, margin: 20 }}>
-          <Button onPress={() => setShowPrice(!showPrice)} label="Compare" borderRadius={10} backgroundColor='#0A214A' />
+          <Button onPress={() => onClickSearch()} label="Compare" borderRadius={10} backgroundColor='#0A214A' />
         </View>
       </View>
 
@@ -206,8 +221,6 @@ const Price = () => {
                       <VictoryBar data={data.price2} style={{ data: { fill: '#FFBD12' } }} />
                     </VictoryGroup>
                   </VictoryChart>
-
-                  <Text style={PriceStyle(theme).modalText}>{moment(textDate).format('LL')}</Text>
 
                 </View>
               </View>
