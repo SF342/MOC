@@ -10,7 +10,8 @@ export const HomeStyle = (prop) => StyleSheet.create({
         paddingTop: 10,
       },
       logo : {
-        width: 80,
+        width: 60,
+        height: 60,
       },
       container1: {
         width: '100%',

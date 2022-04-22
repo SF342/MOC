@@ -363,14 +363,16 @@ export default Home = ({ navigation }) => {
                     <ListItem.Content>
                       <ListItem.Title
                         style={{
-                          fontSize: 22,
+                          fontSize: 18,
                           color: '#FFC511',
                           fontWeight: '700',
                           fontFamily: 'Mitr-Light',
+                          marginRight: 70
                         }}>{`${item.product_name}`}</ListItem.Title>
                       <View style={HomeStyle(theme).TextContainer1}>
                         <ListItem.Subtitle
                           style={{
+                            fontSize: 13,
                             color: '#CED0CE',
                             fontFamily: 'Mitr-Light',
                           }}>

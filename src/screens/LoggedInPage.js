@@ -92,7 +92,7 @@ const RegisterScreen = ({ navigation }) => {
 
 
 
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 30, width: '90%', height: '25%' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 30, width: '96%', height: '25%' }}>
 
             <View>
               <MaterialIcons name="settings" size={40} color={("#FFF")} />
@@ -118,7 +118,7 @@ const RegisterScreen = ({ navigation }) => {
           </View>
 
           {/* contentBox */}
-          <View style={{ width: '90%', height: '20%' }}>
+          <View style={{ width: '96%', height: '20%' }}>
           </View>
 
           <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
@@ -126,7 +126,7 @@ const RegisterScreen = ({ navigation }) => {
           </View>
 
           {/* contentBox */}
-          <View style={{ width: '90%', height: '20%' }}>
+          <View style={{ width: '96%', height: '20%' }}>
             {productList !== [] ? (
               <FlatList
                 showsHorizontalScrollIndicator={false}

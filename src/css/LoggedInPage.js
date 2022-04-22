@@ -102,9 +102,9 @@ export const LoggedInPageStyle = (prop) => StyleSheet.create({
         paddingVertical: 16,
       },
       logo : {
-        width: 100,
-        height: 100,
-        marginTop:0,
+        width: 70,
+        height: 70,
+        marginTop:15,
         marginLeft:30,
       },
       text2: { 
