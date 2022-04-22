@@ -56,7 +56,7 @@ const Price = () => {
 
   const onClickSearch = test => {
 
-    const priceURL = `https://dataapi.moc.go.th/gis-product-prices?product_id=${selectedProduct.value}&from_date=${textDate}&to_date=${textDate}`;
+    const priceURL = `https://dataapi.moc.go.th/gis-product-prices?product_id=${selectedProduct.value}&from_date=2022-04-21&to_date=2022-04-21`;
     setPriceLoading(true);
     fetch(priceURL)
       .then(res => res.json())
@@ -64,7 +64,7 @@ const Price = () => {
         setPrice(resjson);
       })
 
-    const priceURL1 = `https://dataapi.moc.go.th/gis-product-prices?product_id=${selectedProduct1.value}&from_date=${textDate}&to_date=${textDate}`;
+    const priceURL1 = `https://dataapi.moc.go.th/gis-product-prices?product_id=${selectedProduct1.value}&from_date=2022-04-21&to_date=2022-04-21`;
     fetch(priceURL1)
       .then(res1 => res1.json())
       .then(resjson1 => {
