@@ -31,7 +31,7 @@ export const themeOptions = {
     forgettext: '#3D51CA',
 
     /////   Price   /////
-
+    boxprice: '#FAFAFA',
 
     /////   RecommendPage   /////
     box1: '#FFC511',

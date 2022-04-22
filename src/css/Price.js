@@ -3,7 +3,7 @@ const {width} = Dimensions.get('window');
 
 export const PriceStyle = (prop) => StyleSheet.create({
     // These are user defined styles
-    container: {
+    container1: {
         flex: 1,
         backgroundColor: prop.sec700,
       },
@@ -27,8 +27,8 @@ export const PriceStyle = (prop) => StyleSheet.create({
         
       },
       t2: {
-        fontSize: 20,
-        color: prop.shadow1,
+        fontSize: 26,
+        color: prop.whitemain,
         fontWeight: '500',
         padding: 5,
         
@@ -62,14 +62,35 @@ export const PriceStyle = (prop) => StyleSheet.create({
         borderWidth: 1,
         borderColor: prop.shadow1,
         padding: 15,
-        width: 300,
+        width: 348,
         alignSelf: 'center',
-        marginLeft: 10,
+        marginLeft: 0,
+        backgroundColor: prop.boxprice,
+      },
+      topicList2: {
+        width: '40%',
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: 200,
+        backgroundColor: prop.boxprice,
+        shadowColor: prop.shadow1,
+        shadowOpacity: 5,
+        shadowRadius: 5,
+        elevation: 5,
+        borderRadius: 40,
+        marginLeft: 25,
       },
       pickerbox: {
         alignItems: 'center', 
         paddingBottom: 10 , 
-        margin:20
+        // margin:20
+      },
+      GridViewBlockStyle: {
+        margin:5,
+        marginRight: 'auto',
+        marginBottom: '5%',
+        flexDirection: 'row',
+        marginTop: 25,
       },
     
       pickerContainer: {

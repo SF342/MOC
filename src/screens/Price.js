@@ -6,6 +6,8 @@ import {
   Modal,
   Pressable,
   Dimensions,
+  TouchableOpacity, 
+  Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useEffect } from 'react';
@@ -23,6 +25,7 @@ const titanIcon = require('../../assets/titan.png');
 //redux stuff
 import { getData } from "../redux/actions/dataActions"
 import { useSelector, useDispatch } from 'react-redux'
+import LinearGradient from 'react-native-linear-gradient';
 
 const Price = () => {
   const dispatch = useDispatch();
@@ -33,29 +36,15 @@ const Price = () => {
   const [price1, setPrice1] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const [date, setDate] = useState(new Date());
-  const [mode, setMode] = useState('date');
-  const [show, setShow] = useState(false);
-  const [textDate, setText] = useState(moment(new Date()).format("YYYY-MM-DD"));
+  const filterImageUrl = (val) => {
+    let nameImg = image.filter(element => val.search(element.name) !== -1);
 
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios');
-    setDate(currentDate);
-
-    let tempDate = new Date(currentDate);
-    let fDate = moment(tempDate).format("YYYY-MM-DD");
-    setText(fDate)
-  };
-
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
-  };
-
-  const showDatepicker = () => {
-    showMode('date');
-  };
+    if (nameImg.length !== 0) {
+      return { uri: nameImg[0].url }
+    } else {
+      return Moc_logo
+    }
+  }
 
   const [selectedProduct, setSelectedProduct] = useState('');
   const [selectedProduct1, setSelectedProduct1] = useState('');
@@ -104,8 +93,12 @@ const Price = () => {
   };
 
   return (
-    <SafeAreaView style={PriceStyle(theme).container}>
-      <View style={{ marginTop: 20, marginLeft: 50 }}>
+    <LinearGradient
+      colors={[theme.background1, theme.background2]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 0, y: 1 }}
+      style={PriceStyle(theme).container1}>
+      <View style={{ marginTop: 10, marginLeft: 20 }}>
         <Text style={PriceStyle(theme).t2}>COMPARE</Text>
       </View>
 
@@ -146,24 +139,31 @@ const Price = () => {
             ))}
           </Picker>
         </View>
+
+        <View style={PriceStyle(theme).GridViewBlockStyle}>
+          <View
+            style={PriceStyle(theme).topicList2}
+            onPress={() => {
+              console.log(item.product_id)
+              navigation.navigate('ShowPricePage', { id: item.product_id })
+            }}>
+            
+          </View >
+          <View
+            style={PriceStyle(theme).topicList2}
+            onPress={() => {
+              console.log(item.product_id)
+              navigation.navigate('ShowPricePage', { id: item.product_id })
+            }}>
+            
+          </View >
+        </View>
+
         <View style={{ alignItems: 'center', paddingBottom: 10, margin: 20 }}>
           <Button onPress={onClickSearch} label="Compare" borderRadius={10} backgroundColor='#0A214A' />
         </View>
       </View>
-      <View style={{ alignItems: 'center', paddingBottom: 10, margin: 20 }}>
-        <Button onPress={showDatepicker} label="Show date" />
-      </View>
-      {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode={mode}
-          maximumDate={Date.parse(new Date())}
-          is24Hour={true}
-          display="default"
-          onChange={onChange}
-        />
-      )}
+
       <Modal
         animationType="slide"
         transparent={true}
@@ -212,7 +212,7 @@ const Price = () => {
           </View>
         </View>
       </Modal>
-    </SafeAreaView>
+    </LinearGradient>
   );
 };
 
