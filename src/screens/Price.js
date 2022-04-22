@@ -18,6 +18,8 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { PriceStyle } from '../css/Price';
 import { VictoryBar, VictoryChart, VictoryGroup, VictoryLegend, VictoryTheme } from "victory-native";
+import { Card } from "react-native-paper";
+
 
 const settingsIcon = require('../../assets/settings.png');
 const titanIcon = require('../../assets/titan.png');
@@ -35,6 +37,8 @@ const Price = () => {
   const [price, setPrice] = useState([]);
   const [price1, setPrice1] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+
+  const [showPrice,setShowPrice] = useState(false);
 
   const filterImageUrl = (val) => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
@@ -139,28 +143,34 @@ const Price = () => {
             ))}
           </Picker>
         </View>
-
+        
         <View style={PriceStyle(theme).GridViewBlockStyle}>
-          <View
-            style={PriceStyle(theme).topicList2}
-            onPress={() => {
-              console.log(item.product_id)
-              navigation.navigate('ShowPricePage', { id: item.product_id })
-            }}>
-            
-          </View >
-          <View
-            style={PriceStyle(theme).topicList2}
-            onPress={() => {
-              console.log(item.product_id)
-              navigation.navigate('ShowPricePage', { id: item.product_id })
-            }}>
-            
-          </View >
+          {
+            showPrice ? (
+              <><View
+                style={PriceStyle(theme).topicList2}
+                onPress={() => {
+                  console.log(item.product_id);
+                  navigation.navigate('ShowPricePage', { id: item.product_id });
+                } }>
+                
+              </View>
+              
+              <View
+                style={PriceStyle(theme).topicList2}
+                onPress={() => {
+                  console.log(item.product_id);
+                  navigation.navigate('ShowPricePage', { id: item.product_id });
+                } }>
+
+                </View></>
+            ) : null
+          }
+          
         </View>
 
         <View style={{ alignItems: 'center', paddingBottom: 10, margin: 20 }}>
-          <Button onPress={onClickSearch} label="Compare" borderRadius={10} backgroundColor='#0A214A' />
+          <Button onPress={() => setShowPrice(!showPrice)} label="Compare" borderRadius={10} backgroundColor='#0A214A' />
         </View>
       </View>
 
