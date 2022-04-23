@@ -171,6 +171,22 @@ export const PriceStyle = (prop) => StyleSheet.create({
       },
       barChart:{
         marginBottom:25,
-      }
+      },
+      logo : {
+        width: 100,
+        height: 100,
+        marginTop:10,
+        position: 'absolute',
+        top: 65,
+      },
+      textTopicList2: {
+        color: prop.shadow1,
+        fontSize: 14,
+        fontFamily: "Mitr-Light",
+        marginLeft:10,
+        marginRight:10,
+        marginTop:10,
+        textAlign: 'center'
+      },
 
 });

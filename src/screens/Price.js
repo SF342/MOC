@@ -33,6 +33,7 @@ const Price = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.data.data)
   const { theme } = useSelector(state => state.theme)
+  const image = useSelector(state => state.data.urlimage)
 
   const [price, setPrice] = useState([]);
   const [price1, setPrice1] = useState([]);
@@ -41,15 +42,6 @@ const Price = () => {
   const [showPrice,setShowPrice] = useState(false);
   const [showPrice1,setShowPrice1] = useState(false);
   const [index,setIndex] = useState();
-
-  const [data2, setData2] = useState();
-  useEffect(() => {
-
-    console.log('product');
-    setData2(products[1]);
-    console.log(data2);
-
-  }, [products]);
 
   const filterImageUrl = (val) => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
@@ -86,16 +78,22 @@ const Price = () => {
     console.log(selectedProduct.value)
     console.log(price)
     setModalVisible(true);
-    setShowPrice(!showPrice);
+    // setShowPrice(!showPrice);
   };
 
   const onProductChange = dummyData => {
-    setSelectedProduct(dummyData);
-    setShowPrice(true);
+    if (selectedProduct1.value!=dummyData.value){
+      setSelectedProduct(dummyData);
+      setShowPrice(true);
+    }
+    else {alert("Do not choose the same Product")}
   };
   const onProductChange1 = dummyData1 => {
-    setSelectedProduct1(dummyData1);
-    setShowPrice1(true);
+    if (selectedProduct.value!=dummyData1.value){
+      setSelectedProduct1(dummyData1);
+      setShowPrice1(true);
+    }
+    else {alert("Do not choose the same Product")}
   };
   const data = {
     price1: [
@@ -166,9 +164,8 @@ const Price = () => {
               <><View
                 style={PriceStyle(theme).topicList2}
                 >
-                <Text style={PriceStyle(theme).textTopicList2}> {selectedProduct.value}  </Text>
-                <Text style={PriceStyle(theme).textTopicList2}> {data2.product_name}  </Text>
-                
+                <Text style={PriceStyle(theme).textTopicList2}> {selectedProduct.label}  </Text>
+                <Image style={PriceStyle(theme).logo} source={filterImageUrl(selectedProduct.label)} rounded />
               </View></>
             ) : null
           }
@@ -177,7 +174,8 @@ const Price = () => {
               <><View
                 style={PriceStyle(theme).topicList2}
                 >
-                <Text style={PriceStyle(theme).textTopicList2}> {selectedProduct1.value}  </Text>
+                <Text style={PriceStyle(theme).textTopicList2}> {selectedProduct1.label}  </Text>
+                <Image style={PriceStyle(theme).logo} source={filterImageUrl(selectedProduct1.label)} rounded />
               </View></>
             ) : null
           }

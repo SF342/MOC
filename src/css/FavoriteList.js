@@ -39,7 +39,7 @@ export const FavoriteStyle = (prop) => StyleSheet.create({
     },
     superListFav: {
       marginTop: '5%',
-      marginBottom: '20%',
+      marginBottom: '0%',
     },
     superListFav2: {
       marginTop: '5%',
