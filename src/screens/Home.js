@@ -8,7 +8,8 @@ import {
   Text,
   TouchableOpacity,
   Image,
-  Pressable
+  Pressable,
+  substring,
 } from 'react-native';
 //redux stuff
 import { getData } from '../redux/actions/dataActions';
@@ -51,6 +52,9 @@ export default Home = ({ navigation }) => {
   const [shouldShow1, setShouldShow1] = useState(true);
   const [shouldShow2, setShouldShow2] = useState(false);
 
+  // const str = str.substring;
+  // const res = str.substring(1, 4);
+  console.log(item)
 
 
   // const favorite_state = useSelector(state => state.favorite.getFav)
@@ -251,6 +255,7 @@ export default Home = ({ navigation }) => {
                       onLongPress={() => {
                         toggleModalVisibility();
                         setItem(item);
+                        console.log(item)
                       }}
                       // tension={200} // These props are passed to the parent component (here TouchableScale)
                       // activeScale={0.95} //
@@ -279,11 +284,12 @@ export default Home = ({ navigation }) => {
                         <ListItem.Content>
                           <ListItem.Title
                             style={{
-                              fontSize: 22,
+                              fontSize: 18,
                               color: '#FFC511',
                               fontWeight: '700',
                               fontFamily: 'Mitr-Light',
-                            }}>{`${item.product_name}`}</ListItem.Title>
+                              marginRight: 70
+                            }}>{`${item.product_name.substring(0,item.product_name.indexOf(' '))}`}</ListItem.Title>
                           <View style={HomeStyle(theme).TextContainer1}>
                             <ListItem.Subtitle
                               style={{

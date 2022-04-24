@@ -27,11 +27,11 @@ const initialState = {
       url: 'https://firebasestorage.googleapis.com/v0/b/sf342-8685d.appspot.com/o/AnimalIcon%2Fpig%20(1).png?alt=media',
     },
     {
-      name: 'เนื้อโค',
+      name: 'โค',
       url: 'https://firebasestorage.googleapis.com/v0/b/sf342-8685d.appspot.com/o/AnimalIcon%2Fcow%20(1).png?alt=media',
     },
     {
-      name: "เนื้อกระบือ",
+      name: "กระบือ",
       url : "https://i.dlpng.com/static/png/43251_thumb.png"
     },
     {
@@ -73,7 +73,7 @@ const initialState = {
     {
       name : "มะเขือเทศ",
       url : "https://firebasestorage.googleapis.com/v0/b/sf342-8685d.appspot.com/o/AnimalIcon%2Fkisspng-tomato-juice-clip-art-vegetable-album-5a9ac81bd7a464.1927236615200932118833.png?alt=media&token=c69bb2ad-2355-4cb6-8173-e3274613ce9d"
-    }
+    },
   ],
 };
 

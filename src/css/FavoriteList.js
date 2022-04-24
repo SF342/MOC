@@ -85,6 +85,8 @@ export const FavoriteStyle = (prop) => StyleSheet.create({
       fontSize: 12,
       fontFamily: "Mitr-Light",
       marginLeft:10,
+      marginRight:10,
+      textAlign: 'center',
     },
     title: {
       color: prop.whitemain,

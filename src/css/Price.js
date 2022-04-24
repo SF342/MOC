@@ -111,7 +111,7 @@ export const PriceStyle = (prop) => StyleSheet.create({
       },
       centeredView: {
         flex: 1,
-        backgroundColor: prop.shadow1,
+        backgroundColor: 'rgba(0,0,0,0.5)',
         // justifyContent: "center",
         // alignItems: "center",
         // margin: 22
