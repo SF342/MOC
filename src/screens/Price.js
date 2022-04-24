@@ -19,6 +19,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { PriceStyle } from '../css/Price';
 import { VictoryBar, VictoryChart, VictoryGroup, VictoryLegend, VictoryTheme } from "victory-native";
 import { Card } from "react-native-paper";
+import Moc_logo from '../../assets/moc_logo.png';
 
 
 const settingsIcon = require('../../assets/settings.png');
@@ -164,8 +165,10 @@ const Price = () => {
               <><View
                 style={PriceStyle(theme).topicList2}
                 >
-                <Text style={PriceStyle(theme).textTopicList2}> {selectedProduct.label}  </Text>
+
                 <Image style={PriceStyle(theme).logo} source={filterImageUrl(selectedProduct.label)} rounded />
+                <Text style={PriceStyle(theme).textTopicList2}> {selectedProduct.label}  </Text>
+                
               </View></>
             ) : null
           }
