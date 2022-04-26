@@ -3,7 +3,7 @@ import auth from "@react-native-firebase/auth"
 import firestore from "@react-native-firebase/firestore"
 import axios from 'axios';
 
-const API_URL = 'http://10.0.2.2:4001/auths/';
+const API_URL = 'https://mocapi.herokuapp.com/auths/';
 
 export const login = (email, password) =>  (dispatch) => {
 
