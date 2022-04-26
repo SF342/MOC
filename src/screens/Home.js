@@ -284,12 +284,11 @@ export default Home = ({ navigation }) => {
                         <ListItem.Content>
                           <ListItem.Title
                             style={{
-                              fontSize: 18,
+                              fontSize: 19,
                               color: '#FFC511',
-                              fontWeight: '700',
-                              fontFamily: 'Mitr-Light',
+                              fontFamily: 'Mitr-Regular',
                               marginRight: 70
-                            }}>{`${item.product_name.substring(0,item.product_name.indexOf(' '))}`}</ListItem.Title>
+                            }}>{`${item.product_name}`}</ListItem.Title>
                           <View style={HomeStyle(theme).TextContainer1}>
                             <ListItem.Subtitle
                               style={{

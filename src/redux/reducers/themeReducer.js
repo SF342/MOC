@@ -9,8 +9,9 @@ const initialState = {
     sec700: '#e3eeff',
     shadow1: '#000000',
     /////   Favourite List   /////
-    topicbg: '#5DB2BD',
-    topictext: '#F0FF00',
+    topicbg: '#1544E2',
+    topicbg2: '#0D2B73',
+    topictext: '#FFC511',
     title2: '#FFFAD3',
 
     /////   Home   /////

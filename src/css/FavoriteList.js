@@ -54,12 +54,18 @@ export const FavoriteStyle = (prop) => StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       height: 60,
-      backgroundColor: prop.topicbg,
       shadowColor: prop.shadow1,
       shadowOpacity: 5,
       shadowRadius: 5,
       elevation: 5,
       borderRadius: 20
+    },
+    topicListback: {
+      width: '100%',
+      flexDirection: 'row',
+      alignItems: 'center',
+      height: 60,
+      borderRadius: 20,
     },
     topicList2: {
       width: '65%',
@@ -74,11 +80,18 @@ export const FavoriteStyle = (prop) => StyleSheet.create({
       borderRadius: 20,
       marginLeft: '3%'
     },
+    topicListback2: {
+      width: '100%',
+      flexDirection: 'column',
+      alignItems: 'center',
+      height: 150,
+      borderRadius: 20,
+    },
     textTopicList: {
       color: prop.topictext,
-      fontSize: 18,
-      fontFamily: "Mitr-Light",
-      marginLeft:10,
+      fontSize: 19,
+      fontFamily: 'Mitr-Regular',
+      marginLeft:15,
     },
     textTopicList2: {
       color: prop.topictext,

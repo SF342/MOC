@@ -167,8 +167,13 @@ const FavoriteList = ({ navigation }) => {
                       console.log(item.product_id)
                       navigation.navigate('ShowPricePage', { id: item.product_id })
                     }}>
-                    <Text style={FavoriteStyle(theme).textTopicList}> {item.product_name}  </Text>
-                    <MaterialCommunityIcons name="delete-empty" style={FavoriteStyle(theme).icon} size={20} color="#F21729" onPress={() => { deleteTasklist(user._id, item.product_id) }} />
+                    <LinearGradient
+                      colors={[theme.topicbg, theme.topicbg2]}
+                      start={{ x: 1, y: 0 }} end={{ x: 0.2, y: 0 }}
+                      style={FavoriteStyle(theme).topicListback}>
+                      <Text style={FavoriteStyle(theme).textTopicList}> {item.product_name}  </Text>
+                      <MaterialCommunityIcons name="delete-empty" style={FavoriteStyle(theme).icon} size={20} color="#ffffff" onPress={() => { deleteTasklist(user._id, item.product_id) }} />
+                    </LinearGradient>
                   </TouchableOpacity>
                 </View>
 
@@ -196,9 +201,14 @@ const FavoriteList = ({ navigation }) => {
                       console.log(item.product_id)
                       navigation.navigate('ShowPricePage', { id: item.product_id })
                     }}>
-                    <Image style={FavoriteStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
-                    <Text style={FavoriteStyle(theme).textTopicList2}> {item.product_name}  </Text>
-                    <MaterialCommunityIcons name="delete-empty" style={FavoriteStyle(theme).icon2} size={20} color="#F21729" onPress={() => { deleteTasklist(user._id, item.product_id) }} />
+                    <LinearGradient
+                      colors={[theme.topicbg, theme.topicbg2]}
+                      start={{ x: 1, y: 0 }} end={{ x: 0.2, y: 0 }}
+                      style={FavoriteStyle(theme).topicListback2}>
+                        <Image style={FavoriteStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
+                        <Text style={FavoriteStyle(theme).textTopicList2}> {item.product_name}  </Text>
+                        <MaterialCommunityIcons name="delete-empty" style={FavoriteStyle(theme).icon2} size={20} color="#ffffff" onPress={() => { deleteTasklist(user._id, item.product_id) }} />
+                    </LinearGradient>
                   </TouchableOpacity >
                 </View>
 

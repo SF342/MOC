@@ -10,6 +10,7 @@ import { __doSingOut } from '../redux/actions/userActions';
 import { LoggedInPageStyle } from '../css/LoggedInPage'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Card } from "react-native-paper";
+import { ActivityIndicator } from 'react-native';
 import {
   getProductId,
   getFavoriteId,
@@ -66,7 +67,6 @@ const RegisterScreen = ({ navigation }) => {
     console.log(productList, 65);
 
   }, [favoriteList]);
-
 
   if (!user) {
     return (
