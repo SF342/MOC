@@ -1,112 +1,100 @@
 import * as React from 'react';
-import {useContext, useState, useEffect} from 'react';
+import { useState } from 'react';
 import { Input } from '../components/Input';
-import {AuthContext} from '../navigation/AuthProviders';
 import {
   SafeAreaView,
-  StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
+import Moc_logo from '../../assets/moc_logo.png'
+import LinearGradient from 'react-native-linear-gradient';
+import { useDispatch, useSelector } from 'react-redux';
+import { __doSingIn, login } from '../redux/actions/userActions';
+import { SocialIcon } from 'react-native-elements'
+import { LoginScreenStyle } from '../css/LoginScreen'
+import { Alert, Platform } from 'react-native';
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const { theme } = useSelector(state => state.theme);
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const {login} = useContext(AuthContext);
-  return (
-    <SafeAreaView
-      style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Input
-        style={styles.input}
-        labelValue={email}
-        onChangeText={(userEmail) => setEmail(userEmail)}
-        placeholder="Email"
-        keyboardType={'email-address'}
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
-      <Input
-        style={styles.input}
-        labelValue={password}
-        onChangeText={(userPassword) => setPassword(userPassword)}
-        placeholderText="Password"
-        secureTextEntry={true}
-      />
-       <TouchableOpacity style={styles.loginButton} onPress={() => login(email, password)}>
-        <Text style={styles.loginButtonText}>
-          LOGIN
-        </Text>
-      </TouchableOpacity>
 
-      <TouchableOpacity>
-        <Text style={styles.text} onPress={() => navigation.navigate('RegisterScreen')}>
-          don't have an account? Create one
-        </Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+
+  const SignIn = (email, password) => {
+    //dispatch(__doSingIn(email, password))
+    dispatch(login(email, password))
+  }
+
+
+  return (
+    <LinearGradient
+      colors={[theme.background1, theme.background2]}
+      start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+      style={LoginScreenStyle(theme).container1}
+    >
+      <SafeAreaView
+        style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+        <View style={LoginScreenStyle(theme).bgInput}>
+
+          <View style={LoginScreenStyle(theme).Box}>
+            <Text style={LoginScreenStyle(theme).loginText}>
+              Login Account
+            </Text>
+            <Input
+              style={LoginScreenStyle(theme).input}
+              labelValue={email}
+              onChangeText={(userEmail) => setEmail(userEmail)}
+              placeholder="Username or E-mail"
+              placeholderTextColor="#3911BD"
+              keyboardType={'email-address'}
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <Input
+              style={LoginScreenStyle(theme).input}
+              labelValue={password}
+              onChangeText={(userPassword) => setPassword(userPassword)}
+              placeholderText="Password"
+              secureTextEntry={true}
+            />
+            <TouchableOpacity
+              style={LoginScreenStyle(theme).forget}
+              onPress={() => alert("forget password?")}>
+              <Text style={LoginScreenStyle(theme).forgettext}>forget password?</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={LoginScreenStyle(theme).btn} onPress={() => SignIn(email, password)}>
+              <Text style={LoginScreenStyle(theme).btnTxt}>LOGIN</Text>
+            </TouchableOpacity>
+            <View style={LoginScreenStyle(theme).textbox}>
+              <Text style={LoginScreenStyle(theme).text1}>or</Text>
+            </View>
+            <View style={LoginScreenStyle(theme).textbox2}>
+              <SocialIcon
+                type='facebook'
+                onPress={() => alert("facebook")}
+              />
+              <SocialIcon
+                type='google'
+                onPress={() => alert("google")}
+
+              />
+            </View>
+          </View>
+          <Text style={LoginScreenStyle(theme).footerText}>
+            Don't have an account ?
+          </Text>
+          <Text style={LoginScreenStyle(theme).RegisterText} onPress={() => navigation.navigate('RegisterScreen')}>
+            Register
+          </Text>
+        </View>
+      </SafeAreaView>
+    </LinearGradient>
+
   );
 }
-const styles = StyleSheet.create({
-    logo: {
-      width: 200,
-      height: 200,
-      resizeMode: 'stretch',
-      marginBottom: 15
-    },
-  
-    title: {
-      color: '#00CABA',
-      textAlign: 'left',
-      fontSize: 35,
-      width: 320,
-      marginBottom: 1,
-      fontWeight: 'bold',
-    },
-    input: {
-      marginVertical: 10,
-      width: 320,
-      height: 60,
-      fontSize: 18,
-      marginBottom: 5,
-      shadowColor: "#000000",
-      shadowOpacity: 5,
-      shadowRadius: 5,
-      elevation: 5,
-      backgroundColor: '#FFFFFF'
-      
-    },
-    loginButton: {
-      marginVertical: 10,
-      backgroundColor: 'black',
-      width: 320,
-      height: 60,
-      borderRadius: 10,
-      shadowColor: "#000000",
-      shadowOpacity: 5,
-      shadowRadius: 5,
-      elevation: 5
-    },
-    loginButtonText: {
-      textAlign: 'center',
-      color: '#F0FFFF',
-      fontWeight: 'bold',
-      fontSize:20,
-      padding: 15
-    },
-  
-    container: {
-      flex: 1,
-      backgroundColor: '#E2FCFA',
-      alignItems: 'center',
-      paddingHorizontal: 20,
-      paddingTop: 50,
-    },
-  
-    text: {
-      color: 'black',
-      fontSize: 18
-    },
-  });
 
 export default LoginScreen;

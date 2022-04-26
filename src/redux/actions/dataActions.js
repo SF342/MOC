@@ -1,41 +1,39 @@
-import { PRODUCTS_DATA, PRICE_PRODUCT } from '../types';
-import { firestore, storage } from '../../config'
-
-
+import { PRODUCTS_DATA, PRICE_PRODUCT, SET_URL_IMAGE } from '../types';
+import { useState } from 'react';
+import storage from "@react-native-firebase/storage"
+import db from '../../../db.json'
+import axios from 'axios';
 
 
 export const getData = () => async (dispatch) => {
 
-    const url = "https://dataapi.moc.go.th/gis-products"
-    await fetch(url).then((res) => res.json())
-        .then(result => {
-            dispatch({ type: PRODUCTS_DATA, payload: result });
-        }).catch(console.error())
+    dispatch({ type: PRODUCTS_DATA, payload: db });
+
 }
 
 export const getPrice = (PID) => async (dispatch) => {
 
-    const date = new Date()
-    const today = date.getFullYear() + '-' + date.getMonth() + 1 + '-' + (date.getDay() -1);
-
-    
+    const now = Date.now();
+    const date = new Date(now)
+    //console.log(date)
+    var year = date.getFullYear(), month = date.getMonth() + 1, day = date.getDate();
+    //console.log(year, month, day);
+    const today = year + '-' + (month < 10 ? "0" + month : month) + '-' + (day < 10 ? "0" + day : day);
     const getWeekAgo = () => {
-        const day = date.getDay() - 8;
+        const day = date.getDate() - 7;
         if (day <= 0) {
-            return date.getFullYear() + '-' + date.getMonth() + '-' + (30 + day)
+            return year + '-' + ((month - 1) < 10 ? "0" + (month - 1) : (month - 1)) + '-' + ((30 + day) < 10 ? "0" + (30 + day) : (30 + day))
         } else {
-            return (date.getFullYear() + '-' + date.getMonth() + 1 + '-' + (date.getDay() - 8))
+            return year + '-' + (month < 10 ? "0" + month : month) + '-' + ((day) < 10 ? "0" + (day) : (day))
         }
     }
     const weekAgo = getWeekAgo();
 
     const url = "https://dataapi.moc.go.th/gis-product-prices?product_id=" + PID + "&from_date=" + weekAgo + "&to_date=" + today;
 
-    await fetch(url).then((res) => res.json())
+    await axios.get(url)
+        .then((response) => response.data)
         .then(result => {
             dispatch({ type: PRICE_PRODUCT, payload: result });
-        }).catch(console.error())
+        })
 }
-
-
-
