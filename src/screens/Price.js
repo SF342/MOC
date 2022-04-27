@@ -51,9 +51,7 @@ const Price = () => {
   const [index,setIndex] = useState();
 
   useEffect(() => {
-    console.log("update")
-    console.log("update p1 ", price)
-    console.log("update p2 ", price1)
+
     setPriceLoading(false);
 
   }, [price, price1]);
@@ -68,6 +66,7 @@ const Price = () => {
     }
   };
 
+  // Fetch data after click compare
   const onClickSearch = async () => {
 
     const priceURL1 = await fetch(`https://mocapi.herokuapp.com/product/${selectedProduct.value}`);
@@ -77,10 +76,6 @@ const Price = () => {
     const priceURL2 = await fetch(`https://mocapi.herokuapp.com/product/${selectedProduct1.value}`);
     const dataPrice2 = await priceURL2.json();
     setPrice1(dataPrice2);
-
-    console.log("data 1  ",dataPrice1)
-    console.log("data 2  ",dataPrice2)
-
 
     setPriceLoading(true);
     setModalVisible(true);
@@ -249,8 +244,7 @@ const Price = () => {
                   <Text style={PriceStyle(theme).modalText}>
                     Price min : {price1.price_min_avg} {price1.unit}
                   </Text>
-
-                  
+    
                       <VictoryChart width={250} height={230}>
                         <VictoryGroup offset={20}>
                           <VictoryBar
@@ -263,12 +257,10 @@ const Price = () => {
                           />
                         </VictoryGroup>
                       </VictoryChart>
-                    
+                  
                 </View>
               </View>
             )}
-
-           
 
             <Pressable
               style={[PriceStyle(theme).buttonClose]}

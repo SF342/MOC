@@ -25,12 +25,6 @@ const RegisterScreen = ({ navigation }) => {
   const { user } = useSelector(state => state.user)
   const { productList, favoriteList } = useSelector(state => state.favorite)
 
-
-  const favorite_state = useSelector(state => state.favorite.getFav)
-  const product_state = useSelector(state => state.favorite.getProduct)
-  const add_state = useSelector(state => state.favorite.add)
-  const delete_state = useSelector(state => state.favorite.delete)
-
   const image = useSelector(state => state.data.urlimage)
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -63,7 +57,6 @@ const RegisterScreen = ({ navigation }) => {
 
 
   useEffect(() => {
-    console.log('get fav user');
     dispatch(getFavoriteId(user._id))
     console.log(user);
 
