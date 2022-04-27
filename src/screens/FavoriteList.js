@@ -103,7 +103,7 @@ const FavoriteList = ({ navigation }) => {
               onClear={(text) => searchFilterFunction('')}
               autoCorrect={false}
               containerStyle={FavoriteStyle(theme).searchcontainer}
-              inputContainerStyle={{ height: 35 }}
+              inputContainerStyle={{ backgroundColor: theme.searchBarcolor,height: 35 }}
             />
           </View>
           <Entypo name="menu" size={50} color={Show1color} onPress={() => { Show1() }} />

@@ -108,13 +108,13 @@ export const LoginScreenStyle = (prop) => StyleSheet.create({
         flexDirection: 'row'
       },
       footerText:{
-        color: prop.whitemain,
+        color: prop.rigfootertext,
         fontSize: 14,
         textAlign: 'center',
         marginTop: 20
       },
       RegisterText:{
-        color: prop.whitemain,
+        color: prop.rigfootertext,
         fontSize: 16,
         textAlign: 'center',
         marginTop: 10,

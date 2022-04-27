@@ -5,12 +5,14 @@ import {CHANGE_THEME} from '../types';
 export const themeOptions = {
     /////   Main   /////
   'dark': {
+    BottomTab: '#0A214A',
     background2: '#6bd8ff',
     whitemain: '#fff',
     background1: '#0A214A',
     pri800: '#e66900',
     sec700: '#e3eeff',
     shadow1: '#000000',
+    footericon: '#778899',
     /////   Favourite List   /////
     topicbg: '#1544E2',
     topicbg2: '#0D2B73',
@@ -21,15 +23,20 @@ export const themeOptions = {
     container: '#393E46',
     logoutbg: '#b53531',
     line: '#DFDFDE',
+    searchBarcolor : '#BDC6CF',
+    listItembg : '#0A214A',
+    listItembg2 : '#1544E2',
 
     /////   LoggedInPage   /////
     containerbg: '#E2FCFA',
     text: '#00CABA',
     card: '#2D648C',
+    tableftcolor : '#ff7',
 
     /////   LoginScreen   /////
     btnbg: '#37379C',
     forgettext: '#3D51CA',
+    rigfootertext: '#fff',
 
     /////   Price   /////
     boxprice: '#FAFAFA',
@@ -42,31 +49,38 @@ export const themeOptions = {
 
   },
   'light': {
-      background2: '#fff',
+      BottomTab: '#b58662',
+      background2: '#f7e9d7',
       whitemain: '#fff',
-      background1: '#0A214A',
+      background1: '#f0c493',
       pri800: '#e66900',
       sec700: '#e3eeff',
       shadow1: '#000000',
+      footericon: '#BDC6CF',
       /////   Favourite List   /////
-      topicbg: '#1544E2',
-      topicbg2: '#0D2B73',
-      topictext: '#FFC511',
+      topicbg: '#E7B067',
+      topicbg2: '#BD7638',
+      topictext: '#DEDCD9',
       title2: '#FFFAD3',
   
       /////   Home   /////
       container: '#393E46',
       logoutbg: '#b53531',
       line: '#DFDFDE',
+      searchBarcolor : '#F0F0F0',
+      listItembg : '#BD7638',
+      listItembg2 : '#E7B067',
   
       /////   LoggedInPage   /////
       containerbg: '#E2FCFA',
       text: '#00CABA',
-      card: '#2D648C',
+      card: '#E6AF66',
+      tableftcolor : '#B58662',
   
       /////   LoginScreen   /////
-      btnbg: '#37379C',
+      btnbg: '#bd7638',
       forgettext: '#3D51CA',
+      rigfootertext: '#000000',
   
       /////   Price   /////
       boxprice: '#FAFAFA',

@@ -32,7 +32,11 @@ const Price = () => {
   const image = useSelector(state => state.data.urlimage);
 
   const [price, setPrice] = useState([]);
+  const [pricemax, setPricemax] = useState([]);
+  const [pricemin, setPricemin] = useState([]);
   const [price1, setPrice1] = useState([]);
+  const [pricemax1, setPricemax1] = useState([]);
+  const [pricemin1, setPricemin1] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
   const [selectedProduct1, setSelectedProduct1] = useState('');
@@ -58,21 +62,26 @@ const Price = () => {
 
   // Fetch data after click compare
   const onClickSearch = async () => {
-
+    
     const priceURL1 = await fetch(`https://mocapi.herokuapp.com/product/${selectedProduct.value}`);
     const dataPrice1 = await priceURL1.json();
     setPrice(dataPrice1);
+    setPricemax(dataPrice1.price_max_avg.toFixed(2))
+    setPricemin(dataPrice1.price_min_avg.toFixed(2))
     
     const priceURL2 = await fetch(`https://mocapi.herokuapp.com/product/${selectedProduct1.value}`);
     const dataPrice2 = await priceURL2.json();
     setPrice1(dataPrice2);
+    setPricemax1(dataPrice2.price_max_avg.toFixed(2))
+    setPricemin1(dataPrice2.price_min_avg.toFixed(2))
 
     // condition check data not exist
     if(dataPrice2.price_list.length === 0 || dataPrice1.price_list.length === 0){
       alert("Data need to update please wait")
       setModalVisible(false);
+      
     }else{
-      setPriceLoading(true);
+      setPriceLoading(false);
       setModalVisible(true);
     }
   };
@@ -193,7 +202,7 @@ const Price = () => {
             onPress={() => onClickSearch()}
             label="Compare"
             borderRadius={10}
-            backgroundColor="#0A214A"
+            backgroundColor={theme.btnbg}
           />
         </View>
       </View>
@@ -221,10 +230,10 @@ const Price = () => {
                     {price.product_name}
                   </Text>
                   <Text style={PriceStyle(theme).modalText}>
-                    Price max : {price.price_max_avg} {price.unit}
+                    Price max : {pricemax} {price.unit}
                   </Text>
                   <Text style={PriceStyle(theme).modalText}>
-                    Price min : {price.price_min_avg} {price.unit}
+                    Price min : {pricemin} {price.unit}
                   </Text>
                 </View>
                 <View>
@@ -234,10 +243,10 @@ const Price = () => {
                     {price1.product_name}
                   </Text>
                   <Text style={PriceStyle(theme).modalText}>
-                    Price max : {price1.price_max_avg} {price1.unit}
+                    Price max : {pricemax1} {price1.unit}
                   </Text>
                   <Text style={PriceStyle(theme).modalText}>
-                    Price min : {price1.price_min_avg} {price1.unit}
+                    Price min : {pricemin1} {price1.unit}
                   </Text>
     
                       <VictoryChart width={250} height={230}>

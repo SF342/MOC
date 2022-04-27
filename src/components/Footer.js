@@ -1,47 +1,59 @@
-import React, {useState, useEffect } from 'react';
-import { NativeBaseProvider, Box } from 'native-base';
-import { View, Text, StyleSheet } from 'react-native'
-import { ActivityIndicator, FlatList } from 'react-native';
+import { Center } from 'native-base'
+import React from 'react'
+import { View, Text, StyleSheet,Image } from 'react-native'
+import Moc_logo from '../../assets/moc_logo.png'
+import {FooterStyle} from '../css/Footer';
+import { useSelector, useDispatch } from 'react-redux'
+import { NavigationContainer } from '@react-navigation/native'
 
-const Footer = () => {
-    const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Price from '../screens/Price';
+import Header from '../components/Header';
 
-    const getMovies = async () => {
-        try {
-         const response = await fetch('https://dataapi.moc.go.th/gis-products');
-         console.log(response)
-         const json = await response.json();
-         console.log(json)
-         setData(json);
-       } catch (error) {
-         console.error(error);
-       } finally {
-         setLoading(false);
-       }
-     }
-   
-     useEffect(() => {
-       getMovies();
-     }, []);
+import { FirstScreen_Home, SecondScreen_Home, ProfileStatePage } from '../../CustomNavigation'
 
-
+const Footer = (props) => {
+    const {theme} = useSelector(state => state.theme);
+    const Tab = createBottomTabNavigator();
     return (
-        <NativeBaseProvider>
-            <Box>Hello world Bitch
-                {isLoading ? <ActivityIndicator/> : (
-        <FlatList
-          data={data}
-          keyExtractor={({ id }, index) => id}
-          renderItem={({ item }) => (
-            <Text>{item.product_id}, {item.product_name}, {item.category_name}</Text>
-          )}
-        />
-      )}
-            </Box>
-            
-        </NativeBaseProvider>
-    )
+      <NavigationContainer>
+        <Tab.Navigator initialRouteName="Main"
+          screenOptions={{
+            tabBarActiveTintColor: "#ffffff",
+            tabBarInactiveTintColor: theme.footericon,
+            tabBarLabelStyle: {
+              fontSize: 0,
+              paddingBottom: 0,
+              fontWeight: "bold"
+            },
+            headerShown: false,
+            tabBarStyle: FooterStyle(theme).tabBarStyle
+          }}>
+          <Tab.Screen name="Home" component={FirstScreen_Home}
+            options={{
+              tabBarLabel: 'Home',
+              tabBarIcon: ({ color, size }) => (
+                <Entypo name="home" color={color} size={30} />
+              ),
+            }} />
+          <Tab.Screen name="Price" component={Price}
+            options={{
+              tabBarLabel: 'Price',
+              tabBarIcon: ({ color, size }) => (
+                <MaterialIcons name="attach-money" color={color} size={30} />
+              ),
+            }} />
+          <Tab.Screen name="ProfilePage" component={ProfileStatePage}
+            options={{
+              tabBarLabel: 'ProfilePage',
+              tabBarIcon: ({ color, size }) => (
+                <MaterialIcons name="person" color={color} size={30} />
+              ),
+            }} />
+        </Tab.Navigator>
+      </NavigationContainer>
+      )
 }
-
 export default Footer;

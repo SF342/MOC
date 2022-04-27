@@ -2,12 +2,14 @@ import {CHANGE_THEME} from '../types';
 
 const initialState = {
   theme: {
+    BottomTab: '#0A214A',
     background2: '#6bd8ff',
     whitemain: '#fff',
     background1: '#0A214A',
     pri800: '#e66900',
     sec700: '#e3eeff',
     shadow1: '#000000',
+    footericon: '#778899',
     /////   Favourite List   /////
     topicbg: '#1544E2',
     topicbg2: '#0D2B73',
@@ -18,15 +20,20 @@ const initialState = {
     container: '#393E46',
     logoutbg: '#b53531',
     line: '#DFDFDE',
+    searchBarcolor : '#BDC6CF',
+    listItembg : '#0A214A',
+    listItembg2 : '#1544E2',
 
     /////   LoggedInPage   /////
     containerbg: '#E2FCFA',
     text: '#00CABA',
     card: '#2D648C',
+    tableftcolor : '#ff7',
 
     /////   LoginScreen   /////
     btnbg: '#37379C',
     forgettext: '#3D51CA',
+    rigfootertext: '#fff',
 
     /////   Price   /////
     boxprice: '#FAFAFA',

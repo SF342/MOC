@@ -196,7 +196,7 @@ export default Home = ({ navigation }) => {
   return (
     <LinearGradient
       colors={[theme.background1, theme.background2]}
-      start={{ x: 1, y: 0 }}
+      start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
       style={HomeStyle(theme).container1}>
       <View style={{ flex: 1 }}>
@@ -208,7 +208,8 @@ export default Home = ({ navigation }) => {
             value={valueInput}
             onChangeText={text => updateInput(text)}
             autoCorrect={false}
-            containerStyle={{ backgroundColor: '#0A214A' }}
+            containerStyle={{ backgroundColor: theme.background1 ,}}
+            inputContainerStyle={{backgroundColor: theme.searchBarcolor,}}
           />
         ) : (<></>)}
         {checkUserType ? (
@@ -235,7 +236,7 @@ export default Home = ({ navigation }) => {
 
                       ViewComponent={LinearGradient}
                       linearGradientProps={{
-                        colors: ['#1544E2', '#0A214A'],
+                        colors: [theme.listItembg2, theme.listItembg],
                         start: { x: 1, y: 0 },
                         end: { x: 0.2, y: 0 },
                       }}
@@ -258,8 +259,8 @@ export default Home = ({ navigation }) => {
                         <ListItem.Content>
                           <ListItem.Title
                             style={{
-                              fontSize: 19,
-                              color: '#FFC511',
+                              fontSize: 18,
+                              color: theme.topictext,
                               fontFamily: 'Mitr-Regular',
                               marginRight: 70
                             }}>{`${item.product_name}`}</ListItem.Title>
@@ -292,7 +293,8 @@ export default Home = ({ navigation }) => {
               value={valueInput}
               onChangeText={text => updateInput(text)}
               autoCorrect={false}
-              containerStyle={{ backgroundColor: '#0A214A' }}
+              containerStyle={{ backgroundColor: theme.background1 ,}}
+              inputContainerStyle={{backgroundColor: theme.searchBarcolor,}}
             />
 
             <FlatList
@@ -307,7 +309,7 @@ export default Home = ({ navigation }) => {
                   }}
                   ViewComponent={LinearGradient}
                   linearGradientProps={{
-                    colors: ['#1544E2', '#0A214A'],
+                    colors: [theme.listItembg2, theme.listItembg],
                     start: { x: 1, y: 0 },
                     end: { x: 0.2, y: 0 },
                   }}
@@ -332,7 +334,7 @@ export default Home = ({ navigation }) => {
                       <ListItem.Title
                         style={{
                           fontSize: 18,
-                          color: '#FFC511',
+                          color: theme.topictext,
                           fontWeight: '700',
                           fontFamily: 'Mitr-Light',
                           marginRight: 70

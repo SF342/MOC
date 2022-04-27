@@ -80,7 +80,7 @@ const RegisterScreen = ({ navigation }) => {
         style={LoggedInPageStyle(theme).container1}>
         <SafeAreaView
           style={{ flex: 1, paddingLeft: 15, marginTop: '5%' }}>
-          <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
+          <View style={{ borderLeftWidth: 6, borderLeftColor: theme.tableftcolor }}>
             <Text style={LoggedInPageStyle(theme).title}>WELCOME</Text>
             <Text style={LoggedInPageStyle(theme).title2}>{user.username}</Text>
             {/* <Image source={user_icon} style={LoggedInPageStyle(theme).userlogo} /> */}
@@ -105,7 +105,7 @@ const RegisterScreen = ({ navigation }) => {
 
           </View>
 
-          <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
+          <View style={{ borderLeftWidth: 6, borderLeftColor: theme.tableftcolor  }}>
             <Text style={LoggedInPageStyle(theme).title2}>Price TODAY</Text>
           </View>
 
@@ -113,7 +113,7 @@ const RegisterScreen = ({ navigation }) => {
           <View style={{ width: '96%', height: '20%' }}>
           </View>
 
-          <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
+          <View style={{ borderLeftWidth: 6, borderLeftColor: theme.tableftcolor  }}>
             <Text style={LoggedInPageStyle(theme).title2}>Favorite List</Text>
           </View>
 

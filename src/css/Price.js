@@ -36,9 +36,9 @@ export const PriceStyle = (prop) => StyleSheet.create({
       modalbox: {
         borderRadius: 30,
         padding: 10,
-        margin: 20,
+        margin: 15,
         backgroundColor: 'rgba(180, 180, 180,0.09)',
-        marginBottom: 15,
+        marginBottom: 5,
         // alignItems: 'center',
         // justifyContent: 'center',
        
@@ -60,7 +60,7 @@ export const PriceStyle = (prop) => StyleSheet.create({
         borderRadius: 30,
         justifyContent: 'space-between',
         borderWidth: 1,
-        borderColor: prop.shadow1,
+        borderColor: prop.boxprice,
         padding: 15,
         width: 348,
         alignSelf: 'center',
@@ -144,7 +144,9 @@ export const PriceStyle = (prop) => StyleSheet.create({
         width:80,
         padding: 10,
         marginTop:10,
-        elevation: 2
+        elevation: 2,
+        position: 'absolute',
+        bottom: 20,
       },
       textStyle: {
         color: prop.whitemain,
