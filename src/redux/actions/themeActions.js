@@ -4,7 +4,7 @@ import {CHANGE_THEME} from '../types';
 
 export const themeOptions = {
     /////   Main   /////
-  '#2fbe74': {
+  'dark': {
     background2: '#6bd8ff',
     whitemain: '#fff',
     background1: '#0A214A',
@@ -41,7 +41,7 @@ export const themeOptions = {
 
 
   },
-  '#000000': {
+  'light': {
       background2: '#fff',
       whitemain: '#fff',
       background1: '#0A214A',
