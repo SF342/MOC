@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image, FlatList } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image, FlatList, Modal, Pressable, } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import ColorPalette from '../components/ColorPalette';
 import LinearGradient from 'react-native-linear-gradient';
@@ -8,12 +8,15 @@ import user_icon from '../../assets/kindpng_746008.png'
 import { __doSingOut } from '../redux/actions/userActions';
 import { LoggedInPageStyle } from '../css/LoggedInPage'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Feather from 'react-native-vector-icons/Feather';
 import { Card } from "react-native-paper";
 import { ActivityIndicator } from 'react-native';
 import {
   getProductId,
   getFavoriteId,
 } from '../redux/actions/newFavoriteAction';
+import { changeTheme, themeOptions } from '../redux/actions/themeActions';
+
 
 
 
@@ -31,6 +34,17 @@ const RegisterScreen = ({ navigation }) => {
 
   const image = useSelector(state => state.data.urlimage)
 
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const [themeicon, setThemeicon] = useState(false);
+  const [themeicon2, setThemeicon2] = useState('sun');
+
+  const changetheme = () => {
+
+    dispatch(changeTheme(!themeicon ? '#2fbe74' : "#000000"))
+    setThemeicon(!themeicon)
+    setThemeicon2(themeicon ? 'sun' : 'moon')
+  }
   // Set an initializing state whilst Firebase connects
 
   function logout() {
@@ -89,13 +103,11 @@ const RegisterScreen = ({ navigation }) => {
             {/* <Image source={user_icon} style={LoggedInPageStyle(theme).userlogo} /> */}
           </View>
 
-
-
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 30, width: '96%', height: '25%' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 30, width: '96%', height: '17%' }}>
 
             <View>
-              <MaterialIcons name="settings" size={40} color={("#FFF")} />
-              <Text style={LoggedInPageStyle(theme).icontext}>Settings</Text>
+              <Feather name={themeicon2} size={40} color={("#FFF")} onPress={() => { changetheme() }} />
+              <Text style={LoggedInPageStyle(theme).icontext}>Theme</Text>
             </View>
 
             <View>
@@ -109,8 +121,6 @@ const RegisterScreen = ({ navigation }) => {
             </View>
 
           </View>
-
-
 
           <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
             <Text style={LoggedInPageStyle(theme).title2}>Price TODAY</Text>
@@ -154,6 +164,23 @@ const RegisterScreen = ({ navigation }) => {
                 <Text >loadding...</Text>
               )}
           </View>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              Alert.alert("Modal has been closed.");
+              setModalVisible(!modalVisible);
+            }}
+          >
+            <ColorPalette />
+            <Pressable
+              style={[LoggedInPageStyle(theme).buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={LoggedInPageStyle(theme).textStyle}>BACK</Text>
+            </Pressable>
+          </Modal>
 
         </SafeAreaView>
       </LinearGradient>

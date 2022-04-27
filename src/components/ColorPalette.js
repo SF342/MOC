@@ -15,6 +15,7 @@ export class ColorPalette extends Component {
 
     render() {
         const colorOptions = Object.keys(themeOptions);
+        console.log(colorOptions);
 
         return (
             <View style={styles.box1}>
