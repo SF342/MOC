@@ -16,8 +16,6 @@ import {
   getProductId,
   getFavoriteId,
 } from '../redux/actions/newFavoriteAction';
-import { themeOptions } from '../redux/actions/themeActions';
-import { changeTheme } from '../redux/actions/themeActions';
 
 
 

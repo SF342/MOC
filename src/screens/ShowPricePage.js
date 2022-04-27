@@ -89,14 +89,17 @@ const ShowPricePage = ({ navigation, route }) => {
 
   if (Loading) {
     checkPD();
-    for (var key in product) {
-      if (product.hasOwnProperty(key)) {
-        if (key == 'price_max_avg' || key == 'price_min_avg') {
-          product[key] = Math.ceil(product[key]);
+    if (!product?.description) {
+      for (var key in product) {
+        if (product.hasOwnProperty(key)) {
+          if (key == 'price_max_avg' || key == 'price_min_avg') {
+            product[key] = Math.ceil(product[key]);
+          }
+          setDate(product['price_list'][0]['date'].substring(0, 10));
         }
-        setDate(product['price_list'][0]['date'].substring(0, 10));
       }
     }
+
     if (product !== null) {
       setLoading(false);
     }
@@ -152,32 +155,35 @@ const ShowPricePage = ({ navigation, route }) => {
                       <View style={ShowPricePageStyle(theme).TextContainer1}>
                         <Text style={ShowPricePageStyle(theme).topic}>{product.product_name}</Text>
                       </View>
-                      <View style={ShowPricePageStyle(theme).TextContainer1}>
-                        <Text style={ShowPricePageStyle(theme).title}>ประเภท : </Text>
-                        <Text style={ShowPricePageStyle(theme).title1}> {product.group_name}</Text>
-                      </View>
-                      <View style={ShowPricePageStyle(theme).TextContainer1}>
-                        <Text style={ShowPricePageStyle(theme).title}>ราคาต่ำสุด : </Text>
-                        <Text style={ShowPricePageStyle(theme).title1}>
-                          {product.price_min_avg} บาท
-                        </Text>
-                      </View>
-                      <View style={ShowPricePageStyle(theme).TextContainer1}>
-                        <Text style={ShowPricePageStyle(theme).title}>ราคาสูงสุด : </Text>
-                        <Text style={ShowPricePageStyle(theme).title1}>
-                          {product.price_max_avg} บาท
-                        </Text>
-                      </View>
-                      <View style={ShowPricePageStyle(theme).TextContainer1}>
-                        <Text style={ShowPricePageStyle(theme).update}>**อัพเดทราคาเมื่อ : </Text>
-                        <Text style={ShowPricePageStyle(theme).update1}> {date}</Text>
-                      </View>
-                      <LineChart
-                        data={data}
-                        width={300}
-                        height={180}
-                        chartConfig={chartConfig}
-                      />
+
+
+                      {product?.description=== "data out of date" ? (
+                        <>
+                          <View>
+                            <Text style={ShowPricePageStyle(theme).title1}>{product.description}</Text>
+                          </View>
+                        </>) : (
+                        <><View style={ShowPricePageStyle(theme).TextContainer1}>
+                          <Text style={ShowPricePageStyle(theme).title}>ประเภท: </Text>
+                          <Text style={ShowPricePageStyle(theme).title1}> {product.group_name}</Text>
+                        </View><View style={ShowPricePageStyle(theme).TextContainer1}>
+                            <Text style={ShowPricePageStyle(theme).title}>ราคาต่ำสุด: </Text>
+                            <Text style={ShowPricePageStyle(theme).title1}>
+                              {product.price_min_avg} บาท
+                            </Text>
+                          </View><View style={ShowPricePageStyle(theme).TextContainer1}>
+                            <Text style={ShowPricePageStyle(theme).title}>ราคาสูงสุด: </Text>
+                            <Text style={ShowPricePageStyle(theme).title1}>
+                              {product.price_max_avg} บาท
+                            </Text>
+                          </View><View style={ShowPricePageStyle(theme).TextContainer1}>
+                            <Text style={ShowPricePageStyle(theme).update}>**อัพเดทราคาเมื่อ: </Text>
+                            <Text style={ShowPricePageStyle(theme).update1}> {date}</Text>
+                          </View><LineChart
+                            data={data}
+                            width={300}
+                            height={180}
+                            chartConfig={chartConfig} /></>)}
                     </View>
                   </LinearGradient>
                 </Center>

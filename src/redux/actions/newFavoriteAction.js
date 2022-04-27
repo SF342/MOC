@@ -1,7 +1,7 @@
 import { DELETE_FAVORITE, GET_PRODUCTLIST, ADD_FAVORITE, GET_FAVLIST } from '../types';
 import axios from 'axios';
 
-const API_URL = 'http://10.0.2.2:4001/favorite';
+const API_URL = 'https://mocapi.herokuapp.com/favorite';
 
 export const getFavoriteId = (user_id) => async (dispatch) => {
   await axios
