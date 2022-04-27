@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image, FlatList, Modal, Pressable, } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import ColorPalette from '../components/ColorPalette';
 import LinearGradient from 'react-native-linear-gradient';
 import user_icon from '../../assets/kindpng_746008.png'
 import { __doSingOut } from '../redux/actions/userActions';
@@ -15,7 +14,7 @@ import {
   getProductId,
   getFavoriteId,
 } from '../redux/actions/newFavoriteAction';
-import { changeTheme, themeOptions } from '../redux/actions/themeActions';
+import { changeTheme } from '../redux/actions/themeActions';
 
 
 
@@ -40,8 +39,7 @@ const RegisterScreen = ({ navigation }) => {
   const [themeicon2, setThemeicon2] = useState('sun');
 
   const changetheme = () => {
-
-    dispatch(changeTheme(!themeicon ? '#2fbe74' : "#000000"))
+    dispatch(changeTheme(!themeicon ? 'dark' : "light"))
     setThemeicon(!themeicon)
     setThemeicon2(themeicon ? 'sun' : 'moon')
   }
@@ -173,7 +171,6 @@ const RegisterScreen = ({ navigation }) => {
               setModalVisible(!modalVisible);
             }}
           >
-            <ColorPalette />
             <Pressable
               style={[LoggedInPageStyle(theme).buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
