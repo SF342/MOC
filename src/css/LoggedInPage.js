@@ -114,5 +114,8 @@ export const LoggedInPageStyle = (prop) => StyleSheet.create({
         marginBottom:-15,
         marginTop:-5,
       },
+      space: {
+        marginBottom:10,
+      }
 
 });
