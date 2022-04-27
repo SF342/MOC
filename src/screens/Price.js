@@ -2,19 +2,14 @@ import React from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   Modal,
   Pressable,
-  Dimensions,
-  TouchableOpacity,
   Image,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import {useState, useEffect} from 'react';
 import {Colors, Picker, Button} from 'react-native-ui-lib';
 import {ActivityIndicator} from 'react-native';
-import moment from 'moment';
-import DateTimePicker from '@react-native-community/datetimepicker';
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {PriceStyle} from '../css/Price';
 import {
@@ -24,11 +19,7 @@ import {
   VictoryLegend,
   VictoryTheme,
 } from 'victory-native';
-import {Card} from 'react-native-paper';
 import Moc_logo from '../../assets/moc_logo.png';
-
-const settingsIcon = require('../../assets/settings.png');
-const titanIcon = require('../../assets/titan.png');
 
 //redux stuff
 import { useSelector, useDispatch } from 'react-redux'
@@ -48,7 +39,6 @@ const Price = () => {
   const [isPriceLoading, setPriceLoading] = useState(false);
   const [showPrice,setShowPrice] = useState(false);
   const [showPrice1,setShowPrice1] = useState(false);
-  const [index,setIndex] = useState();
 
   useEffect(() => {
 
@@ -77,8 +67,14 @@ const Price = () => {
     const dataPrice2 = await priceURL2.json();
     setPrice1(dataPrice2);
 
-    setPriceLoading(true);
-    setModalVisible(true);
+    // condition check data not exist
+    if(dataPrice2.price_list.length === 0 || dataPrice1.price_list.length === 0){
+      alert("Data need to update please wait")
+      setModalVisible(false);
+    }else{
+      setPriceLoading(true);
+      setModalVisible(true);
+    }
   };
 
   const data = {
