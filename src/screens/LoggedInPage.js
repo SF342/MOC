@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image, FlatList
 import { useDispatch, useSelector } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 import user_icon from '../../assets/kindpng_746008.png'
-import { __doSingOut } from '../redux/actions/userActions';
+import { signOut } from '../redux/actions/userActions';
 import { LoggedInPageStyle } from '../css/LoggedInPage'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
@@ -46,7 +46,7 @@ const RegisterScreen = ({ navigation }) => {
   // Set an initializing state whilst Firebase connects
 
   function logout() {
-    dispatch(__doSingOut())
+    dispatch(signOut())
   }
 
   // Handle user state changes
