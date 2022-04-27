@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image, FlatList
 import { useDispatch, useSelector } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 import user_icon from '../../assets/kindpng_746008.png'
-import { __doSingOut } from '../redux/actions/userActions';
+import { signOut } from '../redux/actions/userActions';
 import { LoggedInPageStyle } from '../css/LoggedInPage'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
@@ -30,7 +30,7 @@ const RegisterScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const [themeicon, setThemeicon] = useState(false);
-  const [themeicon2, setThemeicon2] = useState('sun');
+  const [themeicon2, setThemeicon2] = useState('moon');
 
   const changetheme = () => {
     dispatch(changeTheme(!themeicon ? 'dark' : "light"))
@@ -40,7 +40,7 @@ const RegisterScreen = ({ navigation }) => {
   // Set an initializing state whilst Firebase connects
 
   function logout() {
-    dispatch(__doSingOut())
+    dispatch(signOut())
   }
 
   // Handle user state changes
@@ -143,7 +143,7 @@ const RegisterScreen = ({ navigation }) => {
                       }}
                     >
                       <Card style={[LoggedInPageStyle(theme).card]}>
-                        <Text style={LoggedInPageStyle(theme).text2}>{item.product_name}</Text>
+                        <Text style={LoggedInPageStyle(theme).text2}>{item.product_name.length > 25 ? item.product_name.slice(0, 25) + '...' : item.product_name}</Text>
                         <Image style={LoggedInPageStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
                       </Card>
                     </TouchableOpacity>

@@ -29,7 +29,7 @@ console.log(err)});
 };
 
 
-export const logout = () =>  (dispatch) => {
+export const signOut = () =>  (dispatch) => {
 
   dispatch({ type: SET_SIGN_OUT, payload: []})
    
