@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, FlatList, StyleSheet, ActivityIndicator, Button } from 'react-native';
-import { ListItem, SearchBar, Avatar } from 'react-native-elements';
-import Moc_logo from '../../assets/moc_logo.png';
-import TouchableScale from 'react-native-touchable-scale';
-import LinearGradient from 'react-native-linear-gradient';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
+import { SearchBar } from 'react-native-elements';
+
 
 
 class SearchPage extends Component {

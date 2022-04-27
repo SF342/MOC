@@ -10,6 +10,7 @@ export const getData = () => async (dispatch) => {
 
 }
 
+// get data from api 
 export const getPrice = (PID) => async (dispatch) => {
 
     const url = "https://mocapi.herokuapp.com/product/" + PID;

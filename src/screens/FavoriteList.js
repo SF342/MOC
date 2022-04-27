@@ -1,46 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, FlatList, Image, TouchableOpacity, } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import { Picker, } from 'react-native-ui-lib';
+import { Text, View, FlatList, Image, TouchableOpacity, } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 import LinearGradient from 'react-native-linear-gradient';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Moc_logo from '../../assets/moc_logo.png';
-import { getProductId, deleteFavorite, getFavoriteId } from '../redux/actions/newFavoriteAction';
-import { ListItem, SearchBar, Avatar } from 'react-native-elements';
+import {  deleteFavorite } from '../redux/actions/newFavoriteAction';
+import { SearchBar } from 'react-native-elements';
 import { FavoriteStyle } from '../css/FavoriteList';
 
 const FavoriteList = ({ navigation }) => {
   const dispatch = useDispatch();
-  const products = useSelector(state => state.data.data)
-
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState('');
-
-  const [data, setData] = useState([]);
-  const [value, setValue] = useState();
-  const [p_id, setProductId] = useState();
   
   const { theme } = useSelector(state => state.theme);
   const { user } = useSelector(state => state.user)
   const image = useSelector(state => state.data.urlimage)
 
-  const { productList, favoriteList } = useSelector(state => state.favorite)
+  const { productList } = useSelector(state => state.favorite)
 
-
-
-  const favorite_state = useSelector(state => state.favorite.getFav)
-  const product_state = useSelector(state => state.favorite.getProduct)
-  const add_state = useSelector(state => state.favorite.add)
-  const delete_state = useSelector(state => state.favorite.delete)
-
-
-
-  const [deleteState, setDelete] = useState(false);
   const [shouldShow1, setShouldShow1] = useState(true);
-  const [shouldShow2, setShouldShow2] = useState(false);
 
   const [Show1color, setShow1color] = useState("#1E1E1E");
   const [Show2color, setShow2color] = useState("#FFFFFF");
@@ -59,24 +38,12 @@ const FavoriteList = ({ navigation }) => {
     }
   }
 
-  // Use for update realtime data
-  // useEffect(() => {
-  //   dispatch(getFavoriteId(user._id));
-  // }, [user]);
-
   useEffect(() => {
-    // console.log(productList);
 
     setFilteredDataSource(productList);
 
   }, [productList]);
 
-  // useEffect(() => {
-  //   console.log(favoriteList);
-  //   dispatch(getFavoriteId(user._id));
-  //   dispatch(getProductId(favoriteList));
-
-  // }, [favoriteList]);
 
   function Show1() {
     setShouldShow1(shouldShow1 ? false : true);
@@ -89,13 +56,6 @@ const FavoriteList = ({ navigation }) => {
   async function deleteTasklist(user_id, _id) {
     setDelete(true)
     dispatch(deleteFavorite(user_id, _id))
-  };
-
-
-  const onProductChange = (dummyData) => {
-    setSelectedProduct(dummyData);
-    setValue(dummyData.label)
-    setProductId(dummyData.value)
   };
 
   const searchFilterFunction = (text) => {
@@ -180,7 +140,6 @@ const FavoriteList = ({ navigation }) => {
               )}
             />
 
-
           )
           :
           (
@@ -211,14 +170,11 @@ const FavoriteList = ({ navigation }) => {
                     </LinearGradient>
                   </TouchableOpacity >
                 </View>
-
               )}
             />
-
           )}
       </View>
     </LinearGradient>
-
   )
 }
 

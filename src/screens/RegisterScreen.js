@@ -17,7 +17,7 @@ const RegisterScreen = () => {
   const [name, setName] = useState();
 
 
-
+  // function call redux to create user
   const __doCreateUser = async () => {
     try {
 

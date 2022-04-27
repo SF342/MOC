@@ -34,7 +34,6 @@ const RecommendPage = ({ navigation }) => {
 
     dispatch(getFavoriteId(user._id));
     dispatch(getProductId(favoriteList));
-    console.log(delete_state)
 
   }, [favorite_state, product_state, add_state, delete_state]);
 

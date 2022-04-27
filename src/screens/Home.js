@@ -52,16 +52,6 @@ export default Home = ({ navigation }) => {
   const [shouldShow1, setShouldShow1] = useState(true);
   const [shouldShow2, setShouldShow2] = useState(false);
 
-  // const str = str.substring;
-  // const res = str.substring(1, 4);
-  console.log(item)
-
-
-  // const favorite_state = useSelector(state => state.favorite.getFav)
-  // const product_state = useSelector(state => state.favorite.getProduct)
-  // const add_state = useSelector(state => state.favorite.add)
-  // const delete_state = useSelector(state => state.favorite.delete)
-
   useEffect(() => {
 
     // Check user login or not
@@ -70,14 +60,11 @@ export default Home = ({ navigation }) => {
       dispatch(getFavoriteId(user._id));
     }
 
-    console.log(favoriteList);
-
   }, [user]);
 
 
   useEffect(() => {
 
-    console.log('product');
     setData(products);
 
   }, [products]);
@@ -234,31 +221,18 @@ export default Home = ({ navigation }) => {
             {RECOMMENDMENU}
             {shouldShow1 ? (
               <View>
-                {/* <Text
-                  style={{
-                    fontSize: 18,
-                    color: 'red',
-                    textAlign: 'center',
-                    fontFamily: 'Mitr-Light',
-                  }}>
-                  {data.title}
-                </Text> */}
                 <FlatList
                   data={data}
                   renderItem={({ item }) => (
                     <ListItem
-                      // Component={TouchableScale}
-                      // Component={Pressable}
 
-                      // friction={0} //
                       delayLongPress={250}
                       onLongPress={() => {
                         toggleModalVisibility();
                         setItem(item);
                         console.log(item)
                       }}
-                      // tension={200} // These props are passed to the parent component (here TouchableScale)
-                      // activeScale={0.95} //
+
                       ViewComponent={LinearGradient}
                       linearGradientProps={{
                         colors: ['#1544E2', '#0A214A'],
@@ -320,28 +294,17 @@ export default Home = ({ navigation }) => {
               autoCorrect={false}
               containerStyle={{ backgroundColor: '#0A214A' }}
             />
-            {/* <Text
-              style={{
-                fontSize: 18,
-                color: 'red',
-                textAlign: 'center',
-                fontFamily: 'Mitr-Light',
-              }}>
-              {data.title}
-            </Text> */}
+
             <FlatList
               data={data}
               renderItem={({ item }) => (
                 <ListItem
-                  // Component={TouchableScale}
                   delayLongPress={250}
                   friction={0}
                   onLongPress={() => {
                     toggleModalVisibility();
                     setItem(item);
                   }}
-                  // tension={200} // These props are passed to the parent component (here TouchableScale)
-                  // activeScale={0.95} //
                   ViewComponent={LinearGradient}
                   linearGradientProps={{
                     colors: ['#1544E2', '#0A214A'],

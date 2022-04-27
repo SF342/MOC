@@ -79,7 +79,6 @@ const Price = () => {
 
     setPriceLoading(true);
     setModalVisible(true);
-    // setShowPrice(!showPrice);
   };
 
   const data = {

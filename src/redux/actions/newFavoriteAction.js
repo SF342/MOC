@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const API_URL = 'https://mocapi.herokuapp.com/favorite';
 
+// get fav id from api
 export const getFavoriteId = (user_id) => async (dispatch) => {
   await axios
     .get(API_URL + '/' + user_id)
@@ -13,12 +14,11 @@ export const getFavoriteId = (user_id) => async (dispatch) => {
     })
     .catch(err => {
       console.log(err)
-      alert('Get data error');
     });
 };
 
+// get product detail from api
 export const getProductId = (data) => async (dispatch) => {
-  console.log('request getProductId');
   const allProduct = []
   if (data !== undefined) {
 
@@ -38,15 +38,14 @@ export const getProductId = (data) => async (dispatch) => {
         })
         .catch(err => {
           console.log(err)
-          alert('Get data error');
         });
     }
   }
 };
 
+// call api add data
 export const addFavoriteList = (user_id, pid) => async (dispatch) => {
 
-  console.log("test add")
   let addData;
   let getData;
   await axios
@@ -57,7 +56,6 @@ export const addFavoriteList = (user_id, pid) => async (dispatch) => {
     .then(response => {
       console.log(response.data, 61);
       addData = response.data;
-      // dispatch({ type: ADD_FAVORITE, payload: response.data });
       return response.data;
     })
     .catch(err => {
@@ -76,14 +74,13 @@ export const addFavoriteList = (user_id, pid) => async (dispatch) => {
     })
     .catch(err => {
       console.log(err)
-      alert('Get data error');
     });
 
   dispatch({ type: ADD_FAVORITE, payload: { fav: addData.data, detail: getData } });
 
 };
 
-
+// call api to delete 
 export const deleteFavorite = (user_id, _id) => async (dispatch) => {
   console.log("Rook : ", user_id, " ", _id)
   await axios
@@ -95,7 +92,5 @@ export const deleteFavorite = (user_id, _id) => async (dispatch) => {
     })
     .catch(err => {
       console.log(err)
-      console.log("Delete fail")
-
     });
 };

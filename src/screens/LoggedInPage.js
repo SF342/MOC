@@ -3,32 +3,26 @@ import { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image, FlatList, Modal, Pressable, } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
-import user_icon from '../../assets/kindpng_746008.png'
 import { signOut } from '../redux/actions/userActions';
 import { LoggedInPageStyle } from '../css/LoggedInPage'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import { Card } from "react-native-paper";
-import { ActivityIndicator } from 'react-native';
 import {
   getProductId,
   getFavoriteId,
 } from '../redux/actions/newFavoriteAction';
 import { changeTheme } from '../redux/actions/themeActions';
 
-
-
-
 const RegisterScreen = ({ navigation }) => {
   const dispatch = useDispatch();
+  // Selector data from redux
   const { theme } = useSelector(state => state.theme);
   const { user } = useSelector(state => state.user)
   const { productList, favoriteList } = useSelector(state => state.favorite)
-
   const image = useSelector(state => state.data.urlimage)
 
   const [modalVisible, setModalVisible] = useState(false);
-
   const [themeicon, setThemeicon] = useState(false);
   const [themeicon2, setThemeicon2] = useState('moon');
 
@@ -37,8 +31,8 @@ const RegisterScreen = ({ navigation }) => {
     setThemeicon(!themeicon)
     setThemeicon2(themeicon ? 'sun' : 'moon')
   }
-  // Set an initializing state whilst Firebase connects
 
+  // call logout from redux
   function logout() {
     dispatch(signOut())
   }
@@ -57,18 +51,16 @@ const RegisterScreen = ({ navigation }) => {
 
 
   useEffect(() => {
+    // call fav id from redux from user login
     dispatch(getFavoriteId(user._id))
-    console.log(user);
 
   }, [user]);
 
   useEffect(() => {
-    console.log('get favoriteList');
+    // call fav id from redux from add delete fav list
     if (favoriteList !== [] && productList.length === 0) {
       dispatch(getProductId(favoriteList));
     }
-    console.log(favoriteList, 64);
-    console.log(productList, 65);
 
   }, [favoriteList]);
 

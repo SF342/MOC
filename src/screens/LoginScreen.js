@@ -7,13 +7,11 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import Moc_logo from '../../assets/moc_logo.png'
 import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 import { __doSingIn, login } from '../redux/actions/userActions';
 import { SocialIcon } from 'react-native-elements'
 import { LoginScreenStyle } from '../css/LoginScreen'
-import { Alert, Platform } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -24,7 +22,6 @@ const LoginScreen = ({ navigation }) => {
 
 
   const SignIn = (email, password) => {
-    //dispatch(__doSingIn(email, password))
     dispatch(login(email, password))
   }
 
@@ -75,11 +72,11 @@ const LoginScreen = ({ navigation }) => {
             <View style={LoginScreenStyle(theme).textbox2}>
               <SocialIcon
                 type='facebook'
-                onPress={() => alert("facebook")}
+                onPress={() => alert("Coming soon")}
               />
               <SocialIcon
                 type='google'
-                onPress={() => alert("google")}
+                onPress={() => alert("Coming soon")}
 
               />
             </View>
