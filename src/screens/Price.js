@@ -31,7 +31,7 @@ const settingsIcon = require('../../assets/settings.png');
 const titanIcon = require('../../assets/titan.png');
 
 //redux stuff
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'
 import LinearGradient from 'react-native-linear-gradient';
 
 const Price = () => {
@@ -43,33 +43,22 @@ const Price = () => {
   const [price, setPrice] = useState([]);
   const [price1, setPrice1] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
-
-  const [showPrice, setShowPrice] = useState(false);
-  const [showPrice1, setShowPrice1] = useState(false);
-  const [data, setData] = useState()
+  const [selectedProduct, setSelectedProduct] = useState('');
+  const [selectedProduct1, setSelectedProduct1] = useState('');
+  const [isPriceLoading, setPriceLoading] = useState(false);
+  const [showPrice,setShowPrice] = useState(false);
+  const [showPrice1,setShowPrice1] = useState(false);
+  const [index,setIndex] = useState();
 
   useEffect(() => {
-    console.log('Update ');
-    console.log('price2 u ', price);
-    console.log('price1 u ', price1);
-    setData({
-      price1: [
-        {x: 'price_max', y: price.price_max_avg},
-        {x: 'price_min', y: price.price_min_avg},
-      ],
-  
-      price2: [
-        {x: 'price_max', y: price1.price_max_avg},
-        {x: 'price_min', y: price1.price_min_avg},
-      ],
-    })
+    console.log("update")
+    console.log("update p1 ", price)
+    console.log("update p2 ", price1)
+    setPriceLoading(false);
 
-  }, [isPriceLoading, price, price1]);
+  }, [price, price1]);
 
-
-
-
-  const filterImageUrl = val => {
+  const filterImageUrl = (val) => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
 
     if (nameImg.length !== 0) {
@@ -79,37 +68,36 @@ const Price = () => {
     }
   };
 
-  const [selectedProduct, setSelectedProduct] = useState('');
-  const [selectedProduct1, setSelectedProduct1] = useState('');
-  const [isPriceLoading, setPriceLoading] = useState(true);
+  const onClickSearch = async () => {
 
-  const onClickSearch = async test => {
-    try {
-      const priceURL = `https://mocapi.herokuapp.com/product/${selectedProduct.value}`;
-      setPriceLoading(true);
-      fetch(priceURL)
-        .then(res => res.json())
-        .then(resjson => {
-          setPrice(resjson);
-        });
+    const priceURL1 = await fetch(`https://mocapi.herokuapp.com/product/${selectedProduct.value}`);
+    const dataPrice1 = await priceURL1.json();
+    setPrice(dataPrice1);
+    
+    const priceURL2 = await fetch(`https://mocapi.herokuapp.com/product/${selectedProduct1.value}`);
+    const dataPrice2 = await priceURL2.json();
+    setPrice1(dataPrice2);
 
-      const priceURL1 = `https://mocapi.herokuapp.com/product/${selectedProduct1.value}`;
-      fetch(priceURL1)
-        .then(res1 => res1.json())
-        .then(resjson1 => {
-          setPrice1(resjson1);
-          setPriceLoading(false);
-        });
-      console.log('1 ', selectedProduct.value);
-      console.log('2', selectedProduct.value);
+    console.log("data 1  ",dataPrice1)
+    console.log("data 2  ",dataPrice2)
 
-      console.log('price2 ', price);
-      console.log('price1 ', price1);
-      setModalVisible(true);
-      // setShowPrice(!showPrice);
-    } catch (err) {
-      console.log(err);
-    }
+
+    setPriceLoading(true);
+    setModalVisible(true);
+    // setShowPrice(!showPrice);
+  };
+
+  const data = {
+    price1: [
+      { x: 'price_max', y: price.price_max_avg },
+      { x: 'price_min', y: price.price_min_avg },
+    ],
+
+    price2: [
+      { x: 'price_max', y: price1.price_max_avg },
+      { x: 'price_min', y: price1.price_min_avg },
+    ],
+
   };
 
   const onProductChange = dummyData => {
@@ -225,12 +213,13 @@ const Price = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          alert('Modal has been closed.');
+          alert("Modal has been closed.");
           setModalVisible(!modalVisible);
         }}>
         <View style={PriceStyle(theme).centeredView}>
           <View style={PriceStyle(theme).modalView}>
             <Text style={PriceStyle(theme).modalTextheader}>COMPARE</Text>
+            
             {isPriceLoading ? (
               <ActivityIndicator />
             ) : (
@@ -278,6 +267,8 @@ const Price = () => {
                 </View>
               </View>
             )}
+
+           
 
             <Pressable
               style={[PriceStyle(theme).buttonClose]}
