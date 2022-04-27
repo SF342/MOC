@@ -26,7 +26,6 @@ const settingsIcon = require('../../assets/settings.png');
 const titanIcon = require('../../assets/titan.png');
 
 //redux stuff
-import { getData } from "../redux/actions/dataActions"
 import { useSelector, useDispatch } from 'react-redux'
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -39,10 +38,20 @@ const Price = () => {
   const [price, setPrice] = useState([]);
   const [price1, setPrice1] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
-
+  const [selectedProduct, setSelectedProduct] = useState('');
+  const [selectedProduct1, setSelectedProduct1] = useState('');
+  const [isPriceLoading, setPriceLoading] = useState(false);
   const [showPrice,setShowPrice] = useState(false);
   const [showPrice1,setShowPrice1] = useState(false);
   const [index,setIndex] = useState();
+
+  useEffect(() => {
+    console.log("update")
+    console.log("update p1 ", price)
+    console.log("update p2 ", price1)
+    setPriceLoading(false);
+
+  }, [price, price1]);
 
   const filterImageUrl = (val) => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
@@ -54,29 +63,21 @@ const Price = () => {
     }
   }
 
-  const [selectedProduct, setSelectedProduct] = useState('');
-  const [selectedProduct1, setSelectedProduct1] = useState('');
-  const [isPriceLoading, setPriceLoading] = useState(true);
+  const onClickSearch = async () => {
 
-  const onClickSearch = test => {
+    const priceURL1 = await fetch(`https://mocapi.herokuapp.com/product/${selectedProduct.value}`);
+    const dataPrice1 = await priceURL1.json();
+    setPrice(dataPrice1);
+    
+    const priceURL2 = await fetch(`https://mocapi.herokuapp.com/product/${selectedProduct1.value}`);
+    const dataPrice2 = await priceURL2.json();
+    setPrice1(dataPrice2);
 
-    const priceURL = `https://mocapi.herokuapp.com/product/${selectedProduct.value}`;
+    console.log("data 1  ",dataPrice1)
+    console.log("data 2  ",dataPrice2)
+
+
     setPriceLoading(true);
-    fetch(priceURL)
-      .then(res => res.json())
-      .then(resjson => {
-        setPrice(resjson);
-      })
-
-    const priceURL1 = `https://mocapi.herokuapp.com/product/${selectedProduct1.value}`;
-    fetch(priceURL1)
-      .then(res1 => res1.json())
-      .then(resjson1 => {
-        setPrice1(resjson1);
-        setPriceLoading(false);
-      })
-    console.log(selectedProduct.value)
-    console.log(price)
     setModalVisible(true);
     // setShowPrice(!showPrice);
   };
@@ -194,13 +195,14 @@ const Price = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
+          alert("Modal has been closed.");
           setModalVisible(!modalVisible);
         }}
       >
         <View style={PriceStyle(theme).centeredView}>
           <View style={PriceStyle(theme).modalView}>
             <Text style={PriceStyle(theme).modalTextheader}>COMPARE</Text>
+            
             {isPriceLoading ? (
               <ActivityIndicator />
             ) : (
@@ -225,6 +227,8 @@ const Price = () => {
                 </View>
               </View>
             )}
+
+           
 
             <Pressable
               style={[PriceStyle(theme).buttonClose]}
