@@ -36,7 +36,7 @@ const RegisterScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const [themeicon, setThemeicon] = useState(false);
-  const [themeicon2, setThemeicon2] = useState('sun');
+  const [themeicon2, setThemeicon2] = useState('moon');
 
   const changetheme = () => {
     dispatch(changeTheme(!themeicon ? 'dark' : "light"))
