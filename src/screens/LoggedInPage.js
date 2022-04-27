@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image, FlatList,Modal,Pressable, } from 'react-native';
-import auth from '@react-native-firebase/auth';
+import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image, FlatList, Modal, Pressable, } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import ColorPalette from '../components/ColorPalette';
 import LinearGradient from 'react-native-linear-gradient';
@@ -16,6 +15,8 @@ import {
   getProductId,
   getFavoriteId,
 } from '../redux/actions/newFavoriteAction';
+import { changeTheme, themeOptions } from '../redux/actions/themeActions';
+
 
 
 
@@ -39,17 +40,13 @@ const RegisterScreen = ({ navigation }) => {
   const [themeicon2, setThemeicon2] = useState('sun');
 
   const changetheme = () => {
-    if (themeicon == false) {
-      setThemeicon2('moon')
-      setThemeicon(!themeicon)
-    }
-    else {
-      setThemeicon2('sun')
-      setThemeicon(!themeicon)
-    }
+
+    dispatch(changeTheme(!themeicon ? '#2fbe74' : "#000000"))
+    setThemeicon(!themeicon)
+    setThemeicon2(themeicon ? 'sun' : 'moon')
   }
   // Set an initializing state whilst Firebase connects
-  
+
   function logout() {
     dispatch(__doSingOut())
   }
@@ -106,12 +103,10 @@ const RegisterScreen = ({ navigation }) => {
             {/* <Image source={user_icon} style={LoggedInPageStyle(theme).userlogo} /> */}
           </View>
 
-
-
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 30, width: '96%', height: '17%' }}>
 
             <View>
-              <Feather name={themeicon2} size={40} color={("#FFF")} onPress={() => {changetheme() }}/>
+              <Feather name={themeicon2} size={40} color={("#FFF")} onPress={() => { changetheme() }} />
               <Text style={LoggedInPageStyle(theme).icontext}>Theme</Text>
             </View>
 
@@ -125,9 +120,6 @@ const RegisterScreen = ({ navigation }) => {
               <Text style={LoggedInPageStyle(theme).icontext}>Logout</Text>
             </View>
 
-          </View>
-          <View style={LoggedInPageStyle(theme).space}>
-            <ColorPalette/>
           </View>
 
           <View style={{ borderLeftWidth: 6, borderLeftColor: '#ff7' }}>
@@ -181,7 +173,7 @@ const RegisterScreen = ({ navigation }) => {
               setModalVisible(!modalVisible);
             }}
           >
-            <ColorPalette/>
+            <ColorPalette />
             <Pressable
               style={[LoggedInPageStyle(theme).buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
