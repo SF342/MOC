@@ -150,7 +150,7 @@ const RegisterScreen = ({ navigation }) => {
                       }}
                     >
                       <Card style={[LoggedInPageStyle(theme).card]}>
-                        <Text style={LoggedInPageStyle(theme).text2}>{item.product_name}</Text>
+                        <Text style={LoggedInPageStyle(theme).text2}>{item.product_name.length > 25 ? item.product_name.slice(0, 25) + '...' : item.product_name}</Text>
                         <Image style={LoggedInPageStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
                       </Card>
                     </TouchableOpacity>
