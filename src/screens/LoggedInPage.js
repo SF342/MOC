@@ -23,14 +23,12 @@ const RegisterScreen = ({ navigation }) => {
   const image = useSelector(state => state.data.urlimage)
 
   const [modalVisible, setModalVisible] = useState(false);
-  const [themeicon, setThemeicon] = useState(false);
-  const [themeicon2, setThemeicon2] = useState('moon');
+  const [themeicon2, setThemeicon2] = useState(theme.name === "light" ? 'sun' : 'moon');
 
 
   const changetheme = () => {
-    dispatch(changeTheme(!themeicon ? 'dark' : "light"))
-    setThemeicon(!themeicon)
-    setThemeicon2(themeicon ? 'sun' : 'moon')
+    dispatch(changeTheme(theme.name === "light" ? 'dark' : "light"))
+    setThemeicon2(theme.name === "light" ? 'moon' : 'sun')
   }
 
   // call logout from redux
@@ -105,15 +103,37 @@ const RegisterScreen = ({ navigation }) => {
 
           </View>
 
-          <View style={{ borderLeftWidth: 6, borderLeftColor: theme.tableftcolor  }}>
+          <View style={{ borderLeftWidth: 6, borderLeftColor: theme.tableftcolor }}>
             <Text style={LoggedInPageStyle(theme).title2}>Price TODAY</Text>
           </View>
 
           {/* contentBox */}
           <View style={{ width: '96%', height: '20%' }}>
+            {productList !== [] ? (
+              <FlatList
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={LoggedInPageStyle(theme).flatList}
+                horizontal={true}
+                data={productList}
+                renderItem={({ item }) => {
+                  return (
+                    <TouchableOpacity
+                      style={LoggedInPageStyle(theme).cardContainer}
+                      onPress={() => {
+                        console.log(item.product_id)
+                        navigation.navigate('ShowPricePage', { id: item.product_id })
+                      }}
+                    >
+                      <Text style={LoggedInPageStyle(theme).text2}>{item.product_name.length > 25 ? item.product_name.slice(0, 25) + '...' : item.product_name}</Text>
+                    </TouchableOpacity>
+                  );
+                }}
+              />)
+              :
+              (<Text >loadding...</Text>)}
           </View>
 
-          <View style={{ borderLeftWidth: 6, borderLeftColor: theme.tableftcolor  }}>
+          <View style={{ borderLeftWidth: 6, borderLeftColor: theme.tableftcolor }}>
             <Text style={LoggedInPageStyle(theme).title2}>Favorite List</Text>
           </View>
 
@@ -143,9 +163,7 @@ const RegisterScreen = ({ navigation }) => {
                 }}
               />)
               :
-              (
-                <Text >loadding...</Text>
-              )}
+              (<Text >loadding...</Text>)}
           </View>
           <Modal
             animationType="slide"

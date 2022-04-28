@@ -1,7 +1,8 @@
-import {CHANGE_THEME} from '../types';
+import { CHANGE_THEME } from '../types';
 
 const initialState = {
   theme: {
+    name: 'dark',
     BottomTab: '#0A214A',
     background2: '#6bd8ff',
     whitemain: '#fff',
@@ -16,23 +17,23 @@ const initialState = {
     topicbg2: '#0D2B73',
     topictext: '#FFC511',
     title2: '#FFFAD3',
-    iconfavorite :"#1E1E1E" , 
-    iconfavorite2 :"#FFFFFF",
+    iconfavorite: "#1E1E1E",
+    iconfavorite2: "#FFFFFF",
     /////   Home   /////
     container: '#393E46',
     logoutbg: '#b53531',
     line: '#DFDFDE',
-    searchBarcolor : '#BDC6CF',
-    listItembg : '#0A214A',
-    listItembg2 : '#1544E2',
+    searchBarcolor: '#BDC6CF',
+    listItembg: '#0A214A',
+    listItembg2: '#1544E2',
 
     /////   LoggedInPage   /////
     containerbg: '#E2FCFA',
     text: '#00CABA',
     card: '#2D648C',
-    tableftcolor : '#ff7',
-    welcometextcolor : '#fff',
-    welcomeiconcolor : '#fff',
+    tableftcolor: '#ff7',
+    welcometextcolor: '#fff',
+    welcomeiconcolor: '#fff',
 
     /////   LoginScreen   /////
     btnbg: '#37379C',
@@ -54,7 +55,7 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case CHANGE_THEME:
-      return {...state, theme: action.theme};
+      return { ...state, theme: action.theme };
     default:
       return state;
   }
