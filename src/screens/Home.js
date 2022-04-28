@@ -1,31 +1,16 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { ListItem, SearchBar, Avatar } from 'react-native-elements';
-import {
-  Modal,
-  View,
-  FlatList,
-  Text,
-  TouchableOpacity,
-  Image,
-  Pressable,
-  substring,
-} from 'react-native';
-//redux stuff
-import { getData } from '../redux/actions/dataActions';
-import {
-  addFavoriteList,
-  getFavoriteId,
-} from '../redux/actions/newFavoriteAction';
-import { useSelector, useDispatch } from 'react-redux';
-import { HomeStyle } from '../css/Home';
-import Entypo from 'react-native-vector-icons/Entypo';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Modal, View, FlatList, Text, TouchableOpacity } from 'react-native';
 
-import TouchableScale from 'react-native-touchable-scale';
+//redux stuff
+import { useSelector, useDispatch } from 'react-redux';
+import { getData } from '../redux/actions/dataActions';
+import { addFavoriteList, getFavoriteId } from '../redux/actions/newFavoriteAction';
+import { HomeStyle } from '../css/Home';
+
 import LinearGradient from 'react-native-linear-gradient';
 import Moc_logo from '../../assets/moc_logo.png';
-import RecommendPage from './RecommendPage';
 
 export default Home = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -36,26 +21,16 @@ export default Home = ({ navigation }) => {
   const { user } = useSelector(state => state.user);
   const { favoriteList } = useSelector(state => state.favorite)
 
-
   const [isModalVisible, setModalVisible] = useState(false);
-
-  const [pid, serPid] = useState();
-  const [pname, setPname] = useState(null);
   const [item, setItem] = useState(null);
 
 
   const [data, setData] = useState();
   const [valueInput, setValue] = useState('');
-  const [checkUserType, setCheckUserType] = useState(false);
-
-  const [isLoading, setLoading] = useState(true);
-  const [shouldShow1, setShouldShow1] = useState(true);
-  const [shouldShow2, setShouldShow2] = useState(false);
 
   useEffect(() => {
 
     // Check user login or not
-    setCheckUserType(user ? true : false)
     if (user) {
       dispatch(getFavoriteId(user._id));
     }
@@ -68,17 +43,6 @@ export default Home = ({ navigation }) => {
     setData(products);
 
   }, [products]);
-
-
-  function Show1() {
-    setShouldShow1(true);
-    setShouldShow2(false);
-  }
-
-  function Show2() {
-    setShouldShow1(false);
-    setShouldShow2(true);
-  }
 
   const updateInput = text => {
     setValue(text);
@@ -127,51 +91,6 @@ export default Home = ({ navigation }) => {
 
   if (products.length === 0) {
     dispatch(getData());
-    setLoading(false);
-  }
-
-  // console.log(data.length);
-
-  const RECOMMENDMENU = () => {
-    return (<View
-      style={{
-        flexDirection: 'row',
-        justifyContent: 'center',
-      }}>
-      {shouldShow2 ? (<View
-        style={{
-          marginRight: 30,
-          alignSelf: 'center'
-        }}>
-        <Text style={{
-
-          color: '#FFC511',
-          fontSize: 25,
-          fontFamily: 'Mitr-Light',
-        }}>
-          Recommend
-        </Text>
-      </View>) : (<></>)}
-
-      <Entypo
-        name="menu"
-        size={50}
-        color="#FFFFFF"
-        onPress={() => {
-          Show1();
-        }}
-      />
-      <MaterialIcons
-        name="crop-square"
-        size={50}
-        color="#FFFFFF"
-        onPress={() => {
-          Show2();
-        }}
-      />
-
-
-    </View>)
   }
 
   const MODAL = (prop) => {
@@ -217,115 +136,34 @@ export default Home = ({ navigation }) => {
       end={{ x: 0, y: 1 }}
       style={HomeStyle(theme).container1}>
       <View style={{ flex: 1 }}>
-        {checkUserType && !shouldShow2 ? (
-          <SearchBar
-            placeholder="Type Here..."
-            lightTheme
-            round
-            value={valueInput}
-            onChangeText={text => updateInput(text)}
-            autoCorrect={false}
-            containerStyle={{ backgroundColor: theme.background1, }}
-            inputContainerStyle={{ backgroundColor: theme.searchBarcolor, }}
-          />
-        ) : (<></>)}
 
+        <SearchBar
+          placeholder="Type Here..."
+          lightTheme
+          round
+          value={valueInput}
+          onChangeText={text => updateInput(text)}
+          autoCorrect={false}
+          containerStyle={{ backgroundColor: theme.background1, }}
+          inputContainerStyle={{ backgroundColor: theme.searchBarcolor, }}
+        />
 
-        {checkUserType ? (
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-            }}>
-            {RECOMMENDMENU()}
-
-            {shouldShow1 ? (
-              <View>
-                <FlatList
-                  data={data}
-                  renderItem={({ item }) => (
-                    <ListItem
-
-                      delayLongPress={250}
-                      onLongPress={() => {
-                        toggleModalVisibility();
-                        setItem(item);
-                        console.log(item)
-                      }}
-
-                      ViewComponent={LinearGradient}
-                      linearGradientProps={{
-                        colors: [theme.listItembg2, theme.listItembg],
-                        start: { x: 1, y: 0 },
-                        end: { x: 0.2, y: 0 },
-                      }}
-                      containerStyle={{
-                        marginHorizontal: 4,
-                        marginVertical: 4,
-                        borderRadius: 8,
-                      }}
-                      onPress={() =>
-                        navigation.navigate('ShowPricePage', {
-                          id: item.product_id,
-                        })
-                      }>
-                      <Avatar
-                        style={HomeStyle(theme).logo}
-                        source={filterImageUrl(item.product_name)}
-                        rounded
-                      />
-                      <View>
-                        <ListItem.Content>
-                          <ListItem.Title
-                            style={{
-                              fontSize: 18,
-                              color: theme.topictext,
-                              fontFamily: 'Mitr-Regular',
-                              marginRight: 70
-                            }}>{`${item.product_name}`}</ListItem.Title>
-                          <View style={HomeStyle(theme).TextContainer1}>
-                            <ListItem.Subtitle
-                              style={{
-                                color: '#CED0CE',
-                                fontFamily: 'Mitr-Light',
-                              }}>
-                              รหัสสินค้า : {item.product_id}
-                            </ListItem.Subtitle>
-                          </View>
-                        </ListItem.Content>
-                      </View>
-
-                    </ListItem>
-                  )}
-                  keyExtractor={item => item.product_id}
-                />
-              </View>
-            ) : <></>}
-            {shouldShow2 ? <RecommendPage navigation={navigation} /> : <></>}
-          </View>
-        ) : (
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}>
           <View>
-            {/* <SearchBar
-              placeholder="Type Here..."
-              lightTheme
-              round
-              value={valueInput}
-              onChangeText={text => updateInput(text)}
-              autoCorrect={false}
-              containerStyle={{ backgroundColor: theme.background1 ,}}
-              inputContainerStyle={{backgroundColor: theme.searchBarcolor,}}
-            /> */}
-
             <FlatList
               data={data}
               renderItem={({ item }) => (
                 <ListItem
                   delayLongPress={250}
-                  friction={0}
                   onLongPress={() => {
                     toggleModalVisibility();
                     setItem(item);
+                    console.log(item)
                   }}
                   ViewComponent={LinearGradient}
                   linearGradientProps={{
@@ -343,7 +181,6 @@ export default Home = ({ navigation }) => {
                       id: item.product_id,
                     })
                   }>
-
                   <Avatar
                     style={HomeStyle(theme).logo}
                     source={filterImageUrl(item.product_name)}
@@ -355,14 +192,12 @@ export default Home = ({ navigation }) => {
                         style={{
                           fontSize: 18,
                           color: theme.topictext,
-                          fontWeight: '700',
-                          fontFamily: 'Mitr-Light',
+                          fontFamily: 'Mitr-Regular',
                           marginRight: 70
                         }}>{`${item.product_name}`}</ListItem.Title>
                       <View style={HomeStyle(theme).TextContainer1}>
                         <ListItem.Subtitle
                           style={{
-                            fontSize: 13,
                             color: '#CED0CE',
                             fontFamily: 'Mitr-Light',
                           }}>
@@ -377,7 +212,7 @@ export default Home = ({ navigation }) => {
               keyExtractor={item => item.product_id}
             />
           </View>
-        )}
+        </View>
       </View>
 
       {isModalVisible === true && item !== null ? MODAL(item.product_name) : <></>}
