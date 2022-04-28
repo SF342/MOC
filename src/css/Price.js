@@ -28,7 +28,7 @@ export const PriceStyle = (prop) => StyleSheet.create({
       },
       t2: {
         fontSize: 26,
-        color: prop.whitemain,
+        color: prop.welcometextcolor,
         fontWeight: '500',
         padding: 5,
         
@@ -44,7 +44,7 @@ export const PriceStyle = (prop) => StyleSheet.create({
        
       },
       modalTextheader: {
-        color: prop.shadow1,
+        color: prop.welcometextcolor,
         fontWeight: "bold",
       },
       text: {
@@ -139,7 +139,7 @@ export const PriceStyle = (prop) => StyleSheet.create({
         elevation: 2
       },
       buttonClose: {
-        backgroundColor: prop.background1,
+        backgroundColor: prop.btnbg,
         borderRadius: 12,
         width:80,
         padding: 10,

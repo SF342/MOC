@@ -13,12 +13,14 @@ export const themeOptions = {
     sec700: '#e3eeff',
     shadow1: '#000000',
     footericon: '#778899',
+    footericonclick: '#fff',
     /////   Favourite List   /////
     topicbg: '#1544E2',
     topicbg2: '#0D2B73',
     topictext: '#FFC511',
     title2: '#FFFAD3',
-
+    iconfavorite :"#1E1E1E" , 
+    iconfavorite2 :"#FFFFFF",
     /////   Home   /////
     container: '#393E46',
     logoutbg: '#b53531',
@@ -32,6 +34,8 @@ export const themeOptions = {
     text: '#00CABA',
     card: '#2D648C',
     tableftcolor : '#ff7',
+    welcometextcolor : '#fff',
+    welcomeiconcolor : '#fff',
 
     /////   LoginScreen   /////
     btnbg: '#37379C',
@@ -56,13 +60,15 @@ export const themeOptions = {
       pri800: '#e66900',
       sec700: '#e3eeff',
       shadow1: '#000000',
-      footericon: '#BDC6CF',
+      footericon: '#F6D3AD',
+      footericonclick: '#fff',
       /////   Favourite List   /////
       topicbg: '#E7B067',
       topicbg2: '#BD7638',
       topictext: '#DEDCD9',
       title2: '#FFFAD3',
-  
+      iconfavorite :"#FFFFFF" , 
+      iconfavorite2 :"#B58662",
       /////   Home   /////
       container: '#393E46',
       logoutbg: '#b53531',
@@ -74,8 +80,10 @@ export const themeOptions = {
       /////   LoggedInPage   /////
       containerbg: '#E2FCFA',
       text: '#00CABA',
-      card: '#E6AF66',
+      card: '#D5A580',
       tableftcolor : '#B58662',
+      welcometextcolor : '#423f3f',
+      welcomeiconcolor : '#B58662',
   
       /////   LoginScreen   /////
       btnbg: '#bd7638',

@@ -21,7 +21,7 @@ const Footer = (props) => {
       <NavigationContainer>
         <Tab.Navigator initialRouteName="Main"
           screenOptions={{
-            tabBarActiveTintColor: "#ffffff",
+            tabBarActiveTintColor: theme.footericonclick,
             tabBarInactiveTintColor: theme.footericon,
             tabBarLabelStyle: {
               fontSize: 0,

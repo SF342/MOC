@@ -8,7 +8,7 @@ export const LoggedInPageStyle = (prop) => StyleSheet.create({
         width: 320,
         marginBottom: 3,
         fontWeight: 'bold',
-        color: prop.whitemain,
+        color: prop.welcometextcolor,
         paddingLeft:10,
       },
       userlogo : {
@@ -17,7 +17,7 @@ export const LoggedInPageStyle = (prop) => StyleSheet.create({
         alignSelf: 'center',
       },  
       title2: {
-        color: prop.whitemain,
+        color: prop.welcometextcolor,
         fontSize: 20,
         width: 320,
         fontWeight: 'bold',
@@ -82,7 +82,7 @@ export const LoggedInPageStyle = (prop) => StyleSheet.create({
       },
       icontext:{
         fontSize:15,
-        color: prop.whitemain,
+        color: prop.welcomeiconcolor,
         marginLeft:-5
       },
       cardContainer: {

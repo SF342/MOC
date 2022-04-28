@@ -26,6 +26,7 @@ const RegisterScreen = ({ navigation }) => {
   const [themeicon, setThemeicon] = useState(false);
   const [themeicon2, setThemeicon2] = useState('moon');
 
+
   const changetheme = () => {
     dispatch(changeTheme(!themeicon ? 'dark' : "light"))
     setThemeicon(!themeicon)
@@ -48,7 +49,6 @@ const RegisterScreen = ({ navigation }) => {
       return Moc_logo
     }
   };
-
 
   useEffect(() => {
     // call fav id from redux from user login
@@ -89,17 +89,17 @@ const RegisterScreen = ({ navigation }) => {
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 30, width: '96%', height: '17%' }}>
 
             <View>
-              <Feather name={themeicon2} size={40} color={("#FFF")} onPress={() => { changetheme() }} />
+              <Feather name={themeicon2} size={40} color={(theme.welcomeiconcolor)} onPress={() => { changetheme() }} />
               <Text style={LoggedInPageStyle(theme).icontext}>Theme</Text>
             </View>
 
             <View>
-              <MaterialIcons name="favorite" size={40} color={("#FFF")} onPress={() => { navigation.navigate('FavoriteList') }} />
+              <MaterialIcons name="favorite" size={40} color={(theme.welcomeiconcolor)} onPress={() => { navigation.navigate('FavoriteList') }} />
               <Text style={LoggedInPageStyle(theme).icontext}>Favorite</Text>
             </View>
 
             <View>
-              <MaterialIcons name="power-settings-new" size={40} color={("#FFF")} onPress={() => logout()} />
+              <MaterialIcons name="power-settings-new" size={40} color={(theme.welcomeiconcolor)} onPress={() => logout()} />
               <Text style={LoggedInPageStyle(theme).icontext}>Logout</Text>
             </View>
 

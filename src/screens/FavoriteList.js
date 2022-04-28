@@ -21,8 +21,8 @@ const FavoriteList = ({ navigation }) => {
 
   const [shouldShow1, setShouldShow1] = useState(true);
 
-  const [Show1color, setShow1color] = useState("#1E1E1E");
-  const [Show2color, setShow2color] = useState("#FFFFFF");
+  const [Show1color, setShow1color] = useState(theme.iconfavorite2);
+  const [Show2color, setShow2color] = useState(theme.iconfavorite);
 
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
@@ -47,8 +47,8 @@ const FavoriteList = ({ navigation }) => {
 
   function Show1() {
     setShouldShow1(shouldShow1 ? false : true);
-    setShow1color(shouldShow1 ? "#1E1E1E" : "#FFFFFF");
-    setShow2color(shouldShow1 ? "#FFFFFF" : "#1E1E1E");
+    setShow1color(shouldShow1 ? theme.iconfavorite : theme.iconfavorite2);
+    setShow2color(shouldShow1 ? theme.iconfavorite2 : theme.iconfavorite);
 
   };
 
