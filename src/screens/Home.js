@@ -138,6 +138,21 @@ export default Home = ({ navigation }) => {
         flexDirection: 'row',
         justifyContent: 'center',
       }}>
+      {shouldShow2 ? (<View
+        style={{
+          marginRight: 30,
+          alignSelf: 'center'
+        }}>
+        <Text style={{
+
+          color: '#FFC511',
+          fontSize: 25,
+          fontFamily: 'Mitr-Light',
+        }}>
+          Recommend
+        </Text>
+      </View>) : (<></>)}
+
       <Entypo
         name="menu"
         size={50}
@@ -154,6 +169,8 @@ export default Home = ({ navigation }) => {
           Show2();
         }}
       />
+
+
     </View>)
   }
 
@@ -208,10 +225,12 @@ export default Home = ({ navigation }) => {
             value={valueInput}
             onChangeText={text => updateInput(text)}
             autoCorrect={false}
-            containerStyle={{ backgroundColor: theme.background1 ,}}
-            inputContainerStyle={{backgroundColor: theme.searchBarcolor,}}
+            containerStyle={{ backgroundColor: theme.background1, }}
+            inputContainerStyle={{ backgroundColor: theme.searchBarcolor, }}
           />
         ) : (<></>)}
+
+
         {checkUserType ? (
           <View
             style={{
@@ -219,7 +238,8 @@ export default Home = ({ navigation }) => {
               flexDirection: 'column',
               justifyContent: 'space-between',
             }}>
-            {RECOMMENDMENU}
+            {RECOMMENDMENU()}
+
             {shouldShow1 ? (
               <View>
                 <FlatList
@@ -286,7 +306,7 @@ export default Home = ({ navigation }) => {
           </View>
         ) : (
           <View>
-            <SearchBar
+            {/* <SearchBar
               placeholder="Type Here..."
               lightTheme
               round
@@ -295,7 +315,7 @@ export default Home = ({ navigation }) => {
               autoCorrect={false}
               containerStyle={{ backgroundColor: theme.background1 ,}}
               inputContainerStyle={{backgroundColor: theme.searchBarcolor,}}
-            />
+            /> */}
 
             <FlatList
               data={data}

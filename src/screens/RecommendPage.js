@@ -31,11 +31,9 @@ const RecommendPage = ({ navigation }) => {
   const [Loading, setLoading] = useState(false);
   // Use for update realtime data
   useEffect(() => {
-
-    dispatch(getFavoriteId(user._id));
+    console.log(11111111123);
     dispatch(getProductId(favoriteList));
-
-  }, [favorite_state, product_state, add_state, delete_state]);
+  }, [user]);
 
   const filterImageUrl = val => {
     let nameImg = image.filter(element => val.search(element.name) !== -1);
@@ -49,13 +47,9 @@ const RecommendPage = ({ navigation }) => {
 
   return (
     <ScrollView>
-      <LinearGradient
-        colors={[theme.background1, theme.background2]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-        style={RecommendPageStyle(theme).container1}>
-        <View>
-          <View style={RecommendPageStyle(theme).box1}>
+
+      <View>
+        {/* <View style={RecommendPageStyle(theme).box1}>
             <Text
               style={{
                 color: '#FFC511',
@@ -64,68 +58,67 @@ const RecommendPage = ({ navigation }) => {
               }}>
               Recommend
             </Text>
-          </View>
+          </View> */}
 
-          {Loading ? (
-            <ActivityIndicator />
-          ) : (
-            <FlatList
-              data={productList}
-              renderItem={({ item }) => (
-                <ListItem
-                  Component={TouchableScale}
-                  friction={0} //
-                  tension={200} // These props are passed to the parent component (here TouchableScale)
-                  activeScale={0.95} //
-                  linearGradientProps={{
-                    colors: ['#1544E2', '#0A214A'],
-                    start: { x: 1, y: 0 },
-                    end: { x: 0.2, y: 0 },
-                  }}
-                  ViewComponent={LinearGradient}
-                  containerStyle={{
-                    marginHorizontal: 4,
-                    marginVertical: 4,
-                    borderRadius: 8,
-                  }}
-                  onPress={() =>
-                    navigation.navigate('ShowPricePage', { id: item.product_id })
-                  }>
-                  <Avatar
-                    style={RecommendPageStyle(theme).logo}
-                    source={filterImageUrl(item.product_name)}
-                    rounded
-                  />
-                  <ListItem.Content>
-                    <ListItem.Title
-                      style={{
-                        fontSize: 20,
-                        color: '#FFC511',
-                        fontWeight: '700',
-                        fontFamily: 'Mitr-Light',
-                      }}>{`${item.product_name}`}</ListItem.Title>
-                    <View style={RecommendPageStyle(theme).TextContainer1}>
-                      <ListItem.Subtitle
-                        style={{ color: '#CED0CE', fontFamily: 'Mitr-Light' }}>
-                        {item.group_name}{' '}
-                      </ListItem.Subtitle>
-                      <ListItem.Subtitle
-                        style={{ color: '#CED0CE', fontFamily: 'Mitr-Light' }}>
-                        {item.categoty_name}{' '}
-                      </ListItem.Subtitle>
-                      <ListItem.Subtitle
-                        style={{ color: '#CED0CE', fontFamily: 'Mitr-Light' }}>
-                        รหัสสินค้า : {item.product_id}
-                      </ListItem.Subtitle>
-                    </View>
-                  </ListItem.Content>
-                </ListItem>
-              )}
-              keyExtractor={item => item.product_id}
-            />
-          )}
-        </View>
-      </LinearGradient>
+        {Loading ? (
+          <ActivityIndicator />
+        ) : (
+          <FlatList
+            data={productList}
+            renderItem={({ item }) => (
+              <ListItem
+                Component={TouchableScale}
+                friction={0} //
+                tension={200} // These props are passed to the parent component (here TouchableScale)
+                activeScale={0.95} //
+                ViewComponent={LinearGradient}
+                linearGradientProps={{
+                  colors: ['#1544E2', '#0A214A'],
+                  start: { x: 1, y: 0 },
+                  end: { x: 0.2, y: 0 },
+                }}
+                containerStyle={{
+                  marginHorizontal: 4,
+                  marginVertical: 4,
+                  borderRadius: 8,
+                }}
+                onPress={() =>
+                  navigation.navigate('ShowPricePage', { id: item.product_id })
+                }>
+                <Avatar
+                  style={RecommendPageStyle(theme).logo}
+                  source={filterImageUrl(item.product_name)}
+                  rounded
+                />
+                <ListItem.Content>
+                  <ListItem.Title
+                    style={{
+                      fontSize: 20,
+                      color: '#FFC511',
+                      fontWeight: '700',
+                      fontFamily: 'Mitr-Light',
+                    }}>{`${item.product_name}`}</ListItem.Title>
+                  <View style={RecommendPageStyle(theme).TextContainer1}>
+                    <ListItem.Subtitle
+                      style={{ color: '#CED0CE', fontFamily: 'Mitr-Light' }}>
+                      {item.group_name}{' '}
+                    </ListItem.Subtitle>
+                    <ListItem.Subtitle
+                      style={{ color: '#CED0CE', fontFamily: 'Mitr-Light' }}>
+                      {item.categoty_name}{' '}
+                    </ListItem.Subtitle>
+                    <ListItem.Subtitle
+                      style={{ color: '#CED0CE', fontFamily: 'Mitr-Light' }}>
+                      รหัสสินค้า : {item.product_id}
+                    </ListItem.Subtitle>
+                  </View>
+                </ListItem.Content>
+              </ListItem>
+            )}
+            keyExtractor={item => item.product_id}
+          />
+        )}
+      </View>
     </ScrollView>
   );
 };
