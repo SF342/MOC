@@ -157,7 +157,7 @@ const ShowPricePage = ({ navigation, route }) => {
                       </View>
 
 
-                      {product?.description=== "data out of date" ? (
+                      {product?.description === "data out of date" ? (
                         <>
                           <View>
                             <Text style={ShowPricePageStyle(theme).title1}>{product.description}</Text>
@@ -169,12 +169,12 @@ const ShowPricePage = ({ navigation, route }) => {
                         </View><View style={ShowPricePageStyle(theme).TextContainer1}>
                             <Text style={ShowPricePageStyle(theme).title}>ราคาต่ำสุด: </Text>
                             <Text style={ShowPricePageStyle(theme).title1}>
-                              {product.price_min_avg} บาท
+                              {product.price_min_avg ? product.price_min_avg.toFixed(2) : 0}  บาท
                             </Text>
                           </View><View style={ShowPricePageStyle(theme).TextContainer1}>
                             <Text style={ShowPricePageStyle(theme).title}>ราคาสูงสุด: </Text>
                             <Text style={ShowPricePageStyle(theme).title1}>
-                              {product.price_max_avg} บาท
+                            {product.price_max_avg ? product.price_max_avg.toFixed(2) : 0}  บาท
                             </Text>
                           </View><View style={ShowPricePageStyle(theme).TextContainer1}>
                             <Text style={ShowPricePageStyle(theme).update}>**อัพเดทราคาเมื่อ: </Text>

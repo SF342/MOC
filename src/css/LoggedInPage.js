@@ -114,6 +114,12 @@ export const LoggedInPageStyle = (prop) => StyleSheet.create({
         marginBottom:-15,
         marginTop:-5,
       },
+      textpricetoday: { 
+        color: prop.whitemain,
+        fontWeight: '500',
+        fontSize: 13.5,
+       
+      },
       space: {
         marginBottom:10,
       }
