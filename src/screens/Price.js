@@ -68,12 +68,13 @@ const Price = () => {
     setPrice(dataPrice1);
     setPricemax(dataPrice1.price_max_avg.toFixed(2))
     setPricemin(dataPrice1.price_min_avg.toFixed(2))
-    
+    console.log(price)
     const priceURL2 = await fetch(`https://mocapi.herokuapp.com/product/${selectedProduct1.value}`);
     const dataPrice2 = await priceURL2.json();
     setPrice1(dataPrice2);
     setPricemax1(dataPrice2.price_max_avg.toFixed(2))
     setPricemin1(dataPrice2.price_min_avg.toFixed(2))
+    console.log(price1)
 
     // condition check data not exist
     if(dataPrice2.price_list.length === 0 || dataPrice1.price_list.length === 0){

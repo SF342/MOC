@@ -15,6 +15,8 @@ export const themeOptions = {
     shadow1: '#000000',
     footericon: '#778899',
     footericonclick: '#fff',
+    headersubtext: '#059FE1',
+    headertext: '#fff',
     /////   Favourite List   /////
     topicbg: '#1544E2',
     topicbg2: '#0D2B73',
@@ -64,6 +66,8 @@ export const themeOptions = {
     shadow1: '#000000',
     footericon: '#F6D3AD',
     footericonclick: '#fff',
+    headersubtext: '#B58662',
+    headertext: '#423F3F',
     /////   Favourite List   /////
     topicbg: '#E7B067',
     topicbg2: '#BD7638',

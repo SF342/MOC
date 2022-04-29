@@ -12,6 +12,8 @@ const initialState = {
     shadow1: '#000000',
     footericon: '#778899',
     footericonclick: '#fff',
+    headersubtext: '#059FE1',
+    headertext: '#fff',
     /////   Favourite List   /////
     topicbg: '#1544E2',
     topicbg2: '#0D2B73',

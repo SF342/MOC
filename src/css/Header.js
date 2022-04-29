@@ -10,13 +10,13 @@ export const HeaderStyle = (prop) => StyleSheet.create({
 
     },
     text: {
-        color: '#FFFFFF',
+        color: prop.headertext,
         fontSize: 20,     
         fontFamily:"Mitr-Light",
           
     },
     title: {
-        color: '#059FE1',
+        color: prop.headersubtext,
         fontSize: 15, 
     },
     img : {              

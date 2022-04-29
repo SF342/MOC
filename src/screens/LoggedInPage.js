@@ -30,14 +30,14 @@ const RegisterScreen = ({ navigation }) => {
     "product_id": "P11003",
     "product_name": "สุกรชำแหละ เนื้อแดง สะโพก"
   }, {
-    "product_id": "P11025",
-    "product_name": "ไข่ไก่ เบอร์ 0"
+    "product_id": "P11020",
+    "product_name": "ไข่เป็ด ใหญ่"
   }, {
-    "product_id": "P11039",
-    "product_name": "เนื้อโค ติดกระดูก"
+    "product_id": "P11031",
+    "product_name": "เนื้อโค ธรรมดา"
   }, {
-    "product_id": "P12010",
-    "product_name": "ปลาหมึกกระดอง คละ"
+    "product_id": "P12004",
+    "product_name": "กุ้งขาว(70ตัว/กก.)"
   }]
 
   const findCheckData = () => {
@@ -159,8 +159,9 @@ const RegisterScreen = ({ navigation }) => {
                     >
                       <Card style={[LoggedInPageStyle(theme).card]}>
                         <Text style={LoggedInPageStyle(theme).textpricetoday}>{item.product_name.length > 25 ? item.product_name.slice(0, 25) + '...' : item.product_name}</Text>
-                        <Text style={{...LoggedInPageStyle(theme).textpricetoday,  marginTop: 10 }}>ราคาต่ำสุด: {item.price_min_avg ? item.price_min_avg.toFixed(2) : 0}</Text>
-                        <Text style={LoggedInPageStyle(theme).textpricetoday}>ราคาสูงสุด: {item.price_max_avg ? item.price_max_avg.toFixed(2) : 0}</Text>
+                        <Image style={LoggedInPageStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
+                        <Text style={{...LoggedInPageStyle(theme).numberpricetoday,  marginTop: 10  , marginLeft:110}}>{item.price_min_avg ? item.price_min_avg.toFixed(2) : 0}</Text>
+                        <Text style={{...LoggedInPageStyle(theme).textpricetoday,  marginTop: 0  , marginLeft:110}}>{item.unit}</Text>
                       </Card>
                     </TouchableOpacity>
                   );
@@ -193,7 +194,7 @@ const RegisterScreen = ({ navigation }) => {
                     >
                       <Card style={[LoggedInPageStyle(theme).card]}>
                         <Text style={LoggedInPageStyle(theme).text2}>{item.product_name.length > 25 ? item.product_name.slice(0, 25) + '...' : item.product_name}</Text>
-                        <Image style={LoggedInPageStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
+                        <Image style={LoggedInPageStyle(theme).logo2} source={filterImageUrl(item.product_name)} rounded />
                       </Card>
                     </TouchableOpacity>
                   );

@@ -104,6 +104,13 @@ export const LoggedInPageStyle = (prop) => StyleSheet.create({
       logo : {
         width: 70,
         height: 70,
+        position: 'absolute',
+        left:10,
+        top:15,
+      },
+      logo2 : {
+        width: 70,
+        height: 70,
         marginTop:15,
         marginLeft:30,
       },
@@ -118,6 +125,12 @@ export const LoggedInPageStyle = (prop) => StyleSheet.create({
         color: prop.whitemain,
         fontWeight: '500',
         fontSize: 13.5,
+       
+      },
+      numberpricetoday: { 
+        color: prop.whitemain,
+        fontWeight: '500',
+        fontSize: 16,
        
       },
       space: {
