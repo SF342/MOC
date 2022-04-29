@@ -33,7 +33,7 @@ export const HomeStyle = (prop) => StyleSheet.create({
         elevation: 5
       },
       bg_modal: {
-        backgroundColor: prop.shadow1,
+        backgroundColor: 'rgba(0,0,0,0.5)',
         width: '100%',
         height: '100%',
       },
