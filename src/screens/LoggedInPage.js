@@ -159,7 +159,7 @@ const RegisterScreen = ({ navigation }) => {
                     >
                       <Card style={[LoggedInPageStyle(theme).card]}>
                         <Text style={LoggedInPageStyle(theme).textpricetoday}>{item.product_name.length > 25 ? item.product_name.slice(0, 25) + '...' : item.product_name}</Text>
-                        <Text style={LoggedInPageStyle(theme).textpricetoday}>ราคาต่ำสุด: {item.price_min_avg ? item.price_min_avg.toFixed(2) : 0}</Text>
+                        <Text style={{...LoggedInPageStyle(theme).textpricetoday,  marginTop: 10 }}>ราคาต่ำสุด: {item.price_min_avg ? item.price_min_avg.toFixed(2) : 0}</Text>
                         <Text style={LoggedInPageStyle(theme).textpricetoday}>ราคาสูงสุด: {item.price_max_avg ? item.price_max_avg.toFixed(2) : 0}</Text>
                       </Card>
                     </TouchableOpacity>
