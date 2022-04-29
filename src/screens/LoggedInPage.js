@@ -1,17 +1,16 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, SafeAreaView, Image, FlatList, Modal, Pressable, } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
-import { signOut } from '../redux/actions/userActions';
 import { LoggedInPageStyle } from '../css/LoggedInPage'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import { Card } from "react-native-paper";
-import {
-  getProductId,
-  getFavoriteId,
-} from '../redux/actions/newFavoriteAction';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getPrice } from '../redux/actions/dataActions';
+import { signOut } from '../redux/actions/userActions';
+import { getProductId, getFavoriteId } from '../redux/actions/newFavoriteAction';
 import { changeTheme } from '../redux/actions/themeActions';
 
 const RegisterScreen = ({ navigation }) => {
@@ -21,10 +20,38 @@ const RegisterScreen = ({ navigation }) => {
   const { user } = useSelector(state => state.user)
   const { productList, favoriteList } = useSelector(state => state.favorite)
   const image = useSelector(state => state.data.urlimage)
+  const { productprice } = useSelector(state => state.data)
+
 
   const [modalVisible, setModalVisible] = useState(false);
   const [themeicon2, setThemeicon2] = useState(theme.name === "light" ? 'sun' : 'moon');
+  const [priceToday, setPriceToday] = useState([])
+  const productToday = [{
+    "product_id": "P11003",
+    "product_name": "สุกรชำแหละ เนื้อแดง สะโพก"
+  }, {
+    "product_id": "P11020",
+    "product_name": "ไข่เป็ด ใหญ่"
+  }, {
+    "product_id": "P11031",
+    "product_name": "เนื้อโค ธรรมดา"
+  }, {
+    "product_id": "P12004",
+    "product_name": "กุ้งขาว(70ตัว/กก.)"
+  }]
 
+  const findCheckData = () => {
+    let tempData = []
+    productToday.forEach((val) => {
+      var id = productprice.findIndex(PD => PD.product_id === val.product_id);
+      if (id === -1) {
+        dispatch(getPrice(val.product_id));
+      } else {
+        tempData.push(productprice[id])
+        setPriceToday(tempData);
+      }
+    })
+  }
 
   const changetheme = () => {
     dispatch(changeTheme(theme.name === "light" ? 'dark' : "light"))
@@ -47,6 +74,12 @@ const RegisterScreen = ({ navigation }) => {
       return Moc_logo
     }
   };
+
+  useEffect(() => {
+    if (productToday.length !== priceToday.length) {
+      findCheckData()
+    }
+  }, [productprice]);
 
   useEffect(() => {
     // call fav id from redux from user login
@@ -103,18 +136,18 @@ const RegisterScreen = ({ navigation }) => {
 
           </View>
 
-          <View style={{ borderLeftWidth: 6, borderLeftColor: theme.tableftcolor }}>
+          <View style={{ borderLeftWidth: 6, borderLeftColor: theme.tableftcolor, marginTop: 20 }}>
             <Text style={LoggedInPageStyle(theme).title2}>Price TODAY</Text>
           </View>
 
           {/* contentBox */}
           <View style={{ width: '96%', height: '20%' }}>
-            {productList !== [] ? (
+            {priceToday !== [] ? (
               <FlatList
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={LoggedInPageStyle(theme).flatList}
                 horizontal={true}
-                data={productList}
+                data={priceToday}
                 renderItem={({ item }) => {
                   return (
                     <TouchableOpacity
@@ -124,7 +157,12 @@ const RegisterScreen = ({ navigation }) => {
                         navigation.navigate('ShowPricePage', { id: item.product_id })
                       }}
                     >
-                      <Text style={LoggedInPageStyle(theme).text2}>{item.product_name.length > 25 ? item.product_name.slice(0, 25) + '...' : item.product_name}</Text>
+                      <Card style={[LoggedInPageStyle(theme).card]}>
+                        <Text style={LoggedInPageStyle(theme).textpricetoday}>{item.product_name.length > 25 ? item.product_name.slice(0, 25) + '...' : item.product_name}</Text>
+                        <Image style={LoggedInPageStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
+                        <Text style={{...LoggedInPageStyle(theme).numberpricetoday,  marginTop: 10  , marginLeft:110}}>{item.price_min_avg ? item.price_min_avg.toFixed(2) : 0}</Text>
+                        <Text style={{...LoggedInPageStyle(theme).textpricetoday,  marginTop: 0  , marginLeft:110}}>{item.unit}</Text>
+                      </Card>
                     </TouchableOpacity>
                   );
                 }}
@@ -133,7 +171,7 @@ const RegisterScreen = ({ navigation }) => {
               (<Text >loadding...</Text>)}
           </View>
 
-          <View style={{ borderLeftWidth: 6, borderLeftColor: theme.tableftcolor }}>
+          <View style={{ borderLeftWidth: 6, borderLeftColor: theme.tableftcolor, marginTop: 20 }}>
             <Text style={LoggedInPageStyle(theme).title2}>Favorite List</Text>
           </View>
 
@@ -156,7 +194,7 @@ const RegisterScreen = ({ navigation }) => {
                     >
                       <Card style={[LoggedInPageStyle(theme).card]}>
                         <Text style={LoggedInPageStyle(theme).text2}>{item.product_name.length > 25 ? item.product_name.slice(0, 25) + '...' : item.product_name}</Text>
-                        <Image style={LoggedInPageStyle(theme).logo} source={filterImageUrl(item.product_name)} rounded />
+                        <Image style={LoggedInPageStyle(theme).logo2} source={filterImageUrl(item.product_name)} rounded />
                       </Card>
                     </TouchableOpacity>
                   );
