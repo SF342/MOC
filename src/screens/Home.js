@@ -107,7 +107,7 @@ export default Home = ({ navigation }) => {
         <View style={HomeStyle(theme).paper_madal}>
           <Text style={HomeStyle(theme).fav}>Add Favorite</Text>
           <Avatar
-            style={HomeStyle(theme).logo}
+            style={{ height: 200, width: 200, marginLeft: 40}}
             source={filterImageUrl(prop)}
             rounded></Avatar>
           <View style={HomeStyle(theme).line} />

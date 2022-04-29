@@ -40,7 +40,7 @@ export const HomeStyle = (prop) => StyleSheet.create({
       paper_madal: {
         backgroundColor: prop.whitemain,
         margin: 30,
-        marginTop: 100,
+        marginTop: 150,
         marginBottom: 100,
         padding: 20,
         borderRadius: 10,
@@ -63,11 +63,10 @@ export const HomeStyle = (prop) => StyleSheet.create({
         fontWeight: 'bold',
       },
       line: {
-        width: 315,
+        width: 300,
         borderBottomColor: prop.line,
         borderBottomWidth: 1,
-        marginTop: 240,
-        marginRight: 40,
+        marginTop: 50,
       },
 
 });
